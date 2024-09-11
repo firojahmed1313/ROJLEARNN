@@ -2,6 +2,8 @@ package com.rojlearnn.rojlearnn.model;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document(collection = "user")
 public class User {
     private String username;
     private String email;
