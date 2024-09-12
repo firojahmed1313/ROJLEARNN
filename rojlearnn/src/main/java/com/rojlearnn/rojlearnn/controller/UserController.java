@@ -45,6 +45,10 @@ public class UserController {
     public User registerUser(@RequestBody User user) {
         return us.createUser(user);
     }
+    @PostMapping("/logIn")
+    public String loginUser(@RequestBody User user) {
+        return us.verifyUser(user);
+    }
     @PutMapping("/update")
     public User updateUser(@RequestBody User user) {
         return us.updateUser(user);
