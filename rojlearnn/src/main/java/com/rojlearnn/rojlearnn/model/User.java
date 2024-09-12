@@ -2,9 +2,11 @@ package com.rojlearnn.rojlearnn.model;
 
 import java.time.LocalDateTime;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 public class User {
+    private ObjectId _id;
     private String username;
     private String email;
     private String password;
@@ -36,6 +38,12 @@ public class User {
     }
     public String getUsername() {
         return username;
+    }
+    public String get_id() {
+        return _id.toString();
+    }
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
     public void setUsername(String username) {
         this.username = username;

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rojlearnn.rojlearnn.model.User;
 import com.rojlearnn.rojlearnn.service.UserService;
 
+
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/user")
@@ -39,10 +40,11 @@ public class UserController {
     @GetMapping("/me")
     public User getCurrentUserProfile(){
 
-        return null;
+        return us.getCurrentUserProfile();
     }
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
+        System.out.println(user);
         return us.createUser(user);
     }
     @PostMapping("/logIn")

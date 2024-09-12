@@ -1,6 +1,7 @@
 package com.rojlearnn.rojlearnn.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/course")
+@CrossOrigin(origins = "https://8080-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io")
 public class CourseController {
     @Autowired
     CourseService cs;
