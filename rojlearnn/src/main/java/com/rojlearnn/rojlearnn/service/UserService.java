@@ -40,7 +40,18 @@ public class UserService {
         return ur.save(user);
     }
     public User updateUser(User user) {
-        return ur.save(user);
+        User existingUser = ur.findById(user.get_id().toString()).get();
+        if (existingUser == null) {
+            return null;
+        }
+        existingUser.setUsername(user.getUsername());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setRole(user.getRole());
+        existingUser.setProfile_picture_url(user.getProfile_picture_url());
+        existingUser.setPhone_number(user.getPhone_number());
+        existingUser.setAddress(user.getAddress());
+        existingUser.setIs_active(user.isIs_active());
+        return ur.save(existingUser);
     }
     public void deleteUser(String userId) {
         ur.deleteById(userId);
