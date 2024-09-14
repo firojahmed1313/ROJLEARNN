@@ -3,6 +3,7 @@ package com.rojlearnn.rojlearnn.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable String userId) {
+    public ResponseEntity<?> getUserById(@PathVariable String userId) {
         return us.findUserById(userId);
     }
 
@@ -43,7 +44,7 @@ public class UserController {
         return us.getCurrentUserProfile();
     }
     @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
         System.out.println(user);
         return us.createUser(user);
     }
@@ -52,13 +53,14 @@ public class UserController {
         return us.verifyUser(user);
     }
     @PutMapping("/update")
-    public User updateUser(@RequestBody User user) {
+    public ResponseEntity<?> updateUser(@RequestBody User user) {
+        System.out.println("user.get_id()");
         return us.updateUser(user);
     }
 
     @DeleteMapping("/delete/{userId}")
-    public void deleteUser(@PathVariable String userId) {
-        us.deleteUser(userId);
+    public ResponseEntity<?> deleteUser(@PathVariable String userId) {
+        return us.deleteUser(userId);
     }
     @PostMapping("/resetPassword")
     public User resetPassword(@PathVariable String email) {

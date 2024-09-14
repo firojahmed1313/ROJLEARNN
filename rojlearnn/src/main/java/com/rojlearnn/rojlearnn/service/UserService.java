@@ -3,6 +3,8 @@ package com.rojlearnn.rojlearnn.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,10 +22,14 @@ public class UserService {
     jwtService jS;
     @Autowired
     AuthenticationManager authManager;
-    public User findUserById(String userId) {
-        return ur.findById(userId).get();
-        
+    public ResponseEntity<?> findUserById(String userId) {
+        User user = ur.findById(userId).orElse(null);
+        if (user == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
+    
     public List<User> getUser() {
         return ur.findAll();
     }
@@ -31,18 +37,21 @@ public class UserService {
         
         return ur.findAllByRole(role);
     }
-    public User createUser(User user) {
+    public ResponseEntity<?> createUser(User user) {
         //System.out.println(user);
         User existingUser = ur.findByEmail(user.getEmail());
         if (existingUser != null) {
-            return null;
+            return new ResponseEntity<>("User already exists", HttpStatus.CONFLICT);
         }
-        return ur.save(user);
+        User newUser = ur.save(user);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
-    public User updateUser(User user) {
-        User existingUser = ur.findById(user.get_id().toString()).get();
+    public ResponseEntity<?> updateUser(User user) {
+        System.out.println(user.get_id());
+        System.out.println("user");
+        User existingUser = ur.findById(user.get_id()).orElse(null);
         if (existingUser == null) {
-            return null;
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
         }
         existingUser.setUsername(user.getUsername());
         existingUser.setPassword(user.getPassword());
@@ -51,10 +60,16 @@ public class UserService {
         existingUser.setPhone_number(user.getPhone_number());
         existingUser.setAddress(user.getAddress());
         existingUser.setIs_active(user.isIs_active());
-        return ur.save(existingUser);
+        User updatedUser = ur.save(existingUser);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
-    public void deleteUser(String userId) {
+    public ResponseEntity<?> deleteUser(String userId) {
+        User user = ur.findById(userId).orElse(null);
+        if (user == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
         ur.deleteById(userId);
+        return new ResponseEntity<>("User deleted", HttpStatus.OK);
     }
     public User resetPassword(String email) {
         throw new UnsupportedOperationException("Unimplemented method 'resetPassword'");
