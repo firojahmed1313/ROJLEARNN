@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.rojlearnn.rojlearnn.model.Course;
@@ -19,8 +21,12 @@ public class CourseService {
     public List<Course> getAllCourses() {
         return cr.findAll();
     }
-    public Course getCourseById(String courseId) {
-        return cr.findById(courseId).get();
+    public ResponseEntity<?> getCourseById(String courseId) {
+        Course course = cr.findById(courseId).orElse(null);
+        if(course==null) {
+            return new ResponseEntity<>("Course not found",HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(course,HttpStatus.OK);
     }
     public List<Course> getCoursesByInstructorId(String istructorId) {
         return cr.findAllByInstructor(new ObjectId(istructorId));
@@ -28,17 +34,19 @@ public class CourseService {
     public List<Course> getCoursesByCategory(String category) {
         return cr.findAllByCategory(category);       
     }
-    public Course createCourse(Course course) {
+    public ResponseEntity<?> createCourse(Course course) {
         User user = us.getCurrentUserProfile();
-        if(user.get_id().toString().equals(course.getInstructor().toString())) {
-            return cr.save(course);
+        System.out.println(user.getRole());
+        if((user.get_id().toString().equals(course.getInstructor().toString()))&&(user.getRole().equals("Instructor"))) {
+            Course newCourse = cr.save(course);
+            return new ResponseEntity<>(newCourse,HttpStatus.CREATED);
         }
-        return null;
+        return new ResponseEntity<>("YOU ARE NOT ELIGIBLE TO CREATE THIS COURSE",HttpStatus.FORBIDDEN);
     }
-    public Course updateCourse(String courseId, Course course) {
-        Course existingCourse = cr.findById(courseId).get();
+    public ResponseEntity<?> updateCourse(Course course) {
+        Course existingCourse = cr.findById(course.get_id()).orElse(null);
         if(existingCourse==null) {
-            return null;
+            return new ResponseEntity<>("Course not found",HttpStatus.NOT_FOUND);
         }
         if(existingCourse.getInstructor().toString().equals(course.getInstructor().toString())) {
             existingCourse.setTitle(course.getTitle());
@@ -48,19 +56,22 @@ public class CourseService {
             existingCourse.setIs_published(course.isIs_published());
             existingCourse.setPrice(course.getPrice());
             existingCourse.setDuration_hours(course.getDuration_hours());
-            return cr.save(existingCourse);
-        }
-        return null;
+            existingCourse.setInstructor(course.getInstructor());
+
+            Course updatedCourse = cr.save(existingCourse);
+            return new ResponseEntity<>(updatedCourse,HttpStatus.OK);
+        }        
+        return new ResponseEntity<>("YOU ARE NOT ELIGIBLE TO UPDATE THIS COURSE",HttpStatus.FORBIDDEN);
     }
-    public String deleteCourse(String courseId) {
+    public ResponseEntity<?> deleteCourse(String courseId) {
         User user = us.getCurrentUserProfile();
         String userId = user.get_id().toString();
         Course course = cr.findById(courseId).get();
         if (course.getInstructor().toString().equals(userId)) {
             cr.deleteById(courseId);
-            return "success";
+            return new ResponseEntity<>("Course deleted successfully",HttpStatus.OK);
         } else {
-            return "fail";
+            return new ResponseEntity<>("YOU ARE NOT ELIGIBLE TO DELETE THIS COURSE",HttpStatus.FORBIDDEN);
         }
 
     }

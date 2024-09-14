@@ -1,6 +1,7 @@
 package com.rojlearnn.rojlearnn.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class CourseController {
         return cs.getAllCourses();
     }
     @GetMapping("/{courseId}")
-    public Course getCourseById(@PathVariable String courseId) {
+    public ResponseEntity<?> getCourseById(@PathVariable String courseId) {
         return cs.getCourseById(courseId);
     }
 
@@ -40,16 +41,17 @@ public class CourseController {
         return cs.getCoursesByCategory(category);
     }
     @PostMapping("/create")
-    public Course createCourse(@RequestBody Course course) {
+    public ResponseEntity<?> createCourse(@RequestBody Course course) {
         return cs.createCourse(course);
     }
-    @PutMapping("/update/{courseId}")
-    public Course updateCourse(@PathVariable String courseId, @RequestBody Course course) {
-        return cs.updateCourse(courseId, course);
+    @PutMapping("/update")
+    public ResponseEntity<?> updateCourse( @RequestBody Course course) {
+        return cs.updateCourse( course);
     }
     @DeleteMapping("/delete/{courseId}")
-    public void deleteCourse(@PathVariable String courseId) {
-        cs.deleteCourse(courseId);
+    public ResponseEntity<?> deleteCourse(@PathVariable String courseId) {
+        
+        return cs.deleteCourse(courseId);
     }
 
 }

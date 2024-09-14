@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Document(collection = "courses")
 public class Course {
+    private ObjectId _id;
     private String title;
     private String description;
     private ObjectId instructor;
@@ -31,6 +32,14 @@ public class Course {
         this.is_published = is_published;
     }
 
+    public String get_id() {
+        return _id.toString();
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -51,8 +60,8 @@ public class Course {
         return instructor.toString();
     }
 
-    public void setInstructor_id(ObjectId instructor_id) {
-        this.instructor = instructor_id;
+    public void setInstructor(String instructor_id) {
+        this.instructor = new ObjectId(instructor_id);
     }
 
 
@@ -100,9 +109,6 @@ public class Course {
         return created_at;
     }
 
-    // public void setCreated_at(LocalDateTime created_at) {
-    //     this.created_at = created_at;
-    // }
-    
+
 
 }
