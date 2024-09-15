@@ -1,0 +1,326 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "ROJLEARN",
+    "collectionId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+    "dateExported": "2024-09-15T09:32:36.695Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "USER",
+            "containerId": "",
+            "created": "2024-09-12T14:03:46.826Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "COURSE",
+            "containerId": "",
+            "created": "2024-09-12T14:04:01.198Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "814e82dc-ad2b-40f6-ac08-8b26a24bbae4",
+            "name": "ENROLL",
+            "containerId": "",
+            "created": "2024-09-15T05:33:13.206Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "5c93b2f4-860b-467e-899f-69ab536c8a3f",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "ALL COURSE",
+            "url": "/course/all",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-09-12T14:04:17.316Z",
+            "modified": "2024-09-13T04:11:03.482Z",
+            "headers": [],
+            "auth": {
+                "type": "none"
+            }
+        },
+        {
+            "_id": "bba145d6-f9e1-46ab-b258-826eff5156ae",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "ALLUSER",
+            "url": "/user/users",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-12T14:05:28.821Z",
+            "modified": "2024-09-13T03:45:31.395Z",
+            "headers": []
+        },
+        {
+            "_id": "133d0096-a4c0-45af-b532-5fecb930f578",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "LOGIN",
+            "url": "/user/logIn",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-09-12T14:07:09.446Z",
+            "modified": "2024-09-15T09:28:16.209Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"student001@example.com\",\n  \"password\":\"004\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "none"
+            }
+        },
+        {
+            "_id": "cf115426-8f67-448f-83e9-661e8be4e86f",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "MYPROFILE",
+            "url": "/user/me",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-09-12T16:38:55.335Z",
+            "modified": "2024-09-13T03:46:07.694Z",
+            "headers": []
+        },
+        {
+            "_id": "fd0fca62-3158-4ff5-8ffb-48a20f5c75f7",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "REGISTER",
+            "url": "/user/register",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-09-12T16:41:37.314Z",
+            "modified": "2024-09-14T16:04:38.996Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"instructor_003\",\n  \"email\": \"instructor003tem@example.com\",\n  \"password\": \"002\",\n  \"role\": \"Instructor\",\n  \"profile_picture_url\": \"https://images.unsplash.com/photo-1523307730650-594bc63f9d67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fDElM0ExJTIwcHJvZmlsZSUyMHBob3RvfGVufDB8MXwwfHx8MA%3D%3D\",\n  \"phone_number\": \"987-654-3210\",\n  \"address\": \"456 Instructor Rd, City, Country\",\n  \"is_active\": true,\n  \"created_at\": \"2024-09-11T17:54:57.527\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "none"
+            }
+        },
+        {
+            "_id": "58af278e-2135-4950-822d-7ef7d098acf9",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "DELETEUSER",
+            "url": "/user/delete/66e5b416da99e4421be0659",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-09-12T16:51:39.811Z",
+            "modified": "2024-09-14T16:23:31.031Z",
+            "headers": []
+        },
+        {
+            "_id": "1c35f693-78e0-4692-8da9-0eee7d389d78",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "USERBYID",
+            "url": "/user/66e1a30b095c06a595b4ac7",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-09-12T17:30:55.332Z",
+            "modified": "2024-09-14T16:05:28.742Z",
+            "headers": []
+        },
+        {
+            "_id": "49020c22-a876-4c18-873e-4583ed628135",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "UAERBYROLE",
+            "url": "/user/role/Instructo",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-09-12T17:32:00.418Z",
+            "modified": "2024-09-14T16:06:21.541Z",
+            "headers": []
+        },
+        {
+            "_id": "66d9eb5e-5098-4f66-9d54-b1d2e6db5183",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "GETCOURSEBYID",
+            "url": "/course/66e1a538095c06a595bc347c",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-09-12T17:38:53.133Z",
+            "modified": "2024-09-14T16:50:04.035Z",
+            "headers": []
+        },
+        {
+            "_id": "fa73f863-d0a4-4164-ad95-f31b83b0b0dc",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "GETCOURSEBYNSTRACTORID",
+            "url": "/course/66e1a30b095c06a595b4ac7e/courses",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-09-12T17:40:12.605Z",
+            "modified": "2024-09-15T06:15:36.684Z",
+            "headers": []
+        },
+        {
+            "_id": "c41cb8d8-2ae2-4951-aba4-73d45b03a1e1",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "GETCOURSEBYCATAGORY",
+            "url": "/course/category/Programmin",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-09-12T17:41:42.055Z",
+            "modified": "2024-09-14T16:51:39.456Z",
+            "headers": []
+        },
+        {
+            "_id": "cfaeaa4c-e2f3-4a0c-8720-149c0c5f2bd1",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "CREATECOURSE",
+            "url": "/course/create",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-09-12T17:42:01.944Z",
+            "modified": "2024-09-14T17:11:49.161Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"title\": \"Introduction to c++ Programming for update\",\n    \"description\": \"A beginner's guide to programming concepts using c++.\",\n    \"instructor\": \"66e1a30b095c06a595b4ac81\",\n    \"category\": \"Programming\",\n    \"thumbnail_url\": \"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n    \"duration_hours\": 20.5,\n    \"price\": 49.99,\n    \"is_published\": true,\n    \"created_at\": \"2024-09-11T17:54:57.527\"\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "a41734c1-c540-4ef7-8771-c753a30f108d",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "UPDATECOURSE",
+            "url": "course/update",
+            "method": "PUT",
+            "sortNum": 140000,
+            "created": "2024-09-12T17:43:49.692Z",
+            "modified": "2024-09-14T17:06:43.748Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"_id\": \"66e5c19dda99e4421be065ab\",\r\n  \"title\": \"Introduction to c++ Programming for delete\",\r\n  \"description\": \"A beginner's guide to programming concepts using c++ update.\",\r\n  \"instructor\": \"66e1a30b095c06a595b4ac7e\",\r\n  \"category\": \"Programming\",\r\n  \"thumbnail_url\": \"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\r\n  \"duration_hours\": 20.5,\r\n  \"price\": 49.99,\r\n  \"is_published\": true,\r\n  \"created_at\": \"2024-09-11T17:54:57.527\"\r\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "aa8fe535-e6b6-4044-997d-904ee90bdc56",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "7a6803df-b86f-4809-8440-e538e0417995",
+            "name": "DELETECOURSE",
+            "url": "course/delete/66e5c19dda99e4421be065ab",
+            "method": "DELETE",
+            "sortNum": 150000,
+            "created": "2024-09-12T17:44:03.817Z",
+            "modified": "2024-09-14T17:08:23.247Z",
+            "headers": []
+        },
+        {
+            "_id": "b3c4c2a9-635a-4442-8a98-f47d692bec90",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "f603f645-1c5b-4d98-9cf4-dc50808f9ac2",
+            "name": "UPDATEUSER",
+            "url": "/user/update",
+            "method": "PUT",
+            "sortNum": 160000,
+            "created": "2024-09-14T16:06:47.433Z",
+            "modified": "2024-09-14T16:24:18.206Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"_id\": \"66e5b416da99e4421be06596\",\n    \"username\": \"instructor_003tre\",\n    \"email\": \"instructor003tem@example.com\",\n    \"password\": \"002\",\n    \"role\": \"Instructor\",\n    \"profile_picture_url\": \"https://images.unsplash.com/photo-1523307730650-594bc63f9d67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fDElM0ExJTIwcHJvZmlsZSUyMHBob3RvfGVufDB8MXwwfHx8MA%3D%3D\",\n    \"phone_number\": \"987-654-3210\",\n    \"address\": \"456 Instructor Rd, City, Country\",\n    \"is_active\": true,\n    \"created_at\": \"2024-09-11T17:54:57.527\"\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "09955161-1e46-4723-9954-01b2aaeabd76",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "814e82dc-ad2b-40f6-ac08-8b26a24bbae4",
+            "name": "STUDENTSENROLLINCOURSE",
+            "url": "enroll/enrollments/66e1a538095c06a595bc345c",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2024-09-15T05:34:43.493Z",
+            "modified": "2024-09-15T06:35:46.218Z",
+            "headers": []
+        },
+        {
+            "_id": "3893c12e-0df1-4d2a-97dc-a1b17fecff8f",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "814e82dc-ad2b-40f6-ac08-8b26a24bbae4",
+            "name": "COURSEENROLLBYSTUDENTS",
+            "url": "enroll/enrollments/student/66e1a30b095c06a595b4ac81",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-09-15T07:03:46.440Z",
+            "modified": "2024-09-15T07:27:18.179Z",
+            "headers": []
+        },
+        {
+            "_id": "61662928-4b00-4285-a223-beac1047ff37",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "814e82dc-ad2b-40f6-ac08-8b26a24bbae4",
+            "name": "NEWENROLLBYSTUDENTS",
+            "url": "/enroll/createEnroll",
+            "method": "POST",
+            "sortNum": 200000,
+            "created": "2024-09-15T07:12:43.681Z",
+            "modified": "2024-09-15T07:28:08.854Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"courseid\":\"66e1a538095c06a595bc345b\",\n  \"studentid\":\"66e1a30b095c06a595b4ac81\",\n  \"enrollmentstatus\":\"Enrolled\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "15b54729-b36d-4cd2-9b5e-980abd09e3ad",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "814e82dc-ad2b-40f6-ac08-8b26a24bbae4",
+            "name": "UPDATESTATUS",
+            "url": "enroll/update/enrollmentstatus/66e66b7382edce472d3028a3",
+            "method": "PUT",
+            "sortNum": 210000,
+            "created": "2024-09-15T08:36:06.035Z",
+            "modified": "2024-09-15T09:28:06.316Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"_id\": \"66e66b7382edce472d3028a3\",\n  \"enrollmentstatus\":\"Enrolled\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "8175b860-4977-4f4e-bdaf-aa5593d0b402",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "814e82dc-ad2b-40f6-ac08-8b26a24bbae4",
+            "name": "CANCELENROLL",
+            "url": "enroll/delete/66e66b7382edce472d3028a1",
+            "method": "DELETE",
+            "sortNum": 220000,
+            "created": "2024-09-15T08:39:57.840Z",
+            "modified": "2024-09-15T08:49:18.492Z",
+            "headers": []
+        }
+    ],
+    "settings": {
+        "auth": {
+            "type": "bearer",
+            "bearer": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHVkZW50MDAxQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2MzkyNTE2LCJleHAiOjE3MjY1MDA1MTZ9.njg6j-wO6fR0tX_xft0B-eFT4V3JM6Ly0HASmd-QDek"
+        },
+        "options": {
+            "baseUrl": "https://8080-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io/"
+        }
+    },
+    "ref": "QcJPsW9p3V_rnZTfsfnAe_THgeqsYGlyzvXBdAQGD-SGZi94kF8P1Z5ioNodxjnrwmi-ihwt3AK0b2GyNLkYrQ"
+}
