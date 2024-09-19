@@ -1,13 +1,27 @@
 import React from 'react'
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import Home from './Pages/Home.jsx'
+import AdminPanel from './Pages/AdminPanel.jsx'
+import TeacherProfile from './Pages/TeacherProfile.jsx'
+import StudentsProfile from './Pages/StudentsProfile.jsx'
+import Register from './Pages/Register.jsx'
+import Login from './Pages/Login.jsx'
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl text-red-500 font-bold underline">Hello world!</h1>
-      <h1>Hello World!</h1>
-    </>
+
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path='/admin' element={<AdminPanel />} />
+      <Route path='/teacher' element={<TeacherProfile />} />
+      <Route path='/student' element={<StudentsProfile />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='*' element={<Home />} />
+    </Routes>
+    
   )
 }
 
