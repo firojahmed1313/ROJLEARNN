@@ -7,6 +7,7 @@ import TeacherProfile from './Pages/TeacherProfile.jsx'
 import StudentsProfile from './Pages/StudentsProfile.jsx'
 import Register from './Pages/Register.jsx'
 import Login from './Pages/Login.jsx'
+import Pagenotfound from './Pages/Pagenotfound.jsx'
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
       <Route path='/student' element={<StudentsProfile />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
-      <Route path='*' element={<Home />} />
+      <Route path='*' element={<Pagenotfound />} />
     </Routes>
     
   )

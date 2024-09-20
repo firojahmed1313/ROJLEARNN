@@ -74,13 +74,16 @@ public class UserService {
     public User resetPassword(String email) {
         throw new UnsupportedOperationException("Unimplemented method 'resetPassword'");
     }
-    public String verifyUser(User user) {
+    public ResponseEntity<?> verifyUser(User user) {
         Authentication authentication = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jS.generateToken(user.getEmail());
+            String token = jS.generateToken(user.getEmail());
+            return new ResponseEntity<>(token, HttpStatus.OK);
+            //return jS.generateToken(user.getEmail());
         } else {
-            return "fail";
+            System.out.println("Authentication failed");
+            return new ResponseEntity<>("Authentication failed", HttpStatus.UNAUTHORIZED);
         }
     }
     public User getCurrentUserProfile() {

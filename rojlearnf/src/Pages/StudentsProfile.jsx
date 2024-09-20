@@ -1,8 +1,11 @@
 import React from 'react'
+import CourseDetails from '../Comp/Home/CourseDetails'
 
 const StudentsProfile = () => {
   return (
-    <div>StudentsProfile</div>
+    <>
+      <CourseDetails />
+    </>
   )
 }
 

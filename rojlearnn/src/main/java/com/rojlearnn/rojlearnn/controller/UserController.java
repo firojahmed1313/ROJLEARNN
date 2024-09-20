@@ -49,7 +49,7 @@ public class UserController {
         return us.createUser(user);
     }
     @PostMapping("/logIn")
-    public String loginUser(@RequestBody User user) {
+    public ResponseEntity<?> loginUser(@RequestBody User user) {
         return us.verifyUser(user);
     }
     @PutMapping("/update")
