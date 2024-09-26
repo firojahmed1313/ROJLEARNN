@@ -1,0 +1,1009 @@
+{
+    "info": {
+        "_postman_id": "aec0f494-9435-4040-8889-b7858d06fde1",
+        "name": "ROJLEARN",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "USER",
+            "item": [
+                {
+                    "name": "ALLUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/user/users",
+                            "path": [
+                                "users"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "LOGIN",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/user/logIn",
+                            "path": [
+                                "logIn"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"email\":\"student001@example.com\",\n  \"password\":\"004\"\n}"
+                        },
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                },
+                {
+                    "name": "MYPROFILE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/user/me",
+                            "path": [
+                                "me"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "REGISTER",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/user/register",
+                            "path": [
+                                "register"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"username\": \"instructor_003\",\n  \"email\": \"instructor003tem@example.com\",\n  \"password\": \"002\",\n  \"role\": \"Instructor\",\n  \"profile_picture_url\": \"https://images.unsplash.com/photo-1523307730650-594bc63f9d67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fDElM0ExJTIwcHJvZmlsZSUyMHBob3RvfGVufDB8MXwwfHx8MA%3D%3D\",\n  \"phone_number\": \"987-654-3210\",\n  \"address\": \"456 Instructor Rd, City, Country\",\n  \"is_active\": true,\n  \"created_at\": \"2024-09-11T17:54:57.527\"\n}"
+                        },
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                },
+                {
+                    "name": "DELETEUSER",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/user/delete/66e5b416da99e4421be0659",
+                            "path": [
+                                "delete",
+                                "66e5b416da99e4421be0659"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "USERBYID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/user/66e1a30b095c06a595b4ac7",
+                            "path": [
+                                "66e1a30b095c06a595b4ac7"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "UAERBYROLE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/user/role/Instructo",
+                            "path": [
+                                "role",
+                                "Instructo"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "UPDATEUSER",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/user/update",
+                            "path": [
+                                "update"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n    \"_id\": \"66e5b416da99e4421be06596\",\n    \"username\": \"instructor_003tre\",\n    \"email\": \"instructor003tem@example.com\",\n    \"password\": \"002\",\n    \"role\": \"Instructor\",\n    \"profile_picture_url\": \"https://images.unsplash.com/photo-1523307730650-594bc63f9d67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fDElM0ExJTIwcHJvZmlsZSUyMHBob3RvfGVufDB8MXwwfHx8MA%3D%3D\",\n    \"phone_number\": \"987-654-3210\",\n    \"address\": \"456 Instructor Rd, City, Country\",\n    \"is_active\": true,\n    \"created_at\": \"2024-09-11T17:54:57.527\"\n  }"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "COURSE",
+            "item": [
+                {
+                    "name": "ALL COURSE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/course/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "course"
+                            ]
+                        },
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                },
+                {
+                    "name": "GETCOURSEBYID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/course/66e1a538095c06a595bc347c",
+                            "path": [
+                                "66e1a538095c06a595bc347c"
+                            ],
+                            "host": [
+                                "course"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETCOURSEBYNSTRACTORID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/course/66e1a30b095c06a595b4ac7e/courses",
+                            "path": [
+                                "66e1a30b095c06a595b4ac7e",
+                                "courses"
+                            ],
+                            "host": [
+                                "course"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETCOURSEBYCATAGORY",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/course/category/Programmin",
+                            "path": [
+                                "category",
+                                "Programmin"
+                            ],
+                            "host": [
+                                "course"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "CREATECOURSE",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/course/create",
+                            "path": [
+                                "create"
+                            ],
+                            "host": [
+                                "course"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n    \"title\": \"Introduction to c++ Programming for update\",\n    \"description\": \"A beginner's guide to programming concepts using c++.\",\n    \"instructor\": \"66e1a30b095c06a595b4ac81\",\n    \"category\": \"Programming\",\n    \"thumbnail_url\": \"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n    \"duration_hours\": 20.5,\n    \"price\": 49.99,\n    \"is_published\": true,\n    \"created_at\": \"2024-09-11T17:54:57.527\"\n  }"
+                        }
+                    }
+                },
+                {
+                    "name": "UPDATECOURSE",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "course/update",
+                            "path": [
+                                "update"
+                            ],
+                            "host": [
+                                "course"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\r\n  \"_id\": \"66e5c19dda99e4421be065ab\",\r\n  \"title\": \"Introduction to c++ Programming for delete\",\r\n  \"description\": \"A beginner's guide to programming concepts using c++ update.\",\r\n  \"instructor\": \"66e1a30b095c06a595b4ac7e\",\r\n  \"category\": \"Programming\",\r\n  \"thumbnail_url\": \"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\r\n  \"duration_hours\": 20.5,\r\n  \"price\": 49.99,\r\n  \"is_published\": true,\r\n  \"created_at\": \"2024-09-11T17:54:57.527\"\r\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "DELETECOURSE",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "course/delete/66e5c19dda99e4421be065ab",
+                            "path": [
+                                "delete",
+                                "66e5c19dda99e4421be065ab"
+                            ],
+                            "host": [
+                                "course"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ENROLL",
+            "item": [
+                {
+                    "name": "STUDENTSENROLLINCOURSE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "enroll/enrollments/66e1a538095c06a595bc345c",
+                            "path": [
+                                "enrollments",
+                                "66e1a538095c06a595bc345c"
+                            ],
+                            "host": [
+                                "enroll"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "COURSEENROLLBYSTUDENTS",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "enroll/enrollments/student/66e1a30b095c06a595b4ac81",
+                            "path": [
+                                "enrollments",
+                                "student",
+                                "66e1a30b095c06a595b4ac81"
+                            ],
+                            "host": [
+                                "enroll"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "NEWENROLLBYSTUDENTS",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/enroll/createEnroll",
+                            "path": [
+                                "createEnroll"
+                            ],
+                            "host": [
+                                "enroll"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"courseid\":\"66e1a538095c06a595bc345b\",\n  \"studentid\":\"66e1a30b095c06a595b4ac81\",\n  \"enrollmentstatus\":\"Enrolled\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "UPDATESTATUS",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "enroll/update/enrollmentstatus/66e66b7382edce472d3028a3",
+                            "path": [
+                                "update",
+                                "enrollmentstatus",
+                                "66e66b7382edce472d3028a3"
+                            ],
+                            "host": [
+                                "enroll"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"_id\": \"66e66b7382edce472d3028a3\",\n  \"enrollmentstatus\":\"Enrolled\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "CANCELENROLL",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "enroll/delete/66e66b7382edce472d3028a1",
+                            "path": [
+                                "delete",
+                                "66e66b7382edce472d3028a1"
+                            ],
+                            "host": [
+                                "enroll"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "LIKE",
+            "item": [
+                {
+                    "name": "ADDLIKE",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/lrcf/like/66e1a538095c06a595bc345c_66e1a30b095c06a595b4ac80",
+                            "path": [
+                                "like",
+                                "66e1a538095c06a595bc345c_66e1a30b095c06a595b4ac80"
+                            ],
+                            "host": [
+                                "lrcf"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ALLLIKEINCOURSE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "lrcf/content/alllike/66e1a538095c06a595bc345b",
+                            "path": [
+                                "content",
+                                "alllike",
+                                "66e1a538095c06a595bc345b"
+                            ],
+                            "host": [
+                                "lrcf"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ALLLIKEBYUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "lrcf/user/alllike/66e1a30b095c06a595b4ac80",
+                            "path": [
+                                "user",
+                                "alllike",
+                                "66e1a30b095c06a595b4ac80"
+                            ],
+                            "host": [
+                                "lrcf"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ALLDISLIKEBYCOURSE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "lrcf/content/allDislike/66e1a538095c06a595bc345c",
+                            "path": [
+                                "content",
+                                "allDislike",
+                                "66e1a538095c06a595bc345c"
+                            ],
+                            "host": [
+                                "lrcf"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ALLDISLIKEBYUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "lrcf/user/allDislike/66e1a30b095c06a595b4ac80",
+                            "path": [
+                                "user",
+                                "allDislike",
+                                "66e1a30b095c06a595b4ac80"
+                            ],
+                            "host": [
+                                "lrcf"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ADDDISLIKE",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/lrcf/dislike/66e1a538095c06a595bc345b_66e1a30b095c06a595b4ac81",
+                            "path": [
+                                "dislike",
+                                "66e1a538095c06a595bc345b_66e1a30b095c06a595b4ac81"
+                            ],
+                            "host": [
+                                "lrcf"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "RATE",
+            "item": [
+                {
+                    "name": "GETALLRATEING",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/rateing/getRateing/66e1a538095c06a595bc345b",
+                            "path": [
+                                "getRateing",
+                                "66e1a538095c06a595bc345b"
+                            ],
+                            "host": [
+                                "rateing"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ADDUPDATERATING",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/rateing/addRateing",
+                            "path": [
+                                "addRateing"
+                            ],
+                            "host": [
+                                "rateing"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"contentid\": \"66e1a538095c06a595bc345c\",\n  \"cuid\": \"66e1a538095c06a595bc345c_66e1a30b095c06a595b4ac80\",\n  \"rating\": 5\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "COMMENTS",
+            "item": [
+                {
+                    "name": "CREATECOMMENTS",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/comments/givecomment",
+                            "path": [
+                                "givecomment"
+                            ],
+                            "host": [
+                                "comments"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"contentid\": \"66e1a538095c06a595bc345b\",\n  \"userid\": \"66e1a30b095c06a595b4ac81\",\n  \"comment_text\": \"Great assignment! Learned a lot extra mi.\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "GETCOMMENTSINCOURSE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/comments/content/66e1a538095c06a595bc345c",
+                            "path": [
+                                "content",
+                                "66e1a538095c06a595bc345c"
+                            ],
+                            "host": [
+                                "comments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETCOMMENTSBYUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/comments/user/66e1a30b095c06a595b4ac80",
+                            "path": [
+                                "user",
+                                "66e1a30b095c06a595b4ac80"
+                            ],
+                            "host": [
+                                "comments"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "FEEDBACK",
+            "item": [
+                {
+                    "name": "GIVEFEEDBACK",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/feedback/givefeedback",
+                            "path": [
+                                "givefeedback"
+                            ],
+                            "host": [
+                                "feedback"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"userid\": \"66e1a30b095c06a595b4ac81\",\n  \"contentid\": \"66e1a538095c06a595bc345c\",\n  \"feedback_text\": \"The course content is great but needs more examples add extra others.\",\n  \"feedbacktype\": \"General\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "GETFEEDBACKBYCONTAINT",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/feedback/content/66e1a538095c06a595bc345b",
+                            "path": [
+                                "content",
+                                "66e1a538095c06a595bc345b"
+                            ],
+                            "host": [
+                                "feedback"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETFEEDBACKBYUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/feedback/user/66e1a30b095c06a595b4ac81",
+                            "path": [
+                                "user",
+                                "66e1a30b095c06a595b4ac81"
+                            ],
+                            "host": [
+                                "feedback"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETFEEDBACKBYTYPE",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/feedback/feedbacktype/General",
+                            "path": [
+                                "feedbacktype",
+                                "General"
+                            ],
+                            "host": [
+                                "feedback"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TACKING",
+            "item": [
+                {
+                    "name": "UPDATETACKING",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/tracking/updatetacking/66e1a538095c06a595bc345c_66e1a30b095c06a595b4ac80",
+                            "path": [
+                                "updatetacking",
+                                "66e1a538095c06a595bc345c_66e1a30b095c06a595b4ac80"
+                            ],
+                            "host": [
+                                "tracking"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"userid\": \"66e1a30b095c06a595b4ac80\",\n  \"contentid\": \"66e1a538095c06a595bc345b\",\n  \"cuid\":\"66e1a538095c06a595bc345c_66e1a30b095c06a595b4ac80\",\n  \"progress_percentage\": 37\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "GETTACKINGBYUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/tracking/gettackingByUser/66e1a30b095c06a595b4ac80",
+                            "path": [
+                                "gettackingByUser",
+                                "66e1a30b095c06a595b4ac80"
+                            ],
+                            "host": [
+                                "tracking"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETTACKINGBYCONTAINT",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/tracking/gettackingContent/66e1a538095c06a595bc345b",
+                            "path": [
+                                "gettackingContent",
+                                "66e1a538095c06a595bc345b"
+                            ],
+                            "host": [
+                                "tracking"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "CARTS",
+            "item": [
+                {
+                    "name": "ADDITEMSTOCARTS",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/cart/addItemToCart",
+                            "path": [
+                                "addItemToCart"
+                            ],
+                            "host": [
+                                "cart"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"courseid\": \"66e1a538095c06a595bc345b\",\n  \"userid\": \"66e1a30b095c06a595b4ac81\",\n  \"price\": 49.99\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "GETALLCARTSBYUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/cart/getCarts/66e1a30b095c06a595b4ac81",
+                            "path": [
+                                "getCarts",
+                                "66e1a30b095c06a595b4ac81"
+                            ],
+                            "host": [
+                                "cart"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETALLCARTSITEMSBYUSER",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/cart/getCartitems/66e1a30b095c06a595b4ac81",
+                            "path": [
+                                "getCartitems",
+                                "66e1a30b095c06a595b4ac81"
+                            ],
+                            "host": [
+                                "cart"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DELETECARTSITEMS",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/cart/delete/66e916e357a99137e3495fe3",
+                            "path": [
+                                "delete",
+                                "66e916e357a99137e3495fe3"
+                            ],
+                            "host": [
+                                "cart"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETALLCARTSITEMSBYCARTSID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/cart/getCartitem/66e91609619b2a2a7e74a3bc",
+                            "path": [
+                                "getCartitem",
+                                "66e91609619b2a2a7e74a3bc"
+                            ],
+                            "host": [
+                                "cart"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ASSIGNMENT",
+            "item": [
+                {
+                    "name": "GETALLASSIGNMENT",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/assignment/getAllAssignment",
+                            "path": [
+                                "getAllAssignment"
+                            ],
+                            "host": [
+                                "assignment"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "CREATEASSIGNMENT",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/assignment/create",
+                            "path": [
+                                "create"
+                            ],
+                            "host": [
+                                "assignment"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"courseid\":\"66e1a538095c06a595bc345b\",\n  \"task\":[\"66e1a538095c06a595bc345d\",\"66e1a538095c06a595bc345f\"],\n  \"exam\":[\"66e1a538095c06a595bc345d\",\"66e1a538095c06a595bc345f\"]\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "NOTIFICATION",
+            "item": [
+                {
+                    "name": "GETALLNOTIFICATIONS",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/notification/getAllNotification",
+                            "path": [
+                                "getAllNotification"
+                            ],
+                            "host": [
+                                "notification"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GETNOTIFICATIONBYID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/notification/getNotification/:userid",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "userid",
+                                    "value": ""
+                                }
+                            ],
+                            "path": [
+                                "getNotification",
+                                ":userid"
+                            ],
+                            "host": [
+                                "notification"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "CREATENOTIFICATION",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/notification/create",
+                            "path": [
+                                "create"
+                            ],
+                            "host": [
+                                "notification"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "UPDATENOTIFICATIONSTATUS",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/notification/updateStatus/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ],
+                            "path": [
+                                "updateStatus",
+                                ":id"
+                            ],
+                            "host": [
+                                "notification"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DELETENOTIFICATION",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/notification/delete/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ],
+                            "path": [
+                                "delete",
+                                ":id"
+                            ],
+                            "host": [
+                                "notification"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHVkZW50MDAxQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2NTgxNjAzLCJleHAiOjE3MjY2ODk2MDN9.0byttq8G0T-0X0WqaMjagYz1eBm9s-8vtbBFvRHB0Ps",
+                "type": "string"
+            }
+        ]
+    }
+}
