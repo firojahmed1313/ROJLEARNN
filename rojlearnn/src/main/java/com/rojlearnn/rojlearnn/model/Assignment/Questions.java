@@ -11,6 +11,7 @@ public class Questions {
 
     private ObjectId _id;
     private String question;// chack this
+    private String questiontype;
     private String option1;
     private String option2;
     private String option3;
@@ -18,14 +19,18 @@ public class Questions {
     private String answer;
     private LocalDateTime created_at = LocalDateTime.now();
     public Questions() {}
-    public Questions(String question, String option1, String option2, String option3, String option4, String answer) {
+    
+    public Questions(String question, String questiontype, String option1, String option2, String option3,
+            String option4, String answer) {
         this.question = question;
+        this.questiontype = questiontype;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
         this.answer = answer;
     }
+
     public String get_id() {
         return _id.toString();
     }
@@ -37,6 +42,12 @@ public class Questions {
     }
     public void setQuestion(String question) {
         this.question = question;
+    }
+    public String getQuestiontype() {
+        return questiontype;
+    }
+    public void setQuestiontype(String questiontype) {
+        this.questiontype = questiontype;
     }
     public String getOption1() {    
         return option1;

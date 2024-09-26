@@ -13,7 +13,6 @@ public class Exam {
     private ObjectId courseid;
     private String questiontype; //chack this
     private String title;
-    
     private String descriptions;
     private int totalmarks;
     private int totalduration;
@@ -89,6 +88,12 @@ public class Exam {
     public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
+	public String getQuestiontype() {
+		return questiontype;
+	}
+	public void setQuestiontype(String questiontype) {
+		this.questiontype = questiontype;
+	}
     
 
 }

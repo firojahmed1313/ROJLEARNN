@@ -1,4 +1,4 @@
-package com.rojlearnn.rojlearnn.service;
+package com.rojlearnn.rojlearnn.service.Assignment;
 
 import java.util.List;
 
@@ -9,15 +9,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.rojlearnn.rojlearnn.model.Assignment.Assignment;
+import com.rojlearnn.rojlearnn.repo.Assignment.AssignmentRepo;
+import com.rojlearnn.rojlearnn.repo.Assignment.ExamRepo;
+import com.rojlearnn.rojlearnn.repo.Assignment.TaskRepo;
 
 @Service
 public class AssignmentService {
     @Autowired
-    private com.rojlearnn.rojlearnn.repo.Assignment.ExamRepo er;
+    private ExamRepo er;
     @Autowired
-    private com.rojlearnn.rojlearnn.repo.Assignment.AssignmentRepo ar;
+    private AssignmentRepo ar;
     @Autowired
-    private com.rojlearnn.rojlearnn.repo.Assignment.TaskRepo tr;
+    private TaskRepo tr;
     public ResponseEntity<?> createAssignment(Assignment assignment) {
         Assignment ass = ar.findByCourseid(new ObjectId(assignment.getCourseid())); // TODO: assignment.getCourseid());
 
@@ -42,6 +45,27 @@ public class AssignmentService {
 
         return new ResponseEntity<>(ar.findAll(), HttpStatus.OK);
     }
+	public ResponseEntity<?> getAssignmentById(String id) {
+        return null;
 
+		//return new ResponseEntity<>(ar.findById(id), HttpStatus.OK);
+	}
+	public ResponseEntity<?> updateAssignmentExamAdd(String id, Assignment assignment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ResponseEntity<?> updateAssignmentExamRemove(String id, Assignment assignment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ResponseEntity<?> updateAssignmentTaskAdd(String id, Assignment assignment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ResponseEntity<?> updateAssignmentTaskRemove(String id, Assignment assignment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 
 }
