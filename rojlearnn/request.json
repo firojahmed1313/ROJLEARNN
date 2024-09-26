@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "ROJLEARN",
     "collectionId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
-    "dateExported": "2024-09-17T09:04:41.012Z",
+    "dateExported": "2024-09-26T14:00:46.453Z",
     "version": "1.2",
     "folders": [
         {
@@ -67,6 +67,20 @@
             "containerId": "",
             "created": "2024-09-17T06:32:32.720Z",
             "sortNum": 100000
+        },
+        {
+            "_id": "dcf91edf-5c19-40d5-a358-e95ade63a33d",
+            "name": "ASSIGNMENT",
+            "containerId": "",
+            "created": "2024-09-17T13:57:53.577Z",
+            "sortNum": 120000
+        },
+        {
+            "_id": "e21c4fb4-5764-4f64-9125-57ce26c2f31d",
+            "name": "NOTIFICATION",
+            "containerId": "",
+            "created": "2024-09-26T13:48:36.900Z",
+            "sortNum": 140000
         }
     ],
     "requests": [
@@ -654,16 +668,126 @@
             "created": "2024-09-17T06:36:50.695Z",
             "modified": "2024-09-17T06:40:56.692Z",
             "headers": []
+        },
+        {
+            "_id": "bfe524d5-9995-4b48-992e-9f83bde840d8",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "dcf91edf-5c19-40d5-a358-e95ade63a33d",
+            "name": "GETALLASSIGNMENT",
+            "url": "/assignment/getAllAssignment",
+            "method": "GET",
+            "sortNum": 470000,
+            "created": "2024-09-17T13:58:19.074Z",
+            "modified": "2024-09-17T13:58:46.035Z",
+            "headers": []
+        },
+        {
+            "_id": "0b9187fb-028d-459b-a3f3-69b5e228c0a5",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "dcf91edf-5c19-40d5-a358-e95ade63a33d",
+            "name": "CREATEASSIGNMENT",
+            "url": "/assignment/create",
+            "method": "POST",
+            "sortNum": 480000,
+            "created": "2024-09-17T13:59:05.761Z",
+            "modified": "2024-09-17T14:05:24.770Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"courseid\":\"66e1a538095c06a595bc345b\",\n  \"task\":[\"66e1a538095c06a595bc345d\",\"66e1a538095c06a595bc345f\"],\n  \"exam\":[\"66e1a538095c06a595bc345d\",\"66e1a538095c06a595bc345f\"]\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "f35c487f-ea0f-44a2-8bb8-a85298fd8c5d",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "e21c4fb4-5764-4f64-9125-57ce26c2f31d",
+            "name": "GETALLNOTIFICATIONS",
+            "url": "/notification/getAllNotification",
+            "method": "GET",
+            "sortNum": 490000,
+            "created": "2024-09-26T13:48:58.955Z",
+            "modified": "2024-09-26T13:52:50.910Z",
+            "headers": []
+        },
+        {
+            "_id": "b6ddbe8b-d3e6-4a79-a890-843fccae039b",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "e21c4fb4-5764-4f64-9125-57ce26c2f31d",
+            "name": "GETNOTIFICATIONBYID",
+            "url": "/notification/getNotification/{userid}",
+            "method": "GET",
+            "sortNum": 500000,
+            "created": "2024-09-26T13:49:23.950Z",
+            "modified": "2024-09-26T13:52:47.028Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "userid",
+                    "value": "",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "ee5e858b-0586-4d3a-b16f-2cd9c34e08f5",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "e21c4fb4-5764-4f64-9125-57ce26c2f31d",
+            "name": "CREATENOTIFICATION",
+            "url": "/notification/create",
+            "method": "POST",
+            "sortNum": 510000,
+            "created": "2024-09-26T13:49:48.748Z",
+            "modified": "2024-09-26T13:52:15.054Z",
+            "headers": []
+        },
+        {
+            "_id": "7ac9bf2f-9e3f-46fb-ade4-9057b7cadf04",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "e21c4fb4-5764-4f64-9125-57ce26c2f31d",
+            "name": "UPDATENOTIFICATIONSTATUS",
+            "url": "/notification/updateStatus/{id}",
+            "method": "PUT",
+            "sortNum": 520000,
+            "created": "2024-09-26T13:50:20.961Z",
+            "modified": "2024-09-26T13:52:53.640Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "b9798ed7-952d-4364-a672-d155b012c752",
+            "colId": "9200a9b7-3ecf-4456-a029-950922fcf6b2",
+            "containerId": "e21c4fb4-5764-4f64-9125-57ce26c2f31d",
+            "name": "DELETENOTIFICATION",
+            "url": "/notification/delete/{id}",
+            "method": "DELETE",
+            "sortNum": 530000,
+            "created": "2024-09-26T13:50:43.798Z",
+            "modified": "2024-09-26T13:52:42.193Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "",
+                    "isPath": true
+                }
+            ]
         }
     ],
     "settings": {
         "auth": {
             "type": "bearer",
-            "bearer": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHVkZW50MDAxQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2NTU4MTA5LCJleHAiOjE3MjY2NjYxMDl9.Yw9u94WyQbvcP0FeSzuK1IdaMfvF8W9BMUJXGcUeUBk"
+            "bearer": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHVkZW50MDAxQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2NTgxNjAzLCJleHAiOjE3MjY2ODk2MDN9.0byttq8G0T-0X0WqaMjagYz1eBm9s-8vtbBFvRHB0Ps"
         },
         "options": {
             "baseUrl": "https://8080-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io/"
         }
     },
-    "ref": "QcJPsW9p3V_rnZTfsfnAe9XbZVOr3oI6G6TR5IqR9PpwstsP6ePrzLKZgSm_HZ17pVdCnvBUwgErl2IIE1rM9w"
+    "ref": "QcJPsW9p3V_rnZTfsfnAe4kh0XgZ3K0LxfO92ytgxTMbG-TBMrBYRtM-AaJ0PNjiWcp_LGZvAxWa4baLW9gUIw"
 }
