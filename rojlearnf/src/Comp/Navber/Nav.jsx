@@ -1,5 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+const nData = [
 
+  {
+    id: 1,
+    title: 'Home',
+    path: '/',
+  },
+  {
+    id: 2,
+    title: 'About',
+    path: '/student',
+  },
+  {
+    id: 3,
+    title: 'Contact',
+    path: '/teacher',
+  }
+]
 const Nav = () => {
   return (
     <header class="bg-white dark:bg-gray-900">
@@ -51,78 +69,36 @@ const Nav = () => {
           <div class="md:flex md:items-center md:gap-12 ml-5 lg:ml-8">
             <nav aria-label="Global" class="hidden md:block">
               <ul class="flex items-center gap-6 text-sm">
-                <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    About
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Careers
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    History
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Services
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Projects
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Blog
-                  </a>
-                </li>
+              {
+                (nData.map((data) => {
+                  return (
+                    <li>
+                      <Link to={data.path} class="text-gray-500 px-3 py-2 hover:border rounded-xl transition hover:text-white hover:bg-stone-700 dark:text-white dark:hover:text-white/75">
+                        {data.title}
+                      </Link>
+                    </li>
+                  )
+                }))
+              }
               </ul>
             </nav>
 
             <div class="flex items-center gap-4">
               <div class="sm:flex sm:gap-4">
-                <a
-                  class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-teal-500"
-                  href="#"
+                <Link
+                  class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-teal-500 hover:bg-slate-600"  
+                  to={"/login"}
                 >
                   Login
-                </a>
+                </Link>
 
                 <div class="hidden sm:flex">
-                  <a
-                    class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
-                    href="#"
+                  <Link
+                    class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 dark:bg-gray-800 dark:text-white dark:hover:text-white/75 hover:bg-slate-600"
+                    to={"/register"}
                   >
                     Register
-                  </a>
+                  </Link>
                 </div>
               </div>
 

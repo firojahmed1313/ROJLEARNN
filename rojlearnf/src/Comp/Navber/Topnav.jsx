@@ -12,7 +12,7 @@ const Topnav = () => {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span class="ml-2 text-sm invisible md:visible text-white font-medium mr-4">Account</span>
+                    <span class="ml-2 text-sm text-white font-medium mr-4">Account</span>
                     <div class="h-10 w-10 hover:ring-4 user cursor-pointer relative ring-blue-700/30 rounded-full mr-4 bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')]" onClick={() => setShow(!show)}>
 
                         <div class={`drop-down ${(!show)?'hidden':'block'}  w-48 overflow-hidden bg-slate-600 rounded-md shadow absolute top-12 right-3`}>

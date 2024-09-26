@@ -5,7 +5,7 @@ const FooterHome = () => {
         < footer className="bg-white" >
             <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-                    <div>
+                    <div >
                         <div className="flex justify-center text-teal-600 sm:justify-start">
                             <svg className="h-8" viewBox="0 0 118 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -51,12 +51,12 @@ const FooterHome = () => {
                             </svg>
                         </div>
 
-                        <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
+                        <p className="mt-6 text-center leading-relaxed text-gray-500 sm:text-left ">
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa
                             cum itaque neque.
                         </p>
 
-                        <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
+                        <ul className="mt-8 flex justify-center gap-6 md:gap-8">
                             <li>
                                 <a
                                     href="#"
