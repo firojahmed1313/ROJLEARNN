@@ -23,7 +23,10 @@ public class ExamService {
 	}
 
 	public ResponseEntity<?> getExamById(String id) {
-		Exam exam= er.findById(id).get();
+		Exam exam= er.findById(id).orElse(null);
+		if(exam==null) {
+			return new ResponseEntity<>("Exam not found",HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<>(exam, HttpStatus.OK);
 	}
 

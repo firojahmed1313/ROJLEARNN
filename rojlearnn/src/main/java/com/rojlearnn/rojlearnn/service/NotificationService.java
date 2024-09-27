@@ -1,6 +1,7 @@
 package com.rojlearnn.rojlearnn.service;
 
 import java.util.List;
+import org.bson.types.ObjectId;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,9 @@ public class NotificationService {
 	NotificationsRepo nr;
 
 	public ResponseEntity<?> getNotificationById(String userid) {
-		List<Notifications> not= nr.findByUserid(userid);
+		System.out.println(userid);
+		List<Notifications> not= nr.findByUserid(new ObjectId(userid));
+		System.out.println(not);
 		return new ResponseEntity<>(not, HttpStatus.OK);
 	}
 
