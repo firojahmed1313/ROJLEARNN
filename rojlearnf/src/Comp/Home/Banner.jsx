@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Banner = () => {
     return (
@@ -27,12 +28,12 @@ const Banner = () => {
                     </p>
 
                     <div className="mt-8 flex flex-wrap gap-4 text-center">
-                        <a
-                            href="#"
+                        <Link
+                            to={"/courses"}
                             className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
                         >
                             Get Started
-                        </a>
+                        </Link>
 
                         <a
                             href="#"
