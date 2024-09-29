@@ -1,6 +1,6 @@
 package com.rojlearnn.rojlearnn.model.Assignment.Submit;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.bson.types.ObjectId;
 
 public class Submitexam {
     private ObjectId _id;
