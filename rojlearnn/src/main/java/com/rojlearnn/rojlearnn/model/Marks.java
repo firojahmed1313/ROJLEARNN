@@ -2,6 +2,9 @@ package com.rojlearnn.rojlearnn.model;
 import java.time.LocalDateTime;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import jakarta.validation.constraints.NotNull;
+
 import org.bson.types.ObjectId;
 
 @Document("marks")
@@ -10,6 +13,7 @@ public class Marks {
     private ObjectId _id;
     private ObjectId containid;
 	private ObjectId userid;
+    @NotNull
 	private String cuid;
 	private Double mark;
 	private LocalDateTime created_at = LocalDateTime.now();

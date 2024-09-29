@@ -11,10 +11,10 @@ public class Submitexam {
         this._id = id;
         this.ans = ans;
     }
-    public String getId(){
+    public String get_id(){
         return _id.toHexString();
     }
-    public void setId(String id){
+    public void set_id(String id){
         this._id = new ObjectId(id);
     }
     public String getAns(){
