@@ -17,7 +17,7 @@ public class ReportService {
     MarksRepo mr;
 
     public ResponseEntity<?> getMarksByContentId(String contentid) {
-        List <Marks> l= mr.findAllByContentid(new ObjectId(contentid));
+        List <Marks> l= mr.findAllByContainid(new ObjectId(contentid));
         if(l.isEmpty()) {
             return new ResponseEntity<>("No Record Found",HttpStatus.NO_CONTENT);
         }
@@ -25,7 +25,7 @@ public class ReportService {
     }
 
     public ResponseEntity<?> getMarksByStudentId(String studentid) {
-        List <Marks> l= mr.findAllByStudentid(new ObjectId(studentid));
+        List <Marks> l= mr.findAllByUserid(new ObjectId(studentid));
         if(l.isEmpty()) {
             return new ResponseEntity<>("No Record Found",HttpStatus.NO_CONTENT);
         }

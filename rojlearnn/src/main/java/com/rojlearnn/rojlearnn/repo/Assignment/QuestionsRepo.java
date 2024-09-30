@@ -14,7 +14,7 @@ public interface QuestionsRepo extends MongoRepository<Questions, String> {
 
 	List<Questions> findByQuestiontype(String type);
 
-    Optional<Questions> findById(ObjectId objectId);
+    //Optional<Questions> findById(ObjectId objectId);
 
 
 }

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RojlearnnApplication<rojlearnn>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.rojlearnn.rojlearnn.RojlearnnApplication",
+            "projectName": "rojlearnn",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

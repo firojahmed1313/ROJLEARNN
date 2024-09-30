@@ -14,6 +14,6 @@ public interface ExamRepo extends MongoRepository<Exam, String> {
 
 	List<Exam> findByQuestiontype(String type);
 
-	Optional<Exam> findById(ObjectId objectId);
+	//Optional<Exam> findById(ObjectId objectId);
 
 }

@@ -33,7 +33,7 @@ public class SubmitService {
         User user = us.getCurrentUserProfile();
         double marks = 0;
         for (Submitexam exam : exams) {
-            Questions ex = qr.findById(new ObjectId(exam.get_id())).orElse(null);
+            Questions ex = qr.findById(exam.get_id()).orElse(null);
             if (ex == null) {
                 return new ResponseEntity<>("Question Not Found", null, HttpStatus.NOT_FOUND);
             } else {
@@ -59,13 +59,14 @@ public class SubmitService {
     }
 
     public ResponseEntity<String> submitTask(String taskId, Submittask task) {
-        Submittask st = tsr.findById(new ObjectId(taskId)).orElse(null);
+        Submittask st = tsr.findById(taskId).orElse(null);
         if (!(st == null)) {
             return new ResponseEntity<>("Task Already Submitted", null, HttpStatus.FOUND);
         } else {
             tsr.save(task);
             return new ResponseEntity<>("Task Submitted", null, HttpStatus.OK);
         }
+        //return null;
 
     }
 

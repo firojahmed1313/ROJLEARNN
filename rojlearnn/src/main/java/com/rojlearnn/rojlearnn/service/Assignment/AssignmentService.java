@@ -15,8 +15,7 @@ import com.rojlearnn.rojlearnn.repo.Assignment.TaskRepo;
 
 @Service
 public class AssignmentService {
-    @Autowired
-    private ExamRepo er;
+    
     @Autowired
     private AssignmentRepo ar;
     @Autowired

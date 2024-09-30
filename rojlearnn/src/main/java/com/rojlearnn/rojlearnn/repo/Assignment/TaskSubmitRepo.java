@@ -11,6 +11,6 @@ import com.rojlearnn.rojlearnn.model.Assignment.Submit.Submittask;
 @Repository
 public interface TaskSubmitRepo extends MongoRepository<Submittask, String> {
 
-    Optional<Submittask> findById(ObjectId objectId);
+    
 
 }

@@ -50,8 +50,7 @@ public class Submittask {
 
     public Submittask(){}
 
-    public Submittask(ObjectId _id, ObjectId taskid, ObjectId userid, String tuid, String answer) {
-        this._id = _id;
+    public Submittask( ObjectId taskid, ObjectId userid, String tuid, String answer) {
         this.taskid = taskid;
         this.userid = userid;
         this.tuid = tuid;
