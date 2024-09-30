@@ -12,10 +12,6 @@ public interface MarksRepo extends MongoRepository<Marks, String> {
 
     Marks findByCuid(String cuid);
 
-    //List<Marks> findAllByContentid(ObjectId objectId);
-
-    //List<Marks> findAllByStudentid(ObjectId objectId);
-
     List<Marks> findAllByContainid(ObjectId objectId);
 
     List<Marks> findAllByUserid(ObjectId objectId);

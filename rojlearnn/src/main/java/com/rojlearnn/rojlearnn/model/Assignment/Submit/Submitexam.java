@@ -12,7 +12,7 @@ public class Submitexam {
         this.ans = ans;
     }
     public String get_id(){
-        return _id.toHexString();
+        return _id.toString();
     }
     public void set_id(String id){
         this._id = new ObjectId(id);

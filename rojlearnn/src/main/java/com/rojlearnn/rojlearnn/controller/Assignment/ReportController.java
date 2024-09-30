@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rojlearnn.rojlearnn.service.Assignment.ReportService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RestController("/report")
+@RestController
+@RequestMapping("/report")
 public class ReportController {
     @Autowired
     ReportService rs;
@@ -26,6 +28,7 @@ public class ReportController {
 
     @GetMapping("/markByCuid/{cuid}")
     public ResponseEntity<?> getMarksByCuid(@PathVariable String cuid) {
+        System.out.println(cuid);
         return rs.getMarksByCuid(cuid);
     }
 
