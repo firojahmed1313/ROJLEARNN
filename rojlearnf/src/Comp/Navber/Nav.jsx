@@ -10,13 +10,18 @@ const nData = [
   },
   {
     id: 2,
-    title: 'About',
-    path: '/student',
+    title: 'All Courses',
+    path: '/courses',
   },
   {
     id: 3,
-    title: 'Contact',
+    title: 'teacher',
     path: '/teacher',
+  },
+  {
+    id: 4,
+    title: 'Students',
+    path: '/student',
   }
 ]
 const Nav = () => {

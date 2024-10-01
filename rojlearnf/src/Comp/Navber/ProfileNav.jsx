@@ -61,9 +61,9 @@ const ProfileNav = ({role}) => {
   return (
     <>
       <div class="flex flex-col items-center w-full min-h-screen overflow-hidden text-gray-400 bg-gray-900 ">
-        <Link class="flex items-center w-full px-1 md:px-3 mt-3" href="#">
+        <Link class="flex items-center w-full px-1 md:px-3 mt-3" to={"/"}>
           <Icon icon="oui:app-ml" width="48" height="48" className='items-center p-0 text-white ' /> 
-          <span class="ml-2 text-sm invisible md:visible font-bold">The App</span>
+          <span class="ml-2 text-sm invisible md:visible font-bold">ROJLEARN</span>
         </Link>
         <div class="w-full px-2">
           <div class="flex flex-col items-center justify-start justify-items-start w-full mt-3">
