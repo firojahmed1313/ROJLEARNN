@@ -1,7 +1,7 @@
 import React from 'react'
-import Nav from '../Navber/Nav'
-import Testimonials from './Testimonials'
-import Footer from '../Footer/Footer'
+import Nav from '../Comp/Navber/Nav'
+import Testimonials from '../Comp/Home/Testimonials'
+import Footer from '../Comp/Footer/Footer'
 import { useLocation } from 'react-router-dom'
 const CourseDetails = () => {
     let location = useLocation();

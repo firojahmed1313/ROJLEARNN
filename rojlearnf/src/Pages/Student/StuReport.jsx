@@ -1,10 +1,7 @@
 import React from 'react'
-import ProfileNav from '../Comp/Navber/ProfileNav'
-import Topnav from '../Comp/Navber/Topnav'
-import DashBord from '../Comp/Teacher/DashBord'
-
-
-const StudentsProfile = () => {
+import ProfileNav from '../../Comp/Navber/ProfileNav'
+import Topnav from '../../Comp/Navber/Topnav'
+const StuReport = () => {
   return (
     <>
       <div className='flex flex-row '>
@@ -13,11 +10,11 @@ const StudentsProfile = () => {
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
-          <DashBord />
+          <h2>StuReport</h2>
         </div>
       </div>
     </>
   )
 }
 
-export default StudentsProfile
+export default StuReport

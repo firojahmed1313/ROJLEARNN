@@ -1,8 +1,7 @@
 import React from 'react'
 import ProfileNav from '../../Comp/Navber/ProfileNav'
 import Topnav from '../../Comp/Navber/Topnav'
-
-const TeacherAssignment = () => {
+const TeacherExam = () => {
   return (
     <>
       <div className='flex flex-row '>
@@ -11,7 +10,7 @@ const TeacherAssignment = () => {
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
-          <div>TeacherAssignment</div>
+          <div>TeacherExam</div>
         </div>
       </div>
     </>
@@ -19,4 +18,4 @@ const TeacherAssignment = () => {
   )
 }
 
-export default TeacherAssignment
+export default TeacherExam
