@@ -9,6 +9,7 @@ import Register from './Pages/Register.jsx'
 import Login from './Pages/Login.jsx'
 import Pagenotfound from './Pages/Pagenotfound.jsx'
 import CourseAll from './Pages/CourseAll.jsx'
+import CourseDetails from './Comp/Home/CourseDetails.jsx'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route path='/courses' element={<CourseAll/>} />
+      <Route path='/courses/:id' element={<CourseDetails/>} />
       <Route path='*' element={<Pagenotfound />} />
     </Routes>
     

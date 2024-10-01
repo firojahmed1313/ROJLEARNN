@@ -2,7 +2,10 @@ import React from 'react'
 import Nav from '../Navber/Nav'
 import Testimonials from './Testimonials'
 import Footer from '../Footer/Footer'
+import { useLocation } from 'react-router-dom'
 const CourseDetails = () => {
+    let location = useLocation();
+    console.log((location.pathname).substring(9));
     return (
         <>
         <Nav />
