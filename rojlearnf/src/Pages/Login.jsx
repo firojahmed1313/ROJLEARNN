@@ -3,6 +3,9 @@ import Nav from '../Comp/Navber/Nav'
 import Footer from '../Comp/Footer/Footer'
 
 const Login = () => {
+  const burl = import.meta.env.VITE_URL;
+  console.log(burl);
+
   return (
     <>
       <Nav />
