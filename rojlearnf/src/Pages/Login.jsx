@@ -2,10 +2,12 @@ import React from 'react'
 import Nav from '../Comp/Navber/Nav'
 import Footer from '../Comp/Footer/Footer'
 import { Link } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../Redux/Features/Credentials/LoginSlice';
 const Login = () => {
   const burl = import.meta.env.VITE_URL;
   console.log(burl);
+  const dispatch = useDispatch();
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -17,9 +19,14 @@ const Login = () => {
     const password = obj.password;
     console.log(email, password);
     //console.log(obj);
+    dispatch(login(obj));
+    console.log("obj");
+    //const token= useSelector((state)=>state.login.token);
+    console.log("token");
 
   }
-
+  const token= useSelector((state)=>state.login.token);
+  console.log(token);
   return (
     <>
       <Nav />
