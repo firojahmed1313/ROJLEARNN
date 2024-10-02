@@ -7,6 +7,19 @@ const Login = () => {
   const burl = import.meta.env.VITE_URL;
   console.log(burl);
 
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    const fromobj= new FormData(e.target);
+    const obj = Object.fromEntries(fromobj.entries());
+    //const email = e.target.email.value;
+    //const password = e.target.password.value;
+    const email = obj.email;
+    const password = obj.password;
+    console.log(email, password);
+    //console.log(obj);
+
+  }
+
   return (
     <>
       <Nav />
@@ -22,11 +35,12 @@ const Login = () => {
               <h1 class="pt-1 pb-3 font-bold dark:text-gray-400 text-5xl text-center cursor-default">
                 Log in
               </h1>
-              <form action="#" method="post" class="space-y-4">
+              <form onSubmit={handelSubmit} class="space-y-4">
                 <div>
                   <label for="email" class="mb-2  dark:text-gray-400 text-lg">Email</label>
                   <input
                     id="email"
+                    name="email"
                     class="border p-3 dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                     type="email"
                     placeholder="Email"
@@ -37,6 +51,7 @@ const Login = () => {
                   <label for="password" class="mb-2 dark:text-gray-400 text-lg">Password</label>
                   <input
                     id="password"
+                    name="password"
                     class="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                     type="password"
                     placeholder="Password"
