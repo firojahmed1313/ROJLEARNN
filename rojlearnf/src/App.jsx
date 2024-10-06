@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home.jsx'
@@ -23,17 +23,33 @@ import { useDispatch, useSelector } from 'react-redux'
 import { chackAuth, getUserData } from './Redux/Features/User/UserSlice'
 function App() {
   const dispatch = useDispatch();
-  const isCookies= Cookies.get('ROJLEARN');
+
+  // Retrieve cookie
+  const isCookies = Cookies.get('ROJLEARN');
   console.log(isCookies);
-  if(isCookies){
-    dispatch(getUserData(isCookies));
-  }
+
+  // Retrieve user and isAuth from state
   const User = useSelector((state) => state.getUser.user);
-  if(User.role!=""){
-    dispatch(chackAuth());
-  }
   const isAuth = useSelector((state) => state.getUser.isAuth);
-  console.log(isAuth);
+
+  // Use useEffect to handle dispatch and side-effects
+  useEffect(() => {
+    if (isCookies) {
+      dispatch(getUserData(isCookies));  // Fetch user data if cookie exists
+    }
+  }, [isCookies, dispatch]);
+
+  useEffect(() => {
+    if (User?.role) {  // Ensure User is not null/undefined and has a role
+      dispatch(chackAuth());  // Dispatch authentication check action
+    }
+  }, [User, dispatch]);
+
+  // Optional: log to check the authentication status
+  useEffect(() => {
+    console.log(isAuth);
+  }, [isAuth]);
+
   return (
 
     <Routes>
@@ -51,11 +67,11 @@ function App() {
       <Route path='/studentCourse' element={<StuCourse />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/courses' element={<CourseAll/>} />
-      <Route path='/courses/:id' element={<CourseDetails/>} />
+      <Route path='/courses' element={<CourseAll />} />
+      <Route path='/courses/:id' element={<CourseDetails />} />
       <Route path='*' element={<Pagenotfound />} />
     </Routes>
-    
+
   )
 }
 

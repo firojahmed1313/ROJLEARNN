@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from '../Comp/Navber/Nav'
 import Footer from '../Comp/Footer/Footer'
 import { Link, useNavigate } from 'react-router-dom';
@@ -53,12 +53,23 @@ const Login = () => {
   }
   const User = useSelector((state) => state.getUser.user);
   console.log(User);
-  if (User.role === "Student") {
-    navigate("/student");
-  }
-  else if (User.role === "Instructor") {
-    navigate("/teacher");
-  }
+      // if (User.role === "Student") {
+      //   navigate("/student");
+      // }
+      // else if (User.role === "Instructor") {
+      //   navigate("/teacher");
+      // }
+  
+  useEffect(() => {
+    if (User.role === "Student") {
+      navigate("/student");
+    }
+    else if (User.role === "Instructor") {
+      navigate("/teacher");
+    }
+  }, [User])
+  
+  
 
   return (
     <>
@@ -77,7 +88,7 @@ const Login = () => {
               </h1>
               <form onSubmit={handelSubmit} className="space-y-4">
                 <div>
-                  <label for="email" className="mb-2  dark:text-gray-400 text-lg">Email</label>
+                  <label htmlFor="email" className="mb-2  dark:text-gray-400 text-lg">Email</label>
                   <input
                     id="email"
                     name="email"
@@ -88,7 +99,7 @@ const Login = () => {
                   />
                 </div>
                 <div>
-                  <label for="password" className="mb-2 dark:text-gray-400 text-lg">Password</label>
+                  <label htmlFor="password" className="mb-2 dark:text-gray-400 text-lg">Password</label>
                   <input
                     id="password"
                     name="password"

@@ -12,8 +12,9 @@ const initialState = {
         is_active: false,
         created_at: "",
     },
+    isAuth : false
 }
-const isAuth = false;
+//const isAuth = false;
 export const UserSlice = createSlice({
     name: "user",
     initialState,
@@ -35,9 +36,13 @@ export const UserSlice = createSlice({
         },
         chackAuth: (state, action) => {
             state.isAuth = true;
+        },
+        logout: (state, action) => {
+            state.user = {};
+            state.isAuth = false;
         }
     }
 })
 
-export const { getUserData, chackAuth } = UserSlice.actions;
+export const { getUserData, chackAuth, logout } = UserSlice.actions;
 export default UserSlice.reducer;

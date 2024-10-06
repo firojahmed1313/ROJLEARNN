@@ -31,7 +31,7 @@ const AddCourse = () => {
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
                                     <label
-                                        for="product-name"
+                                        htmlFor="product-name"
                                         className="text-sm font-medium text-gray-900 block mb-2"
                                     >
                                         Product Name
@@ -47,7 +47,7 @@ const AddCourse = () => {
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label
-                                        for="category"
+                                        htmlFor="category"
                                         className="text-sm font-medium text-gray-900 block mb-2"
                                     >
                                         Category
@@ -63,7 +63,7 @@ const AddCourse = () => {
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label
-                                        for="brand"
+                                        htmlFor="brand"
                                         className="text-sm font-medium text-gray-900 block mb-2"
                                     >
                                         Brand
@@ -79,7 +79,7 @@ const AddCourse = () => {
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label
-                                        for="price"
+                                        htmlFor="price"
                                         className="text-sm font-medium text-gray-900 block mb-2"
                                     >
                                         Price
@@ -95,7 +95,7 @@ const AddCourse = () => {
                                 </div>
                                 <div className="col-span-full">
                                     <label
-                                        for="product-details"
+                                        htmlFor="product-details"
                                         className="text-sm font-medium text-gray-900 block mb-2"
                                     >
                                         Product Details
