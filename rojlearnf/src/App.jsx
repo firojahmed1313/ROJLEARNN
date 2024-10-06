@@ -20,7 +20,7 @@ import StuCourse from './Pages/Student/StuCourse.jsx'
 import CourseDetails from './Pages/CourseDetails.jsx'
 import Cookies from 'js-cookie'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { chackAuth, getUserData } from './Redux/Features/User/UserSlice'
 function App() {
   const dispatch = useDispatch();
   const isCookies= Cookies.get('ROJLEARN');

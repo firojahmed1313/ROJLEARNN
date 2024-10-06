@@ -26,13 +26,13 @@ const nData = [
 ]
 const Nav = () => {
   return (
-    <header class="bg-white dark:bg-gray-900">
-      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-          <div class="flex-1 md:flex md:items-center md:gap-12">
-            <Link class="block text-teal-600 dark:text-teal-300" to={"/"}>
-              <span class="sr-only">Home</span>
-              <img class=" h-20 w-auto" src={logo} alt="logo" />
+    <header className="bg-white dark:bg-gray-900">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex-1 md:flex md:items-center md:gap-12">
+            <Link className="block text-teal-600 dark:text-teal-300" to={"/"}>
+              <span className="sr-only">Home</span>
+              <img className=" h-20 w-auto" src={logo} alt="logo" />
             </Link>
           </div>
 
@@ -67,14 +67,14 @@ const Nav = () => {
               </button>
             </span>
           </div>
-          <div class="md:flex md:items-center md:gap-12 ml-5 lg:ml-8">
-            <nav aria-label="Global" class="hidden md:block">
-              <ul class="flex items-center gap-6 text-sm">
+          <div className="md:flex md:items-center md:gap-12 ml-5 lg:ml-8">
+            <nav aria-label="Global" className="hidden md:block">
+              <ul className="flex items-center gap-6 text-sm">
               {
                 (nData.map((data) => {
                   return (
-                    <li>
-                      <Link to={data.path} class="text-gray-500 px-3 py-2 hover:border rounded-xl transition hover:text-white hover:bg-stone-700 dark:text-white dark:hover:text-white/75">
+                    <li key={data.id}>
+                      <Link to={data.path} className="text-gray-500 px-3 py-2 hover:border rounded-xl transition hover:text-white hover:bg-stone-700 dark:text-white dark:hover:text-white/75">
                         {data.title}
                       </Link>
                     </li>
@@ -84,18 +84,18 @@ const Nav = () => {
               </ul>
             </nav>
 
-            <div class="flex items-center gap-4">
-              <div class="sm:flex sm:gap-4">
+            <div className="flex items-center gap-4">
+              <div className="sm:flex sm:gap-4">
                 <Link
-                  class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-teal-500 hover:bg-slate-600"  
+                  className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-teal-500 hover:bg-slate-600"  
                   to={"/login"}
                 >
                   Login
                 </Link>
 
-                <div class="hidden sm:flex">
+                <div className="hidden sm:flex">
                   <Link
-                    class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 dark:bg-gray-800 dark:text-white dark:hover:text-white/75 hover:bg-slate-600"
+                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 dark:bg-gray-800 dark:text-white dark:hover:text-white/75 hover:bg-slate-600"
                     to={"/register"}
                   >
                     Register
@@ -103,19 +103,19 @@ const Nav = () => {
                 </div>
               </div>
 
-              <div class="block md:hidden">
+              <div className="block md:hidden">
                 <button
-                  class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+                  className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="size-5"
+                    className="size-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
                 </button>
               </div>

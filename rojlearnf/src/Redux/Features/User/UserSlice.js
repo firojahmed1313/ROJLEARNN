@@ -39,5 +39,5 @@ export const UserSlice = createSlice({
     }
 })
 
-export const { getUserData } = UserSlice.actions;
+export const { getUserData, chackAuth } = UserSlice.actions;
 export default UserSlice.reducer;

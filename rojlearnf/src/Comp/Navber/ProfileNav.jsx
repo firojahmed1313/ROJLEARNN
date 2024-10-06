@@ -86,21 +86,21 @@ const ProfileNav = ({role}) => {
   console.log((location.pathname));
   return (
     <>
-      <div class="flex flex-col items-center w-full min-h-screen overflow-hidden text-gray-400 bg-gray-900 ">
-        <Link class="flex items-center w-full px-1 md:px-3 mt-3" to={"/"}>
+      <div className="flex flex-col items-center w-full min-h-screen overflow-hidden text-gray-400 bg-gray-900 ">
+        <Link className="flex items-center w-full px-1 md:px-3 mt-3" to={"/"}>
           <Icon icon="oui:app-ml" width="48" height="48" className='items-center p-0 text-white ' /> 
-          <span class="ml-2 text-sm invisible md:visible font-bold">ROJLEARN</span>
+          <span className="ml-2 text-sm invisible md:visible font-bold">ROJLEARN</span>
         </Link>
-        <div class="w-full px-2">
-          <div class="flex flex-col items-center justify-start justify-items-start w-full mt-3">
+        <div className="w-full px-2">
+          <div className="flex flex-col items-center justify-start justify-items-start w-full mt-3">
             {
               
               (role === 'Teacher' ? tData : sData).map((data) => {
               return (
 
-                <Link className={`flex items-center w-full h-12 px-2 lg:px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300 ${location.pathname === data.path ? 'bg-gray-700 text-gray-300' : ''}`} to={data.path}>
+                <Link className={`flex items-center w-full h-12 px-2 lg:px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300 ${location.pathname === data.path ? 'bg-gray-700 text-gray-300' : ''}`} to={data.path} key={data.id}>
                   <Icon icon={data.icon} width="28" height="28" className='items-center p-0 ' />
-                  <span class="ml-2 text-sm invisible md:visible font-medium">{data.title}</span>
+                  <span className="ml-2 text-sm invisible md:visible font-medium">{data.title}</span>
                 </Link>
               )
             } )}
