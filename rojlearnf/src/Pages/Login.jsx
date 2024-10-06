@@ -1,18 +1,20 @@
 import React from 'react'
 import Nav from '../Comp/Navber/Nav'
 import Footer from '../Comp/Footer/Footer'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../Redux/Features/Credentials/LoginSlice';
+import { getUserData } from '../Redux/Features/User/UserSlice';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 const Login = () => {
   const burl = import.meta.env.VITE_URL;
   console.log(burl);
   const dispatch = useDispatch();
-
-  const handelSubmit = async(e) => {
+  const navigate = useNavigate();
+  const handelSubmit = async (e) => {
     e.preventDefault();
-    const fromobj= new FormData(e.target);
+    const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
     //const email = e.target.email.value;
     //const password = e.target.password.value;
@@ -20,7 +22,7 @@ const Login = () => {
     const password = obj.password;
     console.log(email, password);
     try {
-      const data= await axios.post(`${burl}/user/logIn`, {email, password}, {
+      const data = await axios.post(`${burl}/user/logIn`, { email, password }, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -28,10 +30,16 @@ const Login = () => {
 
       });
       console.log(data.data);
-      if(data.data.token){
-
+      if (data.data) {
+        Cookies.set("ROJLEARN", data.data, {
+          expires: 1,
+          sameSite: "strict",
+          secure: true,
+          path: "/"
+        });
+        dispatch(getUserData(data.data));
       }
-      else{
+      else {
         alert("invalid credentials");
       }
     } catch (error) {
@@ -43,8 +51,15 @@ const Login = () => {
     // console.log("token");
 
   }
-  //const token= useSelector((state)=>state.login.token);
-  //console.log(token);
+  const User = useSelector((state) => state.getUser.user);
+  console.log(User);
+  if (User.role === "Student") {
+    navigate("/student");
+  }
+  else if (User.role === "Instructor") {
+    navigate("/teacher");
+  }
+
   return (
     <>
       <Nav />

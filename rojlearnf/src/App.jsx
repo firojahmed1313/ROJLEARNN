@@ -18,10 +18,22 @@ import StuExam from './Pages/Student/StuExam.jsx'
 import StuReport from './Pages/Student/StuReport.jsx'
 import StuCourse from './Pages/Student/StuCourse.jsx'
 import CourseDetails from './Pages/CourseDetails.jsx'
-
+import Cookies from 'js-cookie'
+import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
-
+  const dispatch = useDispatch();
+  const isCookies= Cookies.get('ROJLEARN');
+  console.log(isCookies);
+  if(isCookies){
+    dispatch(getUserData(isCookies));
+  }
+  const User = useSelector((state) => state.getUser.user);
+  if(User.role!=""){
+    dispatch(chackAuth());
+  }
+  const isAuth = useSelector((state) => state.getUser.isAuth);
+  console.log(isAuth);
   return (
 
     <Routes>
