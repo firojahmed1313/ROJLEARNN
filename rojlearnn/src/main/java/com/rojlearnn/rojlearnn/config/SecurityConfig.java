@@ -27,8 +27,7 @@ public class SecurityConfig {
         return http.csrf(Customizer->Customizer.disable())
                 .authorizeHttpRequests(request-> request
                         .requestMatchers("user/logIn", "user/register", "course/all").permitAll()
-                        .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
+                        .anyRequest().authenticated())//.httpBasic(Customizer.withDefaults())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(Session->Session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();

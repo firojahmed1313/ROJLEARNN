@@ -4,12 +4,13 @@ import Footer from '../Comp/Footer/Footer'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../Redux/Features/Credentials/LoginSlice';
+import axios from 'axios';
 const Login = () => {
   const burl = import.meta.env.VITE_URL;
   console.log(burl);
   const dispatch = useDispatch();
 
-  const handelSubmit = (e) => {
+  const handelSubmit = async(e) => {
     e.preventDefault();
     const fromobj= new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
@@ -18,15 +19,32 @@ const Login = () => {
     const email = obj.email;
     const password = obj.password;
     console.log(email, password);
-    //console.log(obj);
-    dispatch(login(obj));
-    console.log("obj");
-    //const token= useSelector((state)=>state.login.token);
-    console.log("token");
+    try {
+      const data= await axios.post(`${burl}/user/logIn`, {email, password}, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true
+
+      });
+      console.log(data.data);
+      if(data.data.token){
+
+      }
+      else{
+        alert("invalid credentials");
+      }
+    } catch (error) {
+      console.warn(error);
+    }
+    // //console.log(obj);
+    // console.log("obj");
+    // //const token= useSelector((state)=>state.login.token);
+    // console.log("token");
 
   }
-  const token= useSelector((state)=>state.login.token);
-  console.log(token);
+  //const token= useSelector((state)=>state.login.token);
+  //console.log(token);
   return (
     <>
       <Nav />

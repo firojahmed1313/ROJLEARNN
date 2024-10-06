@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @SpringBootApplication
-@CrossOrigin(origins = "https://8080-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io")
+//@CrossOrigin(origins = "https://5173-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io")
 public class RojlearnnApplication {
 
 	public static void main(String[] args) {
