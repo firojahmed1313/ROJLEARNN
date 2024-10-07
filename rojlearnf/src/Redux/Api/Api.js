@@ -10,6 +10,12 @@ export const getApi = async (url,token) => {
     return res;
 }
 export const postApi = async (url, data,token) => {
+    if (token==null) {
+        const res = await axios.post(url, data, {
+            withCredentials: true,
+        });
+        return res;
+    }
     const res = await axios.post(url, data, {
         withCredentials: true,
         headers: {

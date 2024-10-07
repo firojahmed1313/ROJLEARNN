@@ -1,30 +1,27 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { getApi } from "../../Api/Api";
+import { getApi, postApi } from "../../Api/Api";
 const initialState = {
     user: null,
-    isAuth : false,
+    isAuth: false,
     isLoading: false,
     isError: false,
+    isSuccess: false,
+    message: "",
+    
 
 }
-export const getProfileData = createAsyncThunk('getProfileData',async (token)=>{
-    //console.log("getProfileData");
+export const getProfileData = createAsyncThunk('getProfileData', async (token) => {
     const burl = import.meta.env.VITE_URL;
- //   try {
-        // const data = await axios.get(`${burl}/user/me`,{
-        //     withCredentials: true,
-        //     headers: {
-        //       Authorization: `Bearer ${token}`
-        //     }
-        // });
-        const data = getApi(`${burl}/user/me`,token);
-        console.log(data);
-        return data;
- //   } catch (error) {
- //       return error;
- //   }
-    
+    const data = getApi(`${burl}/user/me`, token);
+    console.log(data);
+    return data;
+})
+export const registerUser = createAsyncThunk('registerUser', async (user) => {
+    const burl = import.meta.env.VITE_URL;
+    const data = postApi(`${burl}/user/register`, user,null);
+    console.log("registeruser", data);
+    //console.log(data);
+    return data;
 })
 //const isAuth = false;
 export const UserSlice = createSlice({
@@ -32,7 +29,7 @@ export const UserSlice = createSlice({
     initialState,
     reducers: {
         getUserData: (state, action) => {
-            const data={
+            const data = {
                 "_id": "66e1a30b095c06a595b4ac80",
                 "username": "student_001",
                 "email": "student001@example.com",
@@ -53,7 +50,7 @@ export const UserSlice = createSlice({
             state.user = null;
             state.isAuth = false;
         },
-        
+
     },
     extraReducers: (builder) => {
         builder
@@ -72,6 +69,27 @@ export const UserSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
                 console.log("error", action.error);
+                
+            })
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(registerUser.pending, (state, action) => {
+                console.log("pending");
+                state.isLoading = true;
+            })
+            .addCase(registerUser.fulfilled, (state, action) => {
+                console.log("fulfilled", action.payload);
+                state.isLoading = false;
+                state.user = action.payload.data;
+
+            })
+            .addCase(registerUser.rejected, (state, action) => {
+                console.log("rejected");
+                state.isLoading = false;
+                state.isError = true;
+                console.log("error", action.error);
+                state.message = action.error.message;
             })
     }
 })

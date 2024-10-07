@@ -41,7 +41,7 @@ public class UserService {
         //System.out.println(user);
         User existingUser = ur.findByEmail(user.getEmail());
         if (existingUser != null) {
-            return new ResponseEntity<>("User already exists", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("User already exists", HttpStatus.OK);
         }
         User newUser = ur.save(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
@@ -59,7 +59,6 @@ public class UserService {
         existingUser.setProfile_picture_url(user.getProfile_picture_url());
         existingUser.setPhone_number(user.getPhone_number());
         existingUser.setAddress(user.getAddress());
-        existingUser.setIs_active(user.isIs_active());
         User updatedUser = ur.save(existingUser);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
