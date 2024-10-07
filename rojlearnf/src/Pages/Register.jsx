@@ -6,6 +6,9 @@ import logo2 from '../assets/images/logo.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../Redux/Features/User/UserSlice'
+//import TostCon from '../Comp/utlits/TostCon'
+//import {Toastify} from '../Comp/utlits/Toastify'
+import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -23,10 +26,10 @@ const Register = () => {
   }
   const data = useSelector((state) => state.getUser.user);
   console.log(data);
-  if (typeof(data)=='string') {
+  if (typeof (data) == 'string') {
     console.warn(data);
   }
-  else if (typeof(data)=='object') {
+  else if (typeof (data) == 'object') {
     console.log(data);
     navigate('/login');
   }
