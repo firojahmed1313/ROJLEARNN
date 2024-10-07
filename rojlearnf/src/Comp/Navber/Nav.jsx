@@ -27,7 +27,8 @@ const nData = [
 ]
 const Nav = () => {
   const isAuth = useSelector((state) => state.getUser.isAuth);
-  const role = useSelector((state) => state.getUser.user.role);
+  const user = useSelector((state) => state.getUser.user);
+  const role = user?.role;
 
   return (
     <header className="bg-white dark:bg-gray-900">

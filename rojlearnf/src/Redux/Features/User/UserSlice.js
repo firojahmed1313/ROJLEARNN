@@ -1,19 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 const initialState = {
-    user: {
-        _id: "",
-        username: "",
-        email: "",
-        password: "",
-        role: "",
-        profile_picture_url: "",
-        phone_number: "",
-        address: "",
-        is_active: false,
-        created_at: "",
-    },
-    isAuth : false
+    user: null,
+    isAuth : false,
+    isLoading: false,
+    isError: false,
+
 }
+export const getProfileData = createAsyncThunk('getProfileData',async (token)=>{
+    //console.log("getProfileData");
+    const burl = import.meta.env.VITE_URL;
+ //   try {
+        const data = await axios.get(`${burl}/user/me`,{
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+        });
+        console.log(data);
+        return data;
+ //   } catch (error) {
+ //       return error;
+ //   }
+    
+})
 //const isAuth = false;
 export const UserSlice = createSlice({
     name: "user",
@@ -38,11 +47,26 @@ export const UserSlice = createSlice({
             state.isAuth = true;
         },
         logout: (state, action) => {
-            state.user = {};
+            state.user = null;
             state.isAuth = false;
+        },
+        extraReducers: (builder) => {
+            builder
+                .addCase(getProfileData.pending, (state, action) => {
+                    state.isLoading = true;
+                })
+                .addCase(getProfileData.fulfilled, (state, action) => {
+                    state.isLoading = false;
+                    state.user = action.payload.data;
+                })
+                .addCase(getProfileData.rejected, (state, action) => {
+                    state.isLoading = false;
+                    state.isError = true;
+                    console.log("error", action.error);
+                })
         }
     }
 })
 
-export const { getUserData, chackAuth, logout } = UserSlice.actions;
+export const { chackAuth, logout } = UserSlice.actions;
 export default UserSlice.reducer;

@@ -20,7 +20,7 @@ import StuCourse from './Pages/Student/StuCourse.jsx'
 import CourseDetails from './Pages/CourseDetails.jsx'
 import Cookies from 'js-cookie'
 import { useDispatch, useSelector } from 'react-redux'
-import { chackAuth, getUserData } from './Redux/Features/User/UserSlice'
+import { chackAuth,getProfileData } from './Redux/Features/User/UserSlice'
 function App() {
   const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ function App() {
   // Use useEffect to handle dispatch and side-effects
   useEffect(() => {
     if (isCookies) {
-      dispatch(getUserData(isCookies));  // Fetch user data if cookie exists
+      dispatch(getProfileData(isCookies));  // Fetch user data if cookie exists
     }
   }, [isCookies, dispatch]);
 

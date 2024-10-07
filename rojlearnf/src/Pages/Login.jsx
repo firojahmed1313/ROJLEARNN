@@ -4,7 +4,8 @@ import Footer from '../Comp/Footer/Footer'
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../Redux/Features/Credentials/LoginSlice';
-import { getUserData } from '../Redux/Features/User/UserSlice';
+import { getProfileData } from '../Redux/Features/User/UserSlice';
+
 import axios from 'axios';
 import Cookies from 'js-cookie';
 const Login = () => {
@@ -37,7 +38,7 @@ const Login = () => {
           secure: true,
           path: "/"
         });
-        dispatch(getUserData(data.data));
+        dispatch(getProfileData(data.data));
       }
       else {
         alert("invalid credentials");
@@ -51,7 +52,8 @@ const Login = () => {
     // console.log("token");
 
   }
-  const User = useSelector((state) => state.getUser.user);
+  const User = useSelector((state) => state.getUser);
+
   console.log(User);
       // if (User.role === "Student") {
       //   navigate("/student");
@@ -59,12 +61,19 @@ const Login = () => {
       // else if (User.role === "Instructor") {
       //   navigate("/teacher");
       // }
-  
   useEffect(() => {
-    if (User.role === "Student") {
+    if(User.isLoading){
+      console.log("loading");
+    }
+    else if (User.isError) {
+      console.log("error");
+    }
+  })
+  useEffect(() => {
+    if (User.user?.role === "Student") {
       navigate("/student");
     }
-    else if (User.role === "Instructor") {
+    else if (User.user?.role === "Instructor") {
       navigate("/teacher");
     }
   }, [User])
