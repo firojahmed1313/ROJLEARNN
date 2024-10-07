@@ -38,6 +38,7 @@ public class UserController {
     public List<User> getUsersByRole( @PathVariable String role) {
         return us.getUsersByRole(role);
     }
+    
     @GetMapping("/me")
     public User getCurrentUserProfile(){
 

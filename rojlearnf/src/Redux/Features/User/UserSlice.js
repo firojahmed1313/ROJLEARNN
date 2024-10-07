@@ -12,12 +12,13 @@ export const getProfileData = createAsyncThunk('getProfileData',async (token)=>{
     const burl = import.meta.env.VITE_URL;
  //   try {
         const data = await axios.get(`${burl}/user/me`,{
+            withCredentials: true,
             headers: {
               Authorization: `Bearer ${token}`
             }
         });
-        console.log(data);
-        return data;
+        console.log(data.data);
+        return data.data;
  //   } catch (error) {
  //       return error;
  //   }
@@ -56,6 +57,7 @@ export const UserSlice = createSlice({
                     state.isLoading = true;
                 })
                 .addCase(getProfileData.fulfilled, (state, action) => {
+                    console.log("fulfilled", action.payload);
                     state.isLoading = false;
                     state.user = action.payload.data;
                 })
