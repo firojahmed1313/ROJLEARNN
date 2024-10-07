@@ -51,24 +51,26 @@ export const UserSlice = createSlice({
             state.user = null;
             state.isAuth = false;
         },
-        extraReducers: (builder) => {
-            builder
-                .addCase(getProfileData.pending, (state, action) => {
-                    console.log("pending");
-                    state.isLoading = true;
-                })
-                .addCase(getProfileData.fulfilled, (state, action) => {
-                    console.log("fulfilled", action.payload);
-                    //state.isLoading = false;
-                    state.user = action.payload.data;
-                })
-                .addCase(getProfileData.rejected, (state, action) => {
-                    console.log("rejected");
-                    state.isLoading = false;
-                    state.isError = true;
-                    console.log("error", action.error);
-                })
-        }
+        
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getProfileData.pending, (state, action) => {
+                console.log("pending");
+                state.isLoading = true;
+            })
+            .addCase(getProfileData.fulfilled, (state, action) => {
+                console.log("fulfilled", action.payload);
+                state.isLoading = false;
+                state.user = action.payload.data;
+                state.isAuth = true;
+            })
+            .addCase(getProfileData.rejected, (state, action) => {
+                console.log("rejected");
+                state.isLoading = false;
+                state.isError = true;
+                console.log("error", action.error);
+            })
     }
 })
 

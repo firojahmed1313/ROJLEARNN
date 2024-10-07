@@ -135,7 +135,7 @@ const Nav = () => {
                       className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-teal-500 hover:bg-slate-600"
                       to={(role === "Student") ? "/student" : "/teacher"}
                     >
-                      Prfile
+                      Profile
                     </Link>
                     
                   </div>
