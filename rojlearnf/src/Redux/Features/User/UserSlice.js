@@ -17,8 +17,8 @@ export const getProfileData = createAsyncThunk('getProfileData',async (token)=>{
               Authorization: `Bearer ${token}`
             }
         });
-        console.log(data.data);
-        return data.data;
+        console.log(data);
+        return data;
  //   } catch (error) {
  //       return error;
  //   }
@@ -54,14 +54,16 @@ export const UserSlice = createSlice({
         extraReducers: (builder) => {
             builder
                 .addCase(getProfileData.pending, (state, action) => {
+                    console.log("pending");
                     state.isLoading = true;
                 })
                 .addCase(getProfileData.fulfilled, (state, action) => {
                     console.log("fulfilled", action.payload);
-                    state.isLoading = false;
+                    //state.isLoading = false;
                     state.user = action.payload.data;
                 })
                 .addCase(getProfileData.rejected, (state, action) => {
+                    console.log("rejected");
                     state.isLoading = false;
                     state.isError = true;
                     console.log("error", action.error);
