@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getApi } from "../../Api/Api";
 const initialState = {
     user: null,
     isAuth : false,
@@ -11,12 +12,13 @@ export const getProfileData = createAsyncThunk('getProfileData',async (token)=>{
     //console.log("getProfileData");
     const burl = import.meta.env.VITE_URL;
  //   try {
-        const data = await axios.get(`${burl}/user/me`,{
-            withCredentials: true,
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-        });
+        // const data = await axios.get(`${burl}/user/me`,{
+        //     withCredentials: true,
+        //     headers: {
+        //       Authorization: `Bearer ${token}`
+        //     }
+        // });
+        const data = getApi(`${burl}/user/me`,token);
         console.log(data);
         return data;
  //   } catch (error) {
