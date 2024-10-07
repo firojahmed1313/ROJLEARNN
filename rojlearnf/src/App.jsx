@@ -21,6 +21,7 @@ import CourseDetails from './Pages/CourseDetails.jsx'
 import Cookies from 'js-cookie'
 import { useDispatch, useSelector } from 'react-redux'
 import { chackAuth,getProfileData } from './Redux/Features/User/UserSlice'
+import Profile from './Pages/Profile.jsx'
 function App() {
   const dispatch = useDispatch();
 
@@ -60,6 +61,7 @@ function App() {
       <Route path='/teacherAssignment' element={<TeacherAssignment />} />
       <Route path='/teacherExam' element={<TeacherExam />} />
       <Route path='/teacherTask' element={<TeacherTask />} />
+      <Route path='/profile' element={<Profile />} />
       <Route path='/student' element={<StudentsProfile />} />
       <Route path='/studentActivity' element={<StuActivity />} />
       <Route path='/studentExam' element={<StuExam />} />
