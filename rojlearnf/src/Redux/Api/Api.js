@@ -1,6 +1,12 @@
 import axios from "axios";
 
 export const getApi = async (url,token) => {
+    if (token==null) {
+        const res = await axios.get(url, {
+            withCredentials: true,
+        })
+        return res;
+    }
     const res = await axios.get(url, {
         withCredentials: true,
         headers: {
