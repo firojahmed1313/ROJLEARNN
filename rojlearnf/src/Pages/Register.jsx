@@ -5,34 +5,40 @@ import logo from '../assets/images/logo2.webp'
 import logo2 from '../assets/images/logo.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser } from '../Redux/Features/User/UserSlice'
 //import TostCon from '../Comp/utlits/TostCon'
 //import {Toastify} from '../Comp/utlits/Toastify'
 import { ToastContainer, toast } from "react-toastify";
+import { postApi } from '../Redux/Api/Api'
 
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const burl = import.meta.env.VITE_URL;
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formobj = new FormData(e.target);
     const obj = Object.fromEntries(formobj.entries());
     console.log(obj);
     try {
-      dispatch(registerUser(obj))
+      const data = await postApi(`${burl}/user/register`, obj);
+      console.log(data);
+
+      if (typeof (data.data) == 'string') {
+        console.warn(data);
+      }
+      else if (typeof (data.data) == 'object') {
+        console.log(data);
+        console.log("Successfully registered");
+        navigate('/login');
+      }
+      // if (data.data) {
+      //   navigate("/login");
+      // }
     } catch (error) {
       console.log(error);
     }
   }
-  const data = useSelector((state) => state.getUser.user);
-  console.log(data);
-  if (typeof (data) == 'string') {
-    console.warn(data);
-  }
-  else if (typeof (data) == 'object') {
-    console.log(data);
-    navigate('/login');
-  }
+  
   return (
     <>
       <Nav />

@@ -5,24 +5,21 @@ const initialState = {
     isAuth: false,
     isLoading: false,
     isError: false,
-    isSuccess: false,
-    message: "",
     
 
 }
 export const getProfileData = createAsyncThunk('getProfileData', async (token) => {
     const burl = import.meta.env.VITE_URL;
-    const data = getApi(`${burl}/user/me`, token);
-    console.log(data);
-    return data;
+    try {
+        const data = getApi(`${burl}/user/me`, token);
+        console.log(data);
+        return data; 
+    } catch (error) {
+        console.warn(error);
+    }
+    
 })
-export const registerUser = createAsyncThunk('registerUser', async (user) => {
-    const burl = import.meta.env.VITE_URL;
-    const data = postApi(`${burl}/user/register`, user,null);
-    console.log("registeruser", data);
-    //console.log(data);
-    return data;
-})
+
 //const isAuth = false;
 export const UserSlice = createSlice({
     name: "user",
@@ -72,26 +69,7 @@ export const UserSlice = createSlice({
                 
             })
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(registerUser.pending, (state, action) => {
-                console.log("pending");
-                state.isLoading = true;
-            })
-            .addCase(registerUser.fulfilled, (state, action) => {
-                console.log("fulfilled", action.payload);
-                state.isLoading = false;
-                state.user = action.payload.data;
-
-            })
-            .addCase(registerUser.rejected, (state, action) => {
-                console.log("rejected");
-                state.isLoading = false;
-                state.isError = true;
-                console.log("error", action.error);
-                state.message = action.error.message;
-            })
-    }
+    
 })
 
 export const { chackAuth, logout } = UserSlice.actions;
