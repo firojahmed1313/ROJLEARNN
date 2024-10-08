@@ -22,6 +22,7 @@ import Cookies from 'js-cookie'
 import { useDispatch, useSelector } from 'react-redux'
 import { chackAuth,getProfileData } from './Redux/Features/User/UserSlice'
 import Profile from './Pages/Profile.jsx'
+import About from './Pages/About.jsx'
 function App() {
   const dispatch = useDispatch();
 
@@ -56,6 +57,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path='/admin' element={<AdminPanel />} />
+      <Route path='/aboutUs' element={<About />} />
       <Route path='/teacher' element={<TeacherProfile />} />
       <Route path='/teacherCourses' element={<TeacherCourse />} />
       <Route path='/teacherAssignment' element={<TeacherAssignment />} />
