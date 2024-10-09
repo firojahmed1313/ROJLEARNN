@@ -10,6 +10,7 @@ const initialState = {
 }
 export const getProfileData = createAsyncThunk('getProfileData', async (token) => {
     const burl = import.meta.env.VITE_URL;
+    console.log(token);
     try {
         const data = getApi(`${burl}/user/me`, token);
         console.log(data);

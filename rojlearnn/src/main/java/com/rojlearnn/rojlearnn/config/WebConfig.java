@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // Enable CORS for all endpointshttps://8080-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io
-                .allowedOrigins("https://5173-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io")  // Allow your Swagger or frontend URL
+                .allowedOrigins("https://5173-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io","https://rojlearn.vercel.app")  // Allow your Swagger or frontend URL
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .exposedHeaders("Authorization")

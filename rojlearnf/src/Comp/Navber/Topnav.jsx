@@ -1,14 +1,23 @@
 import React from 'react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Redux/Features/User/UserSlice';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
+
 import avatar from '../../assets/avatar.png'
 const Topnav = () => {
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const user = useSelector((state) => state.getUser.user);
+
+    useEffect(() => {
+        if (!user) {
+          navigate('/login');  
+        } 
+    }, [user]);
+
     const Onlogout = () => {
         dispatch(logout());
         Cookies.remove('ROJLEARN');
@@ -47,7 +56,7 @@ const Topnav = () => {
                             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span className="ml-2 text-sm text-white font-medium mr-4" onClick={() => setShow(!show)}>Account</span>
-                    <div className="h-10 w-10 hover:ring-4 user cursor-pointer relative ring-blue-700/30 rounded-full mr-4 bg-cover bg-center bg-[url(/src/assets/avatar.png)]" >
+                    <div className="h-10 w-10 hover:ring-4 user cursor-pointer relative ring-blue-700/30 rounded-full mr-4 bg-cover bg-center" style={{ backgroundImage: `url(${user?.profile_picture_url})`}} >
 
                         <div className={`drop-down ${(!show) ? 'hidden' : 'block'}  w-48 overflow-hidden bg-slate-600 rounded-md shadow absolute top-12 right-3`}>
                             <ul>

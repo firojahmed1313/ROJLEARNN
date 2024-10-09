@@ -34,6 +34,7 @@ function App() {
   // Retrieve user and isAuth from state
   const User = useSelector((state) => state.getUser.user);
   const isAuth = useSelector((state) => state.getUser.isAuth);
+  console.log(User);
 
   // Use useEffect to handle dispatch and side-effects
   useEffect(() => {

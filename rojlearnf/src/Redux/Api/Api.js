@@ -8,6 +8,7 @@ export const getApi = async (url,token) => {
         return res;
     }
     const res = await axios.get(url, {
+        
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`
