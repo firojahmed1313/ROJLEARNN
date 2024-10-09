@@ -5,6 +5,13 @@ import { getCourseSlice } from './Features/Course/getCourseSlice'
 import { getCourseDetailsSlice } from './Features/Course/getCourseDetailsSlice'
 import { getCourseofStudentSlice } from './Features/Course/getCourseofStudentSlice'
 import { getStudentReportSlice } from './Features/Report/GetStudentReportSlice'
+import { getStudentsLikeSlice } from './Features/Activity/StudentsLikeSlice'
+import { getStudentCommentsSlice } from './Features/Activity/StudentCommentsSlice'
+import { getStudentsRatingSlice } from './Features/Activity/StudentsRatingSlice'
+import { getStudentFeedbackSlice } from './Features/Activity/StudentFeedbackSlice'
+
+
+
 export const store = configureStore({
     reducer: {
         login: loginSlice.reducer,
@@ -13,6 +20,11 @@ export const store = configureStore({
         getCourseDetails: getCourseDetailsSlice.reducer,
         getCourseofStudent: getCourseofStudentSlice.reducer,
         getStudentReport: getStudentReportSlice.reducer,
+        getStudentLike: getStudentsLikeSlice.reducer,
+        getStudentComments: getStudentCommentsSlice.reducer,
+        getStudentsRating: getStudentsRatingSlice.reducer,
+        getStudentsFeedback: getStudentFeedbackSlice.reducer
+        
 
     },
     middleware: getDefaultMiddleware =>
