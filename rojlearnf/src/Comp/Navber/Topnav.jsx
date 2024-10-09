@@ -4,18 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Redux/Features/User/UserSlice';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
+import { getCartItems } from '../../Redux/Features/Chackout/GetCartItemsSlice';
 
 import avatar from '../../assets/avatar.png'
 const Topnav = () => {
     const [show, setShow] = useState(false);
+    const [showCart, setShowCart] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.getUser.user);
 
     useEffect(() => {
         if (!user) {
-          navigate('/login');  
-        } 
+            navigate('/login');
+        }
     }, [user]);
 
     const Onlogout = () => {
@@ -24,13 +27,35 @@ const Topnav = () => {
         navigate("/");
 
     }
+    const cartItems = useSelector((state) => state.getCartItems.cartItems);
+
+    useEffect(() => {
+        if (cartItems == null && user != null) {
+            dispatch(getCartItems(user._id));
+        }
+    }, []);
+    const handelcartItems = () => {
+        console.log("cartItems");
+        setShowCart(!showCart);
+        
+        setTimeout(() => {
+            //const cartItems = useSelector((state) => state.getCartItems.cartItems);
+            console.log(cartItems);
+        }, 2000);
+
+    }
+
+    const handelNotification = () => {
+        console.log("notification");
+        setShowNotification(!showNotification);
+    }
     return (
         <>
             <div className=" cursor-default bg-gray-800 flex items-center justify-end w-auto border border-black" >
-                <button className="py-4 px-1 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out border-red-500 mr-4" aria-label="Cart">
-                <svg className="h-6 w-6 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
+                <button className="py-4 px-1 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out border-red-500 mr-4" aria-label="Notification" onClick={handelNotification}>
+                    <svg className="w-6 h-6 text-white fill-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m9.046 3.59-.435-2.324m.435 2.324a5.338 5.338 0 0 1 6.033 4.333l.331 1.77c.439 2.344 2.383 2.587 2.599 3.76.11.586.22 1.171-.309 1.271L5 17.101c-.529.1-.639-.488-.749-1.074-.219-1.172 1.506-2.102 1.067-4.447l-.331-1.769a5.338 5.338 0 0 1 4.059-6.22Zm-7.13 4.602a8.472 8.472 0 0 1 2.17-5.048m2.646 13.633A3.472 3.472 0 0 0 13.46 16l.089-.5-6.817 1.277Z" />
+                    </svg>
 
                     <span className="absolute inset-0 object-right-top -mr-6">
                         <div className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
@@ -38,7 +63,7 @@ const Topnav = () => {
                         </div>
                     </span>
                 </button>
-                <button className="py-4 px-1 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out border-red-500 mr-4" aria-label="Cart">
+                <button className="py-4 px-1 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out border-red-500 mr-4" aria-label="Cart" onClick={handelcartItems}>
                     <svg className="h-6 w-6 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
@@ -56,7 +81,7 @@ const Topnav = () => {
                             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span className="ml-2 text-sm text-white font-medium mr-4" onClick={() => setShow(!show)}>Account</span>
-                    <div className="h-10 w-10 hover:ring-4 user cursor-pointer relative ring-blue-700/30 rounded-full mr-4 bg-cover bg-center" style={{ backgroundImage: `url(${user?.profile_picture_url})`}} >
+                    <div className="h-10 w-10 hover:ring-4 user cursor-pointer relative ring-blue-700/30 rounded-full mr-4 bg-cover bg-center" style={{ backgroundImage: `url(${(user?.profile_picture_url) ? user.profile_picture_url : avatar})` }} onClick={() => setShow(!show)} >
 
                         <div className={`drop-down ${(!show) ? 'hidden' : 'block'}  w-48 overflow-hidden bg-slate-600 rounded-md shadow absolute top-12 right-3`}>
                             <ul>
@@ -91,7 +116,7 @@ const Topnav = () => {
 
                     </div>
                 </a>
-                
+
             </div>
         </>
     )
