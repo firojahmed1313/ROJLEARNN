@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfileNav from '../../Comp/Navber/ProfileNav'
 import Topnav from '../../Comp/Navber/Topnav'
+import StudentAllRecord from '../../Comp/Student/StudentAllRecord'
 const StuReport = () => {
   return (
     <>
@@ -10,7 +11,7 @@ const StuReport = () => {
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
-          <h2>StuReport</h2>
+          <StudentAllRecord />
         </div>
       </div>
     </>
