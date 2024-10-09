@@ -28,12 +28,18 @@ const Topnav = () => {
 
     }
     const cartItems = useSelector((state) => state.getCartItems.cartItems);
+    const notification = useSelector((state) => state.getStudentsNotifications.notifications);
 
     useEffect(() => {
         if (cartItems == null && user != null) {
             dispatch(getCartItems(user._id));
         }
     }, []);
+    // useEffect(() => {
+    //     if (notification == null && user != null) {
+    //         dispatch(getCartItems(user._id));
+    //     }
+    // }, []);
     const handelcartItems = () => {
         console.log("cartItems");
         setShowCart(!showCart);
@@ -48,6 +54,7 @@ const Topnav = () => {
     const handelNotification = () => {
         console.log("notification");
         setShowNotification(!showNotification);
+        //console.log(notification);
     }
     return (
         <>
@@ -69,7 +76,7 @@ const Topnav = () => {
                     </svg>
                     <span className="absolute inset-0 object-right-top -mr-6">
                         <div className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                            6
+                            {cartItems?.length}
                         </div>
                     </span>
                 </button>
