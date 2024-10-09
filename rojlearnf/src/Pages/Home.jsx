@@ -34,7 +34,7 @@ const Home = () => {
           <h2 className="mr-10 text-4xl font-bold leading-none md:text-5xl">
             Course
           </h2>
-          <Link href="#"
+          <Link to={"/courses"}
             className="block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600">
             Explore More
           </Link>
