@@ -10,6 +10,7 @@ import { getStudentsNotifications } from '../../Redux/Features/Notifications/Get
 import avatar from '../../assets/avatar.png'
 import Carts from '../chackout/Carts';
 import Cartitemloder from '../utlits/loder/Cartitemloder';
+import Notifications from '../addon/Notifications';
 const Topnav = () => {
     const [show, setShow] = useState(false);
     const [showCart, setShowCart] = useState(false);
@@ -73,6 +74,9 @@ const Topnav = () => {
                         </div>
                     </span>
                 </button>
+                <div className={`${(showNotification) ? "block" : "hidden"} absolute top-16 right-2 overflow-hidden bg-gray-800 `}>
+                    {(notification) ? <Notifications  notifications={notification} /> : <Cartitemloder />}
+                </div>
                 <button className="py-4 px-1 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out border-red-500 mr-4" aria-label="Cart" onClick={handelcartItems}>
                     <svg className="h-6 w-6 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
