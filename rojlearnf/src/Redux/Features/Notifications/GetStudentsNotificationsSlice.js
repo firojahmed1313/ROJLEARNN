@@ -11,7 +11,7 @@ export const getStudentsNotifications = createAsyncThunk('getStudentsNotificatio
     const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
     try {
-        const data = getApi(`${burl}/student/notification/${id}`,token);
+        const data = getApi(`${burl}/notification/getNotification/${id}`,token);
         console.log(data);
         return data; 
     } catch (error) {
@@ -31,9 +31,9 @@ export const getStudentsNotificationsSlice = createSlice({
                 state.loading = true
             })
             .addCase(getStudentsNotifications.fulfilled, (state, action) => {
-                console.log("Carts fulfilled")
+                console.log("Notifications fulfilled")
                 state.loading = false
-                state.notifications = action.payload
+                state.notifications = action.payload.data
             })
             .addCase(getStudentsNotifications.rejected, (state, action) => {
                 console.log("rejected")

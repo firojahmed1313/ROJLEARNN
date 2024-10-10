@@ -5,6 +5,7 @@ import { logout } from '../../Redux/Features/User/UserSlice';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import { getCartItems } from '../../Redux/Features/Chackout/GetCartItemsSlice';
+import { getStudentsNotifications } from '../../Redux/Features/Notifications/GetStudentsNotificationsSlice';
 
 import avatar from '../../assets/avatar.png'
 const Topnav = () => {
@@ -35,11 +36,11 @@ const Topnav = () => {
             dispatch(getCartItems(user._id));
         }
     }, []);
-    // useEffect(() => {
-    //     if (notification == null && user != null) {
-    //         dispatch(getCartItems(user._id));
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (notification == null && user != null) {
+            dispatch(getStudentsNotifications(user._id));
+        }
+    }, []);
     const handelcartItems = () => {
         console.log("cartItems");
         setShowCart(!showCart);
@@ -54,7 +55,7 @@ const Topnav = () => {
     const handelNotification = () => {
         console.log("notification");
         setShowNotification(!showNotification);
-        //console.log(notification);
+        console.log(notification);
     }
     return (
         <>
@@ -66,7 +67,7 @@ const Topnav = () => {
 
                     <span className="absolute inset-0 object-right-top -mr-6">
                         <div className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                            6
+                            {notification?notification.length:0}
                         </div>
                     </span>
                 </button>
@@ -76,7 +77,7 @@ const Topnav = () => {
                     </svg>
                     <span className="absolute inset-0 object-right-top -mr-6">
                         <div className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                            {cartItems?.length}
+                            {cartItems?cartItems.length:0}
                         </div>
                     </span>
                 </button>
