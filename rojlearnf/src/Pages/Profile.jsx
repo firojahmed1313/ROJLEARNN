@@ -42,38 +42,39 @@ const Profile = () => {
                                 className="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
 
 
-                                <div className="p-4 md:p-12 text-center lg:text-left">
+                                <div className="p-4 md:p-12 text-center lg:text-left ">
                                     <div className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center">
                                         <img src={user?.profile_picture_url} className="rounded-full h-48 w-48 object-cover shadow-2xl lg:hidden" />
                                     </div>
-
+                                    <div className="w-fit mx-auto lg:mx-0 ">
                                     <h1 className="text-3xl font-bold pt-8 lg:pt-0">{user?.username}</h1>
                                     <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"
                                     >
                                     </div>
-                                    <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
+                                    <p className="pt-4 text-base font-bold flex items-center justify-start">
                                         <svg className="h-8 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20">
                                             <path
                                                 d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z" />
                                         </svg> {user?.role}
                                     </p>
-                                    <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
+                                    <p className="pt-4 text-base font-bold flex items-center justify-start">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" className="h-8 fill-current text-green-700 pr-4">
                                             <path fill="#049f38" d="M32.33 6a2 2 0 0 0-.41 0h-28a2 2 0 0 0-.53.08l14.45 14.39Z" class="clr-i-solid clr-i-solid-path-1" />
                                             <path fill="#049f38" d="m33.81 7.39l-14.56 14.5a2 2 0 0 1-2.82 0L2 7.5a2 2 0 0 0-.07.5v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-.12-.61M5.3 28H3.91v-1.43l7.27-7.21l1.41 1.41Zm26.61 0h-1.4l-7.29-7.23l1.41-1.41l7.27 7.21Z" class="clr-i-solid clr-i-solid-path-2" />
                                         </svg> {user?.email}
                                     </p>
-                                    <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
+                                    <p className="pt-4 text-base font-bold flex items-center justify-start">
                                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50" className="h-8 fill-current text-green-700 pr-4">
                                             <path d="M 14 3.9902344 C 8.4886661 3.9902344 4 8.4789008 4 13.990234 L 4 35.990234 C 4 41.501568 8.4886661 45.990234 14 45.990234 L 36 45.990234 C 41.511334 45.990234 46 41.501568 46 35.990234 L 46 13.990234 C 46 8.4789008 41.511334 3.9902344 36 3.9902344 L 14 3.9902344 z M 18.005859 12.033203 C 18.633859 12.060203 19.210594 12.414031 19.558594 12.957031 C 19.954594 13.575031 20.569141 14.534156 21.369141 15.785156 C 22.099141 16.926156 22.150047 18.399844 21.498047 19.589844 L 20.033203 21.673828 C 19.637203 22.237828 19.558219 22.959703 19.824219 23.595703 C 20.238219 24.585703 21.040797 26.107203 22.466797 27.533203 C 23.892797 28.959203 25.414297 29.761781 26.404297 30.175781 C 27.040297 30.441781 27.762172 30.362797 28.326172 29.966797 L 30.410156 28.501953 C 31.600156 27.849953 33.073844 27.901859 34.214844 28.630859 C 35.465844 29.430859 36.424969 30.045406 37.042969 30.441406 C 37.585969 30.789406 37.939797 31.366141 37.966797 31.994141 C 38.120797 35.558141 35.359641 37.001953 34.556641 37.001953 C 34.000641 37.001953 27.316344 37.761656 19.777344 30.222656 C 12.238344 22.683656 12.998047 15.999359 12.998047 15.443359 C 12.998047 14.640359 14.441859 11.879203 18.005859 12.033203 z"></path>
                                         </svg> {user?.phone_number}
                                     </p>
-                                    <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
+                                    <p className="pt-4 text-base font-bold flex items-center justify-start">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 fill-current text-green-700 pr-4" viewBox="0 0 24 24">
                                             <path fill="#049f38" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7" />
                                         </svg> {user?.address}
                                     </p>
+                                    </div>
                                     {/* <p className="pt-8 text-sm">Totally optional short description about yourself, what you do and so on.</p> */}
 
                                     <div className="pt-12 pb-8">
