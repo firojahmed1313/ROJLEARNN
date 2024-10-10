@@ -15,4 +15,6 @@ public interface RateingRepo extends MongoRepository<Rateing, String> {
 
     List<Rateing> findAllByContentid(ObjectId objectId);
 
+    List<Rateing> findAllByUserid(ObjectId objectId);
+
 }

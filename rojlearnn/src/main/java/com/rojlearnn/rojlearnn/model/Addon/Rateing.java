@@ -12,6 +12,7 @@ public class Rateing {
     private int rating;
     private String cuid;
     private ObjectId contentid;
+    private ObjectId userid;
     private LocalDateTime created_at = LocalDateTime.now();
 
     public Rateing() {
@@ -44,6 +45,12 @@ public class Rateing {
     }
     public void setContentid(String contentid) {
         this.contentid = new ObjectId(contentid) ;// contentid;
+    }
+    public String getUserid() {
+        return userid.toString();
+    }
+    public void setUserid(String userid) {
+        this.userid = new ObjectId(userid) ;//userid;
     }
     public LocalDateTime getCreated_at() {
         return created_at;

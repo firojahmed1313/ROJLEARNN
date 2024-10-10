@@ -50,4 +50,10 @@ public class RateingService {
         List <Rateing> l= rr.findAllByContentid(new ObjectId(contentid));
         return new ResponseEntity<>(l,HttpStatus.OK);
     }
+
+    public ResponseEntity<?> getRateingByUser(String userid) {
+        List <Rateing> l= rr.findAllByUserid(new ObjectId(userid));
+        return new ResponseEntity<>(l,HttpStatus.OK);
+
+    }
 }

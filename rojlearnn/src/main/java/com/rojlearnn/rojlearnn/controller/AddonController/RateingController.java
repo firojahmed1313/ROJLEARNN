@@ -27,4 +27,9 @@ public class RateingController {
     public ResponseEntity<?> getRatingsByContent(@PathVariable String contentid) {
         return rs.getRateing(contentid);
     }
+
+    @GetMapping("/getRateingByUser/{userid}")
+    public ResponseEntity<?> getRatingsByUser(@PathVariable String userid) {
+        return rs.getRateingByUser(userid);
+    }
 }
