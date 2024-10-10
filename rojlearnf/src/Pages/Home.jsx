@@ -67,7 +67,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="w-full invisible md:visible  max-w-full mb-8 md:w-1/2 mx-4 lg:w-1/3 flex flex-col rounded-md border">
+          <div className="w-full hidden md:flex  max-w-full mb-8 md:w-1/2 mx-4 lg:w-1/3 flex-col rounded-md border">
             <img src="https://images.unsplash.com/photo-1711349172514-3f11275bfbb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Card img" className="object-cover object-center w-full h-48 rounded-md" />
             <div className="flex flex-grow">
               <div className="triangle"></div>
@@ -93,7 +93,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="w-full invisible lg:visible max-w-full mb-8 sm:w-1/2 mx-4 lg:w-1/3 flex flex-col rounded-md border">
+          <div className="w-full hidden lg:flex max-w-full mb-8 sm:w-1/2 mx-4 lg:w-1/3  flex-col rounded-md border">
             <img src="https://images.unsplash.com/photo-1711349172514-3f11275bfbb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Card img" className="object-cover object-center w-full h-48 rounded-md" />
             <div className="flex flex-grow">
               <div className="triangle"></div>

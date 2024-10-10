@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourseData } from '../../Redux/Features/Course/getCourseSlice'
+import { formatDateString } from '../utlits/FormatDateString'
 const Courseall = () => {
     const [courseData, setCourseData] = useState([]);
     const dispatch = useDispatch();
@@ -325,6 +326,7 @@ const Courseall = () => {
                             <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
                                 {
                                     courseData?.map((course) => {
+                                        const dateObj = formatDateString(course.created_at);
                                         return (
                                             <div
                                                 className="border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal" key={course._id}>
@@ -354,7 +356,7 @@ const Courseall = () => {
                                                         <div className="text-sm">
                                                             <a href="#" className="text-gray-900 font-semibold leading-none hover:text-indigo-600">Jonathan
                                                                 Reinink</a>
-                                                            <p className="text-gray-600">{course?.created_at}</p>
+                                                            <p className="text-gray-600">{dateObj.month} - {dateObj.day} - {dateObj.year} at {dateObj.hour}:{dateObj.minutes}:{dateObj.seconds} {dateObj.period}</p>
                                                         </div>
                                                     </div>
                                                 </div>
