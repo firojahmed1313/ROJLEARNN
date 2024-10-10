@@ -8,6 +8,8 @@ import { getCartItems } from '../../Redux/Features/Chackout/GetCartItemsSlice';
 import { getStudentsNotifications } from '../../Redux/Features/Notifications/GetStudentsNotificationsSlice';
 
 import avatar from '../../assets/avatar.png'
+import Carts from '../chackout/Carts';
+import Cartitemloder from '../utlits/loder/Cartitemloder';
 const Topnav = () => {
     const [show, setShow] = useState(false);
     const [showCart, setShowCart] = useState(false);
@@ -44,7 +46,7 @@ const Topnav = () => {
     const handelcartItems = () => {
         console.log("cartItems");
         setShowCart(!showCart);
-        
+
         setTimeout(() => {
             //const cartItems = useSelector((state) => state.getCartItems.cartItems);
             console.log(cartItems);
@@ -67,7 +69,7 @@ const Topnav = () => {
 
                     <span className="absolute inset-0 object-right-top -mr-6">
                         <div className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                            {notification?notification.length:0}
+                            {notification ? notification.length : 0}
                         </div>
                     </span>
                 </button>
@@ -77,10 +79,14 @@ const Topnav = () => {
                     </svg>
                     <span className="absolute inset-0 object-right-top -mr-6">
                         <div className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                            {cartItems?cartItems.length:0}
+                            {cartItems ? cartItems.length : 0}
                         </div>
                     </span>
                 </button>
+                <div className={`${(showCart) ? "block" : "hidden"} absolute top-16 right-2 overflow-hidden bg-gray-800 `}>
+                    {(cartItems) ? <Carts  cartItems={cartItems} /> : <Cartitemloder />}
+                </div>
+
                 <a className="flex items-center justify-end w-fit h-16 mt-auto  hover:bg-gray-700 text-white "
                     href="#" >
                     <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
