@@ -1,6 +1,12 @@
 import React from 'react'
 import { Icon } from '@iconify-icon/react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { getProfileData } from '../../Redux/Features/User/UserSlice';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
 
 const tData = [
 
@@ -81,7 +87,25 @@ const sData = [
     icon: 'ion:file-tray-stacked-outline',
   }
 ]
-const ProfileNav = ({role}) => {
+const ProfileNav = () => {
+  const user = useSelector(state => state.getUser.user);
+  const role = user?.role;
+  console.log(role);
+  const token = Cookies.get("ROJLEARN");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  if(!token){
+    navigate("/login");
+  }
+  useEffect(() => {
+    setTimeout(() => {
+      if(user==null){
+        dispatch(getProfileData(token));
+      }
+      
+    },1000)
+    
+  }, [])
   let location = useLocation();
   console.log((location.pathname));
   return (
@@ -95,7 +119,7 @@ const ProfileNav = ({role}) => {
           <div className="flex flex-col items-center justify-start justify-items-start w-full mt-3">
             {
               
-              (role === 'Teacher' ? tData : sData).map((data) => {
+              (role === 'Instructor' ? tData : sData).map((data) => {
               return (
 
                 <Link className={`flex items-center w-full h-12 px-2 lg:px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300 ${location.pathname === data.path ? 'bg-gray-700 text-gray-300' : ''}`} to={data.path} key={data.id}>

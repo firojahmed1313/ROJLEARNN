@@ -9,7 +9,7 @@ const StudentsProfile = () => {
     <>
       <div className='flex flex-row '>
         <div className=' w-1/6 fixed'>
-          <ProfileNav role={"Student"} />
+          <ProfileNav />
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
