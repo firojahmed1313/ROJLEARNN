@@ -47,6 +47,7 @@ const Topnav = () => {
     const handelcartItems = () => {
         console.log("cartItems");
         setShowCart(!showCart);
+        setShowNotification(false);
 
         setTimeout(() => {
             //const cartItems = useSelector((state) => state.getCartItems.cartItems);
@@ -58,6 +59,7 @@ const Topnav = () => {
     const handelNotification = () => {
         console.log("notification");
         setShowNotification(!showNotification);
+        setShowCart(false);
         console.log(notification);
     }
     return (

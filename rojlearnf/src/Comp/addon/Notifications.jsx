@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Notifications = ({ notifications }) => {
+  console.log(notifications)
   const statusHandler = (notification) => {
     if(notification.status){
       console.log("already read")
@@ -15,9 +16,12 @@ const Notifications = ({ notifications }) => {
       <div class="relative flex flex-col m-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
         <div class="p-4">
           {
-            notifications?.map((notification, index) => (
+            notifications?.length == 0 ?
+              <p className="text-sm text-slate-600 font-medium text-center">No Notifications</p>
+              :
+              notifications?.map((notification, index) => (
               <>
-                <div class="flex items-center justify-between pb-3 pt-3 last:pb-0">
+                <div class="flex items-center justify-between pb-3 pt-3 last:pb-0" key={index}>
                   <div class="flex items-center gap-x-3">
                     <div>
                       <h6 class="text-slate-800 font-semibold">
@@ -46,6 +50,7 @@ const Notifications = ({ notifications }) => {
 
               </>
             ))
+            
           }
 
         </div>

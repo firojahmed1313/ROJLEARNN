@@ -9,7 +9,9 @@ const Carts = ({cartItems}) => {
 
 
             <section>
+            
                 <div className="mx-auto w-fit px-4 py-8 sm:px-6 sm:py-12 lg:px-8 text-white ">
+                {(cartItems.length ==0)? <h2 className="text-xl font-bold  sm:text-3xl">Your Cart is Empty</h2> :
                     <div className="mx-auto ">
                         <header className="text-center">
                             <h1 className="text-xl font-bold  sm:text-3xl">Your Cart</h1>
@@ -61,10 +63,6 @@ const Carts = ({cartItems}) => {
 
                                 </li>
                             ))}
-                                
-                                
-
-
                             </ul>
 
                             <div className="mt-8 flex justify-evenly border-t border-gray-100 pt-8">
@@ -126,6 +124,7 @@ const Carts = ({cartItems}) => {
                             </div>
                         </div>
                     </div>
+                }
                 </div>
             </section>
         </>
