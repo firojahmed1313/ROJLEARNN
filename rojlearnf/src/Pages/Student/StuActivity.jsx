@@ -5,6 +5,7 @@ import StudentLike from '../../Comp/Student/lcrf/StudentLike'
 import StudentComment from '../../Comp/Student/lcrf/StudentComment'
 import StudentRating from '../../Comp/Student/lcrf/StudentRating'
 import StudentFeedback from '../../Comp/Student/lcrf/StudentFeedback'
+import StudentTracking from '../../Comp/Student/lcrf/StudentTracking'
 
 const StuActivity = () => {
   return (
@@ -20,6 +21,7 @@ const StuActivity = () => {
             <StudentComment />
             <StudentRating />
             <StudentFeedback  />
+            <StudentTracking />
           </div>
         </div>
       </div>

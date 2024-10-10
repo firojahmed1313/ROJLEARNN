@@ -9,6 +9,7 @@ import { getStudentsLikeSlice } from './Features/Activity/StudentsLikeSlice'
 import { getStudentCommentsSlice } from './Features/Activity/StudentCommentsSlice'
 import { getStudentsRatingSlice } from './Features/Activity/StudentsRatingSlice'
 import { getStudentFeedbackSlice } from './Features/Activity/StudentFeedbackSlice'
+import { getStudentTrackingSlice } from './Features/Activity/StudentTrackingSlice'
 import { getAllCartsSlice } from './Features/Chackout/GetAllCartsSlice'
 import { getCartItemsSlice } from './Features/Chackout/GetCartItemsSlice'
 import { getStudentsNotificationsSlice } from './Features/Notifications/GetStudentsNotificationsSlice'
@@ -27,6 +28,7 @@ export const store = configureStore({
         getStudentComments: getStudentCommentsSlice.reducer,
         getStudentsRating: getStudentsRatingSlice.reducer,
         getStudentsFeedback: getStudentFeedbackSlice.reducer,
+        getStudentTracking: getStudentTrackingSlice.reducer,
         getCarts: getAllCartsSlice.reducer,
         getCartItems: getCartItemsSlice.reducer,
         getStudentsNotifications: getStudentsNotificationsSlice.reducer
