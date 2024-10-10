@@ -5,10 +5,13 @@ import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { getProfileData } from '../../Redux/Features/User/UserSlice';
 import {formatDateString} from '../utlits/FormatDateString'
+import Cardrowloder from '../utlits/loder/Cardrowloder'
 
 
 const AllStudentCourses = () => {
     const course = useSelector((state) => state.getCourseofStudent.course);
+    const loading = useSelector((state) => state.getCourseofStudent.loading);
+    const error = useSelector((state) => state.getCourseofStudent.error);
     const user = useSelector((state) => state.getUser.user);
     const token = Cookies.get("ROJLEARN");
     const dispatch = useDispatch();
@@ -41,6 +44,7 @@ const AllStudentCourses = () => {
         <>
             <div class="flex flex-col justify-center h-full">
                 {
+                    (loading) ? <Cardrowloder /> : (course) ?
                     course?.map((item, index) => {
                         const dateObj = formatDateString(item.created_at);
 
@@ -84,7 +88,7 @@ const AllStudentCourses = () => {
                                 </div>
                             </div>
                         )
-                    })
+                    }):<h2>No Course Found</h2>
                 }
 
             </div>

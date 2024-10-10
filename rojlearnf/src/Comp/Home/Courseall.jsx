@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourseData } from '../../Redux/Features/Course/getCourseSlice'
 import { formatDateString } from '../utlits/FormatDateString'
+import CartColloder from '../utlits/loder/CartColloder'
 const Courseall = () => {
     const [courseData, setCourseData] = useState([]);
     const dispatch = useDispatch();
     const course = useSelector((state) => state.getCourse.course);
+    const loading = useSelector((state) => state.getCourse.isLoading);
+    const error = useSelector((state) => state.getCourse.error);
     console.log(course);
     useEffect(() => {
         if (course != null) {
@@ -325,6 +328,7 @@ const Courseall = () => {
                         <div className="lg:col-span-3">
                             <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
                                 {
+                                    (loading) ? <CartColloder /> :
                                     courseData?.map((course) => {
                                         const dateObj = formatDateString(course.created_at);
                                         return (

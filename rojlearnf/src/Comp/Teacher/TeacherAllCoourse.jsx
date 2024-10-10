@@ -6,9 +6,12 @@ import { getCourseByTeacher } from '../../Redux/Features/Course/teacher/getCours
 import { useNavigate } from 'react-router-dom'
 import { getProfileData } from '../../Redux/Features/User/UserSlice';
 import { formatDateString } from '../utlits/FormatDateString'
+import Cardrowloder from '../utlits/loder/Cardrowloder'
 
 const TeacherAllCoourse = () => {
     const course = useSelector((state) => state.getTeacherCourse.courseByTeacher);
+    const loading = useSelector((state) => state.getTeacherCourse.loading);
+    const error = useSelector((state) => state.getTeacherCourse.error);
     const user = useSelector((state) => state.getUser.user);
     const token = Cookies.get("ROJLEARN");
     const dispatch = useDispatch();
@@ -39,7 +42,10 @@ const TeacherAllCoourse = () => {
         <>
             <div class="flex flex-col break-words bg-white w-[96%] mx-auto my-4 shadow-lg rounded-xl">
                 {
-                    course?.map((item , index) => {
+                    (loading) ?
+                        <Cardrowloder />
+                    :(course)?
+                    course.map((item , index) => {
                         const dateObj = formatDateString(item.created_at);
                         return (
                             <div class="flex h-full items-start justify-start m-4" key={index}>
@@ -93,7 +99,8 @@ const TeacherAllCoourse = () => {
 
                             </div>
                         )
-                    })
+                    }):
+                    <h2>No Course</h2>
 
                 }
 
