@@ -13,6 +13,7 @@ import { getStudentTrackingSlice } from './Features/Activity/StudentTrackingSlic
 import { getAllCartsSlice } from './Features/Chackout/GetAllCartsSlice'
 import { getCartItemsSlice } from './Features/Chackout/GetCartItemsSlice'
 import { getStudentsNotificationsSlice } from './Features/Notifications/GetStudentsNotificationsSlice'
+import { getCourseByTeacherSlice } from './Features/Course/teacher/getCourseByTeacherSlice'
 
 
 
@@ -31,7 +32,8 @@ export const store = configureStore({
         getStudentTracking: getStudentTrackingSlice.reducer,
         getCarts: getAllCartsSlice.reducer,
         getCartItems: getCartItemsSlice.reducer,
-        getStudentsNotifications: getStudentsNotificationsSlice.reducer
+        getStudentsNotifications: getStudentsNotificationsSlice.reducer,
+      getTeacherCourse: getCourseByTeacherSlice.reducer
         
 
     },
