@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "video")
 public class Video {
-    @Id
     private ObjectId _id;
     private ObjectId courseid;
     private String name;

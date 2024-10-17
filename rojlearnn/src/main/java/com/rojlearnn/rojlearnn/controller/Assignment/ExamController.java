@@ -44,4 +44,9 @@ public class ExamController {
 		return es.createExam(exam);
 	}
 
+	@GetMapping("/getExamByUser/{userId}")
+	public ResponseEntity<?> getExamByUser(@PathVariable String userId){
+		return es.getExamByUser(userId);
+	}
+
 }

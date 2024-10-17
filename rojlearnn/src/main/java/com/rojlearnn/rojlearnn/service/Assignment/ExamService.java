@@ -45,4 +45,9 @@ public class ExamService {
 		return new ResponseEntity<>(ex, HttpStatus.CREATED);
 	}
 
+    public ResponseEntity<?> getExamByUser(String userId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getExamByUser'");
+    }
+
 }
