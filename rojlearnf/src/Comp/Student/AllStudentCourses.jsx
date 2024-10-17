@@ -49,7 +49,7 @@ const AllStudentCourses = () => {
                         const dateObj = formatDateString(item.created_at);
 
                         return (
-                            <div class="flex flex-col justify-start mx-4 my-2" key={index}>
+                            <div class="flex flex-col justify-start mx-4 my-2 cursor-pointer" key={index} onClick={() => navigate(`/coursevideo/${item._id}`)}>
                                 <div
                                     class="flex flex-row md:space-x-5 space-y-3 md:space-y-0  rounded-xl shadow-lg p-3 max-w-xl md:max-w-3xl border border-white bg-white">
                                     <div class="w-full md:w-1/3 bg-white place-items-center hidden md:block my-auto">
@@ -79,7 +79,7 @@ const AllStudentCourses = () => {
                                             <div class="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
                                                 {item.duration_hours}h</div>
                                         </div>
-                                        <h3 class="font-black text-gray-800 md:text-3xl text-xl">{item.title}</h3>
+                                        <h3 class="font-black text-gray-800 md:text-3xl text-xl point" >{item.title}</h3>
                                         <p class="md:text-lg text-gray-500 text-base">{item.description}</p>
                                         <p class="text-xs font-black text-gray-800">
                                             {dateObj.month} - {dateObj.day} - {dateObj.year} at {dateObj.hour}:{dateObj.minutes}:{dateObj.seconds} {dateObj.period}
