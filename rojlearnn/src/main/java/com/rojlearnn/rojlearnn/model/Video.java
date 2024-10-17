@@ -3,7 +3,6 @@ package com.rojlearnn.rojlearnn.model;
 import java.time.LocalDateTime;
 
 import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "video")
@@ -11,15 +10,15 @@ public class Video {
     private ObjectId _id;
     private ObjectId courseid;
     private String name;
-    private String derscrption;
+    private String description;
     private String url;
     private String duration;
     private LocalDateTime created_at = LocalDateTime.now();
     public Video() {}
-    public Video(ObjectId courseid, String name, String derscrption, String url, String duration) {
+    public Video(ObjectId courseid, String name, String description, String url, String duration) {
         this.courseid = courseid;
         this.name = name;
-        this.derscrption = derscrption;
+        this.description = description;
         this.url = url;
         this.duration = duration;
     }
@@ -41,11 +40,11 @@ public class Video {
     public void setName(String name) {
         this.name = name;
     }
-    public String getDerscrption() {
-        return derscrption;
+    public String getDescription() {
+        return description;
     }
-    public void setDerscrption(String derscrption) {
-        this.derscrption = derscrption;
+    public void setDescription(String description) {
+        this.description = description;
     }
     public String getUrl() {
         return url;

@@ -14,6 +14,7 @@ import { getAllCartsSlice } from './Features/Chackout/GetAllCartsSlice'
 import { getCartItemsSlice } from './Features/Chackout/GetCartItemsSlice'
 import { getStudentsNotificationsSlice } from './Features/Notifications/GetStudentsNotificationsSlice'
 import { getCourseByTeacherSlice } from './Features/Course/teacher/getCourseByTeacherSlice'
+import { getVideoByCourseSlice } from './Features/Video/GetVideoByCourseSlice'
 
 
 
@@ -33,7 +34,8 @@ export const store = configureStore({
         getCarts: getAllCartsSlice.reducer,
         getCartItems: getCartItemsSlice.reducer,
         getStudentsNotifications: getStudentsNotificationsSlice.reducer,
-      getTeacherCourse: getCourseByTeacherSlice.reducer
+      getTeacherCourse: getCourseByTeacherSlice.reducer,
+      getVideoByCourse: getVideoByCourseSlice.reducer
         
 
     },

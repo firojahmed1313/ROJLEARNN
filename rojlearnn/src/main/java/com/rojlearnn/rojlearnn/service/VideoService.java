@@ -18,8 +18,8 @@ public class VideoService {
     VideoRepo vr;
     public ResponseEntity<?> getAllVideoByCourseId(String courseId) {
         List <Video> l= vr.findAllByCourseid(new ObjectId(courseId));
-        if(l.size()==0) {
-            return new ResponseEntity<>("Data not found",HttpStatus.BAD_REQUEST);
+        if(l==null) {
+            return new ResponseEntity<>("Data not found",HttpStatus.OK);
         }
         return new ResponseEntity<>(l,HttpStatus.OK);
         

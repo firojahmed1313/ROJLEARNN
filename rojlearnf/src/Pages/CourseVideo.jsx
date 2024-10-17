@@ -113,7 +113,7 @@ const CourseVideo = () => {
                             {course?.data.duration_hours}h</div>
                     </div>
                 </div>
-                <StudentCourseVideo />
+                <StudentCourseVideo id={id} />
 
             </div>
         </>
