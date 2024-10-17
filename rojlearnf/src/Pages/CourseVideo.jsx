@@ -87,10 +87,10 @@ const CourseVideo = () => {
                     </ol>
                 </nav>
                 <div class="max-w-screen-md mx-auto text-center">
-                    <h1 class="mb-4 text-3xl font-bold dark:text-white"> <span class="text-indigo-600">{course.data.title}</span></h1>
-                    <p class="text-gray-500 dark:text-white">{course.data.description}</p>
+                    <h1 class="mb-4 text-3xl font-bold dark:text-white"> <span class="text-indigo-600">{course?.data.title}</span></h1>
+                    <p class="text-gray-500 dark:text-white">{course?.data.description}</p>
                     <div class="flex justify-between item-center">
-                        <p class="text-gray-500 font-medium block">{course.data.category}</p>
+                        <p class="text-gray-500 font-medium block">{course?.data.category}</p>
                         <div class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -110,7 +110,7 @@ const CourseVideo = () => {
                             </svg>
                         </div>
                         <div class="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
-                            {course.data.duration_hours}h</div>
+                            {course?.data.duration_hours}h</div>
                     </div>
                 </div>
                 <StudentCourseVideo />
