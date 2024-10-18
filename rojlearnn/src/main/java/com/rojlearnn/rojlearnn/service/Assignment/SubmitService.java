@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 import com.rojlearnn.rojlearnn.model.Marks;
 import com.rojlearnn.rojlearnn.model.User;
 import com.rojlearnn.rojlearnn.model.Assignment.Questions;
+import com.rojlearnn.rojlearnn.model.Assignment.Submit.Submitass;
 import com.rojlearnn.rojlearnn.model.Assignment.Submit.Submitexam;
 import com.rojlearnn.rojlearnn.model.Assignment.Submit.Submittask;
+import com.rojlearnn.rojlearnn.repo.Assignment.AssSubmitRepo;
+import com.rojlearnn.rojlearnn.repo.Assignment.AssignmentRepo;
 import com.rojlearnn.rojlearnn.repo.Assignment.MarksRepo;
 import com.rojlearnn.rojlearnn.repo.Assignment.QuestionsRepo;
 import com.rojlearnn.rojlearnn.repo.Assignment.TaskSubmitRepo;
@@ -24,6 +27,8 @@ public class SubmitService {
     MarksRepo mr;
     @Autowired
     TaskSubmitRepo tsr;
+    @Autowired
+    AssSubmitRepo asr;
     @Autowired
     QuestionsRepo qr;
     @Autowired
@@ -70,7 +75,7 @@ public class SubmitService {
 
     }
 
-    public ResponseEntity<?> getMarksByTeacher(String taskId, Marks marks) {
+    public ResponseEntity<?> getMarksByTeacher(String containid, Marks marks) {
         Marks m = mr.findByCuid(marks.getCuid());
         if (!(m == null)) {
             return new ResponseEntity<>("Marks Already Submitted", null, HttpStatus.FOUND);
@@ -79,5 +84,52 @@ public class SubmitService {
             return new ResponseEntity<>("Marks Submitted", null, HttpStatus.CREATED);
         }
 
+    }
+
+    public ResponseEntity<?> submitAssignment(String assignmentId, Submitass assignment) {
+        Submitass st = asr.findById(assignmentId).orElse(null);
+        if (!(st == null)) {
+            return new ResponseEntity<>("Task Already Submitted", null, HttpStatus.FOUND);
+        } else {
+            asr.save(assignment);
+            return new ResponseEntity<>("Task Submitted", null, HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<?> getTaskSubmitByUser(String userId) {
+        List<Submittask> st = tsr.findByUserid(new ObjectId(userId) );
+        if (!(st == null)) {
+            return new ResponseEntity<>(st, null, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Task Not Found", null, HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<?> getAssSubmitByUser(String userId) {
+        List<Submitass> st = asr.findByUserid(new ObjectId(userId));
+        if (!(st == null)) {
+            return new ResponseEntity<>(st, null, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Assignment Not Found", null, HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<?> getTaskSubmitByTaskId(String taskId) {
+        List<Submittask> st = tsr.findByTaskid(new ObjectId(taskId));
+        if (!(st == null)) {
+            return new ResponseEntity<>(st, null, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Task Not Found", null, HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<?> getAssSubmitByAssId(String assignmentId) {
+        List<Submitass> st = asr.findByAssignmentid(new ObjectId(assignmentId));
+        if (!(st == null)) {
+            return new ResponseEntity<>(st, null, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Assignment Not Found", null, HttpStatus.OK);
+        }
+        
     }
 }
