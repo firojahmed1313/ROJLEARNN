@@ -20,7 +20,7 @@ const tData = [
     id: 2,
     title: 'Profile',
     path: '/profile',
-    icon: 'ion:person-outline',
+    icon: 'healthicons:ui-user-profile',
   },
   {
     id: 3,
@@ -32,19 +32,19 @@ const tData = [
     id: 4,
     title:'Assignments',
     path: '/teacherAssignment',
-    icon: 'ion:file-tray-stacked-outline',
+    icon: 'material-symbols:assignment-late-outline-rounded',
   },
   {
     id: 5,
     title: 'Exams',
     path: '/teacherExam',
-    icon: 'ion:book-outline',
+    icon: 'healthicons:i-exam-multiple-choice-outline',
   },
   {
     id: 6,
     title: 'Tasks',
     path: '/teacherTask',
-    icon: 'ion:file-tray-stacked-outline',
+    icon: 'tdesign:task-visible',
   }
 
 ]
@@ -72,19 +72,19 @@ const sData = [
     id: 4,
     title: 'Exams',
     path: '/studentExam',
-    icon: 'ion:book-outline',
+    icon: 'healthicons:i-exam-multiple-choice-outline',
   },
   {
     id: 5,
     title: 'Reports',
     path: '/studentReport',
-    icon: 'ion:file-tray-stacked-outline',
+    icon: 'healthicons:i-exam-qualification-outline',
   },
   {
     id: 6,
     title: 'Activity',
     path: '/studentActivity',
-    icon: 'ion:file-tray-stacked-outline',
+    icon: 'mynaui:activity-square',
   }
 ]
 const ProfileNav = () => {
