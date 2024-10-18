@@ -15,10 +15,7 @@ const StudentCourseVideo = ({ id }) => {
     const token = Cookies.get('ROJLEARN');
     console.log(token);
     let videos;
-    // setTimeout(() => {
-    //     videos = useSelector((state) => state.getVideoByCourse.videoByCourse);
-
-    // }, 3000)
+    
     videos = useSelector((state) => state.getVideoByCourse.videoByCourse);
     console.log(videos);
     useEffect(() => {
