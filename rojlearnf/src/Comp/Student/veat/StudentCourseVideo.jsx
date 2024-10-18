@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getVideoByCourse } from '../../Redux/Features/Video/GetVideoByCourseSlice'
+import { getVideoByCourse } from '../../../Redux/Features/Video/GetVideoByCourseSlice'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import ReactPlayer from 'react-player'
