@@ -10,48 +10,79 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Assignment {
     private ObjectId _id;
     private ObjectId courseid;
-    private List<ObjectId> task;
-    private List<ObjectId> exam;
+    private String title;
+    private String descriptions;
+    private int totalmarks;
+    private int totalduration;
+    private String codequestions;
     private LocalDateTime created_at = LocalDateTime.now();
 
     public Assignment() {}
 
-    public Assignment(ObjectId courseid, List<ObjectId> task, List<ObjectId> exam) {
+    public Assignment(ObjectId courseid, String title, String descriptions, int totalmarks, int totalduration,
+            String codequestions) {
         this.courseid = courseid;
-        this.task = task;
-        this.exam = exam;
-    }
+        this.title = title;
+        this.descriptions = descriptions;
+        this.totalmarks = totalmarks;
+        this.totalduration = totalduration;
+        this.codequestions = codequestions;
+    }   
 
     public String get_id() {
         return _id.toString();
     }
 
-    public void set_id(ObjectId _id) {
-        this._id = _id;
-    }
+    public void set_id(String _id) {
+        this._id = new ObjectId(_id);
+    }   
 
     public String getCourseid() {
         return courseid.toString();
     }
 
     public void setCourseid(String courseid) {
-        this.courseid = new ObjectId(courseid) ;// courseid;
+        this.courseid = new ObjectId(courseid);
     }
 
-    public List<ObjectId> getTask() {
-        return task;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTask(List<ObjectId> task) {
-        this.task = task;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public List<ObjectId> getExam() {
-        return exam;
+    public String getDescriptions() {
+        return descriptions;
     }
 
-    public void setExam(List<ObjectId> exam) {
-        this.exam = exam;
+    public void setDescriptions(String descriptions) {
+        this.descriptions = descriptions;
+    }
+
+    public int getTotalmarks() {
+        return totalmarks;
+    }
+
+    public void setTotalmarks(int totalmarks) {
+        this.totalmarks = totalmarks;
+    }
+
+    public int getTotalduration() {
+        return totalduration;
+    }
+
+    public void setTotalduration(int totalduration) {
+        this.totalduration = totalduration;
+    }
+
+    public String getCodequestions() {
+        return codequestions;
+    }
+
+    public void setCodequestions(String codequestions) {
+        this.codequestions = codequestions;
     }
 
     public LocalDateTime getCreated_at() {
@@ -63,7 +94,6 @@ public class Assignment {
     }
 
     
-
 
 
 }
