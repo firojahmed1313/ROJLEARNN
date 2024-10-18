@@ -19,7 +19,7 @@ const Banner = () => {
                     <h1 className="text-3xl font-extrabold text-white sm:text-5xl">
                         Let us find your
 
-                        <strong className="block font-extrabold text-rose-500"> Forever Gole. </strong>
+                        <strong className="block font-extrabold text-rose-500"> Forever Goal. </strong>
                     </h1>
 
                     <p className="mt-4 max-w-lg text-white sm:text-xl/relaxed">

@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfileNav from '../../Comp/Navber/ProfileNav'
 import Topnav from '../../Comp/Navber/Topnav'
+import TeacherAllAssignment from '../../Comp/Teacher/TeacherAllAssignment'
 
 const TeacherAssignment = () => {
   return (
@@ -11,7 +12,7 @@ const TeacherAssignment = () => {
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
-          <div>TeacherAssignment</div>
+          <TeacherAllAssignment />
         </div>
       </div>
     </>
