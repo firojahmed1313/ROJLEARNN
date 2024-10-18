@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Carts = ({cartItems}) => {
     console.log(cartItems);
@@ -113,12 +114,12 @@ const Carts = ({cartItems}) => {
                                     </div>
 
                                     <div className="flex justify-end">
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to={'/cardCackout'}
                                             className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                                         >
                                             Checkout
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

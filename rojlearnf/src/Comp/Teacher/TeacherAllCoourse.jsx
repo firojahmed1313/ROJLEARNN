@@ -42,7 +42,7 @@ const TeacherAllCoourse = () => {
         <>
             <div className='w-full mt-8'>
                 <button
-                    class="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group"
+                    class="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group ml-auto mr-4"
                 >
                     <span
                         class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4"

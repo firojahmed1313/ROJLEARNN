@@ -26,6 +26,7 @@ import About from './Pages/About.jsx'
 import Settings from './Pages/Settings.jsx'
 import CourseVideo from './Pages/CourseVideo.jsx'
 import TeacherCourseVideo from './Pages/TeacherCourseVideo.jsx'
+import CourseCartChackout from './Pages/CourseCartChackout.jsx'
 function App() {
   const dispatch = useDispatch();
 
@@ -76,6 +77,7 @@ function App() {
       <Route path='/studentExam' element={<StuExam />} />
       <Route path='/studentReport' element={<StuReport />} />
       <Route path='/studentCourse' element={<StuCourse />} />
+      <Route path='/cardCackout' element={<CourseCartChackout />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route path='/courses' element={<CourseAll />} />
