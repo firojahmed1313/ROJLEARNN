@@ -34,26 +34,31 @@ public class AssignmentController {
 	public ResponseEntity<?> getAssignmentById(@PathVariable String id){
 		return as.getAssignmentById(id);
 	}
-    
-    @PutMapping("/update/exam/add/{id}")
-	public ResponseEntity<?> updateAssignmentExamAdd(@PathVariable String id, @RequestBody Assignment assignment) {
-		return as.updateAssignmentExamAdd(id, assignment);
-	}
-    
-	@PutMapping("/update/exam/remove/{id}")
-	public ResponseEntity<?> updateAssignmentExamRemove(@PathVariable String id, @RequestBody Assignment assignment) {
-		return as.updateAssignmentExamRemove(id, assignment);
-	}
 	
-	@PutMapping("/update/task/add/{id}")
-	public ResponseEntity<?> updateAssignmentTaskAdd(@PathVariable String id, @RequestBody Assignment assignment) {
-		return as.updateAssignmentTaskAdd(id, assignment);
+	@GetMapping("/getAssignmentByCourse/{id}")
+	public ResponseEntity<?> getAssignmentByCourse(@PathVariable String id){
+		return as.getAssignmentByCourse(id);
 	}
+    
+    // @PutMapping("/update/exam/add/{id}")
+	// public ResponseEntity<?> updateAssignmentExamAdd(@PathVariable String id, @RequestBody Assignment assignment) {
+	// 	return as.updateAssignmentExamAdd(id, assignment);
+	// }
+    
+	// @PutMapping("/update/exam/remove/{id}")
+	// public ResponseEntity<?> updateAssignmentExamRemove(@PathVariable String id, @RequestBody Assignment assignment) {
+	// 	return as.updateAssignmentExamRemove(id, assignment);
+	// }
 	
-	@PutMapping("/update/task/remove/{id}")
-	public ResponseEntity<?> updateAssignmentTaskRemove(@PathVariable String id, @RequestBody Assignment assignment) {
-		return as.updateAssignmentTaskRemove(id, assignment);
-	}
+	// @PutMapping("/update/task/add/{id}")
+	// public ResponseEntity<?> updateAssignmentTaskAdd(@PathVariable String id, @RequestBody Assignment assignment) {
+	// 	return as.updateAssignmentTaskAdd(id, assignment);
+	// }
+	
+	// @PutMapping("/update/task/remove/{id}")
+	// public ResponseEntity<?> updateAssignmentTaskRemove(@PathVariable String id, @RequestBody Assignment assignment) {
+	// 	return as.updateAssignmentTaskRemove(id, assignment);
+	// }
 	
 	
 	

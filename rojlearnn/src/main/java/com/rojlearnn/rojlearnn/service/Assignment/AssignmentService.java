@@ -65,6 +65,10 @@ public class AssignmentService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+    public ResponseEntity<?> getAssignmentByCourse(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAssignmentByCourse'");
+    }
 	
 
 }

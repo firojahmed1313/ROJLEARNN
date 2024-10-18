@@ -16,6 +16,8 @@ import { getStudentsNotificationsSlice } from './Features/Notifications/GetStude
 import { getCourseByTeacherSlice } from './Features/Course/teacher/getCourseByTeacherSlice'
 import { getVideoByCourseSlice } from './Features/Video/GetVideoByCourseSlice'
 import { getAllExamByCourseSlice } from './Features/Assignment/getAllExamByCourseSlice'
+import { getAllAssByCourseSlice } from './Features/Assignment/getAllAssByCourseSlice'
+import { getAllTaskByCourseSlice } from './Features/Assignment/getAllTaskByCourseSlice'
 
 
 
@@ -37,7 +39,10 @@ export const store = configureStore({
         getStudentsNotifications: getStudentsNotificationsSlice.reducer,
       getTeacherCourse: getCourseByTeacherSlice.reducer,
       getVideoByCourse: getVideoByCourseSlice.reducer,
-      getExamByCourse: getAllExamByCourseSlice.reducer
+      getExamByCourse: getAllExamByCourseSlice.reducer,
+      getAssByCourse: getAllAssByCourseSlice.reducer,
+      getTaskByCourse: getAllTaskByCourseSlice.reducer
+
         
 
     },
