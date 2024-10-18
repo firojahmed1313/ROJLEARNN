@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from 'js-cookie'
 import { getCourseByTeacher } from '../../Redux/Features/Course/teacher/getCourseByTeacherSlice'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getProfileData } from '../../Redux/Features/User/UserSlice';
 import { formatDateString } from '../utlits/FormatDateString'
 import Cardrowloder from '../utlits/loder/Cardrowloder'
@@ -71,7 +71,7 @@ const TeacherAllCoourse = () => {
                                         <p class="mb-8 text-xs font-black text-gray-800">
                                             {dateObj.month} - {dateObj.day} - {dateObj.year} at {dateObj.hour}:{dateObj.minutes}:{dateObj.seconds} {dateObj.period}
                                         </p>
-                                        <a class="inline-block" href="#">
+                                        <Link class="inline-block" to={`/teachercoursevideo/${item._id}`}>
                                             <button
                                                 class="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                 type="button"
@@ -93,7 +93,7 @@ const TeacherAllCoourse = () => {
                                                     ></path>
                                                 </svg>
                                             </button>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
 

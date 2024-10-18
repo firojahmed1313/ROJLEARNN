@@ -25,6 +25,7 @@ import Profile from './Pages/Profile.jsx'
 import About from './Pages/About.jsx'
 import Settings from './Pages/Settings.jsx'
 import CourseVideo from './Pages/CourseVideo.jsx'
+import TeacherCourseVideo from './Pages/TeacherCourseVideo.jsx'
 function App() {
   const dispatch = useDispatch();
 
@@ -69,6 +70,7 @@ function App() {
       <Route path='/profile' element={<Profile />} />
       <Route path='/settings' element={<Settings />} />
       <Route path='/coursevideo/:id' element={<CourseVideo />} />
+      <Route path='/teachercoursevideo/:id' element={<TeacherCourseVideo />} />
       <Route path='/student' element={<StudentsProfile />} />
       <Route path='/studentActivity' element={<StuActivity />} />
       <Route path='/studentExam' element={<StuExam />} />
