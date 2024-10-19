@@ -11,6 +11,7 @@ const StuReport = () => {
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
+          
           <StudentAllRecord />
         </div>
       </div>

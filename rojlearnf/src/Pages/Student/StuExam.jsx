@@ -33,7 +33,7 @@ const StuExam = () => {
                 </select>
               </div>
 
-              <div className=" hidden sm:block ml-3">
+              <div className=" hidden sm:block ml-3 my-4">
                 <div className="border-b border-gray-200">
                   <nav className="-mb-px flex gap-6">
                     <button

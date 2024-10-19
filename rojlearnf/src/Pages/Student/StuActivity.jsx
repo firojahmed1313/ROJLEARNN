@@ -39,7 +39,7 @@ const StuActivity = () => {
                 </select>
               </div>
 
-              <div className=" hidden sm:block w-full ml-3">
+              <div className=" hidden sm:block w-full ml-3 my-4">
                 <nav className="flex gap-6" aria-label="Tabs">
                   <button
                     onClick={() => setTab("Like")}
