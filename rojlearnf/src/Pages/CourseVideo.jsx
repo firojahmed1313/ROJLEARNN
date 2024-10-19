@@ -15,6 +15,10 @@ import StudentCourseTask from '../Comp/Student/veat/StudentCourseTask';
 
 const CourseVideo = () => {
     const [navset, setNavset] = useState("video");
+    const onOptionChangeHandler = (event) => {
+        setNavset(event.target.value);
+        console.log(event.target.value);
+    }
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -118,7 +122,19 @@ const CourseVideo = () => {
                             {course?.data.duration_hours}h</div>
                     </div>
                 </div>
-                <div class="border-b-2 border-gray-200 dark:border-neutral-700">
+                <div className="sm:hidden">
+                <label htmlFor="Tab" className="sr-only">Tab</label>
+
+                <select id="Tab" className="w-full h-10 text-center text-white border-gray-200 bg-gray-800" onChange={onOptionChangeHandler}>
+                  <option>video</option>
+                  <option>exam</option>
+                  <option>homework</option>
+                  <option>task</option>
+                  
+                </select>
+              </div>
+                <div class="hidden sm:block border-b-2 border-gray-200 dark:border-neutral-700">
+
                     <nav class="-mb-0.5 flex gap-x-6">
                         <button class={`${navset === "video" ? "border-blue-600 text-blue-600" : "border-transparent"} py-4 px-1 inline-flex items-center gap-2 border-b-2 text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500`} onClick={() => setNavset("video")}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 28">
