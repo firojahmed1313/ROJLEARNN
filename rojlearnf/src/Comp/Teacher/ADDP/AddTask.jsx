@@ -10,6 +10,8 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { ScrollArea } from "@/components/ui/scroll-area"
+
 const AddTask = () => {
     const handleAddCourse = () => {
         console.log("Add Course");
@@ -24,8 +26,10 @@ const AddTask = () => {
                 </div>
 
                 <AlertDialogContent>
+                <ScrollArea className="h-fit rounded-md border-4 m-2  w-fit">
+                    <div className="p-2">
                     <AlertDialogHeader>
-                        <div className="bg-white border-4 rounded-lg  shadow m-2">
+                        <div className="bg-white h-[60dvh] rounded-lg  m-2">
                             <div className="flex items-start justify-between p-5 border-b rounded-t">
                                 <h3 className="text-xl font-semibold">Add Task</h3>
                                 <AlertDialogCancel> <button
@@ -148,6 +152,8 @@ const AddTask = () => {
 
                         </div>
                     </AlertDialogHeader>
+                    </div>
+                    </ScrollArea>
                     
                 </AlertDialogContent>
             </AlertDialog>
