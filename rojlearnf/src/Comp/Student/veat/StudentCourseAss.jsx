@@ -66,7 +66,7 @@ const StudentCourseAss = ({id}) => {
                                             {assignment?.descriptions}
                                         </p>
 
-                                        <Link to={"/"} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                                        <Link to={`/studentAssignment/${assignment?._id}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
                                             See Questions
 
                                             <span aria-hidden="true" className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
