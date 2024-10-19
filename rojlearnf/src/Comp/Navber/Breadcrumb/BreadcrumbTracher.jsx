@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const BreadcrumbStu = ({type}) => {
+const BreadcrumbTracher = ({type}) => {
+    const path = (type == "Exam") ? "/teacherExam" : (type == "Assignment") ? "/teacherAssignment" : "/teacherTask"
   return (
     <>
         <div className="px-4 py-4 border rounded-lg border-light bg-blue-700 shadow-1 dark:shadow-card dark:border-transparent sm:px-6 md:px-8 md:py-5">
@@ -46,7 +47,7 @@ const BreadcrumbStu = ({type}) => {
               </li>
               <li className="flex items-center">
                 <Link
-                  to={"/studentCourse"}
+                  to={"/teacherCourses"}
                   className="text-base font-medium text-white hover:text-opacity-80"
                 >
                   Course
@@ -69,7 +70,7 @@ const BreadcrumbStu = ({type}) => {
               </li>
               <li className="flex items-center">
                 <Link
-                  to={"/studentExam"}
+                  to={path}
                   className="text-base font-medium text-white hover:text-opacity-80"
                 >
                   {type}
@@ -99,4 +100,4 @@ const BreadcrumbStu = ({type}) => {
   )
 }
 
-export default BreadcrumbStu
+export default BreadcrumbTracher

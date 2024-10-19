@@ -1,14 +1,15 @@
 import React from 'react'
-import BreadcrumbStu from '@/Comp/Navber/Breadcrumb/BreadcrumbStu'
 import Topnav from '@/Comp/Navber/Topnav'
 import StudentAssDetails from '@/Comp/Student/Details/StudentAssDetails'
+import BreadcrumbTracher from '@/Comp/Navber/Breadcrumb/BreadcrumbTracher'
 
 const TracherAssDetails = () => {
   return (
     <>
         <Topnav />
-        <BreadcrumbStu />
+        <BreadcrumbTracher type="Assignment" />
         <StudentAssDetails/>
+        <p>TracherAssDetails</p>
     </>
   )
 }

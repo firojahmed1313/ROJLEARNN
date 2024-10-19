@@ -8,7 +8,7 @@ const StudentExamDetails = () => {
   return (
     <>
         <Topnav />
-        <BreadcrumbStu />
+        <BreadcrumbStu type="Exam" />
         <StuExamDetails/>
     </>
   )
