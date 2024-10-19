@@ -1,7 +1,7 @@
 import React from 'react'
-import ProfileNav from '../Comp/Navber/ProfileNav'
-import Topnav from '../Comp/Navber/Topnav'
-import DashBord from '../Comp/Teacher/DashBord'
+import ProfileNav from '../../Comp/Navber/ProfileNav'
+import Topnav from '../../Comp/Navber/Topnav'
+import DashBord from '../../Comp/Teacher/DashBord'
 
 
 const StudentsProfile = () => {

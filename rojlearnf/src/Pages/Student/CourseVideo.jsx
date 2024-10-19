@@ -1,16 +1,16 @@
 import React from 'react'
-import Topnav from '../Comp/Navber/Topnav'
+import Topnav from '../../Comp/Navber/Topnav'
 import { Link, useLocation } from 'react-router-dom'
-import StudentCourseVideo from '../Comp/Student/veat/StudentCourseVideo';
+import StudentCourseVideo from '../../Comp/Student/veat/StudentCourseVideo';
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCourseDetailsData } from '../Redux/Features/Course/getCourseDetailsSlice'
+import { getCourseDetailsData } from '../../Redux/Features/Course/getCourseDetailsSlice'
 import { useEffect, useState } from 'react'
-import StuCourseNav from '../Comp/Navber/StuCourseNav';
-import StudentCourseExam from '../Comp/Student/veat/StudentCourseExam';
-import StudentCourseAss from '../Comp/Student/veat/StudentCourseAss';
-import StudentCourseTask from '../Comp/Student/veat/StudentCourseTask';
+import StuCourseNav from '../../Comp/Navber/StuCourseNav';
+import StudentCourseExam from '../../Comp/Student/veat/StudentCourseExam';
+import StudentCourseAss from '../../Comp/Student/veat/StudentCourseAss';
+import StudentCourseTask from '../../Comp/Student/veat/StudentCourseTask';
 
 
 const CourseVideo = () => {
