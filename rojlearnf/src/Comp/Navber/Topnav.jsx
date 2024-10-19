@@ -103,7 +103,7 @@ const Topnav = () => {
                     <span className="ml-2 text-sm text-white font-medium mr-4" onClick={() => setShow(!show)}>Account</span>
                     <div className="h-10 w-10 hover:ring-4 user cursor-pointer relative ring-blue-700/30 rounded-full mr-4 bg-cover bg-center" style={{ backgroundImage: `url(${(user?.profile_picture_url) ? user.profile_picture_url : avatar})` }} onClick={() => setShow(!show)} >
 
-                        <div className={`drop-down ${(!show) ? 'hidden' : 'block'}  w-48 overflow-hidden bg-slate-600 rounded-md shadow absolute top-12 right-3`}>
+                        <div className={`drop-down ${(!show) ? 'hidden' : 'block'}  w-48 overflow-hidden bg-slate-600 rounded-md shadow z-10 absolute top-12 right-3`}>
                             <ul>
                                 <li className="px-3 py-3 text-sm font-medium flex items-center space-x-2 hover:bg-slate-400" onClick={() => navigate("/settings")}>
                                     <span>

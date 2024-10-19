@@ -1,4 +1,5 @@
 import React from 'react'
+import AddExam from './ADDP/AddExam'
 
 
 const data = [
@@ -23,19 +24,21 @@ const data = [
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, voluptatum.'
     }
 ]
-    
+
 const TeacherAllExam = () => {
     return (
         <>
+            <div>
+                <p className=" text-center text-blue-700 mt-4 text-3xl font-bold">All Exams</p>
+            </div>
             <div className='my-4 '>
 
-                <button class="flex gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 py-3 rounded-md border border-gray-600 hover:scale-105 duration-200 hover:text-gray-500 hover:border-gray-800 hover:from-black hover:to-gray-900 ml-auto mr-4">Add Exam</button>
-
+                <AddExam />
             </div>
             {
                 (data.length != 0)
                     ?
-                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 w-[96%] mx-auto">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 w-[96%] mx-auto mt-4">
                         {
                             data?.map((item) => {
                                 return (
