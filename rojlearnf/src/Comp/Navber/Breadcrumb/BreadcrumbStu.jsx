@@ -1,12 +1,9 @@
-import StudentTaskDetails from '@/Comp/Student/Details/StudentTaskDetails'
 import React from 'react'
-import Topnav from '@/Comp/Navber/Topnav'
 import { Link } from 'react-router-dom'
 
-const StuTaskDetails = () => {
+const BreadcrumbStu = () => {
   return (
     <>
-        <Topnav />
         <div className="px-4 py-4 border rounded-lg border-light bg-blue-700 shadow-1 dark:shadow-card dark:border-transparent sm:px-6 md:px-8 md:py-5">
             <ul className="flex items-center">
               <li className="flex items-center">
@@ -75,7 +72,7 @@ const StuTaskDetails = () => {
                   to={"/studentExam"}
                   className="text-base font-medium text-white hover:text-opacity-80"
                 >
-                  Task
+                  Exam
                 </Link>
                 <span className="px-3 text-white">
                   <svg
@@ -94,13 +91,12 @@ const StuTaskDetails = () => {
                 </span>
               </li>
               <li className="text-base font-medium text-white text-opacity-80">
-                Task Details
+                Exam Details
               </li>
             </ul>
         </div>
-        <StudentTaskDetails />
     </>
   )
 }
 
-export default StuTaskDetails
+export default BreadcrumbStu

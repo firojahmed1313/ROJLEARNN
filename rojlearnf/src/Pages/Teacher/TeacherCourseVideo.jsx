@@ -169,8 +169,8 @@ const TeacherCourseVideo = () => {
                 </div>
                 {
                     navset == "video" ?
-                        <StudentCourseVideo id={id} />
-                        : (navset == "exam") ? <StudentCourseExam id={id} /> : (navset == "task") ? <StudentCourseTask id={id} /> : <StudentCourseAss id={id} />
+                        <StudentCourseVideo id={id} role="teacher" />
+                        : (navset == "exam") ? <StudentCourseExam id={id} role="teacher" /> : (navset == "task") ? <StudentCourseTask id={id} role="teacher" /> : <StudentCourseAss id={id} role="teacher" />
                 }
 
 

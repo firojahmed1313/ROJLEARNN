@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { getAllTaskByCourse } from '../../../Redux/Features/Assignment/getAllTaskByCourseSlice'
 import { Link } from 'react-router-dom'
 
-const StudentCourseTask = ({id}) => {
+const StudentCourseTask = ({id,role}) => {
   const navigate = useNavigate();
     const dispatch = useDispatch();
     console.log(id);
@@ -66,7 +66,7 @@ const StudentCourseTask = ({id}) => {
                                             {task?.descriptions}
                                         </p>
 
-                                        <Link to={`/studentTask/${task?._id}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                                        <Link to={`/${(role=="student"?"studentTask":"teacherTask")}/${task?._id}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
                                             Submit Task
 
                                             <span aria-hidden="true" className="block transition-all group-hover:ms-0.5 rtl:rotate-180">

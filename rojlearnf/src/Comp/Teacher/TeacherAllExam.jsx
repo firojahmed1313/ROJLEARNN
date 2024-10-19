@@ -45,7 +45,7 @@ const TeacherAllExam = () => {
                             data?.map((item) => {
                                 return (
                                     <div
-                                        onClick={() => navigate(`/studentExam/${item.id}`)}
+                                        onClick={() => navigate(`/teacherExam/${item.id}`)}
                                         class=" bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden cursor-pointer"
                                     >
                                         <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">

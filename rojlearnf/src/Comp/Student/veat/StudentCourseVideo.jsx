@@ -7,11 +7,12 @@ import { useNavigate } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import { useRef } from 'react'
 
-const StudentCourseVideo = ({ id }) => {
+const StudentCourseVideo = ({ id,role }) => {
     const [no, setNo] = useState(0);
     const playerRef = useRef(null);
     const dispatch = useDispatch();
     console.log(id);
+    console.log(role);
     const token = Cookies.get('ROJLEARN');
     console.log(token);
     let videos;

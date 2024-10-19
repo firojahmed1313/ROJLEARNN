@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-const StudentCourseExam = ({ id }) => {
+const StudentCourseExam = ({ id,role }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const StudentCourseExam = ({ id }) => {
                                             {exam?.descriptions}
                                         </p>
 
-                                        <Link to={`/studentExam/${exam?._id}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                                        <Link to={`/${(role=="student"?"studentExam":"teacherExam")}/${exam?._id}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
                                             Give Exam
 
                                             <span aria-hidden="true" className="block transition-all group-hover:ms-0.5 rtl:rotate-180">

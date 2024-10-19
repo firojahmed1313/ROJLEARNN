@@ -43,7 +43,7 @@ const TeacherAllTask = () => {
                             data?.map((item) => {
                                 return (
                                     <div
-                                        class=" bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden cursor-pointer " onClick={() => navigate(`/studentTask/${item.id}`)}
+                                        class=" bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden cursor-pointer " onClick={() => navigate(`/teacherTask/${item.id}`)}
                                     >
                                         <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
                                             <p class="absolute bottom-6 left-7 text-white text-2xl">{item.id}</p>

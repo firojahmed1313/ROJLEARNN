@@ -27,9 +27,12 @@ import Settings from './Pages/Settings.jsx'
 import CourseVideo from './Pages/Student/CourseVideo.jsx'
 import TeacherCourseVideo from './Pages/Teacher/TeacherCourseVideo.jsx'
 import CourseCartChackout from './Pages/Course/CourseCartChackout.jsx'
-import StudentExamDetails from './Pages/Student/StudentExamDetails'
-import StuTaskDetails from './Pages/Student/StuTaskDetails'
-import StuAssDetails from './Pages/Student/StuAssDetails'
+import StudentExamDetails from './Pages/Student/Details/StudentExamDetails'
+import StuTaskDetails from './Pages/Student/Details/StuTaskDetails'
+import StuAssDetails from './Pages/Student/Details/StuAssDetails'
+import TeacherExamDetails from './Pages/Teacher/Details/TeacherExamDetails'
+import TracherTaskDetails from './Pages/Teacher/Details/TracherTaskDetails'
+import TracherAssDetails from './Pages/Teacher/Details/TracherAssDetails'
 function App() {
   const dispatch = useDispatch();
 
@@ -71,6 +74,9 @@ function App() {
       <Route path='/teacherAssignment' element={<TeacherAssignment />} />
       <Route path='/teacherExam' element={<TeacherExam />} />
       <Route path='/teacherTask' element={<TeacherTask />} />
+      <Route path='/teacherExam/:id' element={<TeacherExamDetails />} />
+      <Route path='/teacherTask/:id' element={<TracherTaskDetails />} />
+      <Route path='/teacherAssignment/:id' element={<TracherAssDetails />} />
       <Route path='/profile' element={<Profile />} />
       <Route path='/settings' element={<Settings />} />
       <Route path='/coursevideo/:id' element={<CourseVideo />} />

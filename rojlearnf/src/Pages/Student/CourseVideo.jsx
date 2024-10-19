@@ -170,8 +170,8 @@ const CourseVideo = () => {
                 </div>
                 {
                     navset == "video" ?
-                        <StudentCourseVideo id={id} />
-                        : (navset == "exam") ? <StudentCourseExam id={id} /> : (navset == "task") ? <StudentCourseTask id={id} /> : <StudentCourseAss id={id} />
+                        <StudentCourseVideo id={id} role="student" />
+                        : (navset == "exam") ? <StudentCourseExam id={id} role="student" /> : (navset == "task") ? <StudentCourseTask id={id} role="student" /> : <StudentCourseAss id={id} role="student" />
                 }
 
 
