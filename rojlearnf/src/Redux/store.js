@@ -18,6 +18,9 @@ import { getVideoByCourseSlice } from './Features/Video/GetVideoByCourseSlice'
 import { getAllExamByCourseSlice } from './Features/Assignment/getAllExamByCourseSlice'
 import { getAllAssByCourseSlice } from './Features/Assignment/getAllAssByCourseSlice'
 import { getAllTaskByCourseSlice } from './Features/Assignment/getAllTaskByCourseSlice'
+import { getTaskDetailsSlice } from './Features/EATDetailsByid/GetTaskDetailsSlice'
+import { getAssignmentDetailsSlice } from './Features/EATDetailsByid/GetAssignmentDetailsSlice'
+import { getExamDetailsSlice } from './Features/EATDetailsByid/GetExamDetailsSlice'
 
 
 
@@ -41,7 +44,10 @@ export const store = configureStore({
       getVideoByCourse: getVideoByCourseSlice.reducer,
       getExamByCourse: getAllExamByCourseSlice.reducer,
       getAssByCourse: getAllAssByCourseSlice.reducer,
-      getTaskByCourse: getAllTaskByCourseSlice.reducer
+      getTaskByCourse: getAllTaskByCourseSlice.reducer,
+      getTaskById: getTaskDetailsSlice.reducer,
+      getAssignmentById: getAssignmentDetailsSlice.reducer,
+      getExamById: getExamDetailsSlice.reducer,
 
         
 
