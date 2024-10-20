@@ -6,8 +6,10 @@ import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import ButtonGive from '@/Comp/Button/ButtonGive'
 
 const StudentTaskDetails = () => {
+  const [showQuestion, setShowQuestion] = React.useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,16 +24,24 @@ const StudentTaskDetails = () => {
       navigate("/login");
     }
     else {
-      if (taskDetails == null) {
-        dispatch(getTaskDetails(id));
-      }
+
+      dispatch(getTaskDetails(id));
+
     }
   }, [id])
+  const handelAnswer = (e) => {
+    e.preventDefault();
+    setShowQuestion(!showQuestion);
+    //console.log("ANS");
+    const fromobj = new FormData(e.target);
+    const obj = Object.fromEntries(fromobj.entries());
+    console.log(obj);
+  }
   return (
     <>
-      <div class="items-center flex flex-wrap">
+      <div class="items-center flex flex-wrap my-4">
         <div class="hidden lg:block w-full md:w-4/12 ml-auto mr-auto px-4">
-          <img alt="..." class="max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80" />
+          <img alt="..." class="max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1535957998253-26ae1ef29506?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
         </div>
         <div class="w-[96%] lg:w-5/12 ml-auto mr-auto px-4 mx-auto">
           <div class="md:pr-12">
@@ -49,21 +59,19 @@ const StudentTaskDetails = () => {
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
               {taskDetails?.descriptions}
             </p>
-            <h5 class="text-lg mt-4 font-bold">{taskDetails?.taskquestions}</h5>
             <ul class="list-none mt-6">
               <li class="py-2">
                 <div class="flex items-center">
                   <div>
-                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                      <g fill="none" stroke="#9f7aea" stroke-linejoin="round" stroke-width="4">
-                        <path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z" />
-                        <path stroke-linecap="round" d="M24.008 12v12.01l8.479 8.48" />
-                      </g>
-                    </svg></span>
+                    <span class="text-xs font-semibold inline-block py-2 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                        <path fill="black" fill-rule="evenodd" d="M6 1a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2v.07a7 7 0 0 1 2.812 1.058l.908-.908a.75.75 0 1 1 1.06 1.06l-.8.8A7 7 0 1 1 7 2.07V2a1 1 0 0 1-1-1m7.5 8a5.5 5.5 0 1 1-11 0a5.5 5.5 0 0 1 11 0M8.75 5.75a.75.75 0 0 0-1.5 0v3.56l.22.22l2.254 2.254a.75.75 0 1 0 1.06-1.06L8.75 8.689z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
                   </div>
                   <div>
-                    <h4 class="text-blueGray-500">
-                      {taskDetails?.totalduration} h
+                    <h4 class="text-blueGray-500 font-semibold">
+                      Total Duration : {taskDetails?.totalduration} h
                     </h4>
                   </div>
                 </div>
@@ -71,28 +79,59 @@ const StudentTaskDetails = () => {
               <li class="py-2">
                 <div class="flex items-center">
                   <div>
-                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
-                      <path fill="none" stroke="#9f7aea" stroke-linecap="round" stroke-linejoin="round" d="M24 2.5A21.5 21.5 0 1 0 45.5 24A21.51 21.51 0 0 0 24 2.5m0 11.18l3.59 6.54l7.18 1.51l-5 5.51l.82 7.46L24 31.56l-6.68 3.1l.87-7.45l-5-5.54l7.2-1.46z" />
-                    </svg></span>
+                    <span class="text-xs font-semibold inline-block py-2 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 56 56">
+                        <path fill="black" d="M25.926 28.539V16.117h-3.492c-3.868 0-5.907-2.508-5.907-4.945c0-2.531 1.875-4.031 4.383-4.031c2.883 0 5.133 2.226 5.133 5.953v3.023h3.914v-3.023c0-3.727 2.25-5.953 5.133-5.953c2.508 0 4.406 1.5 4.406 4.03c0 2.438-2.11 4.946-5.93 4.946h-3.492V28.54h16.524c2.554 0 3.937-.984 3.937-3.492V19.61c0-2.484-1.383-3.492-3.937-3.492h-5.461c1.453-1.312 2.32-3.094 2.32-5.11c0-4.523-3.586-7.78-8.133-7.78c-3.375 0-6.117 1.874-7.312 5.203c-1.196-3.328-3.961-5.203-7.336-5.203c-4.524 0-8.133 3.257-8.133 7.78c0 2.016.844 3.798 2.32 5.11h-5.46c-2.415 0-3.938 1.008-3.938 3.492v5.438c0 2.508 1.406 3.492 3.937 3.492Zm0 24.234V31.047H8.816V46.82c0 3.914 2.297 5.953 6.211 5.953Zm4.148-21.726v21.726h10.899c3.914 0 6.21-2.039 6.21-5.953V31.047Z" />
+                      </svg>
+                    </span>
                   </div>
                   <div>
-                    <h4 class="text-blueGray-500">{taskDetails?.totalmarks}</h4>
+                    <h4 class="text-blueGray-500 font-semibold"> Total Marks : {taskDetails?.totalmarks}</h4>
                   </div>
                 </div>
               </li>
               <li class="py-2">
                 <div class="flex items-center">
                   <div>
-                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <span class="text-xs font-semibold inline-block py-2 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                       <path fill="black" d="M18 15H6l-4 4V3a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1m5-6v14l-4-4H8a1 1 0 0 1-1-1v-1h14V8h1a1 1 0 0 1 1 1M8.19 4c-.87 0-1.57.2-2.11.59c-.52.41-.78.98-.77 1.77l.01.03h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28c.18.19.26.45.26.75c0 .32-.07.59-.23.82c-.14.23-.35.43-.61.59c-.51.34-.86.64-1.05.91C7.11 9.08 7 9.5 7 10h2c0-.31.04-.56.13-.74s.26-.36.51-.52c.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82C9.85 4.23 9.12 4 8.19 4M7 11v2h2v-2zm6 2h2v-2h-2zm0-9v6h2V4z" />
                     </svg></span>
                   </div>
                   <div>
-                    <h4 class="text-blueGray-500">{taskDetails?.totalquestions}</h4>
+                    <h4 class="text-blueGray-500 font-semibold"> Total Questions : {taskDetails?.totalquestions}</h4>
                   </div>
                 </div>
               </li>
             </ul>
+          </div>
+          {
+            (!showQuestion) ?
+              <ButtonGive title="Start Task" colore="before:bg-pink-300" hander={() => setShowQuestion(!showQuestion)} /> : null
+
+          }
+          <div className={`${showQuestion ? "" : "hidden"}`}>
+            <h3 class="text-lg mt-4 font-bold">Question:</h3>
+            <h5 class="text-lg mt-4 font-bold">{taskDetails?.taskquestions}</h5>
+            <div className="col-span-full mt-4">
+              <form onSubmit={handelAnswer}>
+                <label
+                  htmlFor="answer"
+                  className="text-lg font-bold text-gray-900 block mb-2"
+                >
+                  Answer :
+                </label>
+                <textarea
+                  id="answer"
+                  name="answer"
+                  rows="6"
+                  className="bg-gray-50 border my-4 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
+                  placeholder="Answer"
+                ></textarea>
+                <ButtonGive title="Submit" colore="before:bg-pink-300" />
+
+              </form>
+            </div>
+
           </div>
         </div>
       </div>
