@@ -95,22 +95,38 @@ const TeacherCourseVideo = () => {
                         </li>
                     </ol>
                 </nav>
-                <div class="max-w-screen-md mx-auto text-center">
-                    <h1 class="mb-4 text-3xl font-bold dark:text-white"> <span class="text-indigo-600">{course?.data.title}</span></h1>
-                    <p class="text-gray-500 dark:text-white">{course?.data.description}</p>
-                    <div class="flex justify-between item-center">
-                        <p class="text-gray-500 font-medium block">{course?.data.category}</p>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <div class="space-y-3 mx-4 my-2">
+                    <h5 class="text-sm font-medium uppercase text-gray-400">{course?.data.category.toUpperCase()}</h5>
+                    <h1 class="text-3xl font-semibold">{course?.data.title}</h1>
+                    <p class="">{course?.data.description}</p>
+
+                    <ul class="flex gap-4">
+                        <li class="flex items-center">
+                            <span class="mr-1.5 rounded bg-gray-900 px-2 text-sm font-semibold text-white"> 4.9 </span>
+                            <div class="flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-purple-500">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-purple-500">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-purple-500">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-purple-500">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-gray-400">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
-                            <p class="text-gray-600 font-bold text-sm ml-1">
-                                4.96
-                                <span class="text-gray-500 font-normal">(76 reviews)</span>
-                            </p>
-                        </div>
+                            245 Enrolled
+                        </li>
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -119,20 +135,26 @@ const TeacherCourseVideo = () => {
                             </svg>
                         </div>
                         <div class="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
-                            {course?.data.duration_hours}h</div>
-                    </div>
+                            {course?.data.duration_hours}h
+                        </div>
+                    </ul>
+                    <ul class="sm:flex items-center text-sm text-gray-500">
+                        <li>Created by <a href="#" class="font-bold"> Stella Johnson </a></li>
+                        <span class="hidden sm:inline mx-3 text-2xl">·</span>
+                        <li>Last updated 01/2022</li>
+                    </ul>
                 </div>
                 <div className="sm:hidden">
-                <label htmlFor="Tab" className="sr-only">Tab</label>
+                    <label htmlFor="Tab" className="sr-only">Tab</label>
 
-                <select id="Tab" className="w-full h-10 text-center text-white border-gray-200 bg-gray-800" onChange={onOptionChangeHandler}>
-                  <option>video</option>
-                  <option>exam</option>
-                  <option>homework</option>
-                  <option>task</option>
-                  
-                </select>
-              </div>
+                    <select id="Tab" className="w-full h-10 text-center text-white border-gray-200 bg-gray-800" onChange={onOptionChangeHandler}>
+                        <option>video</option>
+                        <option>exam</option>
+                        <option>homework</option>
+                        <option>task</option>
+
+                    </select>
+                </div>
                 <div class="hidden sm:block border-b-2 border-gray-200 dark:border-neutral-700">
                     <nav class="-mb-0.5 flex gap-x-6">
                         <button class={`${navset === "video" ? "border-blue-600 text-blue-600" : "border-transparent"} py-4 px-1 inline-flex items-center gap-2 border-b-2 text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500`} onClick={() => setNavset("video")}>
