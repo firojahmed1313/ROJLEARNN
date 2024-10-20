@@ -21,6 +21,7 @@ import { getAllTaskByCourseSlice } from './Features/Assignment/getAllTaskByCours
 import { getTaskDetailsSlice } from './Features/EATDetailsByid/GetTaskDetailsSlice'
 import { getAssignmentDetailsSlice } from './Features/EATDetailsByid/GetAssignmentDetailsSlice'
 import { getExamDetailsSlice } from './Features/EATDetailsByid/GetExamDetailsSlice'
+import { getCourseRateingSlice } from './Features/Course/getCourseRateingSlice'
 
 
 
@@ -30,6 +31,7 @@ export const store = configureStore({
         getUser: UserSlice.reducer,
         getCourse: getCourseSlice.reducer,
         getCourseDetails: getCourseDetailsSlice.reducer,
+        getCourseRateing: getCourseRateingSlice.reducer,
         getCourseofStudent: getCourseofStudentSlice.reducer,
         getStudentReport: getStudentReportSlice.reducer,
         getStudentLike: getStudentsLikeSlice.reducer,

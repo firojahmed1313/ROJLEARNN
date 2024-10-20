@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCourseDetailsData } from '../../Redux/Features/Course/getCourseDetailsSlice'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
+import { getCourseRateing } from '@/Redux/Features/Course/getCourseRateingSlice'
 const CourseDetails = () => {
     const [courseData, setCourseData] = useState([]);
     const navigate = useNavigate();
@@ -18,6 +19,8 @@ const CourseDetails = () => {
     console.log(id);
     const course = useSelector((state) => state.getCourseDetails.course);
     console.log(course);
+    const courseRateing = useSelector((state) => state.getCourseRateing.courseRateing);
+    console.log(courseRateing);
     useEffect(() => {
         if (course != null) {
             setCourseData(course.data);
@@ -29,6 +32,8 @@ const CourseDetails = () => {
         }
         else {
             dispatch(getCourseDetailsData(id));
+            dispatch(getCourseRateing(id));
+
         }
     }, [id])
     console.log("courseData : ", courseData);
@@ -133,7 +138,7 @@ const CourseDetails = () => {
 
             }
 
-            <Testimonials />
+            <Testimonials RatingData={courseRateing} />
             <Footer />
         </>
     )

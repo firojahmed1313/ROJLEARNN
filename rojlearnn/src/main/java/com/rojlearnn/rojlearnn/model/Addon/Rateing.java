@@ -10,6 +10,7 @@ public class Rateing {
 
     private ObjectId _id;
     private int rating;
+    private String message;
     private String cuid;
     private ObjectId contentid;
     private ObjectId userid;
@@ -17,8 +18,9 @@ public class Rateing {
 
     public Rateing() {
     }
-    public Rateing(int rating, String cuid, ObjectId contentid) {
+    public Rateing(int rating, String message, String cuid, ObjectId contentid) {
         this.rating = rating;
+        this.message = message;
         this.cuid = cuid;
         this.contentid = contentid ;//contentid;
     }
@@ -33,6 +35,12 @@ public class Rateing {
     }
     public void setRating(int rating) {
         this.rating = rating;
+    }
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
     }
     public String getCuid() {
         return cuid;
