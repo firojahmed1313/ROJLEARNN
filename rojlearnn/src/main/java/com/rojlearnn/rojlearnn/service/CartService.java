@@ -76,7 +76,7 @@ public class CartService {
         User user = us.getCurrentUserProfile();
         Cartitems c = cri.findBy_id(new ObjectId(cartitemsid));
         if(c==null) {
-            return new ResponseEntity<>("Cartitems not found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Cartitems not found",HttpStatus.OK);
         }
         if(!(user.get_id().toString().equals(c.getUserid()))) {
             return new ResponseEntity<>("ID MISMATCH",HttpStatus.FORBIDDEN);

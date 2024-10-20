@@ -24,7 +24,7 @@ public class CourseService {
     public ResponseEntity<?> getCourseById(String courseId) {
         Course course = cr.findById(courseId).orElse(null);
         if(course==null) {
-            return new ResponseEntity<>("Course not found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Course not found",HttpStatus.OK);
         }
         return new ResponseEntity<>(course,HttpStatus.OK);
     }
@@ -46,7 +46,7 @@ public class CourseService {
     public ResponseEntity<?> updateCourse(Course course) {
         Course existingCourse = cr.findById(course.get_id()).orElse(null);
         if(existingCourse==null) {
-            return new ResponseEntity<>("Course not found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Course not found",HttpStatus.OK);
         }
         if(existingCourse.getInstructor().toString().equals(course.getInstructor().toString())) {
             existingCourse.setTitle(course.getTitle());

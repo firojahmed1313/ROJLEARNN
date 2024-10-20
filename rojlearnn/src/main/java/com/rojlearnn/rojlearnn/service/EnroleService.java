@@ -34,7 +34,7 @@ public class EnroleService {
         List<Enrole> e = er.findAllByCourseid(new ObjectId(courseId));
         System.out.println(e);
         if (e.isEmpty()) {
-            return new ResponseEntity<>("Course not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Course not found", HttpStatus.OK);
             
         }
         List<User> u = new ArrayList<>();
@@ -61,7 +61,7 @@ public class EnroleService {
         List<Enrole> e = er.findAllByStudentid(new ObjectId(studentId));
         System.out.println(e);
         if (e.isEmpty()) {
-            return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Student not found", HttpStatus.OK);
             
         }
         List<Course> u = new ArrayList<>();
@@ -96,7 +96,7 @@ public class EnroleService {
     public ResponseEntity<?> deleteEnrollment(String enrollmentId) {
         Enrole en = er.findById(enrollmentId).orElse(null);
         if(en == null) {
-            return new ResponseEntity<>("Enrollment not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Enrollment not found", HttpStatus.OK);
         }
         if(!(en.getStudentid().toString().equals(us.getCurrentUserProfile().get_id().toString()))) {
             return new ResponseEntity<>("YOU ARE NOT ELIGIBLE TO DELETE ENROLLMENT.", HttpStatus.FORBIDDEN);
@@ -112,7 +112,7 @@ public class EnroleService {
     public ResponseEntity<?> updateEnrollmentStatus(String enrollmentId, Enrole enrole) {
         Enrole en = er.findById(enrollmentId).orElse(null);
         if(en == null) {
-            return new ResponseEntity<>("Enrollment not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Enrollment not found", HttpStatus.OK);
         }
         if(!(en.getStudentid().toString().equals(us.getCurrentUserProfile().get_id().toString()))) {
             return new ResponseEntity<>("YOU ARE NOT ELIGIBLE TO UPDATE ENROLLMENT.", HttpStatus.FORBIDDEN);

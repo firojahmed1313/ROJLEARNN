@@ -31,7 +31,7 @@ public class VideoService {
     public ResponseEntity<?> deleteVideo(String videoId) {
         Video v = vr.findById(videoId).orElse(null);
         if(v==null) {
-            return new ResponseEntity<>("Video not found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Video not found",HttpStatus.OK);
         }
         vr.deleteById(videoId);
         return new ResponseEntity<>("Video deleted",HttpStatus.OK);

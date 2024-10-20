@@ -40,7 +40,7 @@ public class SubmitService {
         for (Submitexam exam : exams) {
             Questions ex = qr.findById(exam.get_id()).orElse(null);
             if (ex == null) {
-                return new ResponseEntity<>("Question Not Found", null, HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>("Question Not Found", null, HttpStatus.OK);
             } else {
                 if (ex.getAnswer().equals(exam.getAns())) {
                     marks += 4;

@@ -21,7 +21,7 @@ public class ReportService {
         List <Marks> l= mr.findAllByContainid(new ObjectId(contentid));
         //System.out.println(l);
         if(l.isEmpty()) {
-            return new ResponseEntity<>("No Record Found",HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("No Record Found",HttpStatus.OK);
         }
         return new ResponseEntity<>(l,HttpStatus.OK);
     }
@@ -31,7 +31,7 @@ public class ReportService {
         List <Marks> l= mr.findAllByUserid(new ObjectId(studentid));
         //System.out.println(l);
         if(l.isEmpty()) {
-            return new ResponseEntity<>("No Record Found",HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("No Record Found",HttpStatus.OK);
         }
         return new ResponseEntity<>(l,HttpStatus.OK);
     }
@@ -41,7 +41,7 @@ public class ReportService {
         Marks l= mr.findByCuid(cuid);
         //System.out.println(l);
         if(l==null) {
-            return new ResponseEntity<>("No Record Found",HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("No Record Found",HttpStatus.OK);
         }
         return new ResponseEntity<>(l,HttpStatus.OK);
     }

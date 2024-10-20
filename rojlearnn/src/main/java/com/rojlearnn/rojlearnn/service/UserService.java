@@ -25,7 +25,7 @@ public class UserService {
     public ResponseEntity<?> findUserById(String userId) {
         User user = ur.findById(userId).orElse(null);
         if (user == null) {
-            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("User not found", HttpStatus.OK);
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -51,7 +51,7 @@ public class UserService {
         System.out.println("user");
         User existingUser = ur.findById(user.get_id()).orElse(null);
         if (existingUser == null) {
-            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("User not found", HttpStatus.OK);
         }
         existingUser.setUsername(user.getUsername());
         existingUser.setPassword(user.getPassword());
@@ -65,7 +65,7 @@ public class UserService {
     public ResponseEntity<?> deleteUser(String userId) {
         User user = ur.findById(userId).orElse(null);
         if (user == null) {
-            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("User not found", HttpStatus.OK);
         }
         ur.deleteById(userId);
         return new ResponseEntity<>("User deleted", HttpStatus.OK);
