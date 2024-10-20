@@ -22,7 +22,10 @@ public class TaskService {
 	}
 
 	public ResponseEntity<?> getTaskById(String id) {
-		Task task= tr.findById(id).get();
+		Task task= tr.findById(id).orElse(null);
+		if(task==null) {
+			return new ResponseEntity<>("Task not found",HttpStatus.OK);
+		}
 		return new ResponseEntity<>(task, HttpStatus.OK);
 	}
 

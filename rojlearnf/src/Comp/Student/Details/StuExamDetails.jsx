@@ -56,7 +56,7 @@ const StuExamDetails = () => {
               </svg>
               
             </div>
-            <h2 class="text-sky-600 text-lg font-semibold">{examDetails?.questiontype.toUpperCase()}</h2>
+            <h2 class="text-sky-600 text-lg font-semibold">{examDetails?.questiontype?.toUpperCase()}</h2>
             <h3 class="text-3xl font-semibold">{examDetails?.title}</h3>
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
               {examDetails?.descriptions}
