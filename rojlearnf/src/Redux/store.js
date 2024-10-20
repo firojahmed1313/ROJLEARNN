@@ -22,6 +22,8 @@ import { getTaskDetailsSlice } from './Features/EATDetailsByid/GetTaskDetailsSli
 import { getAssignmentDetailsSlice } from './Features/EATDetailsByid/GetAssignmentDetailsSlice'
 import { getExamDetailsSlice } from './Features/EATDetailsByid/GetExamDetailsSlice'
 import { getCourseRateingSlice } from './Features/Course/getCourseRateingSlice'
+import { getSubmitassSlice } from './Features/SubmitTeacher/GetSubmitassSlice'
+import { getSubmitTaskSlice } from './Features/SubmitTeacher/GetSubmitTaskSlice'
 
 
 
@@ -50,6 +52,8 @@ export const store = configureStore({
       getTaskById: getTaskDetailsSlice.reducer,
       getAssignmentById: getAssignmentDetailsSlice.reducer,
       getExamById: getExamDetailsSlice.reducer,
+      getSubmitTask: getSubmitTaskSlice.reducer,
+      getSubmitass: getSubmitassSlice.reducer
 
         
 

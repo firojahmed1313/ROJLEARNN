@@ -2,6 +2,7 @@ import React from 'react'
 import Topnav from '@/Comp/Navber/Topnav'
 import StudentAssDetails from '@/Comp/Student/Details/StudentAssDetails'
 import BreadcrumbTracher from '@/Comp/Navber/Breadcrumb/BreadcrumbTracher'
+import TeacherAssignmentExtra from '@/Comp/Teacher/DetailsExtra/TeacherAssignmentExtra'
 
 const TracherAssDetails = () => {
   return (
@@ -9,7 +10,7 @@ const TracherAssDetails = () => {
         <Topnav />
         <BreadcrumbTracher type="Assignment" />
         <StudentAssDetails/>
-        <p>TracherAssDetails</p>
+        <TeacherAssignmentExtra/>
     </>
   )
 }
