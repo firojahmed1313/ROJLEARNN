@@ -48,7 +48,7 @@ const TeacherTaskExtra = () => {
 
                 <ScrollArea className="h-full w-full">
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2  gap-10 ">
-                        {(submitTask !== null) ?
+                        {(submitTask?.length != 0) ?
                             submitTask?.map((item) => {
                                 return (
                                     <div class=" border-2 m-2 rounded-lg   bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-4 space-y-3 relative overflow-hidden  cursor-pointer">
@@ -79,7 +79,7 @@ const TeacherTaskExtra = () => {
                                         </div>
                                     </div>
                                 )
-                            }) : <h3 className="text-center ">No Data</h3>
+                            }) : <h3 className="text-center ">No Data Found</h3>
                         }
 
 
