@@ -10,7 +10,7 @@ const StudentAssDetails = () => {
   const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const id = location.pathname.substring(13);
+    const id = location.pathname.substring(19);
     console.log(id);
     const token = Cookies.get('ROJLEARN');
     console.log(token);
