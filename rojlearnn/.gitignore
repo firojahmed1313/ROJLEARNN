@@ -31,3 +31,30 @@ build/
 
 ### VS Code ###
 .vscode/
+*target*
+*.jar
+*.war
+*.ear
+*.class
+## Ellpse ##
+
+*.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+
+.settings/
+.loadpath
+.classpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
