@@ -1,6 +1,29 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCartItems } from '@/Redux/Features/Chackout/GetCartItemsSlice';
+import { getCartLtemsNow } from '@/Redux/Features/Chackout/GetCartLtemsNowSlice';
+import { getCourseDetailsData } from '@/Redux/Features/Course/getCourseDetailsSlice';
 
 const Chackout = () => {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.getUser.user);
+    const cart= useSelector((state) => state.getCartItems.cartItems);
+    useEffect(() => {
+        if (cartItems == null && user != null) {
+            dispatch(getCartItems(user._id));
+        }
+    }, [user]);
+    console.log(user);
+    const cartItems = useSelector((state) => state.getCartItemsNow.cartItems);
+    useEffect(() => {
+        dispatch(getCartLtemsNow(cart));
+    }, [cart])
+    console.log(cartItems)
+    let total = 0;
+    cartItems?.map((course) => {
+        total += course.price;
+    })
     return (
     <>
             <div className="min-w-screen min-h-screen bg-gray-50 py-5">
@@ -20,18 +43,26 @@ const Chackout = () => {
                         <div className="-mx-3 md:flex items-start">
                             <div className="px-3 md:w-7/12 lg:pr-10">
                                 <div className="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
-                                    <div className="w-full flex items-center">
+                                {
+                                    cartItems?.map((item) => {
+                                        return (
+                                            <div className="w-full mb-3 flex items-center">
                                         <div className="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
-                                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80" alt=""/>
+                                            <img src={item.thumbnail_url} alt="item image"/>
                                         </div>
                                         <div className="flex-grow pl-3">
-                                            <h6 className="font-semibold uppercase text-gray-600">Ray Ban Sunglasses.</h6>
-                                            <p className="text-gray-400">x 1</p>
+                                            <h6 className="font-semibold uppercase text-gray-600">{item.title}</h6>
+                                            <p className="text-gray-400">{item.category}</p>
                                         </div>
                                         <div>
-                                            <span className="font-semibold text-gray-600 text-xl">$210</span><span className="font-semibold text-gray-600 text-sm">.00</span>
+                                            <span className="font-semibold text-gray-600 text-xl">${item.price}</span><span className="font-semibold text-gray-600 text-sm">.00</span>
                                         </div>
                                     </div>
+                                        )
+                                    })
+                                }
+                                    
+                                    
                                 </div>
                                 <div className="mb-6 pb-6 border-b border-gray-200">
                                     <div className="-mx-2 flex items-end justify-end">
@@ -52,7 +83,7 @@ const Chackout = () => {
                                             <span className="text-gray-600">Subtotal</span>
                                         </div>
                                         <div className="pl-3">
-                                            <span className="font-semibold">$190.91</span>
+                                            <span className="font-semibold">${total}</span>
                                         </div>
                                     </div>
                                     <div className="w-full flex items-center">
@@ -63,6 +94,14 @@ const Chackout = () => {
                                             <span className="font-semibold">$19.09</span>
                                         </div>
                                     </div>
+                                    <div className="w-full flex items-center">
+                                        <div className="flex-grow">
+                                            <span className="text-gray-600">Discount</span>
+                                        </div>
+                                        <div className="pl-3">
+                                            <span className="font-semibold">- $19.09</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="mb-6 pb-6 border-b border-gray-200 md:border-none text-gray-800 text-xl">
                                     <div className="w-full flex items-center">
@@ -70,7 +109,7 @@ const Chackout = () => {
                                             <span className="text-gray-600">Total</span>
                                         </div>
                                         <div className="pl-3">
-                                            <span className="font-semibold text-gray-400 text-sm">AUD</span> <span className="font-semibold">$210.00</span>
+                                            <span className="font-semibold text-gray-400 text-sm">AUD</span> <span className="font-semibold">${total}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -79,10 +118,18 @@ const Chackout = () => {
                                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
                                     <div className="w-full flex mb-3 items-center">
                                         <div className="w-32">
-                                            <span className="text-gray-600 font-semibold">Contact</span>
+                                            <span className="text-gray-600 font-semibold">Username</span>
                                         </div>
                                         <div className="flex-grow pl-3">
-                                            <span>Scott Windon</span>
+                                            <span>{user?.username}</span>
+                                        </div>
+                                    </div>
+                                    <div className="w-full flex mb-3 items-center">
+                                        <div className="w-32">
+                                            <span className="text-gray-600 font-semibold">Email</span>
+                                        </div>
+                                        <div className="flex-grow pl-3">
+                                            <span>{user?.email}</span>
                                         </div>
                                     </div>
                                     <div className="w-full flex items-center">
@@ -90,7 +137,7 @@ const Chackout = () => {
                                             <span className="text-gray-600 font-semibold">Billing Address</span>
                                         </div>
                                         <div className="flex-grow pl-3">
-                                            <span>123 George Street, Sydney, NSW 2000 Australia</span>
+                                            <span>{user?.address}</span>
                                         </div>
                                     </div>
                                 </div>

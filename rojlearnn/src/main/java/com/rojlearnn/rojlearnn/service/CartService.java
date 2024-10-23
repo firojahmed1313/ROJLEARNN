@@ -1,5 +1,6 @@
 package com.rojlearnn.rojlearnn.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -8,9 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.rojlearnn.rojlearnn.model.Course;
 import com.rojlearnn.rojlearnn.model.User;
 import com.rojlearnn.rojlearnn.model.Cart.Cartitems;
 import com.rojlearnn.rojlearnn.model.Cart.Carts;
+import com.rojlearnn.rojlearnn.repo.CourseRepo;
 import com.rojlearnn.rojlearnn.repo.Cart.CartRepo;
 import com.rojlearnn.rojlearnn.repo.Cart.CartitemsRepo;
 
@@ -20,7 +23,8 @@ public class CartService {
     private CartRepo cr;
     @Autowired
     private CartitemsRepo cri;
-
+    @Autowired
+	private CourseRepo cor;
     @Autowired
     private UserService us;
     
@@ -94,7 +98,12 @@ public class CartService {
            if(!cart.getIscheckedout()) {
 			   System.out.println(cart);
         	   List<Cartitems> l = cri.findAllByCartid(new ObjectId(cart.get_id().toString()));//cart.get_id());
-        	   System.out.println(l);
+//        	   List<Course> course =new ArrayList<>();
+//        	   for(Cartitems ci : l) {
+//	        	   Course p= cor.findById(ci.getCourseid()).get();
+//	        	   course.add(p);
+//        	   }
+//        	   System.out.println(l);
                return new ResponseEntity<>(l,HttpStatus.OK);
            }
         

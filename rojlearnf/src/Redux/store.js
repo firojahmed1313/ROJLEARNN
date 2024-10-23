@@ -12,6 +12,7 @@ import { getStudentFeedbackSlice } from './Features/Activity/StudentFeedbackSlic
 import { getStudentTrackingSlice } from './Features/Activity/StudentTrackingSlice'
 import { getAllCartsSlice } from './Features/Chackout/GetAllCartsSlice'
 import { getCartItemsSlice } from './Features/Chackout/GetCartItemsSlice'
+
 import { getStudentsNotificationsSlice } from './Features/Notifications/GetStudentsNotificationsSlice'
 import { getCourseByTeacherSlice } from './Features/Course/teacher/getCourseByTeacherSlice'
 import { getVideoByCourseSlice } from './Features/Video/GetVideoByCourseSlice'
@@ -24,6 +25,8 @@ import { getExamDetailsSlice } from './Features/EATDetailsByid/GetExamDetailsSli
 import { getCourseRateingSlice } from './Features/Course/getCourseRateingSlice'
 import { getSubmitassSlice } from './Features/SubmitTeacher/GetSubmitassSlice'
 import { getSubmitTaskSlice } from './Features/SubmitTeacher/GetSubmitTaskSlice'
+import { getCartLtemsNowSlice } from './Features/Chackout/GetCartLtemsNowSlice'
+
 
 
 
@@ -43,6 +46,7 @@ export const store = configureStore({
         getStudentTracking: getStudentTrackingSlice.reducer,
         getCarts: getAllCartsSlice.reducer,
         getCartItems: getCartItemsSlice.reducer,
+        getCartItemsNow: getCartLtemsNowSlice.reducer,
         getStudentsNotifications: getStudentsNotificationsSlice.reducer,
       getTeacherCourse: getCourseByTeacherSlice.reducer,
       getVideoByCourse: getVideoByCourseSlice.reducer,
