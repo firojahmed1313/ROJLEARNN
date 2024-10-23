@@ -54,7 +54,7 @@ const CourseDetails = () => {
                                 </span>
                                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                     <h2 className="text-sm title-font text-gray-500 tracking-widest">{course.data?.category.toUpperCase()}</h2>
-                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{course.data.title} <sup class="bg-blue-100  text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 relative  rounded dark:bg-blue-200 dark:text-blue-800 ms-2">{course.data.duration_hours} Hours</sup></h1>
+                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{course.data.title} <sup className="bg-blue-100  text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 relative  rounded dark:bg-blue-200 dark:text-blue-800 ms-2">{course.data.duration_hours} Hours</sup></h1>
                                     <div className="flex mb-4">
                                         <span className="flex items-center">
                                             <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">

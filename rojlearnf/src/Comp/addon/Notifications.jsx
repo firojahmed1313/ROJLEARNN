@@ -13,21 +13,21 @@ const Notifications = ({ notifications }) => {
   }
   return (
     <>
-      <div class="relative flex flex-col m-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
-        <div class="p-4">
+      <div className="relative flex flex-col m-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+        <div className="p-4">
           {
             notifications?.length == 0 ?
               <p className="text-sm text-slate-600 font-medium text-center">No Notifications</p>
               :
               notifications?.map((notification, index) => (
               <>
-                <div class="flex items-center justify-between pb-3 pt-3 last:pb-0" key={index}>
-                  <div class="flex items-center gap-x-3">
+                <div className="flex items-center justify-between pb-3 pt-3 last:pb-0" key={index}>
+                  <div className="flex items-center gap-x-3">
                     <div>
-                      <h6 class="text-slate-800 font-semibold">
+                      <h6 className="text-slate-800 font-semibold">
                         {notification.type}
                       </h6>
-                      <p class="text-slate-600 text-sm">
+                      <p className="text-slate-600 text-sm">
                         {notification.message}
                       </p>
                     </div>
@@ -54,8 +54,8 @@ const Notifications = ({ notifications }) => {
           }
 
         </div>
-        <div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1">
-          <span class="text-sm text-slate-600 font-medium">
+        <div className="mx-3 border-t border-slate-200 pb-3 pt-2 px-1">
+          <span className="text-sm text-slate-600 font-medium">
             Last updated: 1 hours ago
           </span>
         </div>

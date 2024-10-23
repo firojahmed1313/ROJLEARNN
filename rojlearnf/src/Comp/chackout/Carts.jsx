@@ -20,8 +20,8 @@ const Carts = ({cartItems}) => {
 
                         <div className="mt-8">
                             <ul className="space-y-4">
-                            {cartItems.map((item) => (
-                                <li className="flex items-center justify-between gap-4">
+                            {cartItems.map((item, index) => (
+                                <li className="flex items-center justify-between gap-4" key={index}>
                                     <img
                                         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
                                         alt=""

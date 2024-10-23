@@ -60,10 +60,10 @@ const TeacherAllExam = () => {
             {courses?.length != 0 ? (
                 <div className="grid grid-cols-1 w-[98%] mx-auto ">
                     <Accordion type="single" collapsible className="w-[98%] mx-auto  ">
-                        {courses?.map((course) => {
+                        {courses?.map((course, index) => {
                             return (
                                 
-                                <AccordionItem value={`item-${course._id}`} className="my-3 transition-all duration-200 bg-white border border-gray-200 shadow-lg cursor-pointer hover:bg-gray-50">
+                                <AccordionItem  key={index} value={`item-${course._id}`} className="my-3 transition-all duration-200 bg-white border border-gray-200 shadow-lg cursor-pointer hover:bg-gray-50">
                                     <AccordionTrigger className=" px-4 flex text-xl font-bold text-black">{course.title}</AccordionTrigger>
                                     <AccordionContent className="p-4 text-sm text-zinc-500 leading-6">
                                         <AETST id={course._id} type="Exam" role="teacher" />

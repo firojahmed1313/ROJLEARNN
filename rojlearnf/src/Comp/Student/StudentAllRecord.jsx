@@ -44,56 +44,56 @@ const StudentAllRecord = () => {
     }, [])
     return (
         <>
-            <div class=" flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-[96%] p-2 mx-auto">
-                <div class="w-full">
-                    <ul class=" flex gap-2 flex-wrap px-1.5 py-1.5 list-none rounded-lg bg-slate-300" data-tabs="tabs" role="list">
-                        <li class={`${tab == "Exam" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
-                            <button class="font-semibold flex items-center justify-center w-full px-0 py-2 text-sm mb-0  border-0 rounded-lg cursor-pointer text-slate-600 bg-inherit hover:bg-white"
+            <div className=" flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-[96%] p-2 mx-auto">
+                <div className="w-full">
+                    <ul className=" flex gap-2 flex-wrap px-1.5 py-1.5 list-none rounded-lg bg-slate-300" data-tabs="tabs" role="list">
+                        <li className={`${tab == "Exam" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
+                            <button className="font-semibold flex items-center justify-center w-full px-0 py-2 text-sm mb-0  border-0 rounded-lg cursor-pointer text-slate-600 bg-inherit hover:bg-white"
                                 onClick={() => setTab("Exam")}>
                                 Exam
                             </button>
                         </li>
-                        <li class={`${tab == "Assignment" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
-                            <button class="font-semibold flex items-center justify-center w-full px-0 py-2 mb-0 text-sm  border-0 rounded-lg cursor-pointer text-slate-600 bg-inherit hover:bg-white"
+                        <li className={`${tab == "Assignment" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
+                            <button className="font-semibold flex items-center justify-center w-full px-0 py-2 mb-0 text-sm  border-0 rounded-lg cursor-pointer text-slate-600 bg-inherit hover:bg-white"
                                 onClick={() => setTab("Assignment")}>
                                 Assignment
                             </button>
                         </li>
-                        <li class={`${tab == "Task" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
-                            <button class="font-semibold flex items-center justify-center w-full px-0 py-2 text-sm mb-0  border-0 rounded-lg cursor-pointer text-slate-700 bg-inherit hover:bg-white"
+                        <li className={`${tab == "Task" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
+                            <button className="font-semibold flex items-center justify-center w-full px-0 py-2 text-sm mb-0  border-0 rounded-lg cursor-pointer text-slate-700 bg-inherit hover:bg-white"
                                 onClick={() => setTab("Task")}>
                                 Task
                             </button>
                         </li>
                     </ul>
 
-                    <div  class="p-3">
+                    <div  className="p-3">
 
                         {(tab == "Exam") && <div >
-                            <h5 class="mb-2 text-slate-800 text-xl font-semibold">
+                            <h5 className="mb-2 text-slate-800 text-xl font-semibold">
                                 Website Review Check Exam
                             </h5>
-                            <p class="text-slate-600 leading-normal font-light">
+                            <p className="text-slate-600 leading-normal font-light">
                                 Because it&apos;s about motivating the doers. Because I&apos;m
                                 here to follow my dreams and inspire other people to follow their
                                 dreams, too.
                             </p>
                         </div>}
                         {(tab == "Assignment") && <div >
-                            <h5 class="mb-2 text-slate-800 text-xl font-semibold">
+                            <h5 className="mb-2 text-slate-800 text-xl font-semibold">
                                 Website Review Check Assignment
                             </h5>
-                            <p class="text-slate-600 leading-normal font-light">
+                            <p className="text-slate-600 leading-normal font-light">
                                 Because it&apos;s about motivating the doers. Because I&apos;m
                                 here to follow my dreams and inspire other people to follow their
                                 dreams, too.
                             </p>
                         </div>}
                         {(tab == "Task") && <div >
-                            <h5 class="mb-2 text-slate-800 text-xl font-semibold">
+                            <h5 className="mb-2 text-slate-800 text-xl font-semibold">
                                 Website Review Check task
                             </h5>
-                            <p class="text-slate-600 leading-normal font-light">
+                            <p className="text-slate-600 leading-normal font-light">
                                 Because it&apos;s about motivating the doers. Because I&apos;m
                                 here to follow my dreams and inspire other people to follow their
                                 dreams, too.

@@ -33,9 +33,10 @@ const StudentCourseExam = ({ id,role }) => {
                 exams?.length > 0 ?
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {
-                            exams?.map((exam) => {
+                            exams?.map((exam, index) => {
                                 return (
                                     <article
+                                        key={index}
                                         className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6"
                                     >
                                         <span className="inline-block rounded bg-blue-600 p-2 text-white">
