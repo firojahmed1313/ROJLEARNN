@@ -58,7 +58,7 @@ const StudentsTask = () => {
                         <AccordionItem value={`item-${course._id}`} className="my-3 transition-all duration-200 bg-white border border-gray-200 shadow-lg cursor-pointer hover:bg-gray-50">
                             <AccordionTrigger className=" px-4 flex text-xl font-bold text-black">{course.title}</AccordionTrigger>
                             <AccordionContent className="p-4 text-sm text-zinc-500 leading-6">
-                                <AETST id={course._id} type="Task" />
+                                <AETST id={course._id} type="Task" role="student"/>
                             </AccordionContent>
                         </AccordionItem>
 

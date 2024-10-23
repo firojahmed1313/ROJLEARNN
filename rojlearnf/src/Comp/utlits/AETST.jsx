@@ -3,9 +3,11 @@ import { getAllTaskByCourse } from '@/Redux/Features/Assignment/getAllTaskByCour
 import { getAllAssByCourse } from '@/Redux/Features/Assignment/getAllAssByCourseSlice';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 
 
-const AETST = ({id,type}) => {
+const AETST = ({id,type,role}) => {
+    const navigate = useNavigate();
     let data;
     if(type == "Exam"){
         data = useSelector((state) => state.getExamByCourse.exambyid);
@@ -32,6 +34,8 @@ const AETST = ({id,type}) => {
             }          
     
     }, [id,type]);
+    let url=`/${role}${type}/${data?._id}`;
+    console.log("url",url);
     return (
         <>
             {data?.length != 0 ? (
@@ -39,7 +43,8 @@ const AETST = ({id,type}) => {
                     {data?.map((item) => {
                         return (
                             <div
-                                class=" bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden cursor-pointer " onClick={() => navigate(`/teacherTask/${item.id}`)}
+                                class=" bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden cursor-pointer " 
+                                onClick={() => navigate(`/${role}${type}/${item?._id}`)}
                             >
                                 <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
                                     <p class="absolute bottom-6 left-7 text-white text-2xl">{item.id}</p>
