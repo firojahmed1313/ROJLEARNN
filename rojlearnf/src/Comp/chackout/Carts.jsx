@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Carts = ({cartItems}) => {
     console.log(cartItems);
-    const total = cartItems.reduce((acc, item) => acc + item.price, 0);
-    console.log(total);
+    //const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+    cartItems=[]
+    //console.log(total);
     return (
         <>
 

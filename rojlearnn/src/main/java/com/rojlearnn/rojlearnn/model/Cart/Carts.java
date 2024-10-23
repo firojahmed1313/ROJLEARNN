@@ -48,7 +48,7 @@ public class Carts {
         this.totalprice = totalprice;
     }
 
-    public boolean isIscheckedout() {
+    public boolean getIscheckedout() {
         return ischeckedout;
     }
 
@@ -71,5 +71,12 @@ public class Carts {
     public void setUpdated_at(LocalDateTime updated_at) {
         this.updated_at = updated_at;
     }
+
+	@Override
+	public String toString() {
+		return "Carts [userid=" + userid + ", totalprice=" + totalprice + ", ischeckedout=" + ischeckedout
+				+ ", created_at=" + created_at + ", updated_at=" + updated_at + "]";
+	}
+    
 
 }

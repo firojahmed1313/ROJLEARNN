@@ -31,7 +31,7 @@ public class CartService {
         }
        List<Carts> c = cr.findAllByUserid(new ObjectId(user.get_id().toString()));
        for (Carts cart : c) {
-           if(!cart.isIscheckedout()) {
+           if(!cart.getIscheckedout()) {
                cart.setTotalprice(cart.getTotalprice()+cartitems.getPrice());
                cartitems.setCartid(cart.get_id());
                Cartitems ci = cri.save(cartitems);
@@ -87,6 +87,20 @@ public class CartService {
         cri.deleteBy_id(new ObjectId(cartitemsid));
         return new ResponseEntity<>("Cartitems Deleted",HttpStatus.OK);
     }
+	public ResponseEntity<?> getCartitemsNow(String userid) {
+		User user = us.getCurrentUserProfile();
+       List<Carts> c = cr.findAllByUserid(new ObjectId(user.get_id().toString()));
+       for (Carts cart : c) {
+           if(!cart.getIscheckedout()) {
+			   System.out.println(cart);
+        	   List<Cartitems> l = cri.findAllByCartid(new ObjectId(cart.get_id().toString()));//cart.get_id());
+        	   System.out.println(l);
+               return new ResponseEntity<>(l,HttpStatus.OK);
+           }
+        
+       }
+       return new ResponseEntity<>("No items in cart",HttpStatus.OK);
+	}
     
 
 }

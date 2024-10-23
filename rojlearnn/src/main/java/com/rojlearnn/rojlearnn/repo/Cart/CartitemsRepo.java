@@ -25,4 +25,6 @@ public interface CartitemsRepo extends MongoRepository<Cartitems, String> {
 
     void deleteBy_id(ObjectId objectId);
 
+	List<Cartitems> findAllByCartid(String get_id);
+
 }

@@ -12,7 +12,7 @@ export const getCartItems = createAsyncThunk('getCartItems', async (id) => {
     const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
     try {
-        const data = getApi(`${burl}/cart/getCartitems/${id}`,token);
+        const data = getApi(`${burl}/cart/getCartitemsNow/${id}`,token);
         console.log(data);
         return data; 
     } catch (error) {

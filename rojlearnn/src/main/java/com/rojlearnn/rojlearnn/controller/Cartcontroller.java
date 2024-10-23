@@ -32,6 +32,10 @@ public class Cartcontroller {
     public ResponseEntity<?> getCartitemsbyuserid(@PathVariable String userid) {
         return cs.getCartitems(userid);
     }
+    @GetMapping("/getCartitemsNow/{userid}")
+    public ResponseEntity<?> getCartitemsNowbyuserid(@PathVariable String userid) {
+        return cs.getCartitemsNow(userid);
+    }
     @GetMapping("/getCartitem/{cartid}")
     public ResponseEntity<?> getCartitemsbycartsid(@PathVariable String cartid) {
         return cs.getCartitemsbycartsid(cartid);
