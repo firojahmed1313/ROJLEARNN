@@ -1,9 +1,40 @@
-import React from 'react'
+import { getAllExamByCourse } from '@/Redux/Features/Assignment/getAllExamByCourseSlice';
+import { getAllTaskByCourse } from '@/Redux/Features/Assignment/getAllTaskByCourseSlice';
+import { getAllAssByCourse } from '@/Redux/Features/Assignment/getAllAssByCourseSlice';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
-const AETST = ({data}) => {
+
+const AETST = ({id,type}) => {
+    let data;
+    if(type == "Exam"){
+        data = useSelector((state) => state.getExamByCourse.exambyid);
+    }
+    else if(type == "Task"){
+        data = useSelector((state) => state.getTaskByCourse.taskbyid);
+    }
+    else if(type == "Assignment"){
+        data = useSelector((state) => state.getAssByCourse.assignmentbyid);
+    }
+    const dispatch = useDispatch();
+    console.log("Type",data);
+    useEffect(() => {
+    
+            console.log("id", id);
+            if(type == "Exam"){
+                dispatch(getAllExamByCourse(id));
+            }
+            else if(type == "Task"){
+                dispatch(getAllTaskByCourse(id));
+            }
+            else if(type == "Assignment"){
+                dispatch(getAllAssByCourse(id));
+            }          
+    
+    }, [id,type]);
     return (
         <>
-            {data.length != 0 ? (
+            {data?.length != 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 w-[98%] mx-auto">
                     {data?.map((item) => {
                         return (
@@ -26,7 +57,7 @@ const AETST = ({data}) => {
                         )
                     })}
                 </div>
-            ) : <h4>No Task</h4>}
+            ) : <h4>No {type}</h4>}
 
         </>
     )
