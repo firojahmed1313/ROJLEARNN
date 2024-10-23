@@ -26,6 +26,7 @@ import { getCourseRateingSlice } from './Features/Course/getCourseRateingSlice'
 import { getSubmitassSlice } from './Features/SubmitTeacher/GetSubmitassSlice'
 import { getSubmitTaskSlice } from './Features/SubmitTeacher/GetSubmitTaskSlice'
 import { getCartLtemsNowSlice } from './Features/Chackout/GetCartLtemsNowSlice'
+import {getUserByidSlice} from './Features/User/GetUserByidSlice'
 
 
 
@@ -34,6 +35,7 @@ export const store = configureStore({
     reducer: {
         login: loginSlice.reducer,
         getUser: UserSlice.reducer,
+        getUserById: getUserByidSlice.reducer,
         getCourse: getCourseSlice.reducer,
         getCourseDetails: getCourseDetailsSlice.reducer,
         getCourseRateing: getCourseRateingSlice.reducer,
@@ -57,7 +59,8 @@ export const store = configureStore({
       getAssignmentById: getAssignmentDetailsSlice.reducer,
       getExamById: getExamDetailsSlice.reducer,
       getSubmitTask: getSubmitTaskSlice.reducer,
-      getSubmitass: getSubmitassSlice.reducer
+      getSubmitass: getSubmitassSlice.reducer,
+
 
         
 

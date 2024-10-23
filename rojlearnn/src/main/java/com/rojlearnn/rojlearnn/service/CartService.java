@@ -77,10 +77,11 @@ public class CartService {
         
     }
     public ResponseEntity<?> deleteCartitems(String cartitemsid) {
+    	
         User user = us.getCurrentUserProfile();
         Cartitems c = cri.findBy_id(new ObjectId(cartitemsid));
         if(c==null) {
-            return new ResponseEntity<>("Cartitems not found",HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         if(!(user.get_id().toString().equals(c.getUserid()))) {
             return new ResponseEntity<>("ID MISMATCH",HttpStatus.FORBIDDEN);
@@ -92,6 +93,7 @@ public class CartService {
         return new ResponseEntity<>("Cartitems Deleted",HttpStatus.OK);
     }
 	public ResponseEntity<?> getCartitemsNow(String userid) {
+		List<Carts> ans= new ArrayList<>();
 		User user = us.getCurrentUserProfile();
        List<Carts> c = cr.findAllByUserid(new ObjectId(user.get_id().toString()));
        for (Carts cart : c) {
@@ -108,7 +110,7 @@ public class CartService {
            }
         
        }
-       return new ResponseEntity<>("No items in cart",HttpStatus.OK);
+       return new ResponseEntity<>(ans,HttpStatus.OK);
 	}
     
 

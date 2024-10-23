@@ -4,9 +4,9 @@ import Cartitemloder from './Cartitemloder';
 
 const Carts = ({ cartItems }) => {
     console.log(cartItems);
-    const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+    //const total = cartItems.reduce((acc, item) => acc + item.price, 0);
     //cartItems = []
-    console.log(total);
+    //console.log(total);
     return (
         <>
 
