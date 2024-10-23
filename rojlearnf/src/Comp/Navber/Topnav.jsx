@@ -43,7 +43,7 @@ const Topnav = () => {
         if (notification == null && user != null) {
             dispatch(getStudentsNotifications(user._id));
         }
-    }, []);
+    }, [user]);
     const handelcartItems = () => {
         console.log("cartItems");
         setShowCart(!showCart);

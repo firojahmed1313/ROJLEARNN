@@ -8,9 +8,7 @@ const CourseAll = () => {
         <>
             <Nav />
             <Courseall/>
-            <AddCourse/>
             <Footer/>
-
         </>
     )
 }
