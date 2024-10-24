@@ -6,10 +6,10 @@ const initalState = {
     loading: false,
     error: null
 }
-const burl = import.meta.env.VITE_URL;
-const token = Cookies.get("ROJLEARN");
 
-const getData=async(id)=>{
+const getData=async(id)=>{const burl = import.meta.env.VITE_URL;
+    const token = Cookies.get("ROJLEARN");
+    console.log(token);    
     try {
         const data = getApi(`${burl}/course/${id}`,token);
         
@@ -56,8 +56,10 @@ export const getCartLtemsNowSlice = createSlice({
             //state.cartItems = "data";
         });
         builder.addCase(getCartLtemsNow.rejected, (state, action) => {
+            console.log("rejected");
             state.loading = false;
             state.error = action.error;
+            console.log("error", action.error);
         });
     }
 })

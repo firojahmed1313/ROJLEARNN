@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 
 
 const Cartitemloder = ({ item }) => {
-    const id = item[0].courseid;
-    console.log(id);
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.getCartItemsNow.cartItems);
     console.log(cartItems);
