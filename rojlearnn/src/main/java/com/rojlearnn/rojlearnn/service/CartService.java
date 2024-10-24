@@ -23,8 +23,8 @@ public class CartService {
     private CartRepo cr;
     @Autowired
     private CartitemsRepo cri;
-    @Autowired
-	private CourseRepo cor;
+    //@Autowired
+	//private CourseRepo cor;
     @Autowired
     private UserService us;
     

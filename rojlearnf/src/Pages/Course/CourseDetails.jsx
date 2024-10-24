@@ -8,6 +8,8 @@ import { getCourseDetailsData } from '../../Redux/Features/Course/getCourseDetai
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { getCourseRateing } from '@/Redux/Features/Course/getCourseRateingSlice'
+import CartColloder from '@/Comp/utlits/loder/CartColloder'
+import Cardrowloder from '@/Comp/utlits/loder/Cardrowloder'
 const CourseDetails = () => {
     const [courseData, setCourseData] = useState([]);
     const navigate = useNavigate();
@@ -18,6 +20,8 @@ const CourseDetails = () => {
     const id = location.pathname.substring(9);
     console.log(id);
     const course = useSelector((state) => state.getCourseDetails.course);
+    const isloading = useSelector((state) => state.getCourseDetails.isLoading);
+    const isError = useSelector((state) => state.getCourseDetails.isError);
     console.log(course);
     const courseRateing = useSelector((state) => state.getCourseRateing.courseRateing);
     console.log(courseRateing);
@@ -41,7 +45,11 @@ const CourseDetails = () => {
         <>
             <Nav />
             {
-                (course?.data) ?
+                (isloading && !isError)?
+                <section className="text-gray-600 w-[80%] g:w-[60%] mx-auto my-4 lg:my-11 body-font overflow-hidden"> 
+                    <Cardrowloder /> 
+                </section>
+                :(course?.data) ?
                     <section className="text-gray-600 body-font overflow-hidden">
                         <div className="container px-5 py-16 mx-auto">
                             <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -54,7 +62,7 @@ const CourseDetails = () => {
                                 </span>
                                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                     <h2 className="text-sm title-font text-gray-500 tracking-widest">{course.data?.category.toUpperCase()}</h2>
-                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{course.data.title} <sup className="bg-blue-100  text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 relative  rounded dark:bg-blue-200 dark:text-blue-800 ms-2">{course.data.duration_hours} Hours</sup></h1>
+                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{course.data.title} <sup className="bg-blue-100  text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 relative  rounded dark:bg-blue-200 dark:text-blue-800 ms-2">{course.data.duration_hours}</sup></h1>
                                     <div className="flex mb-4">
                                         <span className="flex items-center">
                                             <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">

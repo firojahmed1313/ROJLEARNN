@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { getAssignmentDetails } from '@/Redux/Features/EATDetailsByid/GetAssignmentDetailsSlice'
 import ButtonGive from '@/Comp/Button/ButtonGive'
+import CartColloder from '@/Comp/utlits/loder/CartColloder'
+import Cardrowloder from '@/Comp/utlits/loder/Cardrowloder'
 
 
 const StudentAssDetails = () => {
@@ -18,6 +20,8 @@ const StudentAssDetails = () => {
   const token = Cookies.get('ROJLEARN');
   console.log(token);
   const assignmentDetails = useSelector((state) => state.getAssignmentById.assignmentDetails);
+  const isloading = useSelector((state) => state.getAssignmentById.isLoading);
+  const isError = useSelector((state) => state.getAssignmentById.isError);
   console.log(assignmentDetails);
   useEffect(() => {
     if (!token) {
@@ -39,6 +43,11 @@ const StudentAssDetails = () => {
   }
   return (
     <>
+    {(isloading)?
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+      </div>
+      :
       <div className="items-center flex flex-wrap my-4">
         <div className="hidden lg:block w-full md:w-4/12 ml-auto mr-auto px-4">
           <img alt="..." className="max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbXB1dGVyfGVufDB8MXwwfHx8Mg%3D%3D" />
@@ -130,7 +139,7 @@ const StudentAssDetails = () => {
 
           </div>
         </div>
-      </div>
+      </div>}
     </>
   )
 }
