@@ -12,6 +12,7 @@ import StudentCourseExam from '../../Comp/Student/veat/StudentCourseExam';
 import StudentCourseAss from '../../Comp/Student/veat/StudentCourseAss';
 import StudentCourseTask from '../../Comp/Student/veat/StudentCourseTask';
 import ButtomNav from '@/Comp/Navber/ButtomNav';
+import Hr from '@/Comp/utlits/Hr';
 const tData = [
 
     {
@@ -208,6 +209,7 @@ const CourseVideo = () => {
                     </nav>
                 </div>
                 <div className="mb-20">
+                <Hr/>
                 {
                     navset == "video" ?
                         <StudentCourseVideo id={id} role="student" />
