@@ -5,11 +5,33 @@ import StudentsAssignment from '../../Comp/Student/StudentsAssignment'
 import StudentsTask from '../../Comp/Student/StudentsTask'
 import StudentsExam from '../../Comp/Student/StudentsExam'
 import { Link } from 'react-router-dom'
+import ButtomNav from '@/Comp/Navber/ButtomNav'
+const tData = [
+
+  {
+      id: 1,
+      title: 'Exams',
+      tab: 'Exam',
+      icon: 'healthicons:i-exam-multiple-choice-outline',
+  },
+  {
+      id: 2,
+      title: 'Assignments',
+      tab: 'Assignment',
+      icon: 'material-symbols:assignment-outline-rounded',
+  },
+  {
+      id: 3,
+      title: 'Tasks',
+      tab: 'Task',
+      icon: 'jam:task-list',
+  },
+]
 const StuExam = () => {
   const [tab, setTab] = React.useState("Exam");
-  const onOptionChangeHandler = (event) => {
-    setTab(event.target.value);
-    console.log(event.target.value);
+  const onOptionChangeHandler = (tab) => {
+    setTab(tab);
+    console.log(tab);
   };
   return (
     <>
@@ -23,16 +45,6 @@ const StuExam = () => {
 
 
             <div>
-              <div className="sm:hidden">
-                <label htmlFor="Tab" className="sr-only">Tab</label>
-
-                <select id="Tab" className="w-full h-10 text-center text-white border-gray-200 bg-gray-800" onChange={onOptionChangeHandler}>
-                  <option >Exam</option>
-                  <option >Assignment</option>
-                  <option > Task</option>
-                </select>
-              </div>
-
               <div className=" hidden sm:block ml-3 my-4">
                 <div className="border-b border-gray-200">
                   <nav className="-mb-px flex gap-6">
@@ -61,12 +73,19 @@ const StuExam = () => {
                   </nav>
                 </div>
               </div>
-            </div>
 
+              
+            </div>
+            <div className="mb-20">
             {tab === "Exam" && <StudentsExam />}
             {tab === "Assignment" && <StudentsAssignment />}
             {tab === "Task" && <StudentsTask />}
-            
+            </div>
+
+
+          </div>
+          <div className="sm:hidden w-5/6 mx-auto fixed bottom-3 z-50">
+            <ButtomNav tData={tData} tab={tab} onClicks={onOptionChangeHandler} />
           </div>
         </div>
       </div>

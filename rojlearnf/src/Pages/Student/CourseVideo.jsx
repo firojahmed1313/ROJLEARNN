@@ -11,13 +11,40 @@ import StuCourseNav from '../../Comp/Navber/StuCourseNav';
 import StudentCourseExam from '../../Comp/Student/veat/StudentCourseExam';
 import StudentCourseAss from '../../Comp/Student/veat/StudentCourseAss';
 import StudentCourseTask from '../../Comp/Student/veat/StudentCourseTask';
+import ButtomNav from '@/Comp/Navber/ButtomNav';
+const tData = [
 
+    {
+        id: 1,
+        title: 'Video',
+        tab: 'video',
+        icon: 'tabler:video',
+    },
+    {
+        id: 2,
+        title: 'Exam',
+        tab: 'exam',
+        icon: 'healthicons:i-exam-multiple-choice-outline',
+    },
+    {
+        id: 3,
+        title: 'Assignment',
+        tab: 'assignment',
+        icon: 'material-symbols:assignment-outline-rounded',
+    },
+    {
+        id: 4,
+        title: 'Task',
+        tab: 'task',
+        icon: 'jam:task-list',
+    },
+]
 
 const CourseVideo = () => {
     const [navset, setNavset] = useState("video");
-    const onOptionChangeHandler = (event) => {
-        setNavset(event.target.value);
-        console.log(event.target.value);
+    const onOptionChangeHandler = (nav) => {
+        setNavset(nav);
+        console.log(nav);
     }
     const location = useLocation();
     const navigate = useNavigate();
@@ -145,17 +172,6 @@ const CourseVideo = () => {
                         <li>Last updated 01/2022</li>
                     </ul>
                 </div>
-                <div className="sm:hidden">
-                    <label htmlFor="Tab" className="sr-only">Tab</label>
-
-                    <select id="Tab" className="w-full h-10 text-center text-white border-gray-200 bg-gray-800" onChange={onOptionChangeHandler}>
-                        <option>video</option>
-                        <option>exam</option>
-                        <option>homework</option>
-                        <option>task</option>
-
-                    </select>
-                </div>
                 <div className="hidden sm:block border-b-2 border-gray-200 dark:border-neutral-700">
 
                     <nav className="-mb-0.5 flex gap-x-6">
@@ -191,13 +207,16 @@ const CourseVideo = () => {
                         </button>
                     </nav>
                 </div>
+                <div className="mb-20">
                 {
                     navset == "video" ?
                         <StudentCourseVideo id={id} role="student" />
                         : (navset == "exam") ? <StudentCourseExam id={id} role="student" /> : (navset == "task") ? <StudentCourseTask id={id} role="student" /> : <StudentCourseAss id={id} role="student" />
                 }
-
-
+                </div>
+                <div className="sm:hidden w-full left-0 mx-auto fixed bottom-0 z-50">
+                    <ButtomNav tData={tData} tab={navset} onClicks={onOptionChangeHandler} />
+                </div>
             </div>
         </>
     )

@@ -6,13 +6,47 @@ import StudentComment from '../../Comp/Student/lcrf/StudentComment'
 import StudentRating from '../../Comp/Student/lcrf/StudentRating'
 import StudentFeedback from '../../Comp/Student/lcrf/StudentFeedback'
 import StudentTracking from '../../Comp/Student/lcrf/StudentTracking'
+import ButtomNav from '@/Comp/Navber/ButtomNav'
+const tData = [
 
+  {
+    id: 1,
+    title: 'Like',
+    tab: 'Like',
+    icon: 'solar:like-outline',
+  },
+  {
+    id: 2,
+    title: 'Comment',
+    tab: 'Comment',
+    icon: 'material-symbols:comment-outline-rounded',
+  }
+  ,
+  {
+    id: 3,
+    title: 'Rating',
+    tab: 'Rating',
+    icon: 'flowbite:star-outline',
+  },
+  {
+    id: 4,
+    title: 'Feedback',
+    tab: 'Feedback',
+    icon: 'fluent:person-feedback-28-regular',
+  },
+  {
+    id: 5,
+    title: 'Tracking',
+    tab: 'Tracking',
+    icon: 'streamline:business-progress-bar-2',
+  }
+]
 const StuActivity = () => {
   const [tab, setTab] = React.useState("Like");
 
-  const onOptionChangeHandler = (event) => {
-    setTab(event.target.value);
-    console.log(event.target.value);
+  const onOptionChangeHandler = (tab) => {
+    setTab(tab);
+    console.log(tab);
   }
   return (
     <>
@@ -23,22 +57,9 @@ const StuActivity = () => {
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
           <div>
-            
+
 
             <div className='mb-4'>
-              <div className="sm:hidden">
-                <label htmlFor="Tab" className="sr-only">Tab</label>
-
-                <select id="Tab" className="w-full h-10 text-center text-white border-gray-200 bg-gray-800" onChange={onOptionChangeHandler}>
-                  <option>Like</option>
-                  <option>Comment</option>
-                  <option>Rating</option>
-                  <option>Feedback</option>
-                  <option>Tracking</option>
-                  
-                </select>
-              </div>
-
               <div className=" hidden sm:block w-full ml-3 my-4">
                 <nav className="flex gap-6" aria-label="Tabs">
                   <button
@@ -75,12 +96,17 @@ const StuActivity = () => {
                 </nav>
               </div>
             </div>
-            {tab === "Like" && <StudentLike />}
-            {tab === "Comment" && <StudentComment />}
-            {tab === "Rating" && <StudentRating />}
-            {tab === "Feedback" && <StudentFeedback />}
-            {tab === "Tracking" && <StudentTracking />}
+            <div className="mb-20">
+              {tab === "Like" && <StudentLike />}
+              {tab === "Comment" && <StudentComment />}
+              {tab === "Rating" && <StudentRating />}
+              {tab === "Feedback" && <StudentFeedback />}
+              {tab === "Tracking" && <StudentTracking />}
+            </div>
 
+            <div className="sm:hidden w-full left-0 mx-auto fixed bottom-0 z-50">
+              <ButtomNav tData={tData} tab={tab} onClicks={onOptionChangeHandler} />
+            </div>
           </div>
         </div>
       </div>
