@@ -56,47 +56,48 @@ const StuActivity = () => {
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
-          <div>
-
-
+          <div className="">
             <div className='mb-4'>
-              <div className=" hidden sm:block w-full ml-3 my-4">
-                <nav className="flex gap-6" aria-label="Tabs">
-                  <button
-                    onClick={() => setTab("Like")}
-                    className={`${tab === "Like" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
-                  >
-                    Like
-                  </button>
-
-                  <button
-                    onClick={() => setTab("Comment")}
-                    className={`${tab === "Comment" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
-                  >
-                    Comment
-                  </button>
-                  <button
-                    onClick={() => setTab("Rating")}
-                    className={`${tab === "Rating" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
-                  >
-                    Rating
-                  </button>
-                  <button
-                    onClick={() => setTab("Feedback")}
-                    className={`${tab === "Feedback" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
-                  >
-                    Feedback
-                  </button>
-                  <button
-                    onClick={() => setTab("Tracking")}
-                    className={`${tab === "Tracking" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
-                  >
-                    Tracking
-                  </button>
-                </nav>
-              </div>
+            <div className="hidden sm:block w-5/6 top-16 right-0 fixed z-50">
+              <ButtomNav tData={tData} tab={tab} onClicks={onOptionChangeHandler} />
             </div>
-            <div className="mb-20">
+              {/*<div className="hidden sm:block w-full ml-3 my-4">
+              <nav className="flex gap-6" aria-label="Tabs">
+              <button
+                onClick={() => setTab("Like")}
+                className={`${tab === "Like" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
+              >
+                Like
+              </button>
+
+              <button
+                onClick={() => setTab("Comment")}
+                className={`${tab === "Comment" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
+              >
+                Comment
+              </button>
+              <button
+                onClick={() => setTab("Rating")}
+                className={`${tab === "Rating" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
+              >
+                Rating
+              </button>
+              <button
+                onClick={() => setTab("Feedback")}
+                className={`${tab === "Feedback" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
+              >
+                Feedback
+              </button>
+              <button
+                onClick={() => setTab("Tracking")}
+                className={`${tab === "Tracking" ? " bg-sky-100  text-sky-600" : "text-gray-500 border-transparent"} rounded-lg shrink-0  p-2 text-sm font-medium hover:bg-gray-50 hover:text-gray-700`}
+              >
+                Tracking
+              </button>
+            </nav>
+              </div>*/}
+            </div>
+            <div className="my-20">
               {tab === "Like" && <StudentLike />}
               {tab === "Comment" && <StudentComment />}
               {tab === "Rating" && <StudentRating />}
@@ -104,7 +105,7 @@ const StuActivity = () => {
               {tab === "Tracking" && <StudentTracking />}
             </div>
 
-            <div className="sm:hidden w-full left-0 mx-auto fixed bottom-0 z-50">
+            <div className=" sm:hidden w-[98%] mx-auto left-0 fixed bottom-0 z-50">
               <ButtomNav tData={tData} tab={tab} onClicks={onOptionChangeHandler} />
             </div>
           </div>

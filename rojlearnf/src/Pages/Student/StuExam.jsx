@@ -9,22 +9,22 @@ import ButtomNav from '@/Comp/Navber/ButtomNav'
 const tData = [
 
   {
-      id: 1,
-      title: 'Exams',
-      tab: 'Exam',
-      icon: 'healthicons:i-exam-multiple-choice-outline',
+    id: 1,
+    title: 'Exams',
+    tab: 'Exam',
+    icon: 'healthicons:i-exam-multiple-choice-outline',
   },
   {
-      id: 2,
-      title: 'Assignments',
-      tab: 'Assignment',
-      icon: 'material-symbols:assignment-outline-rounded',
+    id: 2,
+    title: 'Assignments',
+    tab: 'Assignment',
+    icon: 'material-symbols:assignment-outline-rounded',
   },
   {
-      id: 3,
-      title: 'Tasks',
-      tab: 'Task',
-      icon: 'jam:task-list',
+    id: 3,
+    title: 'Tasks',
+    tab: 'Task',
+    icon: 'jam:task-list',
   },
 ]
 const StuExam = () => {
@@ -46,40 +46,17 @@ const StuExam = () => {
 
             <div>
               <div className=" hidden sm:block ml-3 my-4">
-                <div className="border-b border-gray-200">
-                  <nav className="-mb-px flex gap-6">
-                    <button
-                      onClick={() => setTab("Exam")}
-                      className={`${tab === "Exam" ? "shrink-0 rounded-t-lg border-b-white border-gray-300 text-sky-600" : "text-gray-500 border-transparent"} shrink-0 border p-3 text-sm font-medium text-gray-500 hover:text-gray-700`}
-                    >
-                      Exam
-                    </button>
-
-                    <button
-                      onClick={() => setTab("Assignment")}
-                      className={`${tab === "Assignment" ? "shrink-0 rounded-t-lg border-b-white border-gray-300 text-sky-600" : "text-gray-500 border-transparent"} shrink-0 border p-3 text-sm font-medium text-gray-500 hover:text-gray-700`}
-                    >
-                      Assignment
-                    </button>
-
-                    
-
-                    <button
-                      onClick={() => setTab("Task")}
-                      className={`${tab === "Task" ? "shrink-0 rounded-t-lg border-b-white border-gray-300 text-sky-600" : "text-gray-500 border-transparent"} shrink-0 border p-3 text-sm font-medium text-gray-500 hover:text-gray-700`}
-                    >
-                      Task
-                    </button>
-                  </nav>
+                <div className="hidden sm:block w-5/6 fixed top-16 right-0 z-50">
+                  <ButtomNav tData={tData} tab={tab} onClicks={onOptionChangeHandler} />
                 </div>
               </div>
 
-              
+
             </div>
-            <div className="mb-20">
-            {tab === "Exam" && <StudentsExam />}
-            {tab === "Assignment" && <StudentsAssignment />}
-            {tab === "Task" && <StudentsTask />}
+            <div className="my-20">
+              {tab === "Exam" && <StudentsExam />}
+              {tab === "Assignment" && <StudentsAssignment />}
+              {tab === "Task" && <StudentsTask />}
             </div>
 
 
