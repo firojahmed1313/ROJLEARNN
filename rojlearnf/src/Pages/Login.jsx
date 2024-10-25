@@ -5,47 +5,71 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../Redux/Features/Credentials/LoginSlice';
 import { getProfileData } from '../Redux/Features/User/UserSlice';
-
+import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+
+const burl = import.meta.env.VITE_URL;
+const loginUser = async ({ email, password }) => {
+  const response = await axios.post(`${burl}/user/logIn`, 
+    { email, password },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    }
+  );
+  return response.data;
+};
 const Login = () => {
-  const burl = import.meta.env.VITE_URL;
+  
   console.log(burl);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { mutate, isLoading, isError, error } = useMutation({
+    mutationFn: loginUser,
+    onSuccess: (data) => {
+      Cookies.set('ROJLEARN', data, {
+        expires: 1,
+        sameSite: 'strict',
+        secure: true,
+        path: '/',
+      });
+      console.log('Login successful:', data);
+      dispatch(getProfileData(data));
+    },
+  });
   const handelSubmit = async (e) => {
     e.preventDefault();
     const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
-    //const email = e.target.email.value;
-    //const password = e.target.password.value;
     const email = obj.email;
     const password = obj.password;
+    mutate({ email, password });
     console.log(email, password);
-    try {
-      const data = await axios.post(`${burl}/user/logIn`, { email, password }, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true
 
-      });
-      console.log(data.data);
-      if (data.data) {
-        Cookies.set("ROJLEARN", data.data, {
-          expires: 1,
-          sameSite: "strict",
-          secure: true,
-          path: "/"
-        });
-        dispatch(getProfileData(data.data));
-      }
-      else {
-        alert("invalid credentials");
-      }
-    } catch (error) {
-      console.warn(error);
-    }
+    //   const data = await axios.post(`${burl}/user/logIn`, { email, password }, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     withCredentials: true
+
+    //   });
+    //   console.log(data.data);
+    //   if (data.data) {
+    //     Cookies.set("ROJLEARN", data.data, {
+    //       expires: 1,
+    //       sameSite: "strict",
+    //       secure: true,
+    //       path: "/"
+    //     });
+    //     dispatch(getProfileData(data.data));
+    //   }
+    //   else {
+    //     alert("invalid credentials");
+    //   }
+    // } catch (error) {
+    //   console.warn(error);
+    // }
     // //console.log(obj);
     // console.log("obj");
     // //const token= useSelector((state)=>state.login.token);
@@ -55,12 +79,7 @@ const Login = () => {
   const User = useSelector((state) => state.getUser);
 
   console.log(User);
-      // if (User.role === "Student") {
-      //   navigate("/student");
-      // }
-      // else if (User.role === "Instructor") {
-      //   navigate("/teacher");
-      // }
+
   useEffect(() => {
     if(User.isLoading){
       console.log("loading");
@@ -78,7 +97,12 @@ const Login = () => {
     }
   }, [User])
   
-  
+  if(isError){
+    console.log(error);
+  }
+  if(isLoading){
+    console.log("loading");
+  }
 
   return (
     <>
