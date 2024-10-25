@@ -8,6 +8,8 @@ import { getProfileData } from '../Redux/Features/User/UserSlice';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const burl = import.meta.env.VITE_URL;
 const loginUser = async ({ email, password }) => {
@@ -36,6 +38,16 @@ const Login = () => {
       });
       console.log('Login successful:', data);
       dispatch(getProfileData(data));
+      toast.success(`Login successful `, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     },
   });
   const handelSubmit = async (e) => {
@@ -46,37 +58,9 @@ const Login = () => {
     const password = obj.password;
     mutate({ email, password });
     console.log(email, password);
-
-    //   const data = await axios.post(`${burl}/user/logIn`, { email, password }, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     withCredentials: true
-
-    //   });
-    //   console.log(data.data);
-    //   if (data.data) {
-    //     Cookies.set("ROJLEARN", data.data, {
-    //       expires: 1,
-    //       sameSite: "strict",
-    //       secure: true,
-    //       path: "/"
-    //     });
-    //     dispatch(getProfileData(data.data));
-    //   }
-    //   else {
-    //     alert("invalid credentials");
-    //   }
-    // } catch (error) {
-    //   console.warn(error);
-    // }
-    // //console.log(obj);
-    // console.log("obj");
-    // //const token= useSelector((state)=>state.login.token);
-    // console.log("token");
-
   }
   const User = useSelector((state) => state.getUser);
+  
 
   console.log(User);
 
@@ -90,15 +74,30 @@ const Login = () => {
   })
   useEffect(() => {
     if (User.user?.role === "Student") {
-      navigate("/student");
+      setTimeout(() => {
+        navigate("/student");
+      }, 3000)
+      
     }
     else if (User.user?.role === "Instructor") {
-      navigate("/teacher");
+      setTimeout(() => {
+        navigate("/teacher");
+      }, 3000)
     }
   }, [User])
   
   if(isError){
     console.log(error);
+    toast.error("Login failed plz chack your email and password", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   }
   if(isLoading){
     console.log("loading");
@@ -106,9 +105,22 @@ const Login = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Nav />
       <div className="h-[80vh] w-screen flex justify-center items-center dark:bg-gray-900">
         <div className="grid gap-8">
+          
           <div
             id="back-div"
             className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-2"
