@@ -17,6 +17,9 @@ public interface TaskSubmitRepo extends MongoRepository<Submittask, String> {
 
     List<Submittask> findByTaskid(ObjectId objectId);
 
+
+	Submittask findByTuid(String tuid);
+
     
 
 }

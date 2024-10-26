@@ -64,9 +64,9 @@ public class SubmitService {
     }
 
     public ResponseEntity<String> submitTask(String taskId, Submittask task) {
-        Submittask st = tsr.findById(taskId).orElse(null);
+        Submittask st = tsr.findByTuid(task.getTuid());
         if (!(st == null)) {
-            return new ResponseEntity<>("Task Already Submitted", null, HttpStatus.FOUND);
+            return new ResponseEntity<>("Task Already Submitted", null, HttpStatus.OK);
         } else {
             tsr.save(task);
             return new ResponseEntity<>("Task Submitted", null, HttpStatus.OK);

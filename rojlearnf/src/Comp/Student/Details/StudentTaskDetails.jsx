@@ -7,7 +7,21 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import ButtonGive from '@/Comp/Button/ButtonGive'
-
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { useMutation } from "@tanstack/react-query";
+const burl = import.meta.env.VITE_URL;
+const submitTask = async (data) => {
+  const token = Cookies.get('ROJLEARN');
+  const response = await axios.post(`${burl}/submit/submittask/${data.taskid}`, data, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    withCredentials: true,
+  });
+  return response.data;
+}
 const StudentTaskDetails = () => {
   const [showQuestion, setShowQuestion] = React.useState(false);
   const location = useLocation();
@@ -18,6 +32,7 @@ const StudentTaskDetails = () => {
   const token = Cookies.get('ROJLEARN');
   console.log(token);
   const taskDetails = useSelector((state) => state.getTaskById.taskDetails);
+  const User = useSelector((state) => state.getUser);
   const isloading = useSelector((state) => state.getTaskById.isLoading);
   const isError = useSelector((state) => state.getTaskById.isError);
   console.log(taskDetails);
@@ -31,6 +46,35 @@ const StudentTaskDetails = () => {
 
     }
   }, [id])
+  const { mutate, isLoading, error } = useMutation({
+    mutationFn: submitTask,
+    onSuccess: (data) => {
+        console.log(data);
+        toast.success(data, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    },
+    onError: (error) => {
+        console.log("Some Error", error);
+        toast.error( error.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    }
+});
   const handelAnswer = (e) => {
     e.preventDefault();
     setShowQuestion(!showQuestion);
@@ -38,9 +82,33 @@ const StudentTaskDetails = () => {
     const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
     console.log(obj);
+    const taskid= taskDetails._id;
+    const userid = User.user._id;
+    const tuid = taskid + "_" + userid;
+    const {answer}=obj;
+    const data = {
+      taskid,
+      userid,
+      tuid,
+      answer
+    }
+    console.log(data);
+    mutate(data);
   }
   return (
     <>
+    <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+    />
       {
         (isloading) ?
           <div className="flex justify-center items-center h-screen">
