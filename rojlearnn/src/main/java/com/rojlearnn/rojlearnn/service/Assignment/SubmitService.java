@@ -87,12 +87,13 @@ public class SubmitService {
     }
 
     public ResponseEntity<?> submitAssignment(String assignmentId, Submitass assignment) {
-        Submitass st = asr.findById(assignmentId).orElse(null);
+        Submitass st = asr.findByAuid(assignment.getAuid());
+        System.out.println(st);
         if (!(st == null)) {
-            return new ResponseEntity<>("Task Already Submitted", null, HttpStatus.FOUND);
+            return new ResponseEntity<>("Assignment Already Submitted", null, HttpStatus.OK);
         } else {
             asr.save(assignment);
-            return new ResponseEntity<>("Task Submitted", null, HttpStatus.OK);
+            return new ResponseEntity<>("Assignment Submitted", null, HttpStatus.OK);
         }
     }
 

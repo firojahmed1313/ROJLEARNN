@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
@@ -8,8 +7,26 @@ import { getAssignmentDetails } from '@/Redux/Features/EATDetailsByid/GetAssignm
 import ButtonGive from '@/Comp/Button/ButtonGive'
 import CartColloder from '@/Comp/utlits/loder/CartColloder'
 import Cardrowloder from '@/Comp/utlits/loder/Cardrowloder'
+import { useDispatch, useSelector } from 'react-redux'
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { useMutation } from "@tanstack/react-query";
 
 
+const burl = import.meta.env.VITE_URL;
+const submitAss = async (obj) => {
+  const token = Cookies.get('ROJLEARN');
+  console.log(token);
+  const response = await axios.post(`${burl}/submit/submitass/${obj.assignmentid}`, obj, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    withCredentials: true,
+  });
+  return response.data;
+  
+}
 const StudentAssDetails = () => {
   const [showQuestion, setShowQuestion] = React.useState(false);
   const location = useLocation();
@@ -23,6 +40,8 @@ const StudentAssDetails = () => {
   const isloading = useSelector((state) => state.getAssignmentById.isLoading);
   const isError = useSelector((state) => state.getAssignmentById.isError);
   console.log(assignmentDetails);
+  const User = useSelector((state) => state.getUser);
+  console.log(User);
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -33,16 +52,72 @@ const StudentAssDetails = () => {
 
     }
   }, [id])
+  const { mutate, isLoading, error } = useMutation({
+    mutationFn: submitAss,
+    onSuccess: (data) => {
+        console.log("Assignment Submitted", data);
+        toast.success(data, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    },
+    onError: (error) => {
+        console.log("Some Error", error);
+        toast.error( error.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    }
+})
   const handelAnswer = (e) => {
     e.preventDefault();
     setShowQuestion(!showQuestion);
-    //console.log("ANS");
     const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
-    console.log(obj);
+    //console.log(obj);
+    const { github_url, deploy_url } = obj;
+    //console.log(github_url, deploy_url);
+    const assignmentid = assignmentDetails._id.toString();
+    const userid = User.user._id.toString();
+    const auid = assignmentid+"_"+userid;
+    console.log(auid);
+    const data = {
+      github_url,
+      deploy_url,
+      assignmentid,
+      userid,
+      auid
+    }
+    //console.log(data);
+    mutate(data);
+
   }
   return (
     <>
+    <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+    />
     {(isloading)?
       <div className="flex justify-center items-center h-screen">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
