@@ -17,11 +17,11 @@ public class Exam {
     private int totalmarks;
     private int totalduration;
     private int totalquestions;
-    private List<ObjectId> questions;
+    private List<String> questions;
     private LocalDateTime created_at = LocalDateTime.now();
     public Exam() {}
     public Exam(ObjectId courseid, String title, String descriptions, int totalmarks, int totalduration,
-            int totalquestions, List<ObjectId> questions) {
+            int totalquestions, List<String> questions) {
         this.courseid = courseid;
         this.title = title;
         this.descriptions = descriptions;
@@ -76,10 +76,10 @@ public class Exam {
     public void setTotalquestions(int totalquestions) {
         this.totalquestions = totalquestions;
     }
-    public List<ObjectId> getQuestions() {
+    public List<String> getQuestions() {
         return questions;
     }
-    public void setQuestions(List<ObjectId> questions) {
+    public void setQuestions(List<String> questions) {
         this.questions = questions;
     }
     public LocalDateTime getCreated_at() {

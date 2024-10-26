@@ -90,12 +90,12 @@ const StudentAllRecord = () => {
                     <div className="flex sm:basis-1/2 flex-col min-h-auto justify-between space-y-5 p-8 sm:px-10">
                         <h1 className="font-hankengrotesk text-xl sm:text-lg font-bold">Summary</h1>
                         <div className="flex flex-col space-y-4">
-                            {data.map((skill, index) => (
+                            {data?.map((skill, index) => (
                                 <TopFive
                                     key={index}
                                     source={skill.icon}
                                     category={skill.category}
-                                    score={studentReport[index].mark}
+                                    score={studentReport[index]?.mark}
                                     colorIndex={index}
                                 />
                             ))}

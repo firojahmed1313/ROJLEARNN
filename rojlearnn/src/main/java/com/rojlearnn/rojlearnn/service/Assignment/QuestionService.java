@@ -2,6 +2,8 @@ package com.rojlearnn.rojlearnn.service.Assignment;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,8 @@ public class QuestionService {
 	}
 
 	public ResponseEntity<?> getQuestionById(String id) {
-		Questions question = qr.findById(id).get();
+		System.out.println(id);
+		Questions question = qr.findBy_id(new ObjectId(id));
 		return new ResponseEntity<>(question, HttpStatus.OK);
 		
 	}
