@@ -9,38 +9,92 @@ import { useDispatch, useSelector } from 'react-redux'
 //import {Toastify} from '../Comp/utlits/Toastify'
 import { ToastContainer, toast } from "react-toastify";
 import { postApi } from '../Redux/Api/Api'
+import { useMutation } from '@tanstack/react-query';
 
+
+
+
+const burl = import.meta.env.VITE_URL;
+const registerUser = async (obj) => {
+  const data = await postApi(`${burl}/user/register`, obj);
+  return data.data;
+}
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const burl = import.meta.env.VITE_URL;
+
+  const { mutate, isLoading, isError, error } = useMutation({
+    mutationFn: registerUser,
+    onSuccess: (data) => {
+      console.log(data);
+      if (typeof (data) == 'string') {
+        //console.warn(data);
+        toast.info(data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+      else if (typeof (data) == 'object') {
+        console.log(data);
+        console.log("Successfully registered");
+        toast.success(`Successfully registered `, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000)
+      }
+    },
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formobj = new FormData(e.target);
     const obj = Object.fromEntries(formobj.entries());
     console.log(obj);
-    try {
-      const data = await postApi(`${burl}/user/register`, obj);
-      console.log(data);
-
-      if (typeof (data.data) == 'string') {
-        console.warn(data);
-      }
-      else if (typeof (data.data) == 'object') {
-        console.log(data);
-        console.log("Successfully registered");
-        navigate('/login');
-      }
-      // if (data.data) {
-      //   navigate("/login");
-      // }
-    } catch (error) {
-      console.log(error);
-    }
+    mutate(obj);
   }
-  
+  if (isError) {
+    console.log(error);
+    // toast.error("Login failed plz chack your email and password", {
+    //   position: "top-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: "colored",
+    // });
+  }
+
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Nav />
       <section className="bg-white">
         <div className="lg:grid lg:grid-cols-12  lg:h-[80vh]">
