@@ -78,7 +78,7 @@ public class SubmitService {
     public ResponseEntity<?> getMarksByTeacher(String containid, Marks marks) {
         Marks m = mr.findByCuid(marks.getCuid());
         if (!(m == null)) {
-            return new ResponseEntity<>("Marks Already Submitted", null, HttpStatus.FOUND);
+            return new ResponseEntity<>("Marks Already Submitted", null, HttpStatus.OK);
         } else {
             mr.save(marks);
             return new ResponseEntity<>("Marks Submitted", null, HttpStatus.CREATED);
