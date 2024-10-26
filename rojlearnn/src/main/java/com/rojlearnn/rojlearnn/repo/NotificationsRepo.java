@@ -14,4 +14,6 @@ public interface NotificationsRepo extends MongoRepository<Notifications, String
 
 	List<Notifications> findByUserid(ObjectId objectId);
 
+	Notifications findBy_id(String id);
+
 }

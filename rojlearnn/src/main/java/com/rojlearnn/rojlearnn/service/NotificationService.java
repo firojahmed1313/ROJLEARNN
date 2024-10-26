@@ -1,5 +1,6 @@
 package com.rojlearnn.rojlearnn.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -35,8 +36,9 @@ public class NotificationService {
 	}
 
 	public ResponseEntity<?> updateStatus(String id) {
-		Notifications not= nr.findById(id).get();
+		Notifications not= nr.findBy_id(id);
 		not.setStatus(true);
+		not.setRead_at(LocalDateTime.now());
 		nr.save(not);
 		return new ResponseEntity<>(not, HttpStatus.OK);
 	}
