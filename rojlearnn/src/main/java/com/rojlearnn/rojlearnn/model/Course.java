@@ -14,14 +14,14 @@ public class Course {
     private String thumbnail_url;
     private double duration_hours;
     private double price;
-    private boolean is_published;
+    private boolean is_published=true;
     private LocalDateTime created_at = LocalDateTime.now();
 
     public Course() {
     }
 
     public Course(String title, String description, ObjectId instructor_id, String category, String thumbnail_url,
-            double duration_hours, double price, boolean is_published) {
+            double duration_hours, double price) {
         this.title = title;
         this.description = description;
         this.instructor = instructor_id;
@@ -29,7 +29,6 @@ public class Course {
         this.thumbnail_url = thumbnail_url;
         this.duration_hours = duration_hours;
         this.price = price;
-        this.is_published = is_published;
     }
 
     public String get_id() {

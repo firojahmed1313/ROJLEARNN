@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -11,13 +11,85 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { getProfileData } from '@/Redux/Features/User/UserSlice';
+import { useDispatch, useSelector } from 'react-redux'
+import Cookies from 'js-cookie'
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { useMutation } from "@tanstack/react-query";
+const burl = import.meta.env.VITE_URL;
 
+const addCourseFunc = async (data) => {
+    const token = Cookies.get("ROJLEARN");
+    const response = await axios.post(`${burl}/course/create`, data, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+    })
+    return response.data;
+}
 const AddCourse = () => {
-    const handleAddCourse = () => {
+    const dispatch = useDispatch();
+    const data = Cookies.get("ROJLEARN");
+    const User = useSelector((state) => state.getUser);
+    console.log(User);
+    const { mutate, isLoading, isError, error } = useMutation({
+        mutationFn: addCourseFunc,
+        onSuccess: (data) => {
+            console.log("add course", data);
+            toast.success(`Course Added `, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        },
+        onError: (error) => {
+            console.log("Some Error", error);
+            toast.error( error.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        }
+    })
+    useEffect(() => {
+        dispatch(getProfileData(data));
+    }, [data]);
+    const handleAddCourse = (e) => {
+        e.preventDefault();
         console.log("Add Course");
+        const fromobj = new FormData(e.target);
+        const obj = Object.fromEntries(fromobj.entries());
+        console.log(obj);
+        mutate(obj);
+
     }
     return (
         <>
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+    />
             <AlertDialog>
                 <div className='w-full mt-8 z-50'>
                     <AlertDialogTrigger asChild>
@@ -175,7 +247,7 @@ const AddCourse = () => {
                                                     </label>
                                                     <div className='relative z-20'>
                                                         <select id="instructor" name="instructor" className='relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2'>
-                                                            <option value='Student' className='dark:bg-dark-2'>Student</option>
+                                                            <option value={User?.user?._id} className='dark:bg-dark-2'>{User?.user?._id}</option>
 
                                                         </select>
                                                         <span className='absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color'></span>
@@ -192,6 +264,7 @@ const AddCourse = () => {
                                                 <textarea
                                                     id="description"
                                                     rows="6"
+                                                    name="description"
                                                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
                                                     placeholder="Description"
                                                 ></textarea>
