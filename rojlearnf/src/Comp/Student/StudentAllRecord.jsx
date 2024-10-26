@@ -91,13 +91,19 @@ const StudentAllRecord = () => {
                         <h1 className="font-hankengrotesk text-xl sm:text-lg font-bold">Summary</h1>
                         <div className="flex flex-col space-y-4">
                             {data?.map((skill, index) => (
-                                <TopFive
+                                
+                                (studentReport)
+                                ?
+                                    <TopFive
                                     key={index}
                                     source={skill.icon}
                                     category={skill.category}
                                     score={studentReport[index]?.mark}
                                     colorIndex={index}
-                                />
+                                    />
+                                :null
+                                
+                                
                             ))}
                         </div>
                         <button className="bg-[#303b5a] sm:hover:bg-gradient-to-b to-[#2e2be9] from-[#7857ff] active:bg-gradient-to-b text-white py-4 sm:py-3 rounded-full font-hankengrotesk text-xl sm:text-lg font-bold" onClick={() => navigate(`#large`)}>Continue</button>
