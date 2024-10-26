@@ -20,14 +20,8 @@ const Carts = ({ cartItems }) => {
                                 <h1 className="text-xl font-bold  sm:text-3xl">Your Cart</h1>
                             </header>
 
-                            <div className="mt-8">
-                                
-                                    
-                                    <Cartitemloder item={cartItems}  />
-                                
-                                
-
-                                
+                            <div className="mt-8">                                                                    
+                                <Cartitemloder item={cartItems}  />                                                                                            
                             </div>
                         </div>
                     }

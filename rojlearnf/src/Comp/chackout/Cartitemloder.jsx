@@ -3,13 +3,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCourseDetailsData } from '../../Redux/Features/Course/getCourseDetailsSlice'
 import { getCartLtemsNow } from '@/Redux/Features/Chackout/GetCartLtemsNowSlice';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify';
+
 
 
 
 const Cartitemloder = ({ item }) => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.getCartItemsNow.cartItems);
     console.log(cartItems);
+    const token = Cookies.get("ROJLEARN");
     //console.log(course);
     useEffect(() => {
         dispatch(getCartLtemsNow(item));
@@ -18,8 +25,45 @@ const Cartitemloder = ({ item }) => {
     cartItems?.map((course) => {
         total = total + course.price;
     })
+    const handelDeleteCartitems = async (course) => {
+        console.log("handelDeleteCartitems", course);
+        console.log(item);
+        const deleteitems= item.filter((item) => item.courseid === course._id);
+        console.log("deleteitems", deleteitems);
+        const burl = import.meta.env.VITE_URL;
+        const response = await axios.delete(`${burl}/cart/delete/${deleteitems[0]._id}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }   
+        })
+        console.log(response.data);
+        toast.success(response.data, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+        window.location.reload();
+
+    }
     return (
         <>
+        <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
     <ul className="space-y-4">
         {
             cartItems?.map((course) => (
@@ -44,7 +88,7 @@ const Cartitemloder = ({ item }) => {
                             </div>
                         </dl>
                     </div>
-                    <button className="text-gray-600 transition hover:text-red-600">
+                    <button onClick={() => handelDeleteCartitems(course)} className="text-gray-600 transition hover:text-red-600" >
                         <span className="sr-only">Remove item</span>
 
                         <svg
