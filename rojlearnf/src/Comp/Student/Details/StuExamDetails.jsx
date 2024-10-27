@@ -44,7 +44,7 @@ const StuExamDetails = () => {
     if (examDetails) {
       dispatch(getQuestioninExam(examDetails.questions));
     }
-  }, [examDetails]);
+  }, []);
   const questioninExam = useSelector(
     (state) => state.getQuestionsinExam.questioninExam
   );
