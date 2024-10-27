@@ -7,44 +7,26 @@ import { getExamDetails } from "@/Redux/Features/EATDetailsByid/GetExamDetailsSl
 import { useEffect } from "react";
 import ButtonGive from "@/Comp/Button/ButtonGive";
 import { getQuestioninExam } from "@/Redux/Features/Assignment/getQuestioninExamSlice";
-const qData = [
-  {
-    id: 1,
-    q: "Question 1",
-    o1: "Option 1",
-    o2: "Option 2",
-    o3: "Option 3",
-    o4: "Option 4",
-    ans: "Option 1",
-  },
-  {
-    id: 2,
-    q: "Question 2",
-    o1: "Option 1",
-    o2: "Option 2",
-    o3: "Option 3",
-    o4: "Option 4",
-    ans: "Option 1",
-  },
-  {
-    id: 3,
-    q: "Question 3",
-    o1: "Option 1",
-    o2: "Option 2",
-    o3: "Option 3",
-    o4: "Option 4",
-    ans: "Option 1",
-  },
-  {
-    id: 4,
-    q: "Question 4",
-    o1: "Option 1",
-    o2: "Option 2",
-    o3: "Option 3",
-    o4: "Option 4",
-    ans: "Option 1",
-  },
-];
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useMutation } from "@tanstack/react-query";
+
+
+
+const submitExam = async ({data,id}) => {
+  console.log(id);
+  const burl = import.meta.env.VITE_URL;
+  const token = Cookies.get("ROJLEARN");
+  const response = await axios.post(`${burl}/submit/submitExam/${id}`, data, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    withCredentials: true,
+  });
+  return response.data;
+}
 const StuExamDetails = () => {
   const [showQuestion, setShowQuestion] = React.useState(false);
   const location = useLocation();
@@ -57,7 +39,7 @@ const StuExamDetails = () => {
   const examDetails = useSelector((state) => state.getExamById.examDetails);
   const isloading = useSelector((state) => state.getExamById.isLoading);
   const isError = useSelector((state) => state.getExamById.isError);
-  console.log(examDetails); //.questions
+  console.log(examDetails); //.questions //._id
   useEffect(() => {
     if (examDetails) {
       dispatch(getQuestioninExam(examDetails.questions));
@@ -74,6 +56,37 @@ const StuExamDetails = () => {
       dispatch(getExamDetails(id));
     }
   }, [id]);
+  const { mutate, isLoading, error } = useMutation({
+    mutationFn: submitExam,
+    onSuccess: (data) => {
+      console.log('Submit Exam successful:', data);
+
+      toast.success(data, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    },
+    onError: (error) => {
+      console.log("Some Error", error);
+      toast.error(error.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+
+  });
   const handelAnswer = (e) => {
     e.preventDefault();
     setShowQuestion(!showQuestion);
@@ -81,9 +94,31 @@ const StuExamDetails = () => {
     const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
     console.log(obj);
+    const data = [];
+    for (const [key, ans] of Object.entries(obj)) {
+      let _id = key.substring(6, key.length);
+      data.push({ _id, ans });
+    }
+    console.log(data);
+    const id = examDetails._id;
+    mutate({data,id});
+
+
   };
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       {isloading ? (
         <div class="flex items-center justify-center h-screen">
           <div class="relative">
@@ -239,8 +274,8 @@ const StuExamDetails = () => {
                             <input
                               type="checkbox"
                               id="tennis"
-                              name="answer"
-                              value={item?.option1}
+                              name={`answer${item?._id}`}
+                              value="option1"
                               class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full   checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             />
                             <label
@@ -254,14 +289,14 @@ const StuExamDetails = () => {
                             <input
                               type="checkbox"
                               id="tennis"
-                              name="answer"
-                              value={item?.option2}
+                              name={`answer${item?._id}`}
+                              value="option2"
                               class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
                                       checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             ></input>
                             <label
                               for="tennis"
-                              
+
                               class="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
                                        peer-checked:text-gray-100 transition-all duration-200 select-none
                                   "
@@ -273,8 +308,8 @@ const StuExamDetails = () => {
                             <input
                               type="checkbox"
                               id="tennis"
-                              name="answer"
-                              value={item?.option3}
+                              name={`answer${item?._id}`}
+                              value="option3"
                               class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
                                       checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             ></input>
@@ -291,8 +326,8 @@ const StuExamDetails = () => {
                             <input
                               type="checkbox"
                               id="tennis"
-                              name="answer"
-                              value={item?.option4}
+                              name={`answer${item?._id}`}
+                              value="option4"
                               class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
                                       checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             ></input>

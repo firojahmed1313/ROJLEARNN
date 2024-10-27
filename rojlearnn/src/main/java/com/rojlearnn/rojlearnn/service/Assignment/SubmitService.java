@@ -37,8 +37,16 @@ public class SubmitService {
     public ResponseEntity<?> submitExam(String examId, List<Submitexam> exams) {
         User user = us.getCurrentUserProfile();
         double marks = 0;
+        String userid = user.get_id();
+        String cuid = examId + "_" + userid;
+        Marks f = mr.findByCuid(cuid);
+		if (!(f == null)) {
+			return new ResponseEntity<>("Marks Already Submitted", null, HttpStatus.OK);
+		}
         for (Submitexam exam : exams) {
+        	//System.out.println(exam.get_id());
             Questions ex = qr.findById(exam.get_id()).orElse(null);
+            //System.out.println(ex);
             if (ex == null) {
                 return new ResponseEntity<>("Question Not Found", null, HttpStatus.OK);
             } else {
@@ -51,14 +59,14 @@ public class SubmitService {
             }
 
         }
+        System.out.println(marks);
         Marks m = new Marks();
         m.setMark(marks);
-        String userid = user.get_id();
-        String cuid = examId + "_" + userid;
         m.setCuid(cuid);
         m.setContainid(examId);
         m.setUserid(userid);
-        mr.save(m);
+        Marks ans=mr.save(m);
+        System.out.println(ans);
         return new ResponseEntity<>("Exam Submitted", null, HttpStatus.OK);
 
     }
