@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Loading from '../utlits/loder/Loading';
 
 const data = [
   {
@@ -51,7 +52,10 @@ const StudentsExam = () => {
         <p className=" text-center text-blue-700 mt-4 text-3xl font-bold">All Exams</p>
       </div>
       
-      {courses?.length != 0 ? (
+      {
+        (courses==null)?
+          <Loading/>
+          :courses?.length != 0 ? (
           <div className="grid grid-cols-1 w-[98%] mx-auto ">
               <Accordion type="single" collapsible className="w-[98%] mx-auto  ">
                   {courses?.map((course, index) => {

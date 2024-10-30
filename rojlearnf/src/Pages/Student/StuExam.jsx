@@ -46,7 +46,7 @@ const StuExam = () => {
 
             <div>
               <div className=" hidden sm:block ml-3 my-4">
-                <div className="hidden sm:block w-5/6 fixed top-16 right-0 z-50">
+                <div className="hidden sm:block w-5/6 fixed top-16 right-0 z-40">
                   <ButtomNav tData={tData} tab={tab} onClicks={onOptionChangeHandler} />
                 </div>
               </div>

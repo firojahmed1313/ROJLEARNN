@@ -11,6 +11,8 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import AETST from "../utlits/AETST";
+import AETloader from "../utlits/loder/AETloader";
+import Loading from "../utlits/loder/Loading";
 
 const data = [
     {
@@ -58,7 +60,11 @@ const TeacherAllTask = () => {
             <div className="my-4 ">
                 <AddTask />
             </div>
-            {courses?.length != 0 ? (
+            {
+                (courses==null)?
+                <Loading/>
+                :
+                courses?.length != 0 ? (
                 <div className="grid grid-cols-1 w-[98%] mx-auto ">
                     <Accordion type="single" collapsible className="w-[98%] mx-auto  ">
                         {courses?.map((course, index) => {

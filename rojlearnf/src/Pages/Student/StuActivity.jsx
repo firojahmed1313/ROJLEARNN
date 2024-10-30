@@ -58,7 +58,7 @@ const StuActivity = () => {
           <Topnav />
           <div className="">
             <div className='mb-4'>
-            <div className="hidden sm:block w-5/6 top-16 right-0 fixed z-50">
+            <div className="hidden sm:block w-5/6 top-16 right-0 fixed z-40">
               <ButtomNav tData={tData} tab={tab} onClicks={onOptionChangeHandler} />
             </div>
               {/*<div className="hidden sm:block w-full ml-3 my-4">

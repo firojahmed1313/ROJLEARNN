@@ -76,7 +76,7 @@ const Topnav = () => {
                         </div>
                     </span>
                 </button>
-                <div className={`${(showNotification) ? "block" : "hidden"} absolute top-16 right-2 overflow-hidden bg-gray-800 `}>
+                <div className={`${(showNotification) ? "block" : "hidden"} absolute z-50 top-16 right-2 overflow-hidden bg-gray-800 `}>
                     {(notification) ? <Notifications  notifications={notification} /> : <Cartitemloder />}
                 </div>
                 <button className="py-4 px-1 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out border-red-500 mr-4" aria-label="Cart" onClick={handelcartItems}>
@@ -89,7 +89,7 @@ const Topnav = () => {
                         </div>
                     </span>
                 </button>
-                <div className={`${(showCart) ? "block" : "hidden"} absolute top-16 right-2 overflow-hidden bg-gray-800 `}>
+                <div className={`${(showCart) ? "block" : "hidden"} absolute z-50 top-16 right-2 overflow-hidden bg-gray-800 `}>
                     {(cartItems) ? <Carts  cartItems={cartItems} /> : <Cartitemloder />}
                 </div>
 
@@ -103,7 +103,7 @@ const Topnav = () => {
                     <span className="ml-2 text-sm text-white font-medium mr-4" onClick={() => setShow(!show)}>Account</span>
                     <div className="h-10 w-10 hover:ring-4 user cursor-pointer relative ring-blue-700/30 rounded-full mr-4 bg-cover bg-center" style={{ backgroundImage: `url(${(user?.profile_picture_url) ? user.profile_picture_url : avatar})` }} onClick={() => setShow(!show)} >
 
-                        <div className={`drop-down ${(!show) ? 'hidden' : 'block'}  w-48 overflow-hidden bg-slate-600 rounded-md shadow z-10 absolute top-12 right-3`}>
+                        <div className={`drop-down ${(!show) ? 'hidden' : 'block'}  w-48 overflow-hidden bg-slate-600 rounded-md shadow z-50 absolute top-12 right-3`}>
                             <ul>
                                 <li className="px-3 py-3 text-sm font-medium flex items-center space-x-2 hover:bg-slate-400" onClick={() => navigate("/settings")}>
                                     <span>

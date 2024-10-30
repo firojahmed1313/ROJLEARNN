@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { useDispatch , useSelector} from 'react-redux';
 import AETST from '../utlits/AETST';
+import Loading from '../utlits/loder/Loading';
 const data = [
     {
         id: 1,
@@ -57,7 +58,10 @@ const TeacherAllExam = () => {
 
                 <AddExam />
             </div>
-            {courses?.length != 0 ? (
+            {
+                (courses==null)?
+                <Loading/>
+                :courses?.length != 0 ? (
                 <div className="grid grid-cols-1 w-[98%] mx-auto ">
                     <Accordion type="single" collapsible className="w-[98%] mx-auto  ">
                         {courses?.map((course, index) => {
