@@ -9,9 +9,10 @@ import { useDispatch } from 'react-redux'
 import { getCourseData } from '../Redux/Features/Course/getCourseSlice'
 import { useEffect, useState } from 'react'
 import CartColloder from '../Comp/utlits/loder/CartColloder'
+import ButtomNavHome from '@/Comp/Navber/ButtomNavHome'
+
 
 const Home = () => {
-  const [courseData, setCourseData] = useState([]);
   const dispatch = useDispatch();
   const course = useSelector((state) => state.getCourse.course);
   const loading = useSelector((state) => state.getCourse.isLoading);
@@ -54,7 +55,7 @@ const Home = () => {
                       <Link href="#"
                         className="inline-block mb-4 text-xs font-bold capitalize border-b-2 border-blue-600 hover:text-blue-600">
                         {course?.data[0]?.category}
-                        </Link>
+                      </Link>
                       <Link href="#"
                         className="block mb-4 text-2xl font-black leading-tight hover:underline hover:text-blue-600">
                         {course?.data[0]?.title}
@@ -123,6 +124,9 @@ const Home = () => {
             </div>
         }
       </section>
+      <div className="md:hidden w-full mx-auto left-0 fixed bottom-0">
+        <ButtomNavHome tab="Home"/>
+      </div>
       <FooterHome />
     </>
   )

@@ -5,7 +5,9 @@ import { getCourseData } from '../../Redux/Features/Course/getCourseSlice'
 import { formatDateString } from '../utlits/FormatDateString'
 import CartColloder from '../utlits/loder/CartColloder'
 import { getUserByid } from '@/Redux/Features/User/GetUserByidSlice'
-const GetTeacherData = ({dateObj,id}) => {
+import ButtomNavHome from '../Navber/ButtomNavHome'
+
+const GetTeacherData = ({ dateObj, id }) => {
     // const dispatch = useDispatch();
     // const teacher = useSelector((state) => state.getUserById.userData);
     // console.log(teacher);
@@ -19,7 +21,7 @@ const GetTeacherData = ({dateObj,id}) => {
                 href="#"><img className="w-10 h-10 rounded-full mr-4" src="https://tailwindcss.com/img/jonathan.jpg" alt="Avatar of Jonathan Reinink" /></a>
             <div className="text-sm">
                 <a href="#" className="text-gray-900 font-semibold leading-none hover:text-indigo-600">
-                Jonathan Reinink
+                    Jonathan Reinink
                 </a>
                 <p className="text-gray-600">{dateObj.month} - {dateObj.day} - {dateObj.year} at {dateObj.hour}:{dateObj.minutes}:{dateObj.seconds} {dateObj.period}</p>
             </div>
@@ -394,6 +396,9 @@ const Courseall = () => {
                         </div>
 
                     </div>
+                </div>
+                <div className="md:hidden w-full mx-auto left-0 fixed bottom-0">
+                    <ButtomNavHome tab="Course" />
                 </div>
             </section>
         </>

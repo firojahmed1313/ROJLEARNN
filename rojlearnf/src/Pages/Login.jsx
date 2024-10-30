@@ -10,6 +10,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ButtomNavHome from '@/Comp/Navber/ButtomNavHome';
 
 const burl = import.meta.env.VITE_URL;
 const loginUser = async ({ email, password }) => {
@@ -119,7 +120,7 @@ const Login = () => {
         theme="colored"
       />
       <Nav />
-      <div className="h-[80vh] w-screen flex justify-center items-center dark:bg-gray-900">
+      <div className="h-[80vh] w-full flex justify-center items-center dark:bg-gray-900">
         <div className="grid gap-8">
           
           <div
@@ -287,6 +288,9 @@ const Login = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="md:hidden w-full mx-auto left-0 fixed bottom-0">
+        <ButtomNavHome tab="Login"/>
       </div>
       <Footer />
     </>

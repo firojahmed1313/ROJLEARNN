@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast } from "react-toastify";
 import { postApi } from '../Redux/Api/Api'
 import { useMutation } from '@tanstack/react-query';
+import ButtomNavHome from '@/Comp/Navber/ButtomNavHome'
 
 
 
@@ -147,7 +148,7 @@ const Register = () => {
 
               <form onSubmit={handleSubmit} className="mt-8 grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
-                  <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-700">
                     Username
                   </label>
 
@@ -155,12 +156,12 @@ const Register = () => {
                     type="text"
                     id="username"
                     name="username"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                   />
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label htmlFor="profile_picture_url" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="profile_picture_url" className="block mb-2 text-sm font-medium text-gray-700">
                     Profile Picture Url
                   </label>
 
@@ -168,25 +169,25 @@ const Register = () => {
                     type="text"
                     id="profile_picture_url"
                     name="profile_picture_url"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                   />
                 </div>
 
 
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label htmlFor="Email" className="block text-sm font-medium text-gray-700"> Email </label>
+                  <label htmlFor="Email" className="block mb-2 text-sm font-medium text-gray-700"> Email </label>
 
                   <input
                     type="email"
                     id="Email"
                     name="email"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                   />
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="phone_number" className="block mb-2 text-sm font-medium text-gray-700">
                     Phone Number
                   </label>
 
@@ -194,12 +195,12 @@ const Register = () => {
                     type="text"
                     id="phone_number"
                     name="phone_number"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                   />
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-700">
                     Address
                   </label>
 
@@ -207,18 +208,18 @@ const Register = () => {
                     type="text"
                     id="address"
                     name="address"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                   />
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label htmlFor="Password" className="block text-sm font-medium text-gray-700"> Password </label>
+                  <label htmlFor="Password" className="block mb-2 text-sm font-medium text-gray-700"> Password </label>
 
                   <input
                     type="password"
                     id="Password"
                     name="password"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
                   />
                 </div>
 
@@ -226,12 +227,13 @@ const Register = () => {
                   <label htmlFor="role" className='mb-[10px] block text-base font-medium text-dark dark:text-white'>
                     Role
                   </label>
-                  <div className='relative z-20'>
-                    <select id="role" name="role" className='relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2'>
+                  <div className=''>
+                    <select id="role" name="role" 
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
+                    >
                       <option value='Student' className='dark:bg-dark-2'>Student</option>
 
                     </select>
-                    <span className='absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color'></span>
                   </div>
                 </div>
 
@@ -239,12 +241,13 @@ const Register = () => {
                   <label htmlFor="is_active" className='mb-[10px] block text-base font-medium text-dark dark:text-white'>
                     Status
                   </label>
-                  <div className='relative z-20'>
-                    <select id="is_active" name="is_active" className='relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2'>
+                  <div className=''>
+                    <select id="is_active" name="is_active" 
+                    className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
+                    >
                       <option value='true' className='dark:bg-dark-2'>True</option>
 
                     </select>
-                    <span className='absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color'></span>
                   </div>
                 </div>
 
@@ -290,6 +293,9 @@ const Register = () => {
           </main>
         </div>
       </section>
+      <div className="md:hidden w-full mx-auto left-0 fixed bottom-0">
+        <ButtomNavHome tab="Register"/>
+      </div>
       <Footer />
     </>
   )

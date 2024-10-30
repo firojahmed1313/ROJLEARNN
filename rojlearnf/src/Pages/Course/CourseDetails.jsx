@@ -16,6 +16,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useMutation } from "@tanstack/react-query";
+import ButtomNavHome from '@/Comp/Navber/ButtomNavHome'
 
 
 
@@ -109,6 +110,7 @@ const CourseDetails = () => {
         mutate(data);
 
     }
+
     return (
         <>
             <ToastContainer
@@ -228,6 +230,9 @@ const CourseDetails = () => {
 
             }
 
+            <div className="md:hidden w-full mx-auto left-0 fixed bottom-0">
+                <ButtomNavHome tab="Course Details" />
+            </div>
             <Testimonials RatingData={courseRateing} />
             <Footer />
         </>

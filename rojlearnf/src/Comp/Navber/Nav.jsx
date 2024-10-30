@@ -24,6 +24,22 @@ const Nav = () => {
     <header className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
+          {/*<div className="block md:hidden">
+            <button
+              className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>*/}
           <div className="flex-1 md:flex md:items-center md:gap-12">
             <Link className="block text-teal-600 dark:text-teal-300" to={"/"}>
               <span className="sr-only">Home</span>
@@ -38,7 +54,7 @@ const Nav = () => {
               type="text"
               id="Search"
               placeholder="Search for..."
-              className="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"
+              className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
             />
 
             <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
@@ -62,7 +78,7 @@ const Nav = () => {
               </button>
             </span>
           </div>
-          <div className="md:flex md:items-center md:gap-12 ml-5 lg:ml-8">
+          <div className="hidden md:flex md:items-center md:gap-12 ml-5 lg:ml-8">
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
                 {
@@ -100,24 +116,9 @@ const Nav = () => {
                       </div>
                     </div>
 
-                    <div className="block md:hidden">
-                      <button
-                        className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="size-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                      </button>
-                    </div>
+
                   </div>
-                </>:
+                </> :
                 <>
 
                   <div className="flex items-center gap-4">
@@ -127,10 +128,10 @@ const Nav = () => {
                     >
                       Profile
                     </Link>
-                    
+
                   </div>
                 </>
-              }
+            }
 
           </div>
         </div>
