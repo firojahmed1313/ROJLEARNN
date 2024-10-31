@@ -87,7 +87,7 @@ const StudentAllRecord = () => {
                                 </div>
                                 :
                                 <div className="flex flex-col items-center justify-center w-32 aspect-square rounded-full bg-gradient-to-b from-[#2421ca]/100 to-[#4e21ca]/0 my-6">
-                                    <div class="w-32 aspect-square rounded-full border-t-8 border-b-8 border-green-500 animate-spin">
+                                    <div className="w-32 aspect-square rounded-full border-t-8 border-b-8 border-green-500 animate-spin">
                                     </div>
                                 </div>
                         }

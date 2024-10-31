@@ -120,10 +120,10 @@ const StuExamDetails = () => {
         theme="colored"
       />
       {isloading ? (
-        <div class="flex items-center justify-center h-screen">
-          <div class="relative">
-            <div class="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
-            <div class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
+        <div className="flex items-center justify-center h-screen">
+          <div className="relative">
+            <div className="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
+            <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
           </div>
         </div>
       ) : (
@@ -262,78 +262,78 @@ const StuExamDetails = () => {
             {/* <h5 className="text-lg mt-4 font-bold">{taskDetails?.taskquestions}</h5> */}
             <div className=" mt-4">
               <form onSubmit={handelAnswer}>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 w-[98%] mx-auto border-2 py-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 w-[98%] mx-auto border-2 py-3">
                   {questioninExam?.map((item, index) => {
                     return (
-                      <div class="bg-white w-[96%]  mx-auto rounded-md pb-2 shadow-lg ">
-                        <p class="bg-teal-700 px-4 py-3 text-white font-bold rounded-t-md">
+                      <div className="bg-white w-[96%]  mx-auto rounded-md pb-2 shadow-lg " key={index}>
+                        <p className="bg-teal-700 px-4 py-3 text-white font-bold rounded-t-md">
                           {item?.question}
                         </p>
-                        <div class="flex flex-col w-full gap-3 py-3 pb-2 px-2 relative">
-                          <div class="relative w-full h-8">
+                        <div className="flex flex-col w-full gap-3 py-3 pb-2 px-2 relative">
+                          <div className="relative w-full h-8">
                             <input
                               type="checkbox"
                               id="tennis"
                               name={`answer${item?._id}`}
                               value="option1"
-                              class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full   checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
+                              className="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full   checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             />
                             <label
-                              for="tennis"
-                              class="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%] peer-checked:text-gray-100 transition-all duration-200 select-none"
+                              htmlFor="tennis"
+                              className="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%] peer-checked:text-gray-100 transition-all duration-200 select-none"
                             >
                               {item?.option1}
                             </label>
                           </div>
-                          <div class="relative w-full h-8">
+                          <div className="relative w-full h-8">
                             <input
                               type="checkbox"
                               id="tennis"
                               name={`answer${item?._id}`}
                               value="option2"
-                              class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
+                              className="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
                                       checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             ></input>
                             <label
-                              for="tennis"
+                              htmlFor="tennis"
 
-                              class="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
+                              className="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
                                        peer-checked:text-gray-100 transition-all duration-200 select-none
                                   "
                             >
                               {item?.option2}
                             </label>
                           </div>
-                          <div class="relative w-full h-8">
+                          <div className="relative w-full h-8">
                             <input
                               type="checkbox"
                               id="tennis"
                               name={`answer${item?._id}`}
                               value="option3"
-                              class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
+                              className="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
                                       checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             ></input>
                             <label
-                              for="tennis"
-                              class="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
+                              htmlFor="tennis"
+                              className="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
                                        peer-checked:text-gray-100 transition-all duration-200 select-none
                                   "
                             >
                               {item?.option3}
                             </label>
                           </div>
-                          <div class="relative w-full h-8">
+                          <div className="relative w-full h-8">
                             <input
                               type="checkbox"
                               id="tennis"
                               name={`answer${item?._id}`}
                               value="option4"
-                              class="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
+                              className="appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
                                       checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer"
                             ></input>
                             <label
-                              for="tennis"
-                              class="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
+                              htmlFor="tennis"
+                              className="absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
                                        peer-checked:text-gray-100 transition-all duration-200 select-none
                                   "
                             >

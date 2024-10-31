@@ -66,8 +66,8 @@ const Cartitemloder = ({ item }) => {
             />
     <ul className="space-y-4">
         {
-            cartItems?.map((course) => (
-                <li className="flex items-center justify-between gap-4 ">
+            cartItems?.map((course, index) => (
+                <li className="flex items-center justify-between gap-4 " key={index} >
                     <img
                         src={course?.thumbnail_url}
                         alt=""

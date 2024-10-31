@@ -40,10 +40,9 @@ const TeacherTaskExtra = () => {
                 <ButtonGive title="Hide Answer" colore="before:bg-pink-300" hander={() => setShowSubmit(!showSubmit)} />
             }
             {showSubmit &&
-            <div className=' h-[200dvh] border-2 w-[96%] mx-auto my-4 '>
-
+            <div className=' h-[100dvh] border-2 w-[96%] mx-auto my-4 rounded-lg '>
                 <ScrollArea className="h-full w-full">
-                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2  gap-10 ">
+                    <div className="grid grid-cols-1 gap-4">
                         {(submitTask?.length != 0) ?
                             submitTask?.map((item, index) => {
                                 return (

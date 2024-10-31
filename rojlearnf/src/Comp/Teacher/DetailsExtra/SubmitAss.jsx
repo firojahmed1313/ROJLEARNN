@@ -55,6 +55,8 @@ const SubmitAss = ({ item, data }) => {
       });
     },
   });
+  const url = item.github_url;
+  const url2 = item.deploy_url;
   const marksHandle = (e) => {
     e.preventDefault();
     const fromobj = new FormData(e.target);
@@ -86,21 +88,45 @@ const SubmitAss = ({ item, data }) => {
         pauseOnHover
         theme="colored"
       />
-      <div className=" border-2 m-2 rounded-lg   bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-4 space-y-3 relative overflow-hidden  cursor-pointer">
+      <div className="w-[97%] mx-auto my-2 rounded-lg   bg-white shadow-[2px_2px_15px_rgba(0,0,0,0.09)] p-4 space-y-3 relative overflow-hidden  cursor-pointer">
         <ScrollArea className="h-[150px] w-full ">
           <p className="first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 pr-4">
             {data?.codequestions}
           </p>
           <div className="w-full bottom-0">
-            <span className="inline-flex  -space-x-px overflow-hidden rounded-md border-2 bg-white shadow-sm m-4">
-              <button className="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative cursor-pointer">
-                Code
+            <div className="flex w-fit mx-auto overflow-hidden rounded-md  bg-white shadow-sm my-4">
+              <button onClick={() => window.open(url, '_blank')}
+                className="group mr-4 flex items-center bg-blue-500 text-white gap-1 px-4 py-2 cursor-pointer font-semibold tracking-widest rounded-md hover:bg-blue-400 duration-300 hover:gap-2 hover:translate-x-3">
+                Code 
+                <svg
+                    className="w-8 h-8 justify-end bg-sky-500 group-hover:rotate-90 group-hover:bg-sky-200 text-white ease-linear duration-300 rounded-full border border-white group-hover:border-none p-2 rotate-45"
+                    viewBox="0 0 16 19"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                      className="fill-white group-hover:fill-gray-800"
+                    ></path>
+                  </svg>
               </button>
+              {
+                url2 && <button onClick={() => window.open(url2, '_blank')}
+                  className="group flex mr-4 items-center bg-blue-500 text-white gap-1 px-4 py-2 cursor-pointer font-semibold tracking-widest rounded-md hover:bg-blue-400 duration-300 hover:gap-2 hover:translate-x-3">
+                  Deploy 
+                  <svg
+                    className="w-8 h-8 justify-end bg-sky-500 group-hover:rotate-90 group-hover:bg-sky-200 text-white ease-linear duration-300 rounded-full border border-white group-hover:border-none p-2 rotate-45"
+                    viewBox="0 0 16 19"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                      className="fill-white group-hover:fill-gray-800"
+                    ></path>
+                  </svg>
+                </button>
+              }
 
-              <button className="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative cursor-pointer">
-                Deploy
-              </button>
-            </span>
+            </div>
           </div>
         </ScrollArea>
         <div>

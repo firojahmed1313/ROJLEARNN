@@ -83,7 +83,8 @@ const SubmitTask = ({ item }) => {
                 pauseOnHover
                 theme="colored"
             />
-            <div className=" border-2 m-2 rounded-lg   bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-4 space-y-3 relative overflow-hidden  cursor-pointer">
+            
+            <div className=" border-2 w-[97%] mx-auto my-2 rounded-lg bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-4 overflow-hidden  cursor-pointer">
                 <ScrollArea className="h-[300px] w-full">
                     <p className="first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 pr-4">{item.answer}</p>
                 </ScrollArea>
