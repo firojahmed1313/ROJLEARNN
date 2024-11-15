@@ -1,7 +1,7 @@
 import React from 'react'
 import ProfileNav from '../../Comp/Navber/ProfileNav'
 import Topnav from '../../Comp/Navber/Topnav'
-import DashBord from '../../Comp/Teacher/DashBord'
+import StudentDashBord from '@/Comp/Student/DashBord/StudentDashBord'
 
 
 const StudentsProfile = () => {
@@ -13,7 +13,7 @@ const StudentsProfile = () => {
         </div>
         <div className='w-5/6 absolute  right-0 '>
           <Topnav />
-          <DashBord />
+          <StudentDashBord />
         </div>
       </div>
     </>
