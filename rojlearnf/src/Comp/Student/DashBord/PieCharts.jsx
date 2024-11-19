@@ -1,6 +1,6 @@
 import React from 'react'
 import { Label, Pie, PieChart, Sector } from "recharts"
-import { PieSectorDataItem } from "recharts/types/polar/Pie"
+//import { PieSectorDataItem } from "recharts/types/polar/Pie"
 //import {ChartConfig } from "@/components/ui/chart"
 
 import {
@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import {
-  ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,
@@ -89,7 +88,7 @@ const PieCharts = () => {
             </SelectTrigger>
             <SelectContent align="end" className="rounded-xl">
               {months.map((key) => {
-                const config = chartConfig[key as keyof typeof chartConfig]
+                const config = chartConfig[key]
                 if (!config) {
                   return null
                 }
@@ -135,7 +134,7 @@ const PieCharts = () => {
                 activeShape={({
                   outerRadius = 0,
                   ...props
-                }: PieSectorDataItem) => (
+                }) => (
                   <g>
                     <Sector {...props} outerRadius={outerRadius + 10} />
                     <Sector

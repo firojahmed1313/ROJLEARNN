@@ -3,12 +3,15 @@ import React from 'react'
 const DueTable = () => {
     return (
         <>
-            <div class="flex flex-col border border-green-700 mb-4">
+        <div className='p-2'>
+            <p className='font-bold'>Due Events</p>
+        </div>
+            <div class="flex flex-col shadow-md shadow-slate-400 mb-4 h-[200px]">
                 <div class=" overflow-x-auto">
-                    <div class="min-w-full inline-block align-middle">
+                    <div class="min-w-full inline-block align-middle border">
                         
                         <div class="overflow-hidden ">
-                            <table class=" min-w-full rounded-xl">
+                            <table class=" min-w-full rounded-xl ">
                                 <thead>
                                     <tr class="bg-gray-50">
                                         <th scope="col" class="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize rounded-t-xl"> Company </th>
