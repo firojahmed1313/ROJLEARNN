@@ -81,6 +81,10 @@ const CourseDetails = () => {
                 progress: undefined,
                 theme: "colored",
             });
+            setTimeout(() => {
+                navigate("/student");
+            }, 1000);
+            
         },
         onError: (error) => {
             console.log("Some Error", error);

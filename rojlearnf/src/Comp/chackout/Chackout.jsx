@@ -3,12 +3,19 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCartItems } from '@/Redux/Features/Chackout/GetCartItemsSlice';
 import { getCartLtemsNow } from '@/Redux/Features/Chackout/GetCartLtemsNowSlice';
-import { getCourseDetailsData } from '@/Redux/Features/Course/getCourseDetailsSlice';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+const burl = import.meta.env.VITE_URL;
+import Cookies from 'js-cookie'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Chackout = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const user = useSelector((state) => state.getUser.user);
-    const cart= useSelector((state) => state.getCartItems.cartItems);
+    const cart = useSelector((state) => state.getCartItems.cartItems);
+    console.log(cart);
     useEffect(() => {
         if (cartItems == null && user != null) {
             dispatch(getCartItems(user._id));
@@ -24,8 +31,109 @@ const Chackout = () => {
     cartItems?.map((course) => {
         total += course.price;
     })
+    const token = Cookies.get("ROJLEARN");
+    const loadScript = (src) => {
+        return new Promise((resolve) => {
+            const script = document.createElement('script')
+            script.src = src
+            script.onload = () => {
+                resolve(true)
+            }
+            script.onerror = () => {
+                resolve(false)
+            }
+            document.body.appendChild(script)
+        })
+    }
+    const onPayment = async () => {
+        const userid = user._id;
+        try {
+            const res = await axios.post(`${burl}/cart/paymentint/${userid}`, {}, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                withCredentials: true,
+            }
+
+            );
+            const data = res.data;
+            console.log(data);
+            const paymentObject = new window.Razorpay({
+                key: "rzp_test_DYwio7wiUjR6Q9", // Enter the Key ID generated from the Dashboard
+                order_id: data.id,
+                // Amount is in paise
+                ...data,
+                handler: function (response) {
+                    console.log(response);
+                    const options = {
+                        paymentid: response.razorpay_payment_id,
+                        orderid: response.razorpay_order_id,
+                        signature: response.razorpay_signature
+                    }
+                    console.log(options);
+                    axios.post(`${burl}/cart/verify`, options, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                        withCredentials: true
+                    }).then(res => {
+                        console.log(res);
+                        toast.success(res?.data, {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                        });
+                        setTimeout(() => {
+                            navigate("/student");
+                        }, 1000);
+                        //alert(res.data.message);
+                    }).catch(err => {
+                        console.log(err);
+                        toast.error(err.response.data.message, {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                        });
+                    })
+
+                }
+            })
+            paymentObject.open();
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    useEffect(() => {
+        loadScript('https://checkout.razorpay.com/v1/checkout.js')
+    }, [])
     return (
-    <>
+        <>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
             <div className="min-w-screen min-h-screen bg-gray-50 py-5">
                 <div className="px-5">
                     {/* <div className="mb-2">
@@ -43,26 +151,26 @@ const Chackout = () => {
                         <div className="-mx-3 md:flex items-start">
                             <div className="px-3 md:w-7/12 lg:pr-10">
                                 <div className="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
-                                {
-                                    cartItems?.map((item) => {
-                                        return (
-                                            <div className="w-full mb-3 flex items-center">
-                                        <div className="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
-                                            <img src={item.thumbnail_url} alt="item image"/>
-                                        </div>
-                                        <div className="flex-grow pl-3">
-                                            <h6 className="font-semibold uppercase text-gray-600">{item.title}</h6>
-                                            <p className="text-gray-400">{item.category}</p>
-                                        </div>
-                                        <div>
-                                            <span className="font-semibold text-gray-600 text-xl">${item.price}</span><span className="font-semibold text-gray-600 text-sm">.00</span>
-                                        </div>
-                                    </div>
-                                        )
-                                    })
-                                }
-                                    
-                                    
+                                    {
+                                        cartItems?.map((item) => {
+                                            return (
+                                                <div className="w-full mb-3 flex items-center">
+                                                    <div className="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
+                                                        <img src={item.thumbnail_url} alt="item image" />
+                                                    </div>
+                                                    <div className="flex-grow pl-3">
+                                                        <h6 className="font-semibold uppercase text-gray-600">{item.title}</h6>
+                                                        <p className="text-gray-400">{item.category}</p>
+                                                    </div>
+                                                    <div>
+                                                        <span className="font-semibold text-gray-600 text-xl">${item.price}</span><span className="font-semibold text-gray-600 text-sm">.00</span>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+
+
                                 </div>
                                 <div className="mb-6 pb-6 border-b border-gray-200">
                                     <div className="-mx-2 flex items-end justify-end">
@@ -83,7 +191,7 @@ const Chackout = () => {
                                             <span className="text-gray-600">Subtotal</span>
                                         </div>
                                         <div className="pl-3">
-                                            <span className="font-semibold">${total}</span>
+                                            <span className="font-semibold">${total.toFixed(2)}</span>
                                         </div>
                                     </div>
                                     <div className="w-full flex items-center">
@@ -109,7 +217,7 @@ const Chackout = () => {
                                             <span className="text-gray-600">Total</span>
                                         </div>
                                         <div className="pl-3">
-                                            <span className="font-semibold text-gray-400 text-sm">AUD</span> <span className="font-semibold">${total}</span>
+                                            <span className="font-semibold text-gray-400 text-sm">INR</span> <span className="font-semibold">${total.toFixed(2)}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -141,88 +249,17 @@ const Chackout = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
-                                    <div className="w-full p-3 border-b border-gray-200">
-                                        <div className="mb-5">
-                                            <label htmlFor="type1" className="flex items-center cursor-pointer">
-                                                <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked/>
-                                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-6 ml-3"/>
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <div className="mb-3">
-                                                        <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">Name on card</label>
-                                                        <div>
-                                                            <input className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="mb-3">
-                                                        <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">Card number</label>
-                                                        <div>
-                                                            <input className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="mb-3 -mx-2 flex items-end">
-                                                        <div className="px-2 w-1/4">
-                                                            <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">Expiration date</label>
-                                                            <div>
-                                                                <select className="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                                                                    <option value="01">01 - January</option>
-                                                                    <option value="02">02 - February</option>
-                                                                    <option value="03">03 - March</option>
-                                                                    <option value="04">04 - April</option>
-                                                                    <option value="05">05 - May</option>
-                                                                    <option value="06">06 - June</option>
-                                                                    <option value="07">07 - July</option>
-                                                                    <option value="08">08 - August</option>
-                                                                    <option value="09">09 - September</option>
-                                                                    <option value="10">10 - October</option>
-                                                                    <option value="11">11 - November</option>
-                                                                    <option value="12">12 - December</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div className="px-2 w-1/4">
-                                                            <select className="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                                                                <option value="2020">2020</option>
-                                                                <option value="2021">2021</option>
-                                                                <option value="2022">2022</option>
-                                                                <option value="2023">2023</option>
-                                                                <option value="2024">2024</option>
-                                                                <option value="2025">2025</option>
-                                                                <option value="2026">2026</option>
-                                                                <option value="2027">2027</option>
-                                                                <option value="2028">2028</option>
-                                                                <option value="2029">2029</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="px-2 w-1/4">
-                                                            <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">Security code</label>
-                                                            <div>
-                                                                <input className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div className="w-full p-3">
-                                            <label htmlFor="type2" className="flex items-center cursor-pointer">
-                                                <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type2"/>
-                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80" className="ml-3" />
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW</button>
-                                    </div>
+                                <div>
+                                    <button onClick={onPayment} className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-            </>
-            )
+
+            </div>
+        </>
+    )
 }
 
-            export default Chackout
+export default Chackout

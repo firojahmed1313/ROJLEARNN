@@ -2,6 +2,7 @@ package com.rojlearnn.rojlearnn.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rojlearnn.rojlearnn.model.Cart.Cartitems;
+import com.rojlearnn.rojlearnn.model.Cart.PaymentData;
 import com.rojlearnn.rojlearnn.service.CartService;
 
 @RestController
@@ -44,6 +46,16 @@ public class Cartcontroller {
     @DeleteMapping("/delete/{cartitemsid}")
     public ResponseEntity<?> deleteCartitems(@PathVariable String cartitemsid) {
         return cs.deleteCartitems(cartitemsid);
+    }
+
+    @PostMapping("/paymentint/{userid}")
+    public ResponseEntity<?> payment(@PathVariable String userid) {
+        return cs.paymentint(userid);
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<?> verifyPayment(@RequestBody PaymentData data) {
+        return cs.verifyPayment(data);
     }
 
 

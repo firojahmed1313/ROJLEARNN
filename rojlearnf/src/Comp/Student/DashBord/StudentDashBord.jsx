@@ -14,7 +14,7 @@ const StudentDashBord = () => {
   return (
     <>
       <div className='p-4'>
-        <h1 className='text-3xl font-bold '>Hello, <span className='text-rose-600'>{user.username}</span></h1>
+        <h1 className='text-3xl font-bold '>Hello, <span className='text-rose-600'>{user?.username}</span></h1>
         <p className='text-gray-500'>Nice to see you again, what an excellent day!. Get started with your learning.</p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 my-4 mx-3'>
