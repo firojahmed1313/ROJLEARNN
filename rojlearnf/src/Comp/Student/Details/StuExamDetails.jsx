@@ -6,12 +6,11 @@ import { useLocation } from "react-router-dom";
 import { getExamDetails } from "@/Redux/Features/EATDetailsByid/GetExamDetailsSlice";
 import { useEffect } from "react";
 import ButtonGive from "@/Comp/Button/ButtonGive";
-import { getQuestioninExam } from "@/Redux/Features/Assignment/getQuestioninExamSlice";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useMutation } from "@tanstack/react-query";
-
+import { getApi } from "@/Redux/Api/Api";
 
 
 const submitExam = async ({data,id}) => {
@@ -29,6 +28,7 @@ const submitExam = async ({data,id}) => {
 }
 const StuExamDetails = () => {
   const [showQuestion, setShowQuestion] = React.useState(false);
+  const [questioninExam, setquestioninExam] = React.useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,14 +41,28 @@ const StuExamDetails = () => {
   const isError = useSelector((state) => state.getExamById.isError);
   console.log(examDetails); //.questions //._id
   useEffect(() => {
-    if (examDetails) {
-      dispatch(getQuestioninExam(examDetails.questions));
+
+    const getQuestioninExam = async () => {
+      const burl = import.meta.env.VITE_URL;
+      const token = Cookies.get("ROJLEARN");
+      try {
+        const data = await getApi(`${burl}/question/getQuestionByExam/${examDetails._id}`,token);
+        console.log(data.data);
+        setquestioninExam(data.data);
+        //return data.data;
+      } catch (error) {
+        console.warn(error);
+      }
+    };
+    if(examDetails){
+    getQuestioninExam();
+    //console.log(res);
     }
-  }, []);
-  const questioninExam = useSelector(
-    (state) => state.getQuestionsinExam.questioninExam
-  );
+
+  }, [examDetails]);
+
   console.log(questioninExam);
+
   useEffect(() => {
     if (!token) {
       navigate("/login");

@@ -1,5 +1,6 @@
 package com.rojlearnn.rojlearnn.service.Assignment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -9,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.rojlearnn.rojlearnn.model.Assignment.Exam;
 import com.rojlearnn.rojlearnn.model.Assignment.Questions;
+import com.rojlearnn.rojlearnn.repo.Assignment.ExamRepo;
 import com.rojlearnn.rojlearnn.repo.Assignment.QuestionsRepo;
 
 
@@ -17,6 +20,8 @@ import com.rojlearnn.rojlearnn.repo.Assignment.QuestionsRepo;
 public class QuestionService {
 	@Autowired
 	private QuestionsRepo qr;
+	@Autowired
+	private ExamRepo er;
 
 	public ResponseEntity<?> getAllQuestion() {
 		List<Questions> question = qr.findAll();
@@ -39,5 +44,19 @@ public class QuestionService {
 		Questions ex = qr.save(question);
 		return new ResponseEntity<>(ex, HttpStatus.CREATED);
 	}
+
+    public ResponseEntity<?> getQuestionByExam(String examId) {
+        Exam exam= er.findById(examId).orElse(null);
+		if(exam==null) {
+			return new ResponseEntity<>("Exam not found",HttpStatus.OK);
+		}
+		List<String> questions = exam.getQuestions();
+		List<Questions> q = new ArrayList<Questions>();
+		for(String s: questions) {
+			q.add(qr.findBy_id(new ObjectId(s)));
+		}
+		return new ResponseEntity<>(q, HttpStatus.OK);
+    }
+
 
 }

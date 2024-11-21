@@ -20,9 +20,10 @@ public class ExamService {
 	
 	@Autowired
 	private ExamRepo er;
-
+	
 	@Autowired
 	private QuestionsRepo qr;
+
 
 	public ResponseEntity<?> getAllExam() {
 		List<Exam> exam= er.findAll();

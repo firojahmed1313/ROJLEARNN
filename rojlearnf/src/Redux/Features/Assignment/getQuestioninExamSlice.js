@@ -8,6 +8,8 @@ const initalState = {
     loading: false,
     error: null
 }
+
+
 const getQuestions=async(id)=>{
     const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
@@ -38,7 +40,13 @@ export const getQuestioninExam = createAsyncThunk('getQuestioninExam', async (it
 export const getQuestioninExamSlice = createSlice({
     name: "getQuestioninExam",
     initialState: initalState,
-    reducers: {},
+    reducers: {
+        resetState: (state) => {
+            state.questioninExam = [];
+            state.loading = false;
+            state.error = null;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getQuestioninExam.pending, (state) => {
@@ -58,5 +66,7 @@ export const getQuestioninExamSlice = createSlice({
             })
     }
 })
+
+export const { resetState } = getQuestioninExamSlice.actions
 
 export default getQuestioninExamSlice.reducer

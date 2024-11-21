@@ -38,5 +38,9 @@ public class QuestionController {
 	public ResponseEntity<?> createQuestion(@RequestBody Questions question){
 		return qs.createQuestion(question);
 	}
+	@GetMapping("/getQuestionByExam/{examId}")
+	public ResponseEntity<?> getQuestionByExam(@PathVariable String examId){
+		return qs.getQuestionByExam(examId);
+	}
 
 }
