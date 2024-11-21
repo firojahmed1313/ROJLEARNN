@@ -93,7 +93,7 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route path='/courses' element={<CourseAll />} />
-      <Route path='/courses/:id' element={<CourseDetails />} />
+      <Route path='/course/:id' element={<CourseDetails />} />
       <Route path='*' element={<Pagenotfound />} />
     </Routes>
 

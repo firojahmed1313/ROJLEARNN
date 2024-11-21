@@ -12,7 +12,7 @@ const nData = [
   {
     id: 2,
     title: 'All Courses',
-    path: '/courses',
+    path: '/courses/?sortBy=ASE&order=price&minPrice=0&maxPrice=2000',
   }
 ]
 const Nav = () => {
@@ -47,37 +47,7 @@ const Nav = () => {
             </Link>
           </div>
 
-          <div className="relative">
-            <label htmlFor="Search" className="sr-only"> Search </label>
-
-            <input
-              type="text"
-              id="Search"
-              placeholder="Search for..."
-              className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-            />
-
-            <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-              <button type="button" className="text-gray-600 hover:text-gray-700">
-                <span className="sr-only">Search</span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                  />
-                </svg>
-              </button>
-            </span>
-          </div>
+          
           <div className="hidden md:flex md:items-center md:gap-12 ml-5 lg:ml-8">
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">

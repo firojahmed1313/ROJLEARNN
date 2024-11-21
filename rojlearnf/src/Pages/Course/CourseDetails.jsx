@@ -41,7 +41,7 @@ const CourseDetails = () => {
     console.log(token);
     let location = useLocation();
     const dispatch = useDispatch();
-    const id = location.pathname.substring(9);
+    const id = location.pathname.substring(8);
     console.log(id);
     const course = useSelector((state) => state.getCourseDetails.course);
     const isloading = useSelector((state) => state.getCourseDetails.isLoading);

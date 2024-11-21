@@ -16,7 +16,7 @@ const tData = [
         id: 2,
         title: 'All Courses',
         tab: 'Course',
-        link: '/courses',
+        link: '/courses/?sortBy=ASE&order=price&minPrice=0&maxPrice=2000',
         icon: 'material-symbols:book-outline-rounded',
     }
 
