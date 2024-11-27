@@ -116,7 +116,7 @@ public class CourseService {
         // String maxPrice = filters.get("maxPrice");
         // String sortByField = filters.get("sortBy");
         // String sortByOrder = filters.get("order");
-        System.out.println(filters.get("category"));
+        System.out.println(filters.get("page"));
         System.out.println(filters.get("availability"));
 
         // Implement the filtering logic based on the parsed filters
@@ -162,6 +162,17 @@ public class CourseService {
                     sortOrder.equalsIgnoreCase("asc") ? org.springframework.data.domain.Sort.by(sortByField).ascending()
                             : org.springframework.data.domain.Sort.by(sortByField).descending());
         }
+
+        // Apply pagination
+        long totalRecords = mongoTemplate.count(query, Course.class);
+
+        // Calculate total pages
+        int totalPages = (int) Math.ceil((double) totalRecords / 3);
+
+        int page = Integer.parseInt(filters.getOrDefault("page", "1"));
+        int pageSize = Integer.parseInt(filters.getOrDefault("pageSize", "3"));
+        query.skip((page - 1) * pageSize).limit(pageSize);
+
         System.out.println(query.toString());
         List<Course> coursesF = mongoTemplate.find(query, Course.class);
         // for (Course course : coursesF) {
@@ -169,7 +180,12 @@ public class CourseService {
         // }
 
         // Execute the query
-        return new ResponseEntity<>(coursesF , HttpStatus.OK);
+        Map<String, Object> response = new HashMap<>();
+        response.put("data", coursesF);
+        response.put("totalRecords", totalRecords);
+        response.put("totalPages", totalPages);
+        response.put("currentPage", page);
+        return new ResponseEntity<>(response , HttpStatus.OK);
     }
 
 }
