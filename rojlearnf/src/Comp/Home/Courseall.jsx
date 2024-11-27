@@ -6,10 +6,14 @@ import { formatDateString } from '../utlits/FormatDateString'
 import CartColloder from '../utlits/loder/CartColloder'
 import ButtomNavHome from '../Navber/ButtomNavHome'
 import generateFilterQueryString from '../utlits/CreateFilterString'
+import axios from 'axios'
+import { ToastContainer, toast } from "react-toastify";
+import Cookies from 'js-cookie'
 
+const burl = import.meta.env.VITE_URL;
 const filters = {
     searchKeyword: "", // Search term
-    sortBy: { field: "price", order: "ASE" }, // Sort field and order (asc/desc)
+    sortBy: { field: "created_at", order: "ASE" }, // Sort field and order (asc/desc)
     availability: "in-stock", // Availability filter
     category: "", // Category filter
     minPrice: 0, // Minimum price filter
@@ -25,13 +29,17 @@ const filterAvailability = [
 ];
 
 const filterCategory = [
-   { name: "Programming", id: "FilterProgramming", value: "Programming" },
-   { name: "Data Science", id: "FilterDataScience", value: "DataScience" },
-   { name: "Web Development", id: "FilterWebDevelopment", value: "WebDevelopment" },
-   { name: "Blockchain", id: "FilterBlockchain", value: "Blockchain" }
+    { name: "Programming", id: "FilterProgramming", value: "Programming" },
+    { name: "Data Science", id: "FilterDataScience", value: "DataScience" },
+    { name: "Web Development", id: "FilterWebDevelopment", value: "WebDevelopment" },
+    { name: "Blockchain", id: "FilterBlockchain", value: "Blockchain" }
 ]
 
-
+const getFilterCourse = async (fs) => {
+    const res = await axios.post(`${burl}/course/filter`, fs);
+    console.log(res);
+    return res.data;
+}
 const GetTeacherData = ({ dateObj, id }) => {
 
     return (
@@ -56,7 +64,7 @@ const Courseall = () => {
     const loading = useSelector((state) => state.getCourse.isLoading);
     const error = useSelector((state) => state.getCourse.error);
 
-    console.log(course);
+    //console.log(course);
     useEffect(() => {
         if (course != null) {
             setCourseData(course.data);
@@ -67,7 +75,7 @@ const Courseall = () => {
     useEffect(() => {
         dispatch(getCourseData());
     }, [])
-    const handelSearch = (e) => {
+    const handelSearch = async (e) => {
         e.preventDefault();
         console.log(searchData);
         filters.searchKeyword = searchData;
@@ -76,37 +84,48 @@ const Courseall = () => {
         let fs = generateFilterQueryString(filters);
         //GotoCourse(fs);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        console.log(filterCourse);
+        setCourseData(filterCourse);
         console.log(fs);
     }
-    const handelAvailability = (e) => {
+    const handelAvailability = async (e) => {
         filters.availability = e;
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
-        console.log(fs);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
+        console.log(fs.substring(2, fs.length));
     }
-    const handelResetAvailability = () => {
+    const handelResetAvailability =async () => {
         filters.availability = "in-stock";
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
         console.log(fs);
     }
-    const handelCategory = (e) => {
+    const handelCategory = async (e) => {
         filters.category = e;
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
         console.log(fs);
     }
-    const handelResetCategory = () => {
+    const handelResetCategory = async () => {
         filters.category = "";
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
         console.log(fs);
     }
-    const handelFilterPrice = (e) => {
+    const handelFilterPrice = async (e) => {
         e.preventDefault();
         const fromobj = new FormData(e.target);
         const obj = Object.fromEntries(fromobj.entries());
@@ -116,18 +135,22 @@ const Courseall = () => {
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
         console.log(fs);
 
     }
-    const handelResetPrice = () => {
+    const handelResetPrice = async () => {
         filters.minPrice = 0;
         filters.maxPrice = 2000;
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
         console.log(fs);
     }
-    const handelSort = (e) => {
+    const handelSort = async (e) => {
         let field, order;
         //console.log(typeof e);
         field = e.substring(0, e.indexOf(","));
@@ -137,24 +160,28 @@ const Courseall = () => {
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
         console.log(fs);
 
 
     }
-    const handelResetAll = () => {
+    const handelResetAll = async () => {
         filters.searchKeyword = "";
         filters.availability = "in-stock";
         filters.category = "";
         filters.minPrice = 0;
         filters.maxPrice = 2000;
-        filters.sortBy.field = "price";
-        filters.sortBy.order = "ASE";
+        filters.sortBy.field = "created_at";
+        filters.sortBy.order = "ASC";
         console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
+        const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
+        setCourseData(filterCourse);
         console.log(fs);
     }
-
+    console.log(courseData);
 
     return (
         <>
@@ -170,6 +197,7 @@ const Courseall = () => {
                         </p>
                     </header>
                     <div className="relative mt-4">
+                    <form onSubmit={handelSearch}>
                         <div>
                             <label htmlFor="Search" className="sr-only"> Search </label>
 
@@ -183,28 +211,22 @@ const Courseall = () => {
                         </div>
                         <div>
                             <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-                                <button type="button" className="text-gray-600 hover:text-gray-700"
+                                <button type="button"
+                                    className=" hover:text-gray-700 border-2 px-5 py-2 rounded-md mr-8 bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition duration-200 ease-in-out"
                                     onClick={handelSearch}
                                 >
                                     <span className="sr-only">Search</span>
 
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth="1.5"
-                                        stroke="currentColor"
-                                        className="size-4"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                                        />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                                            <path fill="white" d="M5.5 10a4.5 4.5 0 1 1 9 0a4.5 4.5 0 0 1-9 0M10 2.5a7.5 7.5 0 1 0 4.136 13.757l4.803 4.804a1.5 1.5 0 0 0 2.122-2.122l-4.804-4.803A7.5 7.5 0 0 0 10 2.5" />
+                                        </g>
                                     </svg>
                                 </button>
                             </span>
                         </div>
+                    </form>
 
                     </div>
                     <div className="mt-8 block lg:hidden">
@@ -212,12 +234,12 @@ const Courseall = () => {
                             <div className="mr-4 " >
                                 <select id="SortBy" className="mt-1 rounded border-gray-300 text-sm font-medium " onChange={(e) => handelSort(e.target.value)} >
                                     <option>Sort By</option>
-                                    <option value="Duration,DESC">Duration, DESC</option>
-                                    <option value="Duration,ASC">Duration, ASC</option>
-                                    <option value="Price,DESC">Price, DESC</option>
-                                    <option value="Price,ASC">Price, ASC</option>
-                                    <option value="Date,DESC">Date, DESC</option>
-                                    <option value="Date,ASC">Date, ASC</option>
+                                    <option value="duration_hours,DESC">Duration, DESC</option>
+                                    <option value="duration_hours,ASC">Duration, ASC</option>
+                                    <option value="price,DESC">Price, DESC</option>
+                                    <option value="price,ASC">Price, ASC</option>
+                                    <option value="created_at,DESC">Date, DESC</option>
+                                    <option value="created_at,ASC">Date, ASC</option>
                                 </select>
                             </div>
                             <div className="relative md:ml-4">
@@ -330,7 +352,7 @@ const Courseall = () => {
                                                         Go
                                                     </button>
                                                     <button type="button" className="text-sm text-gray-900 underline underline-offset-4"
-                                                    onClick={handelResetPrice}                                                    >
+                                                        onClick={handelResetPrice}                                                    >
 
                                                         Reset
                                                     </button>
@@ -405,12 +427,12 @@ const Courseall = () => {
 
                                 <select id="SortBy" className="mt-1 rounded border-gray-300 text-sm font-medium " onChange={(e) => handelSort(e.target.value)} >
                                     <option>Sort By</option>
-                                    <option value="Duration,DESC">Duration, DESC</option>
-                                    <option value="Duration,ASC">Duration, ASC</option>
-                                    <option value="Price,DESC">Price, DESC</option>
-                                    <option value="Price,ASC">Price, ASC</option>
-                                    <option value="Date,DESC">Date, DESC</option>
-                                    <option value="Date,ASC">Date, ASC</option>
+                                    <option value="duration_hours,DESC">Duration, DESC</option>
+                                    <option value="duration_hours,ASC">Duration, ASC</option>
+                                    <option value="price,DESC">Price, DESC</option>
+                                    <option value="price,ASC">Price, ASC</option>
+                                    <option value="created_at,DESC">Date, DESC</option>
+                                    <option value="created_at,ASC">Date, ASC</option>
                                 </select>
                             </div>
 
@@ -533,7 +555,7 @@ const Courseall = () => {
                                                             Go
                                                         </button>
                                                         <button type="button" className="text-sm text-gray-900 underline underline-offset-4"
-                                                        onClick={handelResetPrice}
+                                                            onClick={handelResetPrice}
                                                         >
 
                                                             Reset
@@ -574,7 +596,7 @@ const Courseall = () => {
                                             <header className="flex items-center justify-between p-4">
                                                 <span className="text-sm text-gray-700"> 0 Selected </span>
 
-                                                <button type="button" className="text-sm text-gray-900 underline underline-offset-4"  onClick={handelResetCategory}
+                                                <button type="button" className="text-sm text-gray-900 underline underline-offset-4" onClick={handelResetCategory}
                                                 >
                                                     Reset
                                                 </button>
@@ -607,6 +629,7 @@ const Courseall = () => {
                             <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
                                 {
                                     (loading) ? <CartColloder /> :
+                                        (courseData?.length > 0) ?
                                         courseData?.map((course) => {
                                             const dateObj = formatDateString(course.created_at);
                                             return (
@@ -639,7 +662,8 @@ const Courseall = () => {
 
                                                 </div>
                                             )
-                                        })
+                                        }):
+                                        <h3 className="text-2xl font-bold text-gray-700">No Course Found</h3>
                                 }
 
 

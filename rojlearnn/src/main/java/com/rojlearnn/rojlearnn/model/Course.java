@@ -25,7 +25,7 @@ public class Course {
         this.title = title;
         this.description = description;
         this.instructor = instructor_id;
-        this.category = category;
+        this.category = category.toLowerCase();
         this.thumbnail_url = thumbnail_url;
         this.duration_hours = duration_hours;
         this.price = price;
@@ -106,6 +106,16 @@ public class Course {
 
     public LocalDateTime getCreated_at() {
         return created_at;
+    }
+    @Override
+    public String toString() {
+        return "Course{" +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", duration_hours=" + duration_hours +
+                ", price=" + price +
+                '}';
     }
 
 

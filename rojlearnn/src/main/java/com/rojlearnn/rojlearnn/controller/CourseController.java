@@ -19,13 +19,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/course")
-@CrossOrigin(origins = "https://8080-firojahmed131-rojlearnn-yx462bjcym9.ws-us116.gitpod.io")
 public class CourseController {
     @Autowired
     CourseService cs;
     @GetMapping("/all")
     public List<Course> getAllCourses() {
         return cs.getAllCourses();
+    }
+    @PostMapping("/filter")
+    public ResponseEntity<?> getCoursesByFilter(@RequestBody String filter) {
+       return cs.getCoursesByFilter(filter);
     }
     @GetMapping("/{courseId}")
     public ResponseEntity<?> getCourseById(@PathVariable String courseId) {

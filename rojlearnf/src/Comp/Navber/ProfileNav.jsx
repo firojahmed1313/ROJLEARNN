@@ -45,6 +45,12 @@ const tData = [
     title: 'Tasks',
     path: '/teacherTask',
     icon: 'tdesign:task-visible',
+  },
+  {
+    id: 7,
+    title: 'All Courses',
+    path: '/courses/?sortBy=ASE&order=price&minPrice=0&maxPrice=2000',
+    icon: 'hugeicons:course',
   }
 
 ]
@@ -85,6 +91,12 @@ const sData = [
     title: 'Activity',
     path: '/studentActivity',
     icon: 'mynaui:activity-square',
+  },
+  {
+    id: 7,
+    title: 'All Courses',
+    path: '/courses/?sortBy=ASE&order=price&minPrice=0&maxPrice=2000',
+    icon: 'hugeicons:course',
   }
 ]
 const ProfileNav = () => {

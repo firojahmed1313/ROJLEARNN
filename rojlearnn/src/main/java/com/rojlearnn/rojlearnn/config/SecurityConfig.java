@@ -32,7 +32,7 @@ public class SecurityConfig {
         return http.csrf(Customizer -> Customizer.disable())
                 .cors(Customizer.withDefaults())//core error solve
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("user/logIn", "user/register", "course/all").permitAll()
+                        .requestMatchers("user/logIn", "user/register", "course/all", "course/filter").permitAll()
                         .anyRequest().authenticated())//
                 //.httpBasic(Customizer.withDefaults())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
