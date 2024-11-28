@@ -65,6 +65,7 @@ public class SubmitService {
         m.setCuid(cuid);
         m.setContainid(examId);
         m.setUserid(userid);
+        m.setType("exam");
         Marks ans=mr.save(m);
         System.out.println(ans);
         return new ResponseEntity<>("Exam Submitted", null, HttpStatus.OK);

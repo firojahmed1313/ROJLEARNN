@@ -16,15 +16,18 @@ public class Marks {
     @NotNull
 	private String cuid;
 	private Double mark;
+    @NotNull
+    private String type;
 	private LocalDateTime created_at = LocalDateTime.now();
 
     public Marks() {}
 
-    public Marks(ObjectId containid, ObjectId userid, String cuid, Double mark) {
+    public Marks(ObjectId containid, ObjectId userid, String cuid, Double mark, String type) {
         this.containid = containid;
         this.userid = userid;
         this.cuid = cuid;
         this.mark = mark;
+        this.type = type;
     }
 
     public String getId() {
@@ -65,7 +68,15 @@ public class Marks {
 
     public void setMark(Double mark) {  
         this.mark = mark;
-    }   
+    } 
+
+    public String getType() {
+        return type;
+    } 
+
+    public void setType(String type) {
+        this.type = type;
+    } 
 
     public LocalDateTime getCreated_at() {
         return created_at;
@@ -77,6 +88,6 @@ public class Marks {
 
     @Override
     public String toString() {
-        return "Marks [_id=" + _id + ", containid=" + containid + ", userid=" + userid + ", cuid=" + cuid + ", mark=" + mark + ", created_at=" + created_at + "]";
+        return "Marks [_id=" + _id + ", containid=" + containid + ", userid=" + userid + ", cuid=" + cuid + ", mark=" + mark + ", type=" + type + ", created_at=" + created_at + "]";
     }
 }

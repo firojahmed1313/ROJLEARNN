@@ -11,6 +11,7 @@ const burl = import.meta.env.VITE_URL;
 const token = Cookies.get('ROJLEARN');
 
 const submitTaskMarks = async (data) => {
+    const token = Cookies.get('ROJLEARN');
     const response = await axios.post(`${burl}/submit/marksByTeacher/${data.containid}`, data, {
         headers: {
             "Content-Type": "application/json",
@@ -63,7 +64,8 @@ const SubmitTask = ({ item }) => {
             mark,
             containid,
             userid,
-            cuid
+            cuid,
+            type: "task"
         }
         console.log(data);
         mutate(data);

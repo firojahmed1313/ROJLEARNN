@@ -10,6 +10,7 @@ const burl = import.meta.env.VITE_URL;
 const token = Cookies.get("ROJLEARN");
 
 const submitAssMarks = async (data) => {
+  const token = Cookies.get('ROJLEARN');
   const response = await axios.post(
     `${burl}/submit/marksByTeacher/${data.containid}`,
     data,
@@ -32,7 +33,7 @@ const SubmitAss = ({ item, data }) => {
       console.log(data);
       toast.success(data, {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -65,11 +66,13 @@ const SubmitAss = ({ item, data }) => {
     const containid = item.assignmentid;
     const userid = item.userid;
     const cuid = item.auid;
+    const type = "assignment";
     const data = {
       mark,
       containid,
       userid,
       cuid,
+      type
     };
     console.log(data);
     mutate(data);
