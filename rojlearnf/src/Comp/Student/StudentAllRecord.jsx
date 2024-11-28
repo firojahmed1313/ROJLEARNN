@@ -5,28 +5,8 @@ import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { getProfileData } from '../../Redux/Features/User/UserSlice';
 import TopFive from './Result/TopFive'
-const data = [
-    {
-        "category": "Reaction",
+import ReportTable from './Result/ReportTable'
 
-        "icon": "material-symbols:style-outline"
-    },
-    {
-        "category": "Memory",
-
-        "icon": "material-symbols:interactive-space-outline"
-    },
-    {
-        "category": "Verbal",
-
-        "icon": "material-symbols:trophy-outline-sharp"
-    },
-    {
-        "category": "Visual",
-
-        "icon": "material-symbols:readiness-score-outline"
-    }
-]
 const StudentAllRecord = () => {
     const [tab, setTab] = React.useState("Exam");
     const user = useSelector((state) => state.getUser.user);
@@ -46,6 +26,12 @@ const StudentAllRecord = () => {
         console.log("error");
     }
     console.log(studentReport);
+    const tasks= studentReport?.filter((task) => task.type === "task");
+    const exams = studentReport?.filter((exam) => exam.type === "exam");
+    console.log(tasks);
+    console.log(exams);
+    const assignments = studentReport?.filter((assignment) => assignment.type === "assignment");
+    console.log(assignments);
 
     useEffect(() => {
         setTimeout(() => {
@@ -73,10 +59,55 @@ const StudentAllRecord = () => {
     }
     console.log(total);
     console.log(percentage.toFixed(2));
+
+    let taskTotal = 0;
+    let taskPercentage = 0;
+    if (tasks) {
+        taskTotal = tasks?.reduce((acc, item) => acc + item.mark, 0);
+        taskPercentage = (taskTotal / tasks?.length);
+    }
+    let assignmentTotal = 0;
+    let assignmentPercentage = 0;
+    if (assignments) {
+        assignmentTotal = assignments?.reduce((acc, item) => acc + item.mark, 0);
+        assignmentPercentage = (assignmentTotal / assignments?.length);
+    }
+    let examTotal = 0;
+    let examPercentage = 0;
+    if (exams) {
+        examTotal = exams?.reduce((acc, item) => acc + item.mark, 0);
+        examPercentage = (examTotal / exams?.length);
+    }
+    const data = [
+        {
+            "category": "Exam",
+    
+            "icon": "material-symbols:style-outline",
+            "value": examPercentage.toFixed(2)
+        },
+        {
+            "category": "Assignment",
+    
+            "icon": "material-symbols:interactive-space-outline",
+            "value": assignmentPercentage.toFixed(2)
+        },
+        {
+            "category": "Task",
+    
+            "icon": "material-symbols:trophy-outline-sharp",
+            "value": taskPercentage.toFixed(2)
+        },
+        {
+            "category": "Attendance",
+    
+            "icon": "material-symbols:readiness-score-outline",
+            "value": "90"
+        }
+    ]
     return (
         <>
             <div className="flex min-h-[80dvh] mb-4 sm:p-10 justify-center items-center" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1665680674724-3a3b3368e036?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}>
-                <div className="flex flex-col sm:flex-row sm:w-[40rem] sm:h-[30rem] rounded-3xl h-full w-full sm:shadow-lg bg-white">
+                <div className="flex flex-col sm:flex-row sm:w-[36rem] sm:h-[30rem] sm:rounded-3xl h-full w-full sm:shadow-lg bg-white">
                     <div className="flex sm:basis-1/2 flex-col items-center justify-center bg-gradient-to-b to-[#2e2be9] from-[#7857ff] sm:rounded-3xl rounded-b-3xl py-7 px-10">
                         <h2 className="text-[#ebf1ff] font-hankengrotesk text-xl sm:text-lg font-bold">Your Result</h2>
                         {
@@ -107,7 +138,7 @@ const StudentAllRecord = () => {
                                         key={index}
                                         source={skill.icon}
                                         category={skill.category}
-                                        score={studentReport[index]?.mark}
+                                        score={skill.value}
                                         colorIndex={index}
                                     />
                                     : null
@@ -146,33 +177,21 @@ const StudentAllRecord = () => {
 
                         {(tab == "Exam") && <div >
                             <h5 className="mb-2 text-slate-800 text-xl font-semibold">
-                                Website Review Check Exam
+                                Exam Report
                             </h5>
-                            <p className="text-slate-600 leading-normal font-light">
-                                Because it&apos;s about motivating the doers. Because I&apos;m
-                                here to follow my dreams and inspire other people to follow their
-                                dreams, too.
-                            </p>
+                            <ReportTable data={exams} />
                         </div>}
                         {(tab == "Assignment") && <div >
                             <h5 className="mb-2 text-slate-800 text-xl font-semibold">
-                                Website Review Check Assignment
+                                Assignment Report
                             </h5>
-                            <p className="text-slate-600 leading-normal font-light">
-                                Because it&apos;s about motivating the doers. Because I&apos;m
-                                here to follow my dreams and inspire other people to follow their
-                                dreams, too.
-                            </p>
+                            <ReportTable data={assignments} />
                         </div>}
                         {(tab == "Task") && <div >
                             <h5 className="mb-2 text-slate-800 text-xl font-semibold">
-                                Website Review Check task
+                                Task Report
                             </h5>
-                            <p className="text-slate-600 leading-normal font-light">
-                                Because it&apos;s about motivating the doers. Because I&apos;m
-                                here to follow my dreams and inspire other people to follow their
-                                dreams, too.
-                            </p>
+                            <ReportTable data={tasks} />
                         </div>}
 
                     </div>

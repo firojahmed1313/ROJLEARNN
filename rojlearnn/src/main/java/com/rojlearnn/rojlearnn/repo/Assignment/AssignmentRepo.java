@@ -12,6 +12,8 @@ public interface AssignmentRepo extends MongoRepository<Assignment, String> {
 
     List<Assignment> findByCourseid(ObjectId objectId);
 
+    Object findBy_id(ObjectId objectId);
+
 	//Object findById(ObjectId objectId);
 
 }

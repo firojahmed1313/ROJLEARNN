@@ -12,4 +12,6 @@ public interface TaskRepo extends MongoRepository<com.rojlearnn.rojlearnn.model.
 
 	List<Task> findByCourseid(ObjectId objectId);
 
+    Object findBy_id(ObjectId objectId);
+
 }

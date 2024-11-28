@@ -28,6 +28,9 @@ import { getSubmitTaskSlice } from './Features/SubmitTeacher/GetSubmitTaskSlice'
 import { getCartLtemsNowSlice } from './Features/Chackout/GetCartLtemsNowSlice'
 import {getUserByidSlice} from './Features/User/GetUserByidSlice'
 import {getQuestioninExamSlice} from './Features/Assignment/getQuestioninExamSlice'
+import { getStudentExamReportSlice } from './Features/Report/GetStudentExamReportSlice'
+import { getStudentAssReportSlice } from './Features/Report/GetStudentAssReportSlice'
+import { getStudentTaskReportSlice } from './Features/Report/GetStudentTaskReportSlice'
 
 
 
@@ -63,6 +66,9 @@ export const store = configureStore({
       getQuestionsinExam: getQuestioninExamSlice.reducer,
       getSubmitTask: getSubmitTaskSlice.reducer,
       getSubmitass: getSubmitassSlice.reducer,
+      getStudentExamMarks: getStudentExamReportSlice.reducer,
+      getStudentAssMarks: getStudentAssReportSlice.reducer,
+      getStudentTaskMarks: getStudentTaskReportSlice.reducer
 
 
         
