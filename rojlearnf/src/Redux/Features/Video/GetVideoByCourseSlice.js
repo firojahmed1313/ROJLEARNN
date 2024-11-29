@@ -10,11 +10,11 @@ const initalState = {
 export const getVideoByCourse = createAsyncThunk('getVideoByCourse', async (id) => {
     const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
-    console.log(id)
-    console.log(token)
+    //console.log(id)
+    //console.log(token)
     try {
         const data = getApi(`${burl}/video/getAllVideoByCourseId/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -27,19 +27,19 @@ export const getVideoByCourseSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getVideoByCourse.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         })
         builder.addCase(getVideoByCourse.fulfilled, (state, action) => {
-            console.log("getVideoByCourse fulfilled", action.payload);
+            //console.log("getVideoByCourse fulfilled", action.payload);
             state.loading = false;
             state.videoByCourse = action.payload.data;
         })
         builder.addCase(getVideoByCourse.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.payload;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         })
     }
 })

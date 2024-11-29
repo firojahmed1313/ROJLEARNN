@@ -10,10 +10,10 @@ const initialState = {
 }
 export const getProfileData = createAsyncThunk('getProfileData', async (token) => {
     const burl = import.meta.env.VITE_URL;
-    console.log(token);
+    //console.log(token);
     try {
         const data = getApi(`${burl}/user/me`, token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -53,20 +53,20 @@ export const UserSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getProfileData.pending, (state, action) => {
-                console.log("pending");
+                //console.log("pending");
                 state.isLoading = true;
             })
             .addCase(getProfileData.fulfilled, (state, action) => {
-                console.log("fulfilled", action.payload);
+                //console.log("fulfilled", action.payload);
                 state.isLoading = false;
                 state.user = action.payload.data;
                 state.isAuth = true;
             })
             .addCase(getProfileData.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.isLoading = false;
                 state.isError = true;
-                console.log("error", action.error);
+                //console.log("error", action.error);
                 
             })
     },

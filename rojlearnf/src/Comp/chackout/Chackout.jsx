@@ -15,18 +15,18 @@ const Chackout = () => {
     const navigate = useNavigate();
     const user = useSelector((state) => state.getUser.user);
     const cart = useSelector((state) => state.getCartItems.cartItems);
-    console.log(cart);
+    //console.log(cart);
     useEffect(() => {
         if (cartItems == null && user != null) {
             dispatch(getCartItems(user._id));
         }
     }, [user]);
-    console.log(user);
+    //console.log(user);
     const cartItems = useSelector((state) => state.getCartItemsNow.cartItems);
     useEffect(() => {
         dispatch(getCartLtemsNow(cart));
     }, [cart])
-    console.log(cartItems)
+    //console.log(cartItems)
     let total = 0;
     cartItems?.map((course) => {
         total += course.price;
@@ -58,20 +58,20 @@ const Chackout = () => {
 
             );
             const data = res.data;
-            console.log(data);
+            //console.log(data);
             const paymentObject = new window.Razorpay({
                 key: "rzp_test_DYwio7wiUjR6Q9", // Enter the Key ID generated from the Dashboard
                 order_id: data.id,
                 // Amount is in paise
                 ...data,
                 handler: function (response) {
-                    console.log(response);
+                    //console.log(response);
                     const options = {
                         paymentid: response.razorpay_payment_id,
                         orderid: response.razorpay_order_id,
                         signature: response.razorpay_signature
                     }
-                    console.log(options);
+                    //console.log(options);
                     axios.post(`${burl}/cart/verify`, options, {
                         headers: {
                             "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Chackout = () => {
                         },
                         withCredentials: true
                     }).then(res => {
-                        console.log(res);
+                        //console.log(res);
                         toast.success(res?.data, {
                             position: "top-center",
                             autoClose: 5000,
@@ -95,7 +95,7 @@ const Chackout = () => {
                         }, 1000);
                         //alert(res.data.message);
                     }).catch(err => {
-                        console.log(err);
+                        //console.log(err);
                         toast.error(err.response.data.message, {
                             position: "top-center",
                             autoClose: 5000,
@@ -112,7 +112,7 @@ const Chackout = () => {
             })
             paymentObject.open();
         } catch (error) {
-            console.log(error)
+            //console.log(error)
         }
 
     }

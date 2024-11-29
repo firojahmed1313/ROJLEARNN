@@ -30,11 +30,11 @@ const addAsseFunc = async (obj) => {
 }
 const AddAssignment = () => {
     const course = useSelector((state) => state.getTeacherCourse.courseByTeacher);
-    console.log(course);
+    //console.log(course);
     const { mutate, isLoading, isError, error } = useMutation({
         mutationFn: addAsseFunc,
         onSuccess: (data) => {
-            console.log("Assignment Added", data);
+            //console.log("Assignment Added", data);
             toast.success(`Assignment Added `, {
                 position: "top-center",
                 autoClose: 5000,
@@ -47,7 +47,7 @@ const AddAssignment = () => {
             });
         },
         onError: (error) => {
-            console.log("Some Error", error);
+            //console.log("Some Error", error);
             toast.error( error.message, {
                 position: "top-center",
                 autoClose: 5000,
@@ -62,10 +62,10 @@ const AddAssignment = () => {
     })
     const handleAddCourse = (e) => {
         e.preventDefault();
-        console.log("Add Course");
+        //console.log("Add Course");
         const fromobj = new FormData(e.target);
         const obj = Object.fromEntries(fromobj.entries());
-        console.log(obj);
+        //console.log(obj);
         mutate(obj);
     }
     return (

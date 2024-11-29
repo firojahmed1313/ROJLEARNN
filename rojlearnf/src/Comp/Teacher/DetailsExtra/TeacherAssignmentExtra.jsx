@@ -15,13 +15,13 @@ const TeacherAssignmentExtra = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const id = location.pathname.substring(19);
-  console.log(id);
+  //console.log(id);
   const token = Cookies.get('ROJLEARN');
-  console.log(token);
+  //console.log(token);
   const submitass = useSelector((state) => state.getSubmitass.submitass);
   const assignmentDetails = useSelector((state) => state.getAssignmentById.assignmentDetails);
-  console.log(submitass);
-  console.log(assignmentDetails);
+  //console.log(submitass);
+  //console.log(assignmentDetails);
   useEffect(() => {
     if (!token) {
       navigate("/login");

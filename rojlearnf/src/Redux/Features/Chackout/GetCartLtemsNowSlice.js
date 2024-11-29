@@ -9,7 +9,7 @@ const initalState = {
 
 const getData=async(id)=>{const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
-    console.log(token);    
+    //console.log(token);    
     try {
         const data = getApi(`${burl}/course/${id}`,token);
         
@@ -20,19 +20,19 @@ const getData=async(id)=>{const burl = import.meta.env.VITE_URL;
 }
 export const getCartLtemsNow = createAsyncThunk('getCartLtemsNow', async (item) => {
     const datas = [];
-    //console.log(item)
+    ////console.log(item)
     for(let i = 0; i < item.length; i++){
-        //console.log(item[i])
+        ////console.log(item[i])
         const data = await getData(item[i].courseid);
-        //console.log(data.data);
+        ////console.log(data.data);
         datas.push(data.data);
         
     }
-    console.log(datas);
+    //console.log(datas);
     return datas; 
     // try {
     //     const data = getApi(`${burl}/cart/getCartItems`,token);
-    //     console.log(data);
+    //     //console.log(data);
     //     return data; 
     // } catch (error) {
     //     console.warn(error);
@@ -46,20 +46,20 @@ export const getCartLtemsNowSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getCartLtemsNow.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         });
         builder.addCase(getCartLtemsNow.fulfilled, (state, action) => {
-            console.log("Carts fulfilled");
+            //console.log("Carts fulfilled");
             state.loading = false;
             state.cartItems = action.payload;
             //state.cartItems = "data";
         });
         builder.addCase(getCartLtemsNow.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.error;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         });
     }
 })

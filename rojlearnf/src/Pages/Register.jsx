@@ -27,7 +27,7 @@ const Register = () => {
   const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: registerUser,
     onSuccess: (data) => {
-      console.log(data);
+      //console.log(data);
       if (typeof (data) == 'string') {
         //console.warn(data);
         toast.info(data, {
@@ -42,8 +42,8 @@ const Register = () => {
         });
       }
       else if (typeof (data) == 'object') {
-        console.log(data);
-        console.log("Successfully registered");
+        //console.log(data);
+        //console.log("Successfully registered");
         toast.success(`Successfully registered `, {
           position: "top-center",
           autoClose: 5000,
@@ -65,11 +65,11 @@ const Register = () => {
     e.preventDefault();
     const formobj = new FormData(e.target);
     const obj = Object.fromEntries(formobj.entries());
-    console.log(obj);
+    //console.log(obj);
     mutate(obj);
   }
   if (isError) {
-    console.log(error);
+    //console.log(error);
     // toast.error("Login failed plz chack your email and password", {
     //   position: "top-center",
     //   autoClose: 5000,

@@ -15,9 +15,9 @@ const Cartitemloder = ({ item }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.getCartItemsNow.cartItems);
-    console.log(cartItems);
+    //console.log(cartItems);
     const token = Cookies.get("ROJLEARN");
-    //console.log(course);
+    ////console.log(course);
     useEffect(() => {
         dispatch(getCartLtemsNow(item));
     }, [item])
@@ -26,17 +26,17 @@ const Cartitemloder = ({ item }) => {
         total = total + course.price;
     })
     const handelDeleteCartitems = async (course) => {
-        console.log("handelDeleteCartitems", course);
-        console.log(item);
+        //console.log("handelDeleteCartitems", course);
+        //console.log(item);
         const deleteitems= item.filter((item) => item.courseid === course._id);
-        console.log("deleteitems", deleteitems);
+        //console.log("deleteitems", deleteitems);
         const burl = import.meta.env.VITE_URL;
         const response = await axios.delete(`${burl}/cart/delete/${deleteitems[0]._id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }   
         })
-        console.log(response.data);
+        //console.log(response.data);
         toast.success(response.data, {
             position: "top-center",
             autoClose: 5000,

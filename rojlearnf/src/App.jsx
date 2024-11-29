@@ -38,12 +38,12 @@ function App() {
 
   // Retrieve cookie
   const isCookies = Cookies.get('ROJLEARN');
-  console.log(isCookies);
+  //console.log(isCookies);
 
   // Retrieve user and isAuth from state
   const User = useSelector((state) => state.getUser.user);
   const isAuth = useSelector((state) => state.getUser.isAuth);
-  console.log(User);
+  //console.log(User);
 
   // Use useEffect to handle dispatch and side-effects
   useEffect(() => {
@@ -60,7 +60,7 @@ function App() {
 
   // Optional: log to check the authentication status
   useEffect(() => {
-    console.log(isAuth);
+    //console.log(isAuth);
   }, [isAuth]);
 
   return (

@@ -9,7 +9,7 @@ const DownloadData = () => {
                         className="inline-flex items-center justify-center w-12 h-12 mb-5 bg-gray-600 rounded-full"
                     >
                         <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
-                    <path stroke="currentColor" trokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3" />
+                    <path stroke="currentColor" trokelinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3" />
                 </svg>
                     </div>
                     <h4 className="text-xl text-gray-100 font-semibold mb-5">

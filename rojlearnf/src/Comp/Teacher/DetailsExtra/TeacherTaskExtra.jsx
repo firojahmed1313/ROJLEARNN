@@ -15,11 +15,11 @@ const TeacherTaskExtra = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const id = location.pathname.substring(13);
-    console.log(id);
+    //console.log(id);
     const token = Cookies.get('ROJLEARN');
-    console.log(token);
+    //console.log(token);
     const submitTask = useSelector((state) => state.getSubmitTask.submitTask);
-    console.log(submitTask);
+    //console.log(submitTask);
     useEffect(() => {
         if (!token) {
             navigate("/login");

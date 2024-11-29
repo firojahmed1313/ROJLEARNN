@@ -12,7 +12,7 @@ export const getAllCarts = createAsyncThunk('getAllCarts', async (id) => {
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/cart/getCarts/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -27,20 +27,20 @@ export const getAllCartsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getAllCarts.pending, (state) => {
-                console.log("pending")
+                //console.log("pending")
                 state.loading = true
             })
             .addCase(getAllCarts.fulfilled, (state, action) => {
-                console.log("Carts fulfilled")
+                //console.log("Carts fulfilled")
                 state.loading = false
                 state.carts = action.payload
                 
             })
             .addCase(getAllCarts.rejected, (state, action) => {
-                console.log("rejected")
+                //console.log("rejected")
                 state.loading = false
                 state.error = action.error.message
-                console.log("error", action.error)
+                //console.log("error", action.error)
             
             })
     }

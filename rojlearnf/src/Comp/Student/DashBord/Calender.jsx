@@ -3,7 +3,7 @@ import { Calendar } from "@/components/ui/calendar"
 
 const Calender = () => {
     const [date, setDate] = React.useState(new Date())
-    console.log(date)
+    //console.log(date)
 
     return (
         <>

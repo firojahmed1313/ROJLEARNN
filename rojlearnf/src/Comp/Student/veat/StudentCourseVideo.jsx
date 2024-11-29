@@ -11,14 +11,14 @@ const StudentCourseVideo = ({ id,role }) => {
     const [no, setNo] = useState(0);
     const playerRef = useRef(null);
     const dispatch = useDispatch();
-    console.log(id);
-    console.log(role);
+    //console.log(id);
+    //console.log(role);
     const token = Cookies.get('ROJLEARN');
-    console.log(token);
+    //console.log(token);
     let videos;
     
     videos = useSelector((state) => state.getVideoByCourse.videoByCourse);
-    console.log(videos);
+    //console.log(videos);
     useEffect(() => {
         if (!token) {
             navigate("/login");
@@ -29,7 +29,7 @@ const StudentCourseVideo = ({ id,role }) => {
     }, [id])
 
     const handelNext = () => {
-        console.log("Next");
+        //console.log("Next");
         setNo((no + 1) % videos.length);
     }
     return (
@@ -49,8 +49,8 @@ const StudentCourseVideo = ({ id,role }) => {
                                     url={videos[no]?.url}
                                     
                                     controls={true}
-                                    onPlay={() => console.log("video is playing")}
-                                    onPause={() => console.log("video is paused")}
+                                    onPlay={() =>console.log("video is playing")}
+                                    onPause={() =>console.log("video is paused")}
                                     margin="auto"
                                     width="100%"
                                     height="100%"

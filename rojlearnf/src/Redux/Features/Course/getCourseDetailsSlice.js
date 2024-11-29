@@ -12,11 +12,11 @@ const initialState = {
 export const getCourseDetailsData = createAsyncThunk('getCourseDetailsData', async (id) => {
     const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
-    console.log(id);
-    console.log(token);
+    //console.log(id);
+    //console.log(token);
     try {
         const data = getApi(`${burl}/course/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data;
     } catch (error) {
         console.warn(error);
@@ -33,19 +33,19 @@ export const getCourseDetailsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getCourseDetailsData.pending, (state, action) => {
-                console.log("pending");
+                //console.log("pending");
                 state.isLoading = true;
             })
             .addCase(getCourseDetailsData.fulfilled, (state, action) => {
-                console.log("fulfilled", action.payload);
+                //console.log("fulfilled", action.payload);
                 state.isLoading = false;
                 state.course = action.payload;
             })
             .addCase(getCourseDetailsData.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.isLoading = false;
                 state.isError = true;
-                console.log("error", action.error);
+                //console.log("error", action.error);
 
             })
     },

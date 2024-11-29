@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Testimonials = ({ RatingData }) => {
-    console.log("Testimonials", RatingData)
+    //console.log("Testimonials", RatingData)
     return (
         <>
             <section className="bg-white">

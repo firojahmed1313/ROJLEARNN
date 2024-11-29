@@ -37,7 +37,7 @@ const AllStudentCourses = () => {
         }, 2000)
 
     }, [])
-    console.log(course);
+    //console.log(course);
 
     //const dateObj = formatDateString();
     return (

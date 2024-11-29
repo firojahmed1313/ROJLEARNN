@@ -34,11 +34,11 @@ const AddCourse = () => {
     const dispatch = useDispatch();
     const data = Cookies.get("ROJLEARN");
     const User = useSelector((state) => state.getUser);
-    console.log(User);
+    //console.log(User);
     const { mutate, isLoading, isError, error } = useMutation({
         mutationFn: addCourseFunc,
         onSuccess: (data) => {
-            console.log("add course", data);
+            //console.log("add course", data);
             toast.success(`Course Added `, {
                 position: "top-center",
                 autoClose: 5000,
@@ -51,7 +51,7 @@ const AddCourse = () => {
             });
         },
         onError: (error) => {
-            console.log("Some Error", error);
+            //console.log("Some Error", error);
             toast.error( error.message, {
                 position: "top-center",
                 autoClose: 5000,
@@ -69,10 +69,10 @@ const AddCourse = () => {
     }, [data]);
     const handleAddCourse = (e) => {
         e.preventDefault();
-        console.log("Add Course");
+        //console.log("Add Course");
         const fromobj = new FormData(e.target);
         const obj = Object.fromEntries(fromobj.entries());
-        console.log(obj);
+        //console.log(obj);
         mutate(obj);
 
     }

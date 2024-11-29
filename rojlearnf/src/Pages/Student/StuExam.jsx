@@ -31,7 +31,7 @@ const StuExam = () => {
   const [tab, setTab] = React.useState("Exam");
   const onOptionChangeHandler = (tab) => {
     setTab(tab);
-    console.log(tab);
+    //console.log(tab);
   };
   return (
     <>

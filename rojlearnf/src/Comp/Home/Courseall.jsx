@@ -38,7 +38,7 @@ const filterCategory = [
 
 const getFilterCourse = async (fs) => {
     const res = await axios.post(`${burl}/course/filter`, fs);
-    console.log(res);
+    //console.log(res);
     return res.data;
 }
 const GetTeacherData = ({ dateObj, id }) => {
@@ -73,100 +73,100 @@ const Courseall = () => {
     }, [])
     const handelSearch = async (e) => {
         e.preventDefault();
-        console.log(searchData);
+        //console.log(searchData);
         filters.searchKeyword = searchData;
-        console.log(filters);
+        //console.log(filters);
         setSearchData("");
         filters.page = 1;
         let fs = generateFilterQueryString(filters);
         //GotoCourse(fs);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
-        console.log(filterCourse);
+        //console.log(filterCourse);
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
     const handelAvailability = async (e) => {
         filters.availability = e;
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs.substring(2, fs.length));
+        //console.log(fs.substring(2, fs.length));
     }
     const handelResetAvailability = async () => {
         filters.availability = "";
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
     const handelCategory = async (e) => {
         filters.category = e;
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
     const handelResetCategory = async () => {
         filters.category = "";
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
     const handelFilterPrice = async (e) => {
         e.preventDefault();
         const fromobj = new FormData(e.target);
         const obj = Object.fromEntries(fromobj.entries());
-        console.log(obj);
+        //console.log(obj);
         filters.minPrice = obj.minPrice;
         filters.maxPrice = obj.maxPrice;
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
 
     }
     const handelResetPrice = async () => {
         filters.minPrice = 0;
         filters.maxPrice = 2000;
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
     const handelSort = async (e) => {
         let field, order;
-        //console.log(typeof e);
+        ////console.log(typeof e);
         field = e.substring(0, e.indexOf(","));
         order = e.substring(e.indexOf(",") + 1);
         filters.sortBy.field = field;
         filters.sortBy.order = order;
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
 
 
     }
@@ -179,32 +179,32 @@ const Courseall = () => {
         filters.sortBy.field = "created_at";
         filters.sortBy.order = "ASC";
         filters.page = 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
     const handelPrevPage = async () => {
         filters.page = filters.page - 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
     const handelNextPage = async () => {
         filters.page = filters.page + 1;
-        console.log(filters);
+        //console.log(filters);
         let fs = generateFilterQueryString(filters);
         navigate(`/courses${fs}`);
         const filterCourse = await getFilterCourse(fs.substring(2, fs.length));
         setCourseData(filterCourse);
-        console.log(fs);
+        //console.log(fs);
     }
-    console.log(courseData);
+    //console.log(courseData);
 
     return (
         <>
@@ -241,7 +241,7 @@ const Courseall = () => {
                                         <span className="sr-only">Search</span>
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                            <g fill="none" fill-rule="evenodd">
+                                            <g fill="none" fillRule="evenodd">
                                                 <path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
                                                 <path fill="white" d="M5.5 10a4.5 4.5 0 1 1 9 0a4.5 4.5 0 0 1-9 0M10 2.5a7.5 7.5 0 1 0 4.136 13.757l4.803 4.804a1.5 1.5 0 0 0 2.122-2.122l-4.804-4.803A7.5 7.5 0 0 0 10 2.5" />
                                             </g>
@@ -700,21 +700,21 @@ const Courseall = () => {
                     </div>
 
                 </div>
-                <nav class="flex items-center justify-center gap-x-1 " aria-label="Pagination">
-                    <button type="button" onClick={handelPrevPage} disabled={(courseData?.currentPage != 1)? false:true} class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Previous">
-                        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <nav className="flex items-center justify-center gap-x-1 " aria-label="Pagination">
+                    <button type="button" onClick={handelPrevPage} disabled={(courseData?.currentPage != 1)? false:true} className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Previous">
+                        <svg className="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"  strokeLinejoin="round">
                             <path d="m15 18-6-6 6-6"></path>
                         </svg>
-                        <span class="sr-only">Previous</span>
+                        <span className="sr-only">Previous</span>
                     </button>
-                    <div class="flex items-center gap-x-1">
-                        <span class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 bg-blue-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 text-white dark:focus:bg-white/10">{(courseData?.currentPage) ? courseData?.currentPage : 1}</span>
-                        <span class="min-h-[38px] flex justify-center items-center text-gray-500 py-2 px-1.5 text-sm dark:text-neutral-500">of</span>
-                        <span class="min-h-[38px] flex justify-center items-center text-gray-500 py-2 px-1.5 text-sm dark:text-neutral-500">{(courseData?.totalPages) ? courseData?.totalPages : 5}</span>
+                    <div className="flex items-center gap-x-1">
+                        <span className="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 bg-blue-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 text-white dark:focus:bg-white/10">{(courseData?.currentPage) ? courseData?.currentPage : 1}</span>
+                        <span className="min-h-[38px] flex justify-center items-center text-gray-500 py-2 px-1.5 text-sm dark:text-neutral-500">of</span>
+                        <span className="min-h-[38px] flex justify-center items-center text-gray-500 py-2 px-1.5 text-sm dark:text-neutral-500">{(courseData?.totalPages) ? courseData?.totalPages : 5}</span>
                     </div>
-                    <button type="button" onClick={handelNextPage} disabled={(courseData?.currentPage != courseData?.totalPages)? false:true} class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Next">
-                        <span class="sr-only">Next</span>
-                        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <button type="button" onClick={handelNextPage} disabled={(courseData?.currentPage != courseData?.totalPages)? false:true} className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Next">
+                        <span className="sr-only">Next</span>
+                        <svg className="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"  strokeLinejoin="round">
                             <path d="m9 18 6-6-6-6"></path>
                         </svg>
                     </button>

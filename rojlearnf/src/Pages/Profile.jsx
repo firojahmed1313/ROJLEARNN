@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 const Profile = () => {
     const user = useSelector(state => state.getUser.user);
-    console.log(user);
+    //console.log(user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = Cookies.get("ROJLEARN");

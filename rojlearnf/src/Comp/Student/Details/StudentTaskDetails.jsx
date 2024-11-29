@@ -28,14 +28,14 @@ const StudentTaskDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const id = location.pathname.substring(13);
-  console.log(id);
+  //console.log(id);
   const token = Cookies.get('ROJLEARN');
-  console.log(token);
+  //console.log(token);
   const taskDetails = useSelector((state) => state.getTaskById.taskDetails);
   const User = useSelector((state) => state.getUser);
   const isloading = useSelector((state) => state.getTaskById.isLoading);
   const isError = useSelector((state) => state.getTaskById.isError);
-  console.log(taskDetails);
+  //console.log(taskDetails);
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -49,7 +49,7 @@ const StudentTaskDetails = () => {
   const { mutate, isLoading, error } = useMutation({
     mutationFn: submitTask,
     onSuccess: (data) => {
-        console.log(data);
+        //console.log(data);
         toast.success(data, {
             position: "top-center",
             autoClose: 5000,
@@ -62,7 +62,7 @@ const StudentTaskDetails = () => {
         });
     },
     onError: (error) => {
-        console.log("Some Error", error);
+        //console.log("Some Error", error);
         toast.error( error.message, {
             position: "top-center",
             autoClose: 5000,
@@ -78,10 +78,10 @@ const StudentTaskDetails = () => {
   const handelAnswer = (e) => {
     e.preventDefault();
     setShowQuestion(!showQuestion);
-    //console.log("ANS");
+    ////console.log("ANS");
     const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
-    console.log(obj);
+    //console.log(obj);
     const taskid= taskDetails._id;
     const userid = User.user._id;
     const tuid = taskid + "_" + userid;
@@ -92,7 +92,7 @@ const StudentTaskDetails = () => {
       tuid,
       answer
     }
-    console.log(data);
+    //console.log(data);
     mutate(data);
   }
   return (
@@ -123,7 +123,7 @@ const StudentTaskDetails = () => {
               <div className="md:pr-12">
                 <div className="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300 mt-8">
                   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                    <g fill="none" stroke="#000" trokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
+                    <g fill="none" stroke="#000" trokelinecap="round" strokeLinejoin="round" strokeWidth="4">
                       <path d="M22 6H9C7.34315 6 6 7.34315 6 9V31C6 32.6569 7.34315 34 9 34H39C40.6569 34 42 32.6569 42 31V22" />
                       <path d="M24 34V42" />
                       <path d="M14 42L34 42" />

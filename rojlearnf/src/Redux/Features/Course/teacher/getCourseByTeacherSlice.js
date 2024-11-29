@@ -13,7 +13,7 @@ export const getCourseByTeacher = createAsyncThunk('getCourseByTeacher', async (
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/course/${id}/courses`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -27,19 +27,19 @@ export const getCourseByTeacherSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getCourseByTeacher.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         })
         builder.addCase(getCourseByTeacher.fulfilled, (state, action) => {
-            console.log("getCourseByTeacher fulfilled", action.payload);
+            //console.log("getCourseByTeacher fulfilled", action.payload);
             state.loading = false;
             state.courseByTeacher = action.payload.data;
         })
         builder.addCase(getCourseByTeacher.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.error.message;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         })
     }
 })

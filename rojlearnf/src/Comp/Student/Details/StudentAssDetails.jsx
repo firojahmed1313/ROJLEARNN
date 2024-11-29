@@ -16,7 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 const burl = import.meta.env.VITE_URL;
 const submitAss = async (obj) => {
   const token = Cookies.get('ROJLEARN');
-  console.log(token);
+  //console.log(token);
   const response = await axios.post(`${burl}/submit/submitass/${obj.assignmentid}`, obj, {
     headers: {
       "Content-Type": "application/json",
@@ -33,15 +33,15 @@ const StudentAssDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const id = location.pathname.substring(19);
-  console.log(id);
+  //console.log(id);
   const token = Cookies.get('ROJLEARN');
-  console.log(token);
+  //console.log(token);
   const assignmentDetails = useSelector((state) => state.getAssignmentById.assignmentDetails);
   const isloading = useSelector((state) => state.getAssignmentById.isLoading);
   const isError = useSelector((state) => state.getAssignmentById.isError);
-  console.log(assignmentDetails);
+  //console.log(assignmentDetails);
   const User = useSelector((state) => state.getUser);
-  console.log(User);
+  //console.log(User);
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -55,7 +55,7 @@ const StudentAssDetails = () => {
   const { mutate, isLoading, error } = useMutation({
     mutationFn: submitAss,
     onSuccess: (data) => {
-        console.log("Assignment Submitted", data);
+        //console.log("Assignment Submitted", data);
         toast.success(data, {
             position: "top-center",
             autoClose: 5000,
@@ -68,7 +68,7 @@ const StudentAssDetails = () => {
         });
     },
     onError: (error) => {
-        console.log("Some Error", error);
+        //console.log("Some Error", error);
         toast.error( error.message, {
             position: "top-center",
             autoClose: 5000,
@@ -86,13 +86,13 @@ const StudentAssDetails = () => {
     setShowQuestion(!showQuestion);
     const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
-    //console.log(obj);
+    ////console.log(obj);
     const { github_url, deploy_url } = obj;
-    //console.log(github_url, deploy_url);
+    ////console.log(github_url, deploy_url);
     const assignmentid = assignmentDetails._id.toString();
     const userid = User.user._id.toString();
     const auid = assignmentid+"_"+userid;
-    console.log(auid);
+    //console.log(auid);
     const data = {
       github_url,
       deploy_url,
@@ -100,7 +100,7 @@ const StudentAssDetails = () => {
       userid,
       auid
     }
-    //console.log(data);
+    ////console.log(data);
     mutate(data);
 
   }
@@ -131,7 +131,7 @@ const StudentAssDetails = () => {
           <div className="md:pr-12">
             <div className="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-500 mt-8">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                <g fill="none" stroke="#000" trokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
+                <g fill="none" stroke="#000" trokelinecap="round" strokeLinejoin="round" strokeWidth="4">
                   <path d="M22 6H9C7.34315 6 6 7.34315 6 9V31C6 32.6569 7.34315 34 9 34H39C40.6569 34 42 32.6569 42 31V22" />
                   <path d="M24 34V42" />
                   <path d="M14 42L34 42" />

@@ -102,7 +102,7 @@ const sData = [
 const ProfileNav = () => {
   const user = useSelector(state => state.getUser.user);
   const role = user?.role;
-  console.log(role);
+  //console.log(role);
   const token = Cookies.get("ROJLEARN");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -119,7 +119,7 @@ const ProfileNav = () => {
     
   }, [])
   let location = useLocation();
-  console.log((location.pathname));
+  //console.log((location.pathname));
   return (
     <>
       <div className="flex flex-col items-center w-full min-h-screen overflow-hidden text-gray-400 bg-gray-900 ">

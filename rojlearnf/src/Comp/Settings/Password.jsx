@@ -7,15 +7,15 @@ import Delete from '../popupsmodel/Delete'
 const Password = ({ user }) => {
     const [downloadOpen, setDownloadOpen] = useState(false)
     const handelDownload = () => {
-        console.log("user data downloaded")
+        //console.log("user data downloaded")
         setDownloadOpen(true);
         
     }
     const handelDeactive = () => {
-        console.log("user deactivated")
+        //console.log("user deactivated")
     }
     const handelDelete = () => {
-        console.log("user deleted")
+        //console.log("user deleted")
     }
     return (
         <>
@@ -43,7 +43,7 @@ const Password = ({ user }) => {
                     </label>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" className="mt-5 ml-2 h-6 w-6 cursor-pointer text-sm font-semibold text-gray-600 underline decoration-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path trokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                    <path trokelinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                 </svg>
             </div>
             <p className="mt-2">Can't remember your current password. <a className="text-sm font-semibold text-blue-600 underline decoration-2" href="#">Recover Account</a></p>
@@ -54,7 +54,7 @@ const Password = ({ user }) => {
                 <p className="py-2 text-xl font-semibold">Download Your Data</p>
                 <p className="mt-2">Make sure you have taken backup of your account in case you ever need to get access to your data. We will completely wipe your data. There is no way to access your account after this action.</p>
                 <button className="ml-auto text-sm rounded-lg border-2 border-transparent bg-blue-500 px-4 py-2 font-medium text-white focus:outline-none focus:ring decoration-2 hover:bg-blue-600" onClick={handelDownload} ><svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
-                    <path stroke="currentColor" trokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3" />
+                    <path stroke="currentColor" trokelinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3" />
                 </svg> </button>
             </div>
             {/* <div >

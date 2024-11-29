@@ -46,7 +46,7 @@ const StuActivity = () => {
 
   const onOptionChangeHandler = (tab) => {
     setTab(tab);
-    console.log(tab);
+    //console.log(tab);
   }
   return (
     <>

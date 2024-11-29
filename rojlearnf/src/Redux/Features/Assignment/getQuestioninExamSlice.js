@@ -13,7 +13,7 @@ const initalState = {
 const getQuestions=async(id)=>{
     const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
-    console.log(token);    
+    //console.log(token);    
     try {
         const data = getApi(`${burl}/question/getQuestion/${id}`,token);
         return data;
@@ -24,15 +24,15 @@ const getQuestions=async(id)=>{
 
 export const getQuestioninExam = createAsyncThunk('getQuestioninExam', async (item) => {
     const datas = [];
-    console.log(item)
+    //console.log(item)
     for(let i = 0; i < item.length; i++){
-        console.log(item[i])
+        //console.log(item[i])
         const data = await getQuestions(item[i]);
-        //console.log(data.data);
+        ////console.log(data.data);
         datas.push(data.data);
         
     }
-    console.log(datas);
+    //console.log(datas);
     return datas;
     
 })
@@ -50,19 +50,19 @@ export const getQuestioninExamSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getQuestioninExam.pending, (state) => {
-                console.log("pending");
+                //console.log("pending");
                 state.loading = true;
             })
             .addCase(getQuestioninExam.fulfilled, (state, action) => {
-                console.log("Carts fulfilled");
+                //console.log("Carts fulfilled");
                 state.loading = false;
                 state.questioninExam = action.payload;
             })
             .addCase(getQuestioninExam.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.loading = false;
                 state.error = action.error.message;
-                console.log("error", action.error);
+                //console.log("error", action.error);
             })
     }
 })

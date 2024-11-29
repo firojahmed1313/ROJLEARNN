@@ -10,11 +10,11 @@ import { Link } from 'react-router-dom'
 const StudentCourseAss = ({id,role}) => {
   const navigate = useNavigate();
     const dispatch = useDispatch();
-    console.log(id);
+    //console.log(id);
     const token = Cookies.get('ROJLEARN');
-    console.log(token);
+    //console.log(token);
     const assignments = useSelector((state) => state.getAssByCourse.assignmentbyid);
-    console.log(assignments);
+    //console.log(assignments);
     useEffect(() => {
         if (!token) {
             navigate("/login");

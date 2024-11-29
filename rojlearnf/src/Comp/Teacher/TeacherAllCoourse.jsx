@@ -38,7 +38,7 @@ const TeacherAllCoourse = () => {
         }, 2000)
 
     }, [])
-    console.log(course);
+    //console.log(course);
     return (
         <>
             <AddCourse />
@@ -89,7 +89,7 @@ const TeacherAllCoourse = () => {
                                                             className="h-4 w-4"
                                                         >
                                                             <path
-                                                                trokeLinecap="round"
+                                                                trokelinecap="round"
                                                                 strokeLinejoin="round"
                                                                 d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                                                             ></path>

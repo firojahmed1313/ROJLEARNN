@@ -25,7 +25,7 @@ const loginUser = async ({ email, password }) => {
 };
 const Login = () => {
   
-  console.log(burl);
+  //console.log(burl);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { mutate, isLoading, isError, error } = useMutation({
@@ -37,7 +37,7 @@ const Login = () => {
         secure: true,
         path: '/',
       });
-      console.log('Login successful:', data);
+      //console.log('Login successful:', data);
       dispatch(getProfileData(data));
       toast.success(`Login successful `, {
         position: "top-center",
@@ -59,19 +59,19 @@ const Login = () => {
     const email = obj.email;
     const password = obj.password;
     mutate({ email, password });
-    console.log(email, password);
+    //console.log(email, password);
   }
   const User = useSelector((state) => state.getUser);
   
 
-  console.log(User);
+  //console.log(User);
 
   useEffect(() => {
     if(User.isLoading){
-      console.log("loading");
+      //console.log("loading");
     }
     else if (User.isError) {
-      console.log("error");
+      //console.log("error");
     }
   })
   useEffect(() => {
@@ -89,7 +89,7 @@ const Login = () => {
   }, [User])
   
   if(isError){
-    console.log(error);
+    //console.log(error);
     toast.error("Login failed plz chack your email and password", {
       position: "top-center",
       autoClose: 5000,
@@ -102,7 +102,7 @@ const Login = () => {
     });
   }
   if(isLoading){
-    console.log("loading");
+    //console.log("loading");
   }
 
   return (

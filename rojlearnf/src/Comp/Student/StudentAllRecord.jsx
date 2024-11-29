@@ -20,18 +20,18 @@ const StudentAllRecord = () => {
     const loading = useSelector((state) => state.getStudentReport.loading);
     const error = useSelector((state) => state.getStudentReport.error);
     if (loading) {
-        console.log("loading");
+        //console.log("loading");
     }
     if (error) {
-        console.log("error");
+        //console.log("error");
     }
-    console.log(studentReport);
+    //console.log(studentReport);
     const tasks= studentReport?.filter((task) => task.type === "task");
     const exams = studentReport?.filter((exam) => exam.type === "exam");
-    console.log(tasks);
-    console.log(exams);
+    //console.log(tasks);
+    //console.log(exams);
     const assignments = studentReport?.filter((assignment) => assignment.type === "assignment");
-    console.log(assignments);
+    //console.log(assignments);
 
     useEffect(() => {
         setTimeout(() => {
@@ -57,8 +57,8 @@ const StudentAllRecord = () => {
         percentage = (total / studentReport?.length);
 
     }
-    console.log(total);
-    console.log(percentage.toFixed(2));
+    //console.log(total);
+    //console.log(percentage.toFixed(2));
 
     let taskTotal = 0;
     let taskPercentage = 0;
@@ -107,7 +107,7 @@ const StudentAllRecord = () => {
     return (
         <>
             <div className="flex min-h-[80dvh] mb-4 sm:p-10 justify-center items-center" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1665680674724-3a3b3368e036?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}>
-                <div className="flex flex-col sm:flex-row sm:w-[36rem] sm:h-[30rem] sm:rounded-3xl h-full w-full sm:shadow-lg bg-white">
+                <div className="flex flex-col sm:flex-row sm:w-[44rem] sm:h-[30rem] sm:rounded-3xl h-full w-full sm:shadow-lg bg-white">
                     <div className="flex sm:basis-1/2 flex-col items-center justify-center bg-gradient-to-b to-[#2e2be9] from-[#7857ff] sm:rounded-3xl rounded-b-3xl py-7 px-10">
                         <h2 className="text-[#ebf1ff] font-hankengrotesk text-xl sm:text-lg font-bold">Your Result</h2>
                         {

@@ -11,7 +11,7 @@ import Password from '../Comp/Settings/Password'
 
 const Settings = () => {
   const user = useSelector((state) => state.getUser.user);
-  console.log(user);
+  //console.log(user);
   const token = Cookies.get("ROJLEARN");
   const dispatch = useDispatch();
   const navigate = useNavigate();

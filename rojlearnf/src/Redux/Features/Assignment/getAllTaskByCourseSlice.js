@@ -10,11 +10,11 @@ const initialState = {
 export const getAllTaskByCourse = createAsyncThunk('getAllTaskByCourse', async (id) => {
     const burl = import.meta.env.VITE_URL;
     const token = Cookies.get("ROJLEARN");
-    console.log(id)
-    console.log(token)
+    //console.log(id)
+    //console.log(token)
     try {
         const data = getApi(`${burl}/task/getTaskByCourse/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -28,19 +28,19 @@ export const getAllTaskByCourseSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getAllTaskByCourse.pending, (state, action) => {
-                console.log("pending");
+                //console.log("pending");
                 state.loading = true
             })
             .addCase(getAllTaskByCourse.fulfilled, (state, action) => {
-                console.log("getAllTaskByCourse fulfilled", action.payload)
+                //console.log("getAllTaskByCourse fulfilled", action.payload)
                 state.loading = false
                 state.taskbyid = action.payload.data
             })
             .addCase(getAllTaskByCourse.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.loading = false
                 state.error = action.error.message
-                console.log("error", action.error)
+                //console.log("error", action.error)
             })
     }
 })

@@ -10,7 +10,7 @@ import PieCharts from './PieCharts'
 import { useSelector } from 'react-redux'
 const StudentDashBord = () => {
   const user = useSelector((state) => state.getUser.user);
-  //console.log(user)
+  ////console.log(user)
   return (
     <>
       <div className='p-4'>

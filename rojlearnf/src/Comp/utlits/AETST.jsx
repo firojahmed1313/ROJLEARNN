@@ -21,9 +21,9 @@ const AETST = ({ id, type, role }) => {
         isLoading = useSelector((state) => state.getAssByCourse.isLoading);
     }
     const dispatch = useDispatch();
-    console.log("Type", data);
+    //console.log("Type", data);
     useEffect(() => {
-        console.log("id", id);
+        //console.log("id", id);
         if (type == "Exam") {
             dispatch(getAllExamByCourse(id));
         } else if (type == "Task") {
@@ -33,7 +33,7 @@ const AETST = ({ id, type, role }) => {
         }
     }, [id, type]);
     let url = `/${role}${type}/${data?._id}`;
-    console.log("url", url);
+    //console.log("url", url);
     return (
         <>
             {isLoading ? <AETloader /> : data?.length != 0 ? (

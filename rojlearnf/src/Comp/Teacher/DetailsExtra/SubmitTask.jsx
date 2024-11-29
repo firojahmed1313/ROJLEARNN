@@ -25,7 +25,7 @@ const SubmitTask = ({ item }) => {
     const { mutate, isLoading, error } = useMutation({
         mutationFn: submitTaskMarks,
         onSuccess: (data) => {
-            console.log(data);
+            //console.log(data);
             toast.success(data, {
                 position: "top-center",
                 autoClose: 5000,
@@ -38,7 +38,7 @@ const SubmitTask = ({ item }) => {
             });
         },
         onError: (error) => {
-            console.log("Some Error", error);
+            //console.log("Some Error", error);
             toast.error(error.message, {
                 position: "top-center",
                 autoClose: 5000,
@@ -55,7 +55,7 @@ const SubmitTask = ({ item }) => {
         e.preventDefault();
         const fromobj = new FormData(e.target);
         const obj = Object.fromEntries(fromobj.entries());
-        //console.log(obj);
+        ////console.log(obj);
         const mark = obj.marks;
         const containid = item.taskid;
         const userid = item.userid;
@@ -67,7 +67,7 @@ const SubmitTask = ({ item }) => {
             cuid,
             type: "task"
         }
-        console.log(data);
+        //console.log(data);
         mutate(data);
 
     }
@@ -106,7 +106,7 @@ const SubmitTask = ({ item }) => {
                             <button type="submit" className="group flex items-center justify-center rounded-xl bg-blue-700 px-6 py-4 text-white transition">
                                 <span className="group flex w-full items-center justify-center rounded text-center font-medium">Submit Marks</span>
                                 <svg className="shrink-0 group-hover:ml-8 ml-4 h-4 w-4 transition-all" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                    <path trokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    <path trokelinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
                             </button>
                         </div>

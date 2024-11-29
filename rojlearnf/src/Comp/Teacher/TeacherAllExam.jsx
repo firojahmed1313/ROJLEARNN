@@ -39,7 +39,7 @@ const data = [
 const TeacherAllExam = () => {
     const navigate = useNavigate();
     const courses = useSelector((state) => state.getTeacherCourse.courseByTeacher);
-    console.log("course", courses);
+    //console.log("course", courses);
     const user = useSelector((state) => state.getUser.user);
     const dispatch = useDispatch();
     useEffect(() => {

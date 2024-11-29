@@ -26,11 +26,11 @@ const submitAssMarks = async (data) => {
 };
 
 const SubmitAss = ({ item, data }) => {
-  console.log(item);
+  //console.log(item);
   const { mutate, isLoading, error } = useMutation({
     mutationFn: submitAssMarks,
     onSuccess: (data) => {
-      console.log(data);
+      //console.log(data);
       toast.success(data, {
         position: "top-center",
         autoClose: 3000,
@@ -43,7 +43,7 @@ const SubmitAss = ({ item, data }) => {
       });
     },
     onError: (error) => {
-      console.log("Some Error", error);
+      //console.log("Some Error", error);
       toast.error(error.message, {
         position: "top-center",
         autoClose: 5000,
@@ -74,7 +74,7 @@ const SubmitAss = ({ item, data }) => {
       cuid,
       type
     };
-    console.log(data);
+    //console.log(data);
     mutate(data);
   };
   return (
@@ -178,7 +178,7 @@ const SubmitAss = ({ item, data }) => {
                   strokeWidth="2"
                 >
                   <path
-                    trokeLinecap="round"
+                    trokelinecap="round"
                     strokeLinejoin="round"
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                   ></path>

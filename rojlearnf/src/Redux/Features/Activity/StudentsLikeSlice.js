@@ -13,7 +13,7 @@ export const getStudentsLike = createAsyncThunk('getStudentsLike', async (id) =>
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/lrcf/user/alllike/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -28,19 +28,19 @@ export const getStudentsLikeSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getStudentsLike.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         })
         .addCase(getStudentsLike.fulfilled, (state, action) => {
-            console.log("getStudentsLike fulfilled", action.payload);
+            //console.log("getStudentsLike fulfilled", action.payload);
             state.loading = false;
             state.studentsLike = action.payload;
         })
         .addCase(getStudentsLike.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.error.message;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         })
     }
 });

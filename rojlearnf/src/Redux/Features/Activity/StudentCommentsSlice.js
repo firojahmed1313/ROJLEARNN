@@ -13,7 +13,7 @@ export const getStudentComments = createAsyncThunk('getStudentComments', async (
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/comments/user/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -28,19 +28,19 @@ export const getStudentCommentsSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getStudentComments.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         })
         .addCase(getStudentComments.fulfilled, (state, action) => {
-            console.log("getStudentComments fulfilled", action.payload);
+            //console.log("getStudentComments fulfilled", action.payload);
             state.loading = false;
             state.studentComments = action.payload.data;
         })
         .addCase(getStudentComments.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.error.message;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         })
     }
 })

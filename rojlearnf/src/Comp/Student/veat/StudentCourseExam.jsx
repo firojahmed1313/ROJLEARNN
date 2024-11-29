@@ -12,11 +12,11 @@ const StudentCourseExam = ({ id,role }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    console.log(id);
+    //console.log(id);
     const token = Cookies.get('ROJLEARN');
-    console.log(token);
+    //console.log(token);
     const exams = useSelector((state) => state.getExamByCourse.exambyid);
-    console.log(exams);
+    //console.log(exams);
     useEffect(() => {
         if (!token) {
             navigate("/login");

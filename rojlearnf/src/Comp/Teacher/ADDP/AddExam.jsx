@@ -53,11 +53,11 @@ const addExamFunc = async (data) => {
 }
 const AddExam = () => {
     const course = useSelector((state) => state.getTeacherCourse.courseByTeacher);
-    console.log(course);
+    //console.log(course);
     const { mutate, isLoading, isError, error } = useMutation({
         mutationFn: addExamFunc,
         onSuccess: (data) => {
-            console.log("add Exam", data);
+            //console.log("add Exam", data);
             toast.success(`Exam Added `, {
                 position: "top-center",
                 autoClose: 5000,
@@ -70,7 +70,7 @@ const AddExam = () => {
             });
         },
         onError: (error) => {
-            console.log("Some Error", error);
+            //console.log("Some Error", error);
             toast.error(error.message, {
                 position: "top-center",
                 autoClose: 5000,
@@ -85,10 +85,10 @@ const AddExam = () => {
     })
     const handleAddCourse = (e) => {
         e.preventDefault();
-        console.log("Add Exam");
+        //console.log("Add Exam");
         const fromobj = new FormData(e.target);
         const obj = Object.fromEntries(fromobj.entries());
-        console.log(obj);
+        //console.log(obj);
         mutate(obj);
     };
     return (

@@ -12,7 +12,7 @@ export const getAssignmentDetails = createAsyncThunk('getAssignmentDetails', asy
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/assignment/getAssignment/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -28,19 +28,19 @@ export const getAssignmentDetailsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getAssignmentDetails.pending, (state) => {
-                console.log("pending");
+                //console.log("pending");
                 state.loading = true
             })
             .addCase(getAssignmentDetails.fulfilled, (state, action) => {
-                console.log("getAssignmentDetails fulfilled", action.payload);
+                //console.log("getAssignmentDetails fulfilled", action.payload);
                 state.loading = false
                 state.assignmentDetails = action.payload.data
             })
             .addCase(getAssignmentDetails.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.loading = false
                 state.error = action.error.message
-                console.log("error", action.error)
+                //console.log("error", action.error)
             })
     }
 })

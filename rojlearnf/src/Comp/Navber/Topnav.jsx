@@ -45,22 +45,22 @@ const Topnav = () => {
         }
     }, [user]);
     const handelcartItems = () => {
-        console.log("cartItems");
+        //console.log("cartItems");
         setShowCart(!showCart);
         setShowNotification(false);
 
         setTimeout(() => {
             //const cartItems = useSelector((state) => state.getCartItems.cartItems);
-            console.log(cartItems);
+            //console.log(cartItems);
         }, 2000);
 
     }
 
     const handelNotification = () => {
-        console.log("notification");
+        //console.log("notification");
         setShowNotification(!showNotification);
         setShowCart(false);
-        console.log(notification);
+        //console.log(notification);
     }
     return (
         <>

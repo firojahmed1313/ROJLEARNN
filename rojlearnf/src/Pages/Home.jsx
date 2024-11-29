@@ -17,7 +17,7 @@ const Home = () => {
   const course = useSelector((state) => state.getCourse.course);
   const loading = useSelector((state) => state.getCourse.isLoading);
   const error = useSelector((state) => state.getCourse.error);
-  console.log(course);
+  //console.log(course);
   // useEffect(() => {
   //   if (course != null) {
   //     setCourseData(course.data);

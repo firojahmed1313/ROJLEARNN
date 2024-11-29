@@ -13,7 +13,7 @@ export const getSubmitass = createAsyncThunk('getSubmitass', async (id) => {
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/submit/getAssSubmitByAssId/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -26,19 +26,19 @@ export const getSubmitassSlice = createSlice({
     reducers: {},
     extraReducers:(builder) => {
         builder.addCase(getSubmitass.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         })
         builder.addCase(getSubmitass.fulfilled, (state, action) => {
-            console.log("getSubmitass fulfilled", action.payload);
+            //console.log("getSubmitass fulfilled", action.payload);
             state.loading = false;
             state.submitass = action.payload.data;
         })
         builder.addCase(getSubmitass.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.error.message;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         })
         
     }

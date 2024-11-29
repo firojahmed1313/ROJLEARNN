@@ -34,7 +34,7 @@ const data = [
 const StudentsTask = () => {
     const navigate = useNavigate();
     const courses = useSelector((state) => state.getCourseofStudent.course);
-    console.log("courses", courses);
+    //console.log("courses", courses);
     const user = useSelector((state) => state.getUser.user);
     const dispatch = useDispatch();
     useEffect(() => {

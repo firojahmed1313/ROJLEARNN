@@ -9,21 +9,21 @@ const burl = import.meta.env.VITE_URL;
 const token = Cookies.get('ROJLEARN');
 
 const Notifications = ({ notifications }) => {
-  console.log(notifications)
+  //console.log(notifications)
   const statusHandler = async (notification) => {
     if (notification.status) {
-      console.log("already read")
+      //console.log("already read")
     }
     else {
-      console.log(notification)
-      console.log(`${burl}/notification/updateStatus/${notification._id}`);
+      //console.log(notification)
+      //console.log(`${burl}/notification/updateStatus/${notification._id}`);
       try {
       const response = await axios.put(`${burl}/notification/updateStatus/${notification._id}`,null, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       })
-      console.log(response.data)
+      //console.log(response.data)
       if (response.data.status) {
         toast.success("Marked as read", {
           position: "top-center",
@@ -37,7 +37,7 @@ const Notifications = ({ notifications }) => {
         });
       }
     } catch (error) {
-      console.log(error)
+      //console.log(error)
     }
 
     }

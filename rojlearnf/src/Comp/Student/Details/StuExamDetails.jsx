@@ -14,7 +14,7 @@ import { getApi } from "@/Redux/Api/Api";
 
 
 const submitExam = async ({data,id}) => {
-  console.log(id);
+  //console.log(id);
   const burl = import.meta.env.VITE_URL;
   const token = Cookies.get("ROJLEARN");
   const response = await axios.post(`${burl}/submit/submitExam/${id}`, data, {
@@ -33,13 +33,13 @@ const StuExamDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const id = location.pathname.substring(13);
-  console.log(id);
+  //console.log(id);
   const token = Cookies.get("ROJLEARN");
-  console.log(token);
+  //console.log(token);
   const examDetails = useSelector((state) => state.getExamById.examDetails);
   const isloading = useSelector((state) => state.getExamById.isLoading);
   const isError = useSelector((state) => state.getExamById.isError);
-  console.log(examDetails); //.questions //._id
+  //console.log(examDetails); //.questions //._id
   useEffect(() => {
 
     const getQuestioninExam = async () => {
@@ -47,7 +47,7 @@ const StuExamDetails = () => {
       const token = Cookies.get("ROJLEARN");
       try {
         const data = await getApi(`${burl}/question/getQuestionByExam/${examDetails._id}`,token);
-        console.log(data.data);
+        //console.log(data.data);
         setquestioninExam(data.data);
         //return data.data;
       } catch (error) {
@@ -56,12 +56,12 @@ const StuExamDetails = () => {
     };
     if(examDetails){
     getQuestioninExam();
-    //console.log(res);
+    ////console.log(res);
     }
 
   }, [examDetails]);
 
-  console.log(questioninExam);
+  //console.log(questioninExam);
 
   useEffect(() => {
     if (!token) {
@@ -73,7 +73,7 @@ const StuExamDetails = () => {
   const { mutate, isLoading, error } = useMutation({
     mutationFn: submitExam,
     onSuccess: (data) => {
-      console.log('Submit Exam successful:', data);
+      //console.log('Submit Exam successful:', data);
 
       toast.success(data, {
         position: "top-center",
@@ -87,7 +87,7 @@ const StuExamDetails = () => {
       });
     },
     onError: (error) => {
-      console.log("Some Error", error);
+      //console.log("Some Error", error);
       toast.error(error.message, {
         position: "top-center",
         autoClose: 5000,
@@ -104,16 +104,16 @@ const StuExamDetails = () => {
   const handelAnswer = (e) => {
     e.preventDefault();
     setShowQuestion(!showQuestion);
-    //console.log("ANS");
+    ////console.log("ANS");
     const fromobj = new FormData(e.target);
     const obj = Object.fromEntries(fromobj.entries());
-    console.log(obj);
+    //console.log(obj);
     const data = [];
     for (const [key, ans] of Object.entries(obj)) {
       let _id = key.substring(6, key.length);
       data.push({ _id, ans });
     }
-    console.log(data);
+    //console.log(data);
     const id = examDetails._id;
     mutate({data,id});
 
@@ -162,7 +162,7 @@ const StuExamDetails = () => {
                     <g
                       fill="none"
                       stroke="#000"
-                      trokeLinecap="round"
+                      trokelinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="4"
                     >

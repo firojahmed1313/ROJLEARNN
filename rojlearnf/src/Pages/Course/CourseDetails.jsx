@@ -38,17 +38,17 @@ const CourseDetails = () => {
     const [courseData, setCourseData] = useState([]);
     const navigate = useNavigate();
     const token = Cookies.get('ROJLEARN');
-    console.log(token);
+    //console.log(token);
     let location = useLocation();
     const dispatch = useDispatch();
     const id = location.pathname.substring(8);
-    console.log(id);
+    //console.log(id);
     const course = useSelector((state) => state.getCourseDetails.course);
     const isloading = useSelector((state) => state.getCourseDetails.isLoading);
     const isError = useSelector((state) => state.getCourseDetails.isError);
-    console.log(course);
+    //console.log(course);
     const courseRateing = useSelector((state) => state.getCourseRateing.courseRateing);
-    console.log(courseRateing);
+    //console.log(courseRateing);
     const User = useSelector((state) => state.getUser);
     useEffect(() => {
         if (course != null) {
@@ -66,11 +66,11 @@ const CourseDetails = () => {
 
         }
     }, [id])
-    console.log("courseData : ", courseData);
+    //console.log("courseData : ", courseData);
     const { mutate, isLoading, error } = useMutation({
         mutationFn: addCart,
         onSuccess: (data) => {
-            console.log(data);
+            //console.log(data);
             toast.success("Added to cart", {
                 position: "top-center",
                 autoClose: 5000,
@@ -87,7 +87,7 @@ const CourseDetails = () => {
             
         },
         onError: (error) => {
-            console.log("Some Error", error);
+            //console.log("Some Error", error);
             toast.error(error.message, {
                 position: "top-center",
                 autoClose: 5000,
@@ -101,7 +101,7 @@ const CourseDetails = () => {
         }
     });
     const handelCart = () => {
-        console.log("handelCart", course.data);
+        //console.log("handelCart", course.data);
         const courseid = course.data._id;
         const userid = User.user._id;
         const price = course.data.price;
@@ -110,7 +110,7 @@ const CourseDetails = () => {
             userid,
             price
         }
-        console.log(data);
+        //console.log(data);
         mutate(data);
 
     }

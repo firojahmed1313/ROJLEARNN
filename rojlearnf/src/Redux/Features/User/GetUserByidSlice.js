@@ -13,7 +13,7 @@ export const getUserByid = createAsyncThunk('getUserByid', async (id) => {
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/user/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -27,19 +27,19 @@ export const getUserByidSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getUserByid.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         })
         builder.addCase(getUserByid.fulfilled, (state, action) => {
-            console.log("fulfilled", action.payload);
+            //console.log("fulfilled", action.payload);
             state.loading = false;
             state.userData = action.payload.data;
         })
         builder.addCase(getUserByid.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.payload;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         })
     }
 })

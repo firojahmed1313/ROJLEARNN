@@ -12,7 +12,7 @@ export const getTaskDetails = createAsyncThunk('getTaskDetails', async (id) => {
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/task/getTask/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -26,19 +26,19 @@ export const getTaskDetailsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getTaskDetails.pending, (state) => {
-                console.log("pending");
+                //console.log("pending");
                 state.loading = true
             })
             .addCase(getTaskDetails.fulfilled, (state, action) => {
-                console.log("getTaskDetails fulfilled", action.payload);
+                //console.log("getTaskDetails fulfilled", action.payload);
                 state.loading = false
                 state.taskDetails = action.payload.data
             })
             .addCase(getTaskDetails.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.loading = false
                 state.error = action.error.message
-                console.log("error", action.error)
+                //console.log("error", action.error)
             })
     }
 })      

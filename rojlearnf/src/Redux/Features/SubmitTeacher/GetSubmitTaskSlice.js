@@ -12,7 +12,7 @@ export const getSubmitTask = createAsyncThunk('getSubmitTask', async (id) => {
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/submit/getTaskSubmitByTaskid/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -26,19 +26,19 @@ export const getSubmitTaskSlice = createSlice({
     reducers: {},
     extraReducers:(builder) => {
         builder.addCase(getSubmitTask.pending, (state) => {
-            console.log("pending");
+            //console.log("pending");
             state.loading = true;
         })
         builder.addCase(getSubmitTask.fulfilled, (state, action) => {
-            console.log("getSubmitTask fulfilled", action.payload);
+            //console.log("getSubmitTask fulfilled", action.payload);
             state.loading = false;
             state.submitTask = action.payload.data;
         })
         builder.addCase(getSubmitTask.rejected, (state, action) => {
-            console.log("rejected");
+            //console.log("rejected");
             state.loading = false;
             state.error = action.error.message;
-            console.log("error", action.error);
+            //console.log("error", action.error);
         })
         
     }

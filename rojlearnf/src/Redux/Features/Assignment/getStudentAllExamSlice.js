@@ -14,7 +14,7 @@ export const getStudentAllExam = createAsyncThunk('getStudentAllExam', async (id
     const token = Cookies.get("ROJLEARN");
     try {
         const data = getApi(`${burl}/student/exam/${id}`,token);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -29,19 +29,19 @@ export const getStudentAllExamSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getStudentAllExam.pending, (state, action) => {
-                console.log("pending");
+                //console.log("pending");
                 state.loading = true;
             })
             .addCase(getStudentAllExam.fulfilled, (state, action) => {
-                console.log("getStudentAllExam fulfilled", action.payload);
+                //console.log("getStudentAllExam fulfilled", action.payload);
                 state.loading = false;
                 state.studentAllExam = action.payload.data;
             })
             .addCase(getStudentAllExam.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.loading = false;
                 state.error = action.error;
-                console.log("error", action.error);
+                //console.log("error", action.error);
             })
     }
 })

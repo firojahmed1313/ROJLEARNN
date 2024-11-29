@@ -9,7 +9,7 @@ export const getCourseData = createAsyncThunk('getCourseData', async () => {
     const burl = import.meta.env.VITE_URL;
     try {
         const data = getApi(`${burl}/course/all`,null);
-        console.log(data);
+        //console.log(data);
         return data; 
     } catch (error) {
         console.warn(error);
@@ -24,19 +24,19 @@ export const getCourseSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getCourseData.pending, (state, action) => {
-                console.log("pending");
+                //console.log("pending");
                 state.isLoading = true;
             })
             .addCase(getCourseData.fulfilled, (state, action) => {
-                console.log("fulfilled", action.payload);
+                //console.log("fulfilled", action.payload);
                 state.isLoading = false;
                 state.course = action.payload;
             })
             .addCase(getCourseData.rejected, (state, action) => {
-                console.log("rejected");
+                //console.log("rejected");
                 state.isLoading = false;
                 state.isError = true;
-                console.log("error", action.error);
+                //console.log("error", action.error);
                 
             })
     }
