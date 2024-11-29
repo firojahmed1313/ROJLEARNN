@@ -17,7 +17,7 @@ export const getCourseofStudent = createAsyncThunk('getCourseofStudent', async (
         //console.log(data);
         return data; 
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
     
 })

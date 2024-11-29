@@ -14,7 +14,7 @@ export const getStudentsAllAssignment = createAsyncThunk('getStudentsAllAssignme
         //console.log(data);
         return data; 
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
     
 })

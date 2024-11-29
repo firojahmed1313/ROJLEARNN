@@ -19,7 +19,7 @@ export const getCourseDetailsData = createAsyncThunk('getCourseDetailsData', asy
         //console.log(data);
         return data;
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
 
 

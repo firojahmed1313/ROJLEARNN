@@ -15,7 +15,7 @@ const getData=async(id)=>{const burl = import.meta.env.VITE_URL;
         
         return data;
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
 }
 export const getCartLtemsNow = createAsyncThunk('getCartLtemsNow', async (item) => {
@@ -35,7 +35,7 @@ export const getCartLtemsNow = createAsyncThunk('getCartLtemsNow', async (item) 
     //     //console.log(data);
     //     return data; 
     // } catch (error) {
-    //     console.warn(error);
+    //     //console.warn(error);
     // }
     
 })

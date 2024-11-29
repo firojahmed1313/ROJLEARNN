@@ -17,7 +17,7 @@ export const getStudentAllExam = createAsyncThunk('getStudentAllExam', async (id
         //console.log(data);
         return data; 
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
     
 })

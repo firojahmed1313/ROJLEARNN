@@ -16,7 +16,7 @@ export const getStudentExamReport = createAsyncThunk('getStudentExamReport', asy
         //console.log(res);
         return res; 
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
 
 })

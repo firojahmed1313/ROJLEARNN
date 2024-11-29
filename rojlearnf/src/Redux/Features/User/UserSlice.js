@@ -16,7 +16,7 @@ export const getProfileData = createAsyncThunk('getProfileData', async (token) =
         //console.log(data);
         return data; 
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
     
 })

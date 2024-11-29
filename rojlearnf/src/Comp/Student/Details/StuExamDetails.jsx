@@ -51,7 +51,7 @@ const StuExamDetails = () => {
         setquestioninExam(data.data);
         //return data.data;
       } catch (error) {
-        console.warn(error);
+        //console.warn(error);
       }
     };
     if(examDetails){

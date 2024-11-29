@@ -18,7 +18,7 @@ const getQuestions=async(id)=>{
         const data = getApi(`${burl}/question/getQuestion/${id}`,token);
         return data;
     } catch (error) {
-        console.warn(error);
+        //console.warn(error);
     }
 }
 

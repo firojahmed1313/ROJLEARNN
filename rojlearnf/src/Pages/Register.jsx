@@ -29,7 +29,7 @@ const Register = () => {
     onSuccess: (data) => {
       //console.log(data);
       if (typeof (data) == 'string') {
-        //console.warn(data);
+        ////console.warn(data);
         toast.info(data, {
           position: "top-center",
           autoClose: 5000,

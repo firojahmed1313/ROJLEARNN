@@ -1,38 +1,41 @@
-import React, { useEffect } from 'react'
-import './App.css'
-import { Routes, Route } from 'react-router-dom'
-import Home from './Pages/Home.jsx'
-import AdminPanel from './Pages/AdminPanel.jsx'
-import TeacherProfile from './Pages/Teacher/TeacherProfile.jsx'
-import StudentsProfile from './Pages/Student/StudentsProfile.jsx'
-import Register from './Pages/Register.jsx'
-import Login from './Pages/Login.jsx'
-import Pagenotfound from './Pages/Pagenotfound.jsx'
-import CourseAll from './Pages/Course/CourseAll.jsx'
-import TeacherCourse from './Pages/Teacher/TeacherCourse.jsx'
-import TeacherExam from './Pages/Teacher/TeacherExam.jsx'
-import TeacherTask from './Pages/Teacher/TeacherTask.jsx'
-import TeacherAssignment from './Pages/Teacher/TeacherAssignment.jsx'
-import StuActivity from './Pages/Student/StuActivity.jsx'
-import StuExam from './Pages/Student/StuExam.jsx'
-import StuReport from './Pages/Student/StuReport.jsx'
-import StuCourse from './Pages/Student/StuCourse.jsx'
-import CourseDetails from './Pages/Course/CourseDetails.jsx'
-import Cookies from 'js-cookie'
-import { useDispatch, useSelector } from 'react-redux'
-import { chackAuth,getProfileData } from './Redux/Features/User/UserSlice'
-import Profile from './Pages/Profile.jsx'
-import About from './Pages/About.jsx'
-import Settings from './Pages/Settings.jsx'
-import CourseVideo from './Pages/Student/CourseVideo.jsx'
-import TeacherCourseVideo from './Pages/Teacher/TeacherCourseVideo.jsx'
-import CourseCartChackout from './Pages/Course/CourseCartChackout.jsx'
-import StudentExamDetails from './Pages/Student/Details/StudentExamDetails'
-import StuTaskDetails from './Pages/Student/Details/StuTaskDetails'
-import StuAssDetails from './Pages/Student/Details/StuAssDetails'
-import TeacherExamDetails from './Pages/Teacher/Details/TeacherExamDetails'
-import TracherTaskDetails from './Pages/Teacher/Details/TracherTaskDetails'
-import TracherAssDetails from './Pages/Teacher/Details/TracherAssDetails'
+import React, { Suspense, useEffect } from 'react';
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { useDispatch, useSelector } from 'react-redux';
+import { chackAuth, getProfileData } from './Redux/Features/User/UserSlice';
+import Loader from './Comp/utlits/loder/Loder';
+
+// Lazy load components
+const Home = React.lazy(() => import('./Pages/Home.jsx'));
+const AdminPanel = React.lazy(() => import('./Pages/AdminPanel.jsx'));
+const TeacherProfile = React.lazy(() => import('./Pages/Teacher/TeacherProfile.jsx'));
+const StudentsProfile = React.lazy(() => import('./Pages/Student/StudentsProfile.jsx'));
+const Register = React.lazy(() => import('./Pages/Register.jsx'));
+const Login = React.lazy(() => import('./Pages/Login.jsx'));
+const Pagenotfound = React.lazy(() => import('./Pages/Pagenotfound.jsx'));
+const CourseAll = React.lazy(() => import('./Pages/Course/CourseAll.jsx'));
+const TeacherCourse = React.lazy(() => import('./Pages/Teacher/TeacherCourse.jsx'));
+const TeacherExam = React.lazy(() => import('./Pages/Teacher/TeacherExam.jsx'));
+const TeacherTask = React.lazy(() => import('./Pages/Teacher/TeacherTask.jsx'));
+const TeacherAssignment = React.lazy(() => import('./Pages/Teacher/TeacherAssignment.jsx'));
+const StuActivity = React.lazy(() => import('./Pages/Student/StuActivity.jsx'));
+const StuExam = React.lazy(() => import('./Pages/Student/StuExam.jsx'));
+const StuReport = React.lazy(() => import('./Pages/Student/StuReport.jsx'));
+const StuCourse = React.lazy(() => import('./Pages/Student/StuCourse.jsx'));
+const CourseDetails = React.lazy(() => import('./Pages/Course/CourseDetails.jsx'));
+const Profile = React.lazy(() => import('./Pages/Profile.jsx'));
+const About = React.lazy(() => import('./Pages/About.jsx'));
+const Settings = React.lazy(() => import('./Pages/Settings.jsx'));
+const CourseVideo = React.lazy(() => import('./Pages/Student/CourseVideo.jsx'));
+const TeacherCourseVideo = React.lazy(() => import('./Pages/Teacher/TeacherCourseVideo.jsx'));
+const CourseCartChackout = React.lazy(() => import('./Pages/Course/CourseCartChackout.jsx'));
+const StudentExamDetails = React.lazy(() => import('./Pages/Student/Details/StudentExamDetails'));
+const StuTaskDetails = React.lazy(() => import('./Pages/Student/Details/StuTaskDetails'));
+const StuAssDetails = React.lazy(() => import('./Pages/Student/Details/StuAssDetails'));
+const TeacherExamDetails = React.lazy(() => import('./Pages/Teacher/Details/TeacherExamDetails'));
+const TracherTaskDetails = React.lazy(() => import('./Pages/Teacher/Details/TracherTaskDetails'));
+const TracherAssDetails = React.lazy(() => import('./Pages/Teacher/Details/TracherAssDetails'));
 function App() {
   const dispatch = useDispatch();
 
@@ -64,38 +67,40 @@ function App() {
   }, [isAuth]);
 
   return (
+    <Suspense fallback={<Loader/>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='/admin' element={<AdminPanel />} />
+        <Route path='/aboutUs' element={<About />} />
+        <Route path='/teacher' element={<TeacherProfile />} />
+        <Route path='/teacherCourses' element={<TeacherCourse />} />
+        <Route path='/teacherAssignment' element={<TeacherAssignment />} />
+        <Route path='/teacherExam' element={<TeacherExam />} />
+        <Route path='/teacherTask' element={<TeacherTask />} />
+        <Route path='/teacherExam/:id' element={<TeacherExamDetails />} />
+        <Route path='/teacherTask/:id' element={<TracherTaskDetails />} />
+        <Route path='/teacherAssignment/:id' element={<TracherAssDetails />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/settings' element={<Settings />} />
+        <Route path='/coursevideo/:id' element={<CourseVideo />} />
+        <Route path='/teachercoursevideo/:id' element={<TeacherCourseVideo />} />
+        <Route path='/student' element={<StudentsProfile />} />
+        <Route path='/studentActivity' element={<StuActivity />} />
+        <Route path='/studentExam' element={<StuExam />} />
+        <Route path='/studentReport' element={<StuReport />} />
+        <Route path='/studentCourse' element={<StuCourse />} />
+        <Route path='/studentExam/:id' element={<StudentExamDetails />} />
+        <Route path='/studentTask/:id' element={<StuTaskDetails />} />
+        <Route path='/studentAssignment/:id' element={<StuAssDetails />} />
+        <Route path='/cardCackout' element={<CourseCartChackout />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/courses' element={<CourseAll />} />
+        <Route path='/course/:id' element={<CourseDetails />} />
+        <Route path='*' element={<Pagenotfound />} />
+      </Routes>
+    </Suspense>
 
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path='/admin' element={<AdminPanel />} />
-      <Route path='/aboutUs' element={<About />} />
-      <Route path='/teacher' element={<TeacherProfile />} />
-      <Route path='/teacherCourses' element={<TeacherCourse />} />
-      <Route path='/teacherAssignment' element={<TeacherAssignment />} />
-      <Route path='/teacherExam' element={<TeacherExam />} />
-      <Route path='/teacherTask' element={<TeacherTask />} />
-      <Route path='/teacherExam/:id' element={<TeacherExamDetails />} />
-      <Route path='/teacherTask/:id' element={<TracherTaskDetails />} />
-      <Route path='/teacherAssignment/:id' element={<TracherAssDetails />} />
-      <Route path='/profile' element={<Profile />} />
-      <Route path='/settings' element={<Settings />} />
-      <Route path='/coursevideo/:id' element={<CourseVideo />} />
-      <Route path='/teachercoursevideo/:id' element={<TeacherCourseVideo />} />
-      <Route path='/student' element={<StudentsProfile />} />
-      <Route path='/studentActivity' element={<StuActivity />} />
-      <Route path='/studentExam' element={<StuExam />} />
-      <Route path='/studentReport' element={<StuReport />} />
-      <Route path='/studentCourse' element={<StuCourse />} />
-      <Route path='/studentExam/:id' element={<StudentExamDetails />} />
-      <Route path='/studentTask/:id' element={<StuTaskDetails />} />
-      <Route path='/studentAssignment/:id' element={<StuAssDetails />} />
-      <Route path='/cardCackout' element={<CourseCartChackout />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/courses' element={<CourseAll />} />
-      <Route path='/course/:id' element={<CourseDetails />} />
-      <Route path='*' element={<Pagenotfound />} />
-    </Routes>
 
   )
 }
