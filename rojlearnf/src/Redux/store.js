@@ -31,6 +31,12 @@ import {getQuestioninExamSlice} from './Features/Assignment/getQuestioninExamSli
 import { getStudentExamReportSlice } from './Features/Report/GetStudentExamReportSlice'
 import { getStudentAssReportSlice } from './Features/Report/GetStudentAssReportSlice'
 import { getStudentTaskReportSlice } from './Features/Report/GetStudentTaskReportSlice'
+import { getCommentsDetailsSlice } from './Features/Activity/Details/getCommentsDetailsSlice'
+import { getRatingDetailsSlice } from './Features/Activity/Details/getRatingDetailsSlice'
+//import { getLikeDetailsSlice } from './Features/Activity/Details/getLikeDetailsSlice'
+import { getFeedbackDetailsSlice } from './Features/Activity/Details/getFeedbackDetailsSlice'
+import { getTrackingDetailsSlice } from './Features/Activity/Details/getTrackingDetailsSlice'
+import { getLikeDetailsSlice } from './Features/Activity/Details/getLikeDetailsSlice'
 
 
 
@@ -68,7 +74,12 @@ export const store = configureStore({
       getSubmitass: getSubmitassSlice.reducer,
       getStudentExamMarks: getStudentExamReportSlice.reducer,
       getStudentAssMarks: getStudentAssReportSlice.reducer,
-      getStudentTaskMarks: getStudentTaskReportSlice.reducer
+      getStudentTaskMarks: getStudentTaskReportSlice.reducer,
+      getCommentsDetails: getCommentsDetailsSlice.reducer,
+      getRatingDetails: getRatingDetailsSlice.reducer,
+      getLikeDetails: getLikeDetailsSlice.reducer,
+      getFeedbackDetails: getFeedbackDetailsSlice.reducer,
+      getTrackingDetails: getTrackingDetailsSlice.reducer
 
 
         

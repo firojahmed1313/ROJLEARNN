@@ -13,6 +13,7 @@ public class Rateing {
     private String message;
     private String cuid;
     private ObjectId contentid;
+    private String type;
     private ObjectId userid;
     private LocalDateTime created_at = LocalDateTime.now();
 
@@ -59,6 +60,12 @@ public class Rateing {
     }
     public void setUserid(String userid) {
         this.userid = new ObjectId(userid) ;//userid;
+    }
+    public String getType(){
+        return type;
+    }
+    public void setType(String type){
+        this.type=type;
     }
     public LocalDateTime getCreated_at() {
         return created_at;

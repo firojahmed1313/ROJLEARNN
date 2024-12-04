@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Course {
     private ObjectId _id;
     private String title;
-    private String description;
+    private String descriptions;
     private ObjectId instructor;
     private String category;
     private String thumbnail_url;
@@ -23,7 +23,7 @@ public class Course {
     public Course(String title, String description, ObjectId instructor_id, String category, String thumbnail_url,
             double duration_hours, double price) {
         this.title = title;
-        this.description = description;
+        this.descriptions = description;
         this.instructor = instructor_id;
         this.category = category.toLowerCase();
         this.thumbnail_url = thumbnail_url;
@@ -47,12 +47,12 @@ public class Course {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptions() {
+        return descriptions;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptions(String description) {
+        this.descriptions = description;
     }
 
     public String getInstructor() {
@@ -111,7 +111,7 @@ public class Course {
     public String toString() {
         return "Course{" +
                 ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + descriptions + '\'' +
                 ", category='" + category + '\'' +
                 ", duration_hours=" + duration_hours +
                 ", price=" + price +

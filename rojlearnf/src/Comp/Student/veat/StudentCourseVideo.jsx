@@ -60,7 +60,7 @@ const StudentCourseVideo = ({ id,role }) => {
                             <div className="p-6 md:w-[30%]">
                                 <h5 className="text-gray-900 text-xl font-medium mb-2">{videos[no]?.name}</h5>
                                 <p className="text-gray-700 text-base mb-4">
-                                    {videos[no]?.description}
+                                    {videos[no]?.descriptions}
                                 </p>
                                 <p className="text-gray-700 text-base mb-4">
                                     {videos[no]?.duration}

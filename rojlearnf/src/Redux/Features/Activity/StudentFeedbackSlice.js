@@ -34,7 +34,7 @@ export const getStudentFeedbackSlice = createSlice({
         .addCase(getStudentFeedback.fulfilled, (state, action) => {
             //console.log("getStudentFeedback fulfilled", action.payload);
             state.loading = false;
-            state.studentFeedback = action.payload;
+            state.studentFeedback = action.payload.data;
         })
         .addCase(getStudentFeedback.rejected, (state, action) => {
             //console.log("rejected");

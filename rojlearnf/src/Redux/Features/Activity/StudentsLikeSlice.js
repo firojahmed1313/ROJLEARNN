@@ -34,7 +34,8 @@ export const getStudentsLikeSlice = createSlice({
         .addCase(getStudentsLike.fulfilled, (state, action) => {
             //console.log("getStudentsLike fulfilled", action.payload);
             state.loading = false;
-            state.studentsLike = action.payload;
+            state.studentsLike = action.payload.data;
+            //console.log(action.payload)
         })
         .addCase(getStudentsLike.rejected, (state, action) => {
             //console.log("rejected");

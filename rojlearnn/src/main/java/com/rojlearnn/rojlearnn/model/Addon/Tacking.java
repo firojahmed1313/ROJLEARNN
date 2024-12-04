@@ -11,9 +11,8 @@ public class Tacking {
     private ObjectId _id;
     private ObjectId contentid;
     private ObjectId userid;
-    private String cuid;
-    
-
+    private String cuid;  
+    private String type;
     private Double progress_percentage;
     private String status;
     private LocalDateTime last_updated = LocalDateTime.now();
@@ -74,7 +73,12 @@ public class Tacking {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    public String getType(){
+        return type;
+    }
+    public void setType(String type){
+        this.type=type;
+    }
     public LocalDateTime getLast_updated() {
         return last_updated;
     }

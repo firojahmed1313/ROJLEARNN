@@ -10,6 +10,7 @@ public class Feedback {
     private ObjectId _id;
     private ObjectId contentid;
     private ObjectId userid;
+    private String type;
     private String feedback_text;
     private String feedbacktype;
     private LocalDateTime created_at = LocalDateTime.now();
@@ -63,7 +64,12 @@ public class Feedback {
     public void setFeedbacktype(String feedbacktype) {
         this.feedbacktype = feedbacktype;
     }
-
+    public String getType(){
+        return type;
+    }
+    public void setType(String type){
+        this.type=type;
+    }
     public LocalDateTime getCreated_at() {
         return created_at;
     }

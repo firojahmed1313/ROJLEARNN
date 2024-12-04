@@ -80,7 +80,7 @@ const AllStudentCourses = () => {
                                                 {item.duration_hours}h</div>
                                         </div>
                                         <h3 className="font-black text-gray-800 md:text-3xl text-xl point" >{item.title}</h3>
-                                        <p className="md:text-lg text-gray-500 text-base">{item.description}</p>
+                                        <p className="md:text-lg text-gray-500 text-base">{item.descriptions}</p>
                                         <p className="text-xs font-black text-gray-800">
                                             {dateObj.month} - {dateObj.day} - {dateObj.year} at {dateObj.hour}:{dateObj.minutes}:{dateObj.seconds} {dateObj.period}
                                         </p>

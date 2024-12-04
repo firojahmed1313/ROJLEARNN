@@ -61,7 +61,7 @@ const Home = () => {
                         {course?.data[0]?.title}
                       </Link>
                       <p className="mb-4">
-                        {course?.data[0]?.description}
+                        {course?.data[0]?.descriptions}
                       </p>
                     </div>
                     <div>
@@ -85,7 +85,7 @@ const Home = () => {
                         {course?.data[1]?.title}
                       </Link>
                       <p className="mb-4">
-                        {course?.data[1]?.description}
+                        {course?.data[1]?.descriptions}
                       </p>
                     </div>
                     <div>

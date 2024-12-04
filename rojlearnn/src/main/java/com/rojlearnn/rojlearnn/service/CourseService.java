@@ -65,7 +65,7 @@ public class CourseService {
         }
         if (existingCourse.getInstructor().toString().equals(course.getInstructor().toString())) {
             existingCourse.setTitle(course.getTitle());
-            existingCourse.setDescription(course.getDescription());
+            existingCourse.setDescriptions(course.getDescriptions());
             existingCourse.setCategory(course.getCategory());
             existingCourse.setThumbnail_url(course.getThumbnail_url());
             existingCourse.setIs_published(course.isIs_published());
@@ -127,7 +127,7 @@ public class CourseService {
         if (filters.containsKey("searchKeyword")) {
             String keyword = filters.get("searchKeyword");
             query.addCriteria(Criteria.where("title").regex(keyword, "i"));
-            query.addCriteria(Criteria.where("description").regex(keyword, "i"));
+            query.addCriteria(Criteria.where("descriptions").regex(keyword, "i"));
         }
 
         if (filters.containsKey("category")) {

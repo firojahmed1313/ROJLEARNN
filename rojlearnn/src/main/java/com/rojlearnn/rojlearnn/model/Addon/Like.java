@@ -11,6 +11,7 @@ public class Like {
     private ObjectId contentid;
     private ObjectId userid;
     private String liketype;
+    private String type;
     private LocalDateTime created_at = LocalDateTime.now();
 
     public Like() {
@@ -60,7 +61,12 @@ public class Like {
     public void setContentid(String contentid) {
         this.contentid = new ObjectId (contentid) ;// contentid;
     }
-
+    public String getType(){
+        return type;
+    }
+    public void setType(String type){
+        this.type=type;
+    }
     public String getUserid() {
         return userid.toString();
     }

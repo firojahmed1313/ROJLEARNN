@@ -54,28 +54,28 @@ const ReportTable = ({data}) => {
 
     return (
         <>
-            <div className="flex flex-col">
+            <div className="flex flex-col shadow-xl shadow-slate-500">
                 <div className=" overflow-x-auto">
                     <div className="min-w-full inline-block align-middle">
                         <div className="overflow-hidden border rounded-lg border-gray-300">
                             <table className=" min-w-full  rounded-xl">
                                 <thead>
-                                    <tr className="">
-                                        <th scope="col " className="p-5 bg-gray-50 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Title </th>
-                                        <th scope="col" className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Marks Obtained </th>
-                                        <th scope="col " className="p-5 bg-gray-50 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Total Marks </th>
-                                        <th scope="col" className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Date </th>
+                                    <tr className="bg-blue-600 text-center text-lg font-bold  text-white shadow-inner shadow-blue-900">
+                                        <th scope="col " className="p-5 shadow-inner shadow-sky-900  text-lg leading-6 font-bold  capitalize"> Title </th>
+                                        <th scope="col" className="p-5 shadow-inner shadow-sky-900  leading-6  capitalize"> Marks Obtained </th>
+                                        <th scope="col " className="p-5  shadow-inner shadow-sky-900 leading-6   capitalize"> Total Marks </th>
+                                        <th scope="col" className="p-5 shadow-inner shadow-sky-900 leading-6   capitalize"> Date </th>
                                     </tr>
                                 </thead>
                                 <tbody className="">
                                 {
                                     value?.map((item,index) => {
                                         return (
-                                            <tr className="bg-white transition-all duration-500 hover:bg-gray-50" key={index}>
-                                                <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900 " title={item.contain?.title}> {item.contain?.title.substr(0,12)}... </td>
-                                                <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> {item.mark?.mark} </td>
-                                                <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> {item.contain?.totalmarks} </td>
-                                                <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> {item.mark?.created_at.substr(0,10)} </td>
+                                            <tr className="bg-white text-center transition-all duration-500 hover:bg-gray-300" key={index}>
+                                                <td className="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900  " title={item.contain?.title}> {item.contain?.title.substr(0,40)}... </td>
+                                                <td className="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> {item.mark?.mark} </td>
+                                                <td className="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> {item.contain?.totalmarks} </td>
+                                                <td className="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> {item.mark?.created_at.substr(0,10)} </td>
                                             </tr>
                                         )
                                     })

@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import { getStudentsRating } from '../../../Redux/Features/Activity/StudentsRatingSlice';
 import { useNavigate } from 'react-router-dom'
 import { getProfileData } from '../../../Redux/Features/User/UserSlice';
+import ActivityTable from './ActivityTable'
 
 
 const StudentRating = () => {
@@ -33,8 +34,9 @@ const StudentRating = () => {
     }, 2000)
 
   }, [])
+ //console.log(studentsRating)
   return (
-    <div>StudentRating</div>
+    <ActivityTable type="rating" data={studentsRating}/>
   )
 }
 

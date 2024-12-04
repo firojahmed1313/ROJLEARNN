@@ -28,7 +28,7 @@ const Topnav = () => {
     const Onlogout = () => {
         dispatch(logout());
         Cookies.remove('ROJLEARN');
-        navigate("/");
+        window.location.href = '/';
 
     }
     const cartItems = useSelector((state) => state.getCartItems.cartItems);

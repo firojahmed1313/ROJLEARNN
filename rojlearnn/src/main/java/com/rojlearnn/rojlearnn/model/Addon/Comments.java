@@ -12,6 +12,7 @@ public class Comments {
     private ObjectId contentid;
     private ObjectId userid;
     private String comment_text;
+    private String type;
     private LocalDateTime created_at = LocalDateTime.now();
 
     public Comments() {
@@ -53,6 +54,12 @@ public class Comments {
 
     public void setComment_text(String comment_text) {
         this.comment_text = comment_text;
+    }
+    public String getType(){
+        return type;
+    }
+    public void setType(String type){
+        this.type=type;
     }
 
     public LocalDateTime getCreated_at() {

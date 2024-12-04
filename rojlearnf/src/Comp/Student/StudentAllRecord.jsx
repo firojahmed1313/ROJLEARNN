@@ -153,19 +153,19 @@ const StudentAllRecord = () => {
             <div id='large' className=" flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-[96%] p-2 mx-auto">
                 <div className="w-full">
                     <ul className=" flex gap-2 flex-wrap px-1.5 py-1.5 list-none rounded-lg bg-slate-300" data-tabs="tabs" role="list">
-                        <li className={`${tab == "Exam" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
+                        <li className={`${tab == "Exam" ? "bg-white rounded-lg " : "transition-all ease-in-out"} transition-all ease-in-out duration-200 z-30 flex-auto text-center   `}>
                             <button className="font-semibold flex items-center justify-center w-full px-0 py-2 text-sm mb-0  border-0 rounded-lg cursor-pointer text-slate-600 bg-inherit hover:bg-white"
                                 onClick={() => setTab("Exam")}>
                                 Exam
                             </button>
                         </li>
-                        <li className={`${tab == "Assignment" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
+                        <li className={`${tab == "Assignment" ? "bg-white rounded-lg " : "transition-all "} transition-all ease-in-out  duration-200 z-30 flex-auto text-center   `}>
                             <button className="font-semibold flex items-center justify-center w-full px-0 py-2 mb-0 text-sm  border-0 rounded-lg cursor-pointer text-slate-600 bg-inherit hover:bg-white"
                                 onClick={() => setTab("Assignment")}>
                                 Assignment
                             </button>
                         </li>
-                        <li className={`${tab == "Task" ? "bg-white rounded-lg " : "transition-all ease-in-out"} z-30 flex-auto text-center   `}>
+                        <li className={`${tab == "Task" ? "bg-white rounded-lg " : "transition-all ease-in-out"} transition-all ease-in-out duration-200 z-30 flex-auto text-center   `}>
                             <button className="font-semibold flex items-center justify-center w-full px-0 py-2 text-sm mb-0  border-0 rounded-lg cursor-pointer text-slate-700 bg-inherit hover:bg-white"
                                 onClick={() => setTab("Task")}>
                                 Task

@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import { getStudentTracking } from '../../../Redux/Features/Activity/StudentTrackingSlice';
 import { useNavigate } from 'react-router-dom'
 import { getProfileData } from '../../../Redux/Features/User/UserSlice';
+import ActivityTable from './ActivityTable'
 
 
 const StudentTracking = () => {
@@ -33,8 +34,9 @@ const StudentTracking = () => {
     }, 2000)
 
   }, [])
+ //console.log(studentTracking)
   return (
-    <div>StudentTracking</div>
+    <ActivityTable type="tracking" data={studentTracking}/>
   )
 }
 

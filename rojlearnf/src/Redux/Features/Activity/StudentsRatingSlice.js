@@ -33,7 +33,7 @@ export const getStudentsRatingSlice = createSlice({
         .addCase(getStudentsRating.fulfilled, (state, action) => {
             //console.log("getStudentsRating fulfilled", action.payload);
             state.loading = false;
-            state.studentsRating = action.payload;
+            state.studentsRating = action.payload.data;
         })
         .addCase(getStudentsRating.rejected, (state, action) => {
             //console.log("rejected");

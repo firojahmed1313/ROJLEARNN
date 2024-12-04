@@ -10,7 +10,7 @@ public class Video {
     private ObjectId _id;
     private ObjectId courseid;
     private String name;
-    private String description;
+    private String descriptions;
     private String url;
     private String duration;
     private LocalDateTime created_at = LocalDateTime.now();
@@ -18,7 +18,7 @@ public class Video {
     public Video(ObjectId courseid, String name, String description, String url, String duration) {
         this.courseid = courseid;
         this.name = name;
-        this.description = description;
+        this.descriptions = description;
         this.url = url;
         this.duration = duration;
     }
@@ -40,11 +40,11 @@ public class Video {
     public void setName(String name) {
         this.name = name;
     }
-    public String getDescription() {
-        return description;
+    public String getDescriptions() {
+        return descriptions;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptions(String description) {
+        this.descriptions = description;
     }
     public String getUrl() {
         return url;

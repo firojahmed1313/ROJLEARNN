@@ -672,7 +672,7 @@ const Courseall = () => {
                                                                 </p>
                                                                 <Link to={`/course/${course._id}`} className="text-gray-900 font-bold text-lg mb-2 hover:text-indigo-600 inline-block">
                                                                     {course.title}</Link>
-                                                                <p className="text-gray-700 text-sm">{course.description}</p>
+                                                                <p className="text-gray-700 text-sm">{course.descriptions}</p>
                                                             </div>
                                                             <Link to={`/course/${course._id}`} className="inline-block py-2 text-base font-medium transition border rounded-full text-body-color hover:border-primary hover:bg-blue-800 border-gray-3 px-7 hover:text-white dark:border-dark-3 dark:text-dark-6"
                                                             >

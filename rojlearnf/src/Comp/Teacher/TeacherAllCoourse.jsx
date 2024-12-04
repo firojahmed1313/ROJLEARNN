@@ -68,7 +68,7 @@ const TeacherAllCoourse = () => {
                                                     {item.title}
                                                 </h4>
                                                 <p className="mb-2 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                                                    {item.description}
+                                                    {item.descriptions}
                                                 </p>
                                                 <p className="mb-8 text-xs font-black text-gray-800">
                                                     {dateObj.month} - {dateObj.day} - {dateObj.year} at {dateObj.hour}:{dateObj.minutes}:{dateObj.seconds} {dateObj.period}

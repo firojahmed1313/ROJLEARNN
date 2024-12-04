@@ -186,7 +186,7 @@ const CourseDetails = () => {
                                                 </a>
                                             </span>
                                         </div>
-                                        <p className="leading-relaxed">{course.data.description}</p>
+                                        <p className="leading-relaxed">{course.data.descriptions}</p>
                                         {/* <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                         <div className="flex">
                                             <span className="mr-3">Color</span>

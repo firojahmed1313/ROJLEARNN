@@ -5,6 +5,7 @@ import { getStudentFeedback } from '../../../Redux/Features/Activity/StudentFeed
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { getProfileData } from '../../../Redux/Features/User/UserSlice';
+import ActivityTable from './ActivityTable'
 
 const StudentFeedback = () => {
   const StudentFeedbacks = useSelector((state) => state.getStudentsFeedback.studentFeedback);
@@ -32,8 +33,9 @@ useEffect(() => {
     },2000)
     
 }, [])
+//console.log(StudentFeedbacks)
   return (
-    <div>StudentFeedback</div>
+    <ActivityTable type="feedback" data={StudentFeedbacks}/>
   )
 }
 

@@ -15,6 +15,9 @@ public interface CourseRepo extends MongoRepository<Course, String> {
 
     List<Course> findAllByInstructor(ObjectId istructorId); //not working
 
+
+    Object findBy_id(ObjectId objectId);
+
     
 
 }
