@@ -127,7 +127,7 @@ const TeacherCourseVideo = () => {
                 <div className="space-y-3 mx-4 my-2">
                     <h5 className="text-sm font-medium uppercase text-gray-400">{course?.data.category.toUpperCase()}</h5>
                     <h1 className="text-3xl font-semibold">{course?.data.title}</h1>
-                    <p className="">{course?.data.description}</p>
+                    <p className="">{course?.data.descriptions}</p>
 
                     <ul className="flex gap-4">
                         <li className="flex items-center">
